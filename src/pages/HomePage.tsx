@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-primary-dark text-primary-foreground py-12 md:py-24">
+      <section className="bg-primary-dark text-primary-foreground py-12 md:py-24 pt-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-h1 mb-6">
             Turn Package Protection Into Profit

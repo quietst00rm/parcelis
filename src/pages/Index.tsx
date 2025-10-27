@@ -4,11 +4,11 @@ import HomePage from "./HomePage";
 
 const Index = () => {
   return (
-    <>
+    <div className="mt-20">
       <Navigation />
       <HomePage />
       <Footer />
-    </>
+    </div>
   );
 };
 
