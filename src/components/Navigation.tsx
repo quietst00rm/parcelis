@@ -32,7 +32,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 h-[80px]">
         <div className="flex items-center justify-between h-full">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="PARCELIS" className="h-auto md:w-[180px] w-[140px]" />
+            <img src={logo} alt="PARCELIS" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
