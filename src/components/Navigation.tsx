@@ -15,11 +15,11 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-primary-dark border-b border-primary-medium z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border z-50" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08)', height: '80px' }}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-full">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="PARCELIS" className="h-8" />
+            <img src={logo} alt="PARCELIS" className="h-auto md:w-[180px] w-[140px]" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -28,25 +28,19 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-primary-foreground hover:text-primary-light-tint transition-colors"
+                className="text-text-secondary hover:text-primary transition-all duration-300 text-base relative after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild variant="hero" className="bg-background text-primary hover:bg-background/90">
-              <Link to="/apply">Apply Now</Link>
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-dark transition-colors px-4 py-2 rounded-lg">
+              <Link to="/apply">Get Started</Link>
             </Button>
-            <Link
-              to="/login"
-              className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-            >
-              Login
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-primary-foreground"
+            className="md:hidden p-2 text-primary"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -57,30 +51,23 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-primary-dark border-b border-primary-medium">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden fixed inset-0 top-[80px] z-40 bg-gradient-to-b from-primary-dark to-primary animate-in slide-in-from-right">
+          <div className="flex flex-col items-center justify-center h-full px-4 gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-primary-foreground hover:text-primary-light-tint transition-colors py-2"
+                className="text-white text-2xl font-medium hover:text-primary-light-tint transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild variant="hero" className="w-full bg-background text-primary hover:bg-background/90">
+            <Button asChild className="w-full max-w-xs bg-white text-primary hover:bg-white/90 text-lg py-6">
               <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
-                Apply Now
+                Get Started
               </Link>
             </Button>
-            <Link
-              to="/login"
-              className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors py-2 text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Login
-            </Link>
           </div>
         </div>
       )}

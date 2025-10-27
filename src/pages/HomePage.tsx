@@ -191,31 +191,40 @@ const HomePage = () => {
       {/* Platform Integration */}
       <section className="py-12 md:py-24 bg-background-gray">
         <div className="container mx-auto px-4">
-          <h2 className="text-h2 text-center mb-12">Integrates With Your Platform</h2>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2">
-                <p className="text-2xl font-bold">Shopify</p>
+          <h2 className="text-h2 text-center mb-12">Seamless Platform Integrations</h2>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            {/* Shopify Card */}
+            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-4">
+                <img src="/src/assets/platforms/shopify.png" alt="Shopify" className="h-16 object-contain" />
+                <span className="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold">
+                  LIVE NOW
+                </span>
               </div>
-              <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">Live Now</span>
+              <h3 className="text-2xl font-bold mb-3">Shopify One-Click Integration</h3>
+              <p className="text-text-secondary mb-6 leading-relaxed">
+                Install our app from the Shopify App Store and activate insurance at checkout in under 5 minutes.
+              </p>
+              <Button asChild className="w-full bg-primary hover:bg-primary-hover">
+                <Link to="/how-it-works">View Integration Details</Link>
+              </Button>
             </div>
-            <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2">
-                <p className="text-2xl font-bold">29next</p>
+
+            {/* 29next Card */}
+            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-4">
+                <img src="/src/assets/platforms/29next.png" alt="29next" className="h-16 object-contain" />
+                <span className="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold">
+                  LIVE NOW
+                </span>
               </div>
-              <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">Live Now</span>
-            </div>
-            <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2 opacity-60">
-                <p className="text-2xl font-bold">WooCommerce</p>
-              </div>
-              <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">Coming Soon</span>
-            </div>
-            <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2 opacity-60">
-                <p className="text-2xl font-bold">BigCommerce</p>
-              </div>
-              <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">Coming Soon</span>
+              <h3 className="text-2xl font-bold mb-3">29next Native Integration</h3>
+              <p className="text-text-secondary mb-6 leading-relaxed">
+                Seamlessly add insurance to your 29next checkout flow with our native integration.
+              </p>
+              <Button asChild className="w-full bg-primary hover:bg-primary-hover">
+                <Link to="/how-it-works">Learn More</Link>
+              </Button>
             </div>
           </div>
         </div>

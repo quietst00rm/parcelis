@@ -20,69 +20,109 @@ const HowItWorksPage = () => {
 
         {/* Process Steps */}
         <section className="mb-20">
-          <div className="max-w-4xl mx-auto space-y-16">
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold flex-shrink-0">
-                1
+          <div className="max-w-6xl mx-auto space-y-12">
+            {/* Card 1: Apply & Onboard */}
+            <div className="bg-white border border-border rounded-xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-4 right-4 text-[120px] font-bold text-primary-light-tint opacity-30 leading-none select-none">
+                01
               </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3">Apply & Onboard</h3>
-                <p className="text-muted-foreground mb-2">
-                  Submit your application through our simple form. Our team reviews and sends onboarding documentation. Shopify merchants can activate with one click.
-                </p>
-                <p className="text-sm text-primary font-semibold">Timeline: Approval within 24-48 hours</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold flex-shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3">Integrate at Checkout</h3>
-                <p className="text-muted-foreground mb-2">
-                  Add PARCELIS insurance as an optional checkout add-on. Compatible with Shopify, 29next, and more platforms coming soon.
-                </p>
-                <p className="text-sm text-primary font-semibold">Insurance pricing displays automatically based on cart value</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold flex-shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3">Customer Opts In</h3>
-                <p className="text-muted-foreground mb-2">
-                  Your customers see the insurance option at checkout. Those who opt in receive comprehensive coverage including porch piracy protection.
-                </p>
-                <p className="text-sm text-primary font-semibold">You control the customer-facing price and keep the markup</p>
+              <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                <div>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <CheckCircle className="text-white" size={28} />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-4">Quick Application</h2>
+                  <p className="text-text-secondary mb-6 leading-relaxed">
+                    Fill out our simple application form with basic business information. Shopify merchants can connect our app with one click. We'll review your application and onboard you within 24-48 hours—no lengthy approval process.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Simple application form</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Shopify one-click option</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>24-48 hour onboarding</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-background-gray rounded-lg p-6 h-64 flex items-center justify-center">
+                  <p className="text-text-tertiary text-center">Application form mockup</p>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold flex-shrink-0">
-                4
+            {/* Card 2: Integration Setup */}
+            <div className="bg-primary-light-tint border border-border rounded-xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-4 left-4 text-[120px] font-bold text-primary/10 opacity-30 leading-none select-none">
+                02
               </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3">Claims (If Needed)</h3>
-                <p className="text-muted-foreground mb-2">
-                  If a package is lost, damaged, or stolen, customers file claims directly with PARCELIS. You simply direct them to our claims portal.
-                </p>
-                <p className="text-sm text-primary font-semibold">Zero merchant involvement - no support tickets, no replacement decisions</p>
+              <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                <div className="bg-background-gray rounded-lg p-6 h-64 flex items-center justify-center order-2 md:order-1">
+                  <p className="text-text-tertiary text-center">Checkout integration mockup</p>
+                </div>
+                <div className="order-1 md:order-2">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="text-white" size={28} />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-4">Seamless Integration</h2>
+                  <p className="text-text-secondary mb-6 leading-relaxed">
+                    Once approved, we'll provide everything you need to add insurance to your checkout. Set your customer-facing price (markup your profit). Our system automatically collects customer data, order details, and tracking information through API integration.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Easy checkout integration</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Set your markup price</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Automatic data sync</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold flex-shrink-0">
-                5
+            {/* Card 3: Customer Purchase */}
+            <div className="bg-white border border-border rounded-xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-4 right-4 text-[120px] font-bold text-primary-light-tint opacity-30 leading-none select-none">
+                03
               </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-3">Fast Resolution</h3>
-                <p className="text-muted-foreground mb-2">
-                  Our team processes claims in 5-7 business days. Customers receive updates via email. You never touch the process.
-                </p>
-                <p className="text-sm text-primary font-semibold">Professional claims handling backed by The Hartford</p>
+              <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                <div>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Shield className="text-white" size={28} />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-4">Customer Purchase</h2>
+                  <p className="text-text-secondary mb-6 leading-relaxed">
+                    At checkout, customers see the insurance option and can opt in with a single click. They receive comprehensive coverage including protection against lost, damaged, and stolen packages—even porch piracy.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>One-click opt-in at checkout</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>You control the price markup</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-text-primary">
+                      <CheckCircle className="text-success flex-shrink-0" size={20} />
+                      <span>Complete coverage for customers</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-background-gray rounded-lg p-6 h-64 flex items-center justify-center">
+                  <p className="text-text-tertiary text-center">Checkout page with insurance option</p>
+                </div>
               </div>
             </div>
           </div>
