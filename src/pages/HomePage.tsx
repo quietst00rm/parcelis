@@ -6,6 +6,10 @@ import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
+import shopifyLogo from "@/assets/platforms/shopify.png";
+import twentyNineNextLogo from "@/assets/platforms/29next.png";
+import woocommerceLogo from "@/assets/platforms/woocommerce.png";
+import bigcommerceLogo from "@/assets/platforms/bigcommerce.png";
 
 const HomePage = () => {
   return (
@@ -194,26 +198,26 @@ const HomePage = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Integrates With Your Platform</h2>
           <div className="flex flex-wrap items-center justify-center gap-8">
             <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2">
-                <p className="text-2xl font-bold">Shopify</p>
+              <div className="bg-card border border-border rounded-lg p-6 mb-2 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <img src={shopifyLogo} alt="Shopify logo" className="h-14 md:h-16 w-auto object-contain mx-auto" />
+              </div>
+              <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">Live Now</span>
+            </div>
+            <div className="text-center">
+              <div className="bg-card border border-border rounded-lg p-6 mb-2 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <img src={twentyNineNextLogo} alt="29next logo" className="h-14 md:h-16 w-auto object-contain mx-auto" />
               </div>
               <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">Live Now</span>
             </div>
             <div className="text-center">
               <div className="bg-card border border-border rounded-lg p-6 mb-2">
-                <p className="text-2xl font-bold">29next</p>
-              </div>
-              <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">Live Now</span>
-            </div>
-            <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2 opacity-60">
-                <p className="text-2xl font-bold">WooCommerce</p>
+                <img src={woocommerceLogo} alt="WooCommerce logo" className="h-14 md:h-16 w-auto object-contain mx-auto opacity-60 grayscale" />
               </div>
               <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">Coming Soon</span>
             </div>
             <div className="text-center">
-              <div className="bg-card border border-border rounded-lg p-6 mb-2 opacity-60">
-                <p className="text-2xl font-bold">BigCommerce</p>
+              <div className="bg-card border border-border rounded-lg p-6 mb-2">
+                <img src={bigcommerceLogo} alt="BigCommerce logo" className="h-14 md:h-16 w-auto object-contain mx-auto opacity-60 grayscale" />
               </div>
               <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">Coming Soon</span>
             </div>

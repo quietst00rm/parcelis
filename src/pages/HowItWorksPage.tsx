@@ -5,6 +5,10 @@ import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
+import shopifyLogo from "@/assets/platforms/shopify.png";
+import twentyNineNextLogo from "@/assets/platforms/29next.png";
+import woocommerceLogo from "@/assets/platforms/woocommerce.png";
+import bigcommerceLogo from "@/assets/platforms/bigcommerce.png";
 
 const HowItWorksPage = () => {
   return (
@@ -154,8 +158,8 @@ const HowItWorksPage = () => {
               <h3 className="text-xl font-semibold mb-6 text-center">Live Now</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-card border-2 border-primary rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-2xl font-bold">Shopify</h4>
+                  <div className="flex flex-col items-center mb-4">
+                    <img src={shopifyLogo} alt="Shopify logo" className="h-16 md:h-20 w-auto object-contain mb-3" />
                     <span className="text-xs bg-success text-success-foreground px-3 py-1 rounded-full font-semibold">
                       Live
                     </span>
@@ -172,8 +176,8 @@ const HowItWorksPage = () => {
                   </ul>
                 </div>
                 <div className="bg-card border-2 border-primary rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-2xl font-bold">29next</h4>
+                  <div className="flex flex-col items-center mb-4">
+                    <img src={twentyNineNextLogo} alt="29next logo" className="h-16 md:h-20 w-auto object-contain mb-3" />
                     <span className="text-xs bg-success text-success-foreground px-3 py-1 rounded-full font-semibold">
                       Live
                     </span>
@@ -191,14 +195,29 @@ const HowItWorksPage = () => {
             <div>
               <h3 className="text-xl font-semibold mb-6 text-center">Coming Soon</h3>
               <div className="grid md:grid-cols-3 gap-4">
-                {["WooCommerce", "BigCommerce", "Magento"].map((platform) => (
-                  <div key={platform} className="bg-card border border-border rounded-lg p-4 text-center opacity-60">
-                    <p className="font-bold mb-2">{platform}</p>
-                    <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">
-                      Coming Soon
-                    </span>
+                <div className="bg-card border border-border rounded-lg p-6 text-center">
+                  <img src={woocommerceLogo} alt="WooCommerce logo" className="h-12 md:h-14 w-auto object-contain mx-auto mb-3 opacity-60 grayscale" />
+                  <p className="font-bold mb-2 text-muted-foreground">WooCommerce</p>
+                  <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">
+                    Coming Soon
+                  </span>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6 text-center">
+                  <img src={bigcommerceLogo} alt="BigCommerce logo" className="h-12 md:h-14 w-auto object-contain mx-auto mb-3 opacity-60 grayscale" />
+                  <p className="font-bold mb-2 text-muted-foreground">BigCommerce</p>
+                  <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">
+                    Coming Soon
+                  </span>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-6 text-center">
+                  <div className="h-12 md:h-14 flex items-center justify-center mb-3">
+                    <p className="text-xl font-bold text-muted-foreground opacity-60">Magento</p>
                   </div>
-                ))}
+                  <p className="font-bold mb-2 text-muted-foreground">Magento</p>
+                  <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">
+                    Coming Soon
+                  </span>
+                </div>
               </div>
               <p className="text-center text-muted-foreground mt-6">
                 Custom API integration available for other platforms
