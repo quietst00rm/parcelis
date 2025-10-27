@@ -8,6 +8,7 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: "Home", path: "/" },
     { name: "How It Works", path: "/how-it-works" },
     { name: "Pricing", path: "/pricing" },
     { name: "About", path: "/about" },
@@ -28,7 +29,7 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border z-50" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08)', height: '80px' }}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 h-[80px]">
         <div className="flex items-center justify-between h-full">
           <Link to="/" className="flex items-center">
             <img src={logo} alt="PARCELIS" className="h-auto md:w-[180px] w-[140px]" />

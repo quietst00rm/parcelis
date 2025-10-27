@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
-import hartfordLogo from "@/assets/logos/hartford.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const Footer = () => {
   return (
@@ -8,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img src={logo} alt="PARCELIS" className="h-8 mb-4" />
+            <img src={logoWhite} alt="PARCELIS" className="h-8 mb-4" />
             <p className="text-sm text-primary-foreground/80">
               Merchant-first shipping insurance backed by The Hartford.
             </p>
@@ -64,17 +63,7 @@ const Footer = () => {
                   support@parcelis.com
                 </a>
               </li>
-              <li>
-                <a href="tel:+18005551234" className="text-sm text-primary-foreground/70 hover:text-primary-light-tint transition-colors">
-                  (800) 555-1234
-                </a>
-              </li>
             </ul>
-            <div className="mt-6 pt-4 border-t border-primary-medium">
-              <p className="text-xs text-primary-foreground/70 font-semibold mb-2">Underwritten by:</p>
-              <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-8 object-contain" />
-              <p className="text-xs text-primary-foreground/70 mt-2">Licensed Reinsurance Provider</p>
-            </div>
           </div>
         </div>
 
