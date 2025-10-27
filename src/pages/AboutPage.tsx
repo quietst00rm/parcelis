@@ -1,6 +1,11 @@
 import { Shield, TrendingUp, Users, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import hartfordLogo from "@/assets/logos/hartford.png";
+import uspsLogo from "@/assets/carriers/usps.png";
+import dhlLogo from "@/assets/carriers/dhl.png";
+import upsLogo from "@/assets/carriers/ups.png";
+import fedexLogo from "@/assets/carriers/fedex.png";
 
 const AboutPage = () => {
   return (
@@ -32,9 +37,10 @@ const AboutPage = () => {
 
         {/* Underwriter Section */}
         <section className="mb-16 bg-muted rounded-lg p-8 md:p-12">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-16 md:h-20 object-contain mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-6">Real Insurance, Real Protection</h2>
-            <div className="space-y-4 mb-6">
+            <div className="space-y-4 mb-8 text-left">
               <p className="text-lg">
                 <span className="font-semibold">PARCELIS is a licensed reinsurance provider</span> legally reselling insurance underwritten by The Hartford, a recognized industry leader with over 200 years of experience.
               </p>
@@ -45,14 +51,45 @@ const AboutPage = () => {
                 We comply with state insurance regulations to ensure your protection is legitimate, enforceable, and backed by a trusted underwriter.
               </p>
             </div>
-            <div className="flex items-center gap-3 bg-card border border-border rounded-lg p-4 inline-flex">
+            <div className="inline-flex items-center gap-3 bg-card border-2 border-primary rounded-lg px-6 py-4">
               <Shield className="text-primary" size={32} />
-              <div>
-                <p className="font-semibold">Underwritten by</p>
+              <div className="text-left">
+                <p className="font-semibold text-sm">Underwritten by</p>
                 <p className="text-xl font-bold text-primary">The Hartford</p>
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Carrier Coverage */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-4">Comprehensive Carrier Coverage</h2>
+          <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            Full protection across all major carriers with no geographic limitations
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="bg-card border border-border rounded-lg p-6 text-center">
+              <img src={uspsLogo} alt="USPS logo" className="h-16 object-contain mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">USPS</h3>
+              <p className="text-sm text-muted-foreground">Full domestic coverage including Priority and First-Class Mail</p>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-6 text-center">
+              <img src={upsLogo} alt="UPS logo" className="h-16 object-contain mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">UPS</h3>
+              <p className="text-sm text-muted-foreground">Ground, Air, and international UPS shipments covered</p>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-6 text-center">
+              <img src={fedexLogo} alt="FedEx logo" className="h-16 object-contain mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">FedEx</h3>
+              <p className="text-sm text-muted-foreground">All FedEx services including Express and Ground</p>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-6 text-center">
+              <img src={dhlLogo} alt="DHL logo" className="h-16 object-contain mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">DHL</h3>
+              <p className="text-sm text-muted-foreground">Global coverage for international DHL shipments</p>
+            </div>
+          </div>
+          <p className="text-center text-muted-foreground mt-8">+ Regional carriers and international postal services worldwide</p>
         </section>
 
         {/* Why Different */}

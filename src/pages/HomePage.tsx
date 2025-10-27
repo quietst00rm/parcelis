@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Shield, DollarSign, Clock, Globe } from "lucide-react";
+import hartfordLogo from "@/assets/logos/hartford.png";
+import uspsLogo from "@/assets/carriers/usps.png";
+import dhlLogo from "@/assets/carriers/dhl.png";
+import upsLogo from "@/assets/carriers/ups.png";
+import fedexLogo from "@/assets/carriers/fedex.png";
 
 const HomePage = () => {
   return (
@@ -24,8 +29,8 @@ const HomePage = () => {
       <section className="py-8 bg-muted">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center">
-            <div className="flex items-center gap-2">
-              <Shield className="text-primary" size={24} />
+            <div className="flex items-center gap-3">
+              <img src={hartfordLogo} alt="The Hartford logo" className="h-8 md:h-10 object-contain" />
               <span className="font-semibold">Underwritten by The Hartford</span>
             </div>
             <div className="hidden md:block h-6 w-px bg-border"></div>
@@ -70,6 +75,12 @@ const HomePage = () => {
                   <div>
                     <h3 className="font-semibold mb-2">All Carriers</h3>
                     <p className="text-muted-foreground">USPS, UPS, FedEx, DHL, and all international carriers supported</p>
+                    <div className="flex items-center gap-3 mt-3">
+                      <img src={uspsLogo} alt="USPS logo" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img src={upsLogo} alt="UPS logo" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img src={fedexLogo} alt="FedEx logo" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                      <img src={dhlLogo} alt="DHL logo" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -207,6 +218,35 @@ const HomePage = () => {
               <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">Coming Soon</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* All Major Carriers */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">All Major Carriers Covered</h2>
+          <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+            Comprehensive protection across USPS, UPS, FedEx, DHL, and all regional and international carriers
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
+            <div className="text-center">
+              <img src={uspsLogo} alt="USPS shipping logo" className="h-12 md:h-16 object-contain mx-auto mb-2" />
+              <p className="text-sm font-medium text-muted-foreground">USPS</p>
+            </div>
+            <div className="text-center">
+              <img src={upsLogo} alt="UPS shipping logo" className="h-12 md:h-16 object-contain mx-auto mb-2" />
+              <p className="text-sm font-medium text-muted-foreground">UPS</p>
+            </div>
+            <div className="text-center">
+              <img src={fedexLogo} alt="FedEx shipping logo" className="h-12 md:h-16 object-contain mx-auto mb-2" />
+              <p className="text-sm font-medium text-muted-foreground">FedEx</p>
+            </div>
+            <div className="text-center">
+              <img src={dhlLogo} alt="DHL shipping logo" className="h-12 md:h-16 object-contain mx-auto mb-2" />
+              <p className="text-sm font-medium text-muted-foreground">DHL</p>
+            </div>
+          </div>
+          <p className="text-center text-muted-foreground mt-8">+ all regional and international carriers</p>
         </div>
       </section>
 

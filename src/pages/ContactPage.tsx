@@ -7,6 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, Phone, Clock, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import hartfordLogo from "@/assets/logos/hartford.png";
+import uspsLogo from "@/assets/carriers/usps.png";
+import dhlLogo from "@/assets/carriers/dhl.png";
+import upsLogo from "@/assets/carriers/ups.png";
+import fedexLogo from "@/assets/carriers/fedex.png";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -159,7 +164,7 @@ const ContactPage = () => {
         </div>
 
         {/* Support Resources */}
-        <section className="max-w-4xl mx-auto">
+        <section className="max-w-4xl mx-auto mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">Other Ways to Get Help</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Button asChild variant="outline" className="h-auto py-6 flex-col">
@@ -186,6 +191,26 @@ const ContactPage = () => {
                 <span className="text-xs text-muted-foreground">Calculate your costs</span>
               </Link>
             </Button>
+          </div>
+        </section>
+
+        {/* Partners Section */}
+        <section className="max-w-4xl mx-auto bg-muted rounded-lg p-8 md:p-12">
+          <h2 className="text-2xl font-bold text-center mb-8">Our Partners</h2>
+          <div className="flex flex-col items-center gap-8">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-4">Underwritten by</p>
+              <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-16 object-contain mx-auto" />
+            </div>
+            <div className="w-full max-w-md border-t border-border pt-8">
+              <p className="text-sm text-muted-foreground text-center mb-4">Supported Carriers</p>
+              <div className="flex items-center justify-center gap-8 flex-wrap">
+                <img src={uspsLogo} alt="USPS logo" className="h-10 object-contain" />
+                <img src={upsLogo} alt="UPS logo" className="h-10 object-contain" />
+                <img src={fedexLogo} alt="FedEx logo" className="h-10 object-contain" />
+                <img src={dhlLogo} alt="DHL logo" className="h-10 object-contain" />
+              </div>
+            </div>
           </div>
         </section>
       </div>

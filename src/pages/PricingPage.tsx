@@ -1,6 +1,10 @@
 import PricingCalculator from "@/components/PricingCalculator";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import uspsLogo from "@/assets/carriers/usps.png";
+import dhlLogo from "@/assets/carriers/dhl.png";
+import upsLogo from "@/assets/carriers/ups.png";
+import fedexLogo from "@/assets/carriers/fedex.png";
 
 const PricingPage = () => {
   return (
@@ -16,6 +20,17 @@ const PricingPage = () => {
         <div className="mb-16">
           <PricingCalculator />
         </div>
+
+        {/* Carrier Coverage Strip */}
+        <section className="mb-16 text-center">
+          <p className="text-sm text-muted-foreground mb-4">Works with all major carriers</p>
+          <div className="flex items-center justify-center gap-8 flex-wrap">
+            <img src={uspsLogo} alt="USPS logo" className="h-8 object-contain opacity-70" />
+            <img src={upsLogo} alt="UPS logo" className="h-8 object-contain opacity-70" />
+            <img src={fedexLogo} alt="FedEx logo" className="h-8 object-contain opacity-70" />
+            <img src={dhlLogo} alt="DHL logo" className="h-8 object-contain opacity-70" />
+          </div>
+        </section>
 
         {/* Coverage Limits */}
         <section className="mb-16">

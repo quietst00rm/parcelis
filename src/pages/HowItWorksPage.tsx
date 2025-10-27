@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Shield, Globe, Zap, CheckCircle } from "lucide-react";
+import uspsLogo from "@/assets/carriers/usps.png";
+import dhlLogo from "@/assets/carriers/dhl.png";
+import upsLogo from "@/assets/carriers/ups.png";
+import fedexLogo from "@/assets/carriers/fedex.png";
 
 const HowItWorksPage = () => {
   return (
@@ -113,7 +117,13 @@ const HowItWorksPage = () => {
               <CheckCircle className="text-primary flex-shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold mb-1">All carriers</h3>
-                <p className="text-sm text-muted-foreground">USPS, UPS, FedEx, DHL, regional, international</p>
+                <p className="text-sm text-muted-foreground mb-3">USPS, UPS, FedEx, DHL, regional, international</p>
+                <div className="flex items-center gap-3">
+                  <img src={uspsLogo} alt="USPS logo" className="h-6 object-contain" />
+                  <img src={upsLogo} alt="UPS logo" className="h-6 object-contain" />
+                  <img src={fedexLogo} alt="FedEx logo" className="h-6 object-contain" />
+                  <img src={dhlLogo} alt="DHL logo" className="h-6 object-contain" />
+                </div>
               </div>
             </div>
             <div className="flex gap-3">

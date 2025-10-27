@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import hartfordLogo from "@/assets/logos/hartford.png";
 
 const Footer = () => {
   return (
@@ -69,9 +70,10 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="mt-4 text-xs text-muted-foreground">
-              <p className="font-semibold mb-1">Underwritten by:</p>
-              <p>The Hartford</p>
+            <div className="mt-6 pt-4 border-t border-border">
+              <p className="text-xs text-muted-foreground font-semibold mb-2">Underwritten by:</p>
+              <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-8 object-contain" />
+              <p className="text-xs text-muted-foreground mt-2">Licensed Reinsurance Provider</p>
             </div>
           </div>
         </div>
