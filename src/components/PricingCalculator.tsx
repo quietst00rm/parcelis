@@ -62,6 +62,15 @@ const PricingCalculator = () => {
             <p className="text-sm text-muted-foreground mb-2">Your Cost</p>
             <p className="text-3xl font-bold text-primary">${getMerchantCost()}</p>
           </div>
+
+          {!getMerchantCost().includes("Contact") && !getMerchantCost().includes("Maximum") && (
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+              <p className="text-sm font-semibold text-center mb-2">Ready to add protection at checkout?</p>
+              <p className="text-xs text-muted-foreground text-center mb-3">
+                Coverage limits: $2,500/box • $25,000/shipment
+              </p>
+            </div>
+          )}
           
           <div className="text-sm text-muted-foreground space-y-1">
             <p>• Pricing is charged at checkout on a per-package basis</p>
@@ -100,6 +109,10 @@ const PricingCalculator = () => {
               />
             </div>
           </div>
+
+          <p className="text-xs text-center text-muted-foreground font-medium">
+            Customer Price – Merchant Cost = Your Profit
+          </p>
           
           <div className="space-y-3">
             <div className="bg-secondary rounded-lg p-4">
@@ -113,15 +126,31 @@ const PricingCalculator = () => {
             </div>
             
             {getProfit() !== null && (
-              <div className="bg-success/10 border border-success rounded-lg p-4">
-                <p className="text-sm text-muted-foreground mb-1">Your Profit</p>
-                <p className="text-3xl font-bold text-success">${getProfit()}</p>
-              </div>
+              <>
+                <div className="bg-success/10 border border-success rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-1">Your Profit</p>
+                  <p className="text-3xl font-bold text-success">${getProfit()}</p>
+                </div>
+                
+                <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                  <p className="text-sm font-semibold text-center mb-2">Ready to add protection at checkout?</p>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Coverage limits: $2,500/box • $25,000/shipment
+                  </p>
+                </div>
+              </>
             )}
             
             {getProfit() === null && getMerchantCost().includes("Contact") && (
               <div className="bg-muted rounded-lg p-4">
                 <p className="text-sm">For packages over $800, please contact us for custom quotes.</p>
+              </div>
+            )}
+
+            {getMerchantCost().includes("Maximum") && (
+              <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
+                <p className="text-sm text-destructive font-semibold">Coverage limit per box is $2,500.</p>
+                <p className="text-xs text-muted-foreground mt-1">For higher values, please contact us.</p>
               </div>
             )}
           </div>

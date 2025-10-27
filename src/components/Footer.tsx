@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import { Shield } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,9 +9,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <img src={logo} alt="PARCELIS" className="h-8 mb-4" />
-            <p className="text-sm text-muted-foreground">
-              Merchant-first shipping insurance backed by The Hartford.
+            <p className="text-sm text-muted-foreground mb-4">
+              Turn package protection into profit with zero claims workload.
             </p>
+            <div className="flex items-center gap-2 text-xs bg-card border border-border rounded px-3 py-2">
+              <Shield className="text-primary" size={16} />
+              <div>
+                <p className="font-semibold text-foreground">Underwritten by</p>
+                <p className="font-bold text-primary">The Hartford</p>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -69,15 +77,20 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="mt-4 text-xs text-muted-foreground">
-              <p className="font-semibold mb-1">Underwritten by:</p>
-              <p>The Hartford</p>
-            </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© 2025 PARCELIS. All rights reserved.</p>
+        <div className="mt-8 pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+              © 2025 PARCELIS. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground text-center md:text-right">
+              PARCELIS is a licensed reinsurance provider. Insurance underwritten by The Hartford.
+              <br className="hidden md:inline" />
+              We comply with state insurance regulations to ensure legitimate, enforceable coverage.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

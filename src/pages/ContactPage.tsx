@@ -18,8 +18,33 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!formData.subject) newErrors.subject = "Please select a subject";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (formData.message.length > 1000) newErrors.message = "Message must be less than 1000 characters";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast.error("Please fix the errors in the form");
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -27,6 +52,7 @@ const ContactPage = () => {
     
     toast.success("Message sent! We'll respond within 24-48 hours.");
     setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+    setErrors({});
     setIsSubmitting(false);
   };
 
@@ -96,9 +122,14 @@ const ContactPage = () => {
                   id="name"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    if (errors.name) setErrors({ ...errors, name: "" });
+                  }}
                   placeholder="Your name"
+                  className={errors.name ? "border-destructive" : ""}
                 />
+                {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -108,9 +139,14 @@ const ContactPage = () => {
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    if (errors.email) setErrors({ ...errors, email: "" });
+                  }}
                   placeholder="your@email.com"
+                  className={errors.email ? "border-destructive" : ""}
                 />
+                {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
               </div>
 
               <div>
@@ -125,8 +161,14 @@ const ContactPage = () => {
 
               <div>
                 <Label htmlFor="subject">Subject *</Label>
-                <Select value={formData.subject} onValueChange={(value) => setFormData({ ...formData, subject: value })}>
-                  <SelectTrigger>
+                <Select 
+                  value={formData.subject} 
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, subject: value });
+                    if (errors.subject) setErrors({ ...errors, subject: "" });
+                  }}
+                >
+                  <SelectTrigger className={errors.subject ? "border-destructive" : ""}>
                     <SelectValue placeholder="Select a subject" />
                   </SelectTrigger>
                   <SelectContent>
@@ -137,6 +179,8 @@ const ContactPage = () => {
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
+                {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
+                <p className="text-xs text-muted-foreground mt-1">Select the topic that best matches your inquiry</p>
               </div>
 
               <div>
@@ -145,10 +189,16 @@ const ContactPage = () => {
                   id="message"
                   required
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value });
+                    if (errors.message) setErrors({ ...errors, message: "" });
+                  }}
                   placeholder="Tell us how we can help..."
                   rows={6}
+                  className={errors.message ? "border-destructive" : ""}
                 />
+                {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
+                <p className="text-xs text-muted-foreground mt-1">{formData.message.length}/1000 characters</p>
               </div>
 
               <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting}>

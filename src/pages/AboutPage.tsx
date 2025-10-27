@@ -30,27 +30,35 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Underwriter Section */}
+        {/* Underwriter Section - Enhanced */}
         <section className="mb-16 bg-muted rounded-lg p-8 md:p-12">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Real Insurance, Real Protection</h2>
+            
+            <div className="flex items-center justify-center gap-4 bg-card border-2 border-primary rounded-lg p-6 mb-8">
+              <Shield className="text-primary" size={48} />
+              <div>
+                <p className="text-sm text-muted-foreground">Underwritten by</p>
+                <p className="text-3xl font-bold text-primary">The Hartford</p>
+                <p className="text-xs text-muted-foreground mt-1">Over 200 years of trusted insurance leadership</p>
+              </div>
+            </div>
+
             <div className="space-y-4 mb-6">
               <p className="text-lg">
                 <span className="font-semibold">PARCELIS is a licensed reinsurance provider</span> legally reselling insurance underwritten by The Hartford, a recognized industry leader with over 200 years of experience.
               </p>
-              <p className="text-muted-foreground">
-                This matters because many competitors offer "tech solutions" that aren't legitimate insurance products. These unlicensed alternatives leave merchants and customers exposed to potential non-payment of claims and regulatory issues.
-              </p>
-              <p className="text-muted-foreground">
-                We comply with state insurance regulations to ensure your protection is legitimate, enforceable, and backed by a trusted underwriter.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 bg-card border border-border rounded-lg p-4 inline-flex">
-              <Shield className="text-primary" size={32} />
-              <div>
-                <p className="font-semibold">Underwritten by</p>
-                <p className="text-xl font-bold text-primary">The Hartford</p>
+              
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold mb-2 text-primary">Why Legitimate Coverage Matters</h3>
+                <p className="text-muted-foreground text-sm">
+                  Many competitors offer "tech solutions" that aren't legitimate insurance products. These unlicensed alternatives leave merchants and customers exposed to potential non-payment of claims and regulatory issues.
+                </p>
               </div>
+
+              <p className="text-muted-foreground">
+                <span className="font-semibold text-foreground">We comply with state insurance regulations</span> to ensure your protection is legitimate, enforceable, and backed by a trusted underwriter. This isn't just better for compliance—it's better for your customers and your peace of mind.
+              </p>
             </div>
           </div>
         </section>

@@ -12,6 +12,11 @@ export default {
         "2xl": "1400px",
       },
     },
+    spacing: {
+      '18': '4.5rem',
+      '20': '5rem',
+      '24': '6rem',
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
