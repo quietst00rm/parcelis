@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Shield, Globe, Zap, CheckCircle } from "lucide-react";
+import { Shield, Globe, Zap, CheckCircle, Plug, ShoppingCart } from "lucide-react";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -28,8 +28,8 @@ const HowItWorksPage = () => {
               </div>
               <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
                 <div>
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                    <CheckCircle className="text-white" size={28} />
+                  <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <CheckCircle className="text-white" size={48} />
                   </div>
                   <h2 className="text-3xl font-bold mb-4">Quick Application</h2>
                   <p className="text-text-secondary mb-6 leading-relaxed">
@@ -66,8 +66,8 @@ const HowItWorksPage = () => {
                   <p className="text-text-tertiary text-center">Checkout integration mockup</p>
                 </div>
                 <div className="order-1 md:order-2">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                    <Zap className="text-white" size={28} />
+                  <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Plug className="text-white" size={48} />
                   </div>
                   <h2 className="text-3xl font-bold mb-4">Seamless Integration</h2>
                   <p className="text-text-secondary mb-6 leading-relaxed">
@@ -98,8 +98,8 @@ const HowItWorksPage = () => {
               </div>
               <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
                 <div>
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                    <Shield className="text-white" size={28} />
+                  <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <ShoppingCart className="text-white" size={48} />
                   </div>
                   <h2 className="text-3xl font-bold mb-4">Customer Purchase</h2>
                   <p className="text-text-secondary mb-6 leading-relaxed">

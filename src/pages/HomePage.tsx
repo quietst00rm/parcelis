@@ -6,6 +6,8 @@ import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
+import shopifyLogo from "@/assets/platforms/shopify.png";
+import twentyNineNextLogo from "@/assets/platforms/29next.png";
 
 const HomePage = () => {
   return (
@@ -196,8 +198,8 @@ const HomePage = () => {
             {/* Shopify Card */}
             <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <img src="/src/assets/platforms/shopify.png" alt="Shopify" className="h-16 object-contain" />
-                <span className="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold">
+                <img src={shopifyLogo} alt="Shopify" className="h-16 object-contain" />
+                <span className="bg-primary text-white px-4 py-2 rounded-full text-xl font-semibold">
                   LIVE NOW
                 </span>
               </div>
@@ -213,8 +215,8 @@ const HomePage = () => {
             {/* 29next Card */}
             <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <img src="/src/assets/platforms/29next.png" alt="29next" className="h-16 object-contain" />
-                <span className="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold">
+                <img src={twentyNineNextLogo} alt="29next" className="h-16 object-contain" />
+                <span className="bg-primary text-white px-4 py-2 rounded-full text-xl font-semibold">
                   LIVE NOW
                 </span>
               </div>
