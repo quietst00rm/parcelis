@@ -15,7 +15,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-background border-b border-border z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-primary-dark border-b border-primary-medium z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
@@ -28,17 +28,17 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-foreground hover:text-primary transition-colors"
+                className="text-primary-foreground hover:text-primary-light-tint transition-colors"
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild variant="hero">
+            <Button asChild variant="hero" className="bg-background text-primary hover:bg-background/90">
               <Link to="/apply">Apply Now</Link>
             </Button>
             <Link
               to="/login"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
               Login
             </Link>
@@ -46,7 +46,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-primary-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -57,26 +57,26 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
+        <div className="md:hidden bg-primary-dark border-b border-primary-medium">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-foreground hover:text-primary transition-colors py-2"
+                className="text-primary-foreground hover:text-primary-light-tint transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild variant="hero" className="w-full">
+            <Button asChild variant="hero" className="w-full bg-background text-primary hover:bg-background/90">
               <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
                 Apply Now
               </Link>
             </Button>
             <Link
               to="/login"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 text-center"
+              className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors py-2 text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
               Login

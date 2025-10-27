@@ -11,12 +11,12 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20 md:py-32">
+      <section className="bg-primary-dark text-primary-foreground py-12 md:py-24">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-h1 mb-6">
             Turn Package Protection Into Profit
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-95">
+          <p className="text-body-lg mb-8 max-w-3xl mx-auto opacity-95">
             PARCELIS gives your customers comprehensive shipping insurance while putting money back in your pocket. No claims hassles. No overhead. Just better margins.
           </p>
           <Button asChild variant="hero" size="lg" className="bg-background text-primary hover:bg-background/90">
@@ -43,11 +43,11 @@ const HomePage = () => {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Merchant Benefits</h2>
+              <h2 className="text-h2 mb-6">Merchant Benefits</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <DollarSign className="text-primary flex-shrink-0" size={24} />
@@ -87,7 +87,7 @@ const HomePage = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold mb-6">Customer Protection</h2>
+              <h2 className="text-h2 mb-6">Customer Protection</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <Shield className="text-primary flex-shrink-0" size={24} />
@@ -124,11 +124,11 @@ const HomePage = () => {
       </section>
 
       {/* Calculator Preview */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-12 md:py-24 bg-background-gray">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">See Your Potential Profit</h2>
-            <p className="text-lg text-muted-foreground">Calculate merchant costs and customer pricing</p>
+            <h2 className="text-h2 mb-4">See Your Potential Profit</h2>
+            <p className="text-body-lg text-text-secondary">Calculate merchant costs and customer pricing</p>
           </div>
           <div className="max-w-md mx-auto bg-card border border-border rounded-lg p-8 shadow-sm">
             <div className="space-y-4">
@@ -159,39 +159,39 @@ const HomePage = () => {
       </section>
 
       {/* How It Works Summary */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Simple Process, Zero Hassle</h2>
+          <h2 className="text-h2 text-center mb-12">Simple Process, Zero Hassle</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-3">Integrate</h3>
-              <p className="text-muted-foreground">Connect via Shopify app or platform integration</p>
+              <h3 className="text-h4 mb-3">Integrate</h3>
+              <p className="text-text-secondary">Connect via Shopify app or platform integration</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 2
               </div>
-              <h3 className="text-xl font-semibold mb-3">Sell</h3>
-              <p className="text-muted-foreground">Insurance option appears at checkout - customers opt in</p>
+              <h3 className="text-h4 mb-3">Sell</h3>
+              <p className="text-text-secondary">Insurance option appears at checkout - customers opt in</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 3
               </div>
-              <h3 className="text-xl font-semibold mb-3">Relax</h3>
-              <p className="text-muted-foreground">Claims go directly to PARCELIS - you stay focused on growth</p>
+              <h3 className="text-h4 mb-3">Relax</h3>
+              <p className="text-text-secondary">Claims go directly to PARCELIS - you stay focused on growth</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Platform Integration */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-12 md:py-24 bg-background-gray">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Integrates With Your Platform</h2>
+          <h2 className="text-h2 text-center mb-12">Integrates With Your Platform</h2>
           <div className="flex flex-wrap items-center justify-center gap-8">
             <div className="text-center">
               <div className="bg-card border border-border rounded-lg p-6 mb-2">
@@ -222,10 +222,10 @@ const HomePage = () => {
       </section>
 
       {/* All Major Carriers */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">All Major Carriers Covered</h2>
-          <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+          <h2 className="text-h2 text-center mb-4">All Major Carriers Covered</h2>
+          <p className="text-body-lg text-text-secondary text-center mb-12 max-w-3xl mx-auto">
             Comprehensive protection across USPS, UPS, FedEx, DHL, and all regional and international carriers
           </p>
           <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
@@ -251,9 +251,9 @@ const HomePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section className="py-12 md:py-24 bg-primary-dark text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to Protect Packages and Boost Profits?</h2>
+          <h2 className="text-h2 mb-8">Ready to Protect Packages and Boost Profits?</h2>
           <Button asChild variant="hero" size="lg" className="bg-background text-primary hover:bg-background/90">
             <Link to="/apply">Apply Now</Link>
           </Button>

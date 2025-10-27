@@ -7,12 +7,36 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "2rem",
+        lg: "3rem",
+      },
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-urbanpolis)"],
+        urbanpolis: ["var(--font-urbanpolis)"],
+      },
+      fontSize: {
+        h1: "var(--font-size-h1)",
+        h2: "var(--font-size-h2)",
+        h3: "var(--font-size-h3)",
+        h4: "var(--font-size-h4)",
+        "body-lg": "var(--font-size-body-lg)",
+        body: "var(--font-size-body)",
+        "body-sm": "var(--font-size-body-sm)",
+        caption: "var(--font-size-caption)",
+      },
+      spacing: {
+        18: "4.5rem",
+        22: "5.5rem",
+        26: "6.5rem",
+        30: "7.5rem",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -23,6 +47,9 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           hover: "hsl(var(--primary-hover))",
           foreground: "hsl(var(--primary-foreground))",
+          "light-tint": "hsl(var(--primary-light-tint))",
+          medium: "hsl(var(--primary-medium))",
+          dark: "hsl(var(--primary-dark))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -44,6 +71,10 @@ export default {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
         },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -52,6 +83,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "text-primary": "hsl(var(--text-primary))",
+        "text-secondary": "hsl(var(--text-secondary))",
+        "text-tertiary": "hsl(var(--text-tertiary))",
+        "border-gray": "hsl(var(--border-gray))",
+        "background-gray": "hsl(var(--background-gray))",
       },
       borderRadius: {
         lg: "var(--radius)",
