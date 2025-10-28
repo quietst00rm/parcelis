@@ -7,13 +7,13 @@ import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
 import shopifyLogo from "@/assets/platforms/shopify.png";
 import twentyNineNextLogo from "@/assets/platforms/29next.png";
-import heroShieldPackages from "@/assets/hero/shield-packages-transparent.png";
+import heroShieldPackages from "@/assets/hero/parcelis-hero.png";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - InsureShip Inspired */}
-      <section className="relative bg-[#F8FAFB] text-foreground py-12 md:py-24 pt-16 overflow-hidden">
+      <section className="relative bg-[#F8FAFB] text-foreground py-8 md:py-20 pt-12 overflow-hidden">
         {/* Subtle Dotted Pattern Background */}
         <div className="absolute inset-0 dotted-pattern-light opacity-100 pointer-events-none" aria-hidden="true" />
         
