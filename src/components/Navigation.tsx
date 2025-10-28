@@ -10,6 +10,7 @@ const Navigation = () => {
   const isHomePage = location.pathname === "/";
 
   const navLinks = [
+    { name: "Home", path: "/" },
     { name: "How It Works", path: "/how-it-works" },
     { name: "Pricing", path: "/pricing" },
     { name: "About", path: "/about" },
@@ -97,53 +98,41 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div 
-          className="md:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
-
-      {/* Mobile Slide-out Sidebar */}
-      <div className={`md:hidden fixed top-0 right-0 bottom-0 w-[280px] bg-primary z-50 transform transition-transform duration-300 ease-in-out ${
-        mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      {/* Full-Screen Mobile Menu Overlay */}
+      <div className={`md:hidden fixed top-0 left-0 w-screen h-screen bg-primary z-50 flex flex-col items-center justify-center transition-all duration-300 ${
+        mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}>
         {/* Close Button */}
-        <div className="flex justify-end p-4">
-          <button
-            onClick={() => setMobileMenuOpen(false)}
-            className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-            aria-label="Close menu"
-          >
-            <X size={24} />
-          </button>
-        </div>
+        <button
+          onClick={() => setMobileMenuOpen(false)}
+          className="absolute top-4 right-4 p-2 text-white z-51"
+          aria-label="Close menu"
+        >
+          <X size={32} />
+        </button>
 
         {/* Navigation Links */}
-        <nav className="flex flex-col gap-2 px-6 mt-4">
+        <nav className="flex flex-col items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className="text-white text-lg font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"
+              className="text-white text-2xl font-medium hover:opacity-80 transition-opacity"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
             </Link>
           ))}
-        </nav>
-
-        {/* Apply Button */}
-        <div className="px-6 mt-8">
+          
+          {/* Apply Button */}
           <Link 
             to="/apply" 
-            className="btn btn-primary w-full bg-white text-primary hover:bg-white/90"
+            className="btn btn-primary mt-4 bg-white text-primary hover:bg-white/90 px-8 py-3"
             onClick={() => setMobileMenuOpen(false)}
           >
             Apply Now
           </Link>
-        </div>
+        </nav>
       </div>
     </header>
   );
