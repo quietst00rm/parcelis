@@ -41,7 +41,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-text-secondary hover:text-primary transition-all duration-300 text-base relative after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                className="text-text-secondary hover:text-primary transition-all duration-300 text-base font-semibold relative after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
               >
                 {link.name}
               </Link>

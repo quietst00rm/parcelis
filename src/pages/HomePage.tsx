@@ -8,13 +8,13 @@ import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
 import shopifyLogo from "@/assets/platforms/shopify.png";
 import twentyNineNextLogo from "@/assets/platforms/29next.png";
-import heroShieldPackages from "@/assets/hero/shield-packages.png";
+import heroShieldPackages from "@/assets/hero/shield-packages-transparent.png";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - InsureShip Inspired */}
-      <section className="relative bg-[#F8FAFB] text-foreground py-16 md:py-32 pt-24 overflow-hidden">
+      <section className="relative bg-[#F8FAFB] text-foreground py-12 md:py-24 pt-16 overflow-hidden">
         {/* Subtle Dotted Pattern Background */}
         <div className="absolute inset-0 dotted-pattern-light opacity-100 pointer-events-none" aria-hidden="true" />
         
@@ -61,7 +61,7 @@ const HomePage = () => {
             
             {/* Right Column - Hero Image */}
             <div className="hidden md:flex items-center justify-center relative">
-              <div className="relative w-full max-w-[500px]">
+              <div className="relative w-full max-w-[600px]">
                 <img 
                   src={heroShieldPackages} 
                   alt="Shield protecting shipping packages with technology circuit board pattern"
