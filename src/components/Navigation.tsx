@@ -97,30 +97,54 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed left-0 right-0 top-[80px] bottom-0 z-40 bg-primary overflow-y-auto">
-          <div className="flex flex-col items-center justify-start h-full gap-8 px-4 py-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-white text-2xl font-medium hover:text-primary-light-tint transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link 
-              to="/apply" 
-              className="btn btn-primary w-full max-w-sm bg-white text-primary hover:bg-white/90 text-lg"
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Slide-out Sidebar */}
+      <div className={`md:hidden fixed top-0 right-0 bottom-0 w-[280px] bg-primary z-50 transform transition-transform duration-300 ease-in-out ${
+        mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        {/* Close Button */}
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="flex flex-col gap-2 px-6 mt-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="text-white text-lg font-medium py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Apply Now
+              {link.name}
             </Link>
-          </div>
+          ))}
+        </nav>
+
+        {/* Apply Button */}
+        <div className="px-6 mt-8">
+          <Link 
+            to="/apply" 
+            className="btn btn-primary w-full bg-white text-primary hover:bg-white/90"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Apply Now
+          </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 };
