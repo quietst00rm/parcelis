@@ -126,36 +126,76 @@ const HomePage = () => {
       </section>
 
       {/* Calculator Preview */}
-      <section className="py-12 md:py-24 bg-background-gray">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-h2 mb-4">See Your Potential Profit</h2>
-            <p className="text-body-lg text-text-secondary">Calculate merchant costs and customer pricing</p>
-          </div>
-          <div className="max-w-md mx-auto bg-card border border-border rounded-lg p-8 shadow-sm">
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Package Value</p>
-                <p className="text-2xl font-bold">$150</p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-2">Your Cost</p>
-                  <p className="text-xl font-semibold">$2.50</p>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center max-w-7xl mx-auto">
+            {/* Left Column - Headline & Description */}
+            <div className="text-center md:text-left">
+              <h2 className="text-h2 mb-4">See Your Potential Profit</h2>
+              <p className="text-lg text-[#4A4A4A] max-w-[600px] mx-auto md:mx-0">
+                Instantly calculate your margin on insured shipments.
+              </p>
+            </div>
+
+            {/* Right Column - Calculator Card */}
+            <div className="flex justify-center md:justify-end">
+              <div className="w-full max-w-[420px] bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.06)] border border-[rgba(0,0,0,0.05)] p-6 md:p-10">
+                {/* Package Value */}
+                <div className="mb-6">
+                  <label className="text-sm font-medium text-[#4A4A4A] mb-2 block">Package Value</label>
+                  <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-lg p-4 text-center font-bold text-2xl transition-all duration-250 hover:shadow-[0_0_0_3px_rgba(30,32,153,0.15)] hover:scale-[1.02]">
+                    $150
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-2">Customer Price</p>
-                  <p className="text-xl font-semibold">$4.99</p>
+
+                {/* Cost & Price Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 pb-6 border-b border-[rgba(0,0,0,0.05)]">
+                  <div>
+                    <label className="text-sm font-medium text-[#4A4A4A] mb-2 block">Your Cost</label>
+                    <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-lg p-4 text-center font-bold text-xl transition-all duration-250 hover:shadow-[0_0_0_3px_rgba(30,32,153,0.15)] hover:scale-[1.02]">
+                      $2.50
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-[#4A4A4A] mb-2 block">Customer Price</label>
+                    <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-lg p-4 text-center font-bold text-xl transition-all duration-250 hover:shadow-[0_0_0_3px_rgba(30,32,153,0.15)] hover:scale-[1.02]">
+                      $4.99
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-success/10 border border-success rounded-lg p-4">
-                <p className="text-sm text-muted-foreground mb-2">Your Profit</p>
-                <p className="text-3xl font-bold text-success">$2.49</p>
+
+                {/* Profit Display Banner */}
+                <div className="bg-[#E8F9E8] rounded-xl p-5 md:p-7 mb-6 animate-fade-in" role="status" aria-live="polite">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="text-[#2E7D32]" size={20} />
+                      <span className="font-medium text-[#4A4A4A]">Your Profit</span>
+                    </div>
+                    <span className="text-4xl font-bold text-[#2E7D32]">$2.49</span>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <Button 
+                  asChild 
+                  className="w-full h-14 rounded-xl font-semibold text-base bg-gradient-to-r from-[#1E2099] to-[#4A90E2] hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                >
+                  <Link to="/pricing">Calculate Your Costs</Link>
+                </Button>
+
+                {/* Subtext */}
+                <p className="text-sm text-[#6E7585] text-center mt-4">
+                  We handle every claim. You keep the profit.
+                </p>
               </div>
             </div>
-            <Button asChild variant="hero" className="w-full mt-6">
-              <Link to="/pricing">Calculate Your Costs</Link>
-            </Button>
+          </div>
+
+          {/* Info Strip */}
+          <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-[rgba(0,0,0,0.05)] text-center">
+            <p className="text-sm text-[#6E7585]">
+              Coverage limit: $2,500 per package • Claims resolved within 5–7 business days
+            </p>
           </div>
         </div>
       </section>
