@@ -198,18 +198,9 @@ const HomePage = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             
             {/* Make Money */}
-            <div className="relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4" style={{ borderColor: 'hsl(163 100% 43%)' }}>
+            <div className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card" style={{ borderColor: 'hsl(163 100% 43%)' }}>
               <div className="mb-6">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <circle cx="32" cy="32" r="30" stroke="url(#gradient1)" strokeWidth="2"/>
-                  <text x="32" y="42" textAnchor="middle" fill="url(#gradient1)" fontSize="32" fontWeight="bold">$</text>
-                  <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: '#1e2099' }}/>
-                      <stop offset="100%" style={{ stopColor: '#4d51db' }}/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+                <DollarSign className="w-16 h-16 text-primary" />
               </div>
               
               <h3 className="text-3xl font-bold mb-4" style={{ color: 'hsl(238 69% 36%)' }}>Make Money</h3>
@@ -225,19 +216,9 @@ const HomePage = () => {
             </div>
             
             {/* Save Time */}
-            <div className="relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4" style={{ borderColor: 'hsl(238 69% 36%)' }}>
+            <div className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card" style={{ borderColor: 'hsl(238 69% 36%)' }}>
               <div className="mb-6">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <circle cx="32" cy="32" r="30" stroke="url(#gradient2)" strokeWidth="2"/>
-                  <circle cx="32" cy="32" r="3" fill="url(#gradient2)"/>
-                  <line x1="32" y1="32" x2="32" y2="16" stroke="url(#gradient2)" strokeWidth="2" strokeLinecap="round"/>
-                  <defs>
-                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: '#1e2099' }}/>
-                      <stop offset="100%" style={{ stopColor: '#4d51db' }}/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+                <Clock className="w-16 h-16 text-primary" />
               </div>
               
               <h3 className="text-3xl font-bold mb-4" style={{ color: 'hsl(238 69% 36%)' }}>Save Time</h3>
@@ -253,18 +234,9 @@ const HomePage = () => {
             </div>
             
             {/* Protect Customers */}
-            <div className="relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4" style={{ borderColor: 'hsl(238 63% 58%)' }}>
+            <div className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card" style={{ borderColor: 'hsl(238 63% 58%)' }}>
               <div className="mb-6">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <path d="M32 8L12 18V32C12 44 20 54 32 56C44 54 52 44 52 32V18L32 8Z" stroke="url(#gradient3)" strokeWidth="2" fill="none"/>
-                  <path d="M22 32L28 38L42 24" stroke="url(#gradient3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <defs>
-                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: '#1e2099' }}/>
-                      <stop offset="100%" style={{ stopColor: '#4d51db' }}/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+                <Shield className="w-16 h-16 text-primary" />
               </div>
               
               <h3 className="text-3xl font-bold mb-4" style={{ color: 'hsl(238 69% 36%)' }}>Protect Customers</h3>
@@ -324,13 +296,14 @@ const HomePage = () => {
               </button>
             </div>
             
-            {/* Calculator Panels */}
-            <div className="min-h-[500px]">
+            {/* Calculator Panels with Glassmorphism */}
+            <GlassmorphicCard className="p-8 lg:p-12 min-h-[500px]">
               {/* Basic Cost Panel */}
               {activeTab === 'basic' && (
                 <div className="space-y-8 animate-fade-in">
                   <div>
-                    <label className="block text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: 'hsl(227 33% 16%)' }}>
+                    <label className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: 'hsl(227 33% 16%)' }}>
+                      <Package size={16} className="text-primary" />
                       Package Value
                     </label>
                     <div className="relative mb-4">
@@ -339,14 +312,15 @@ const HomePage = () => {
                         type="number"
                         value={basicValue}
                         onChange={(e) => setBasicValue(Number(e.target.value))}
-                        className="w-full pl-12 pr-6 py-4 text-3xl font-semibold border-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-3"
+                        className="w-full pl-12 pr-6 py-4 text-3xl font-semibold border-2 rounded-lg transition-all duration-200 focus:outline-none calc-input backdrop-blur-sm"
                         style={{ 
                           borderColor: 'hsl(214 15% 66%)',
-                          color: 'hsl(227 33% 16%)'
+                          color: 'hsl(227 33% 16%)',
+                          background: 'rgba(255, 255, 255, 0.7)'
                         }}
                         onFocus={(e) => {
                           e.target.style.borderColor = 'hsl(238 69% 36%)';
-                          e.target.style.boxShadow = '0 0 0 3px hsla(238 69% 36% / 0.1)';
+                          e.target.style.boxShadow = '0 0 0 3px hsla(238 69% 36% / 0.15)';
                         }}
                         onBlur={(e) => {
                           e.target.style.borderColor = 'hsl(214 15% 66%)';
@@ -361,18 +335,18 @@ const HomePage = () => {
                       step="10"
                       value={basicValue}
                       onChange={(e) => setBasicValue(Number(e.target.value))}
-                      className="w-full h-2 rounded-full appearance-none cursor-pointer"
+                      className="w-full h-2 rounded-full appearance-none cursor-pointer calc-slider"
                       style={{ 
                         background: 'hsl(214 15% 66%)',
                       }}
                     />
                   </div>
                   
-                  <div className="bg-white rounded-xl p-8 border-2 shadow-md" style={{ borderColor: 'hsl(238 69% 36%)' }}>
+                  <div className="bg-white/70 backdrop-blur-md rounded-xl p-8 border-2 shadow-lg" style={{ borderColor: 'hsl(238 69% 36%)' }}>
                     <div className="text-base font-semibold uppercase tracking-wider mb-2" style={{ color: 'hsl(215 16% 47%)' }}>
                       Your Base Cost
                     </div>
-                    <div className="text-6xl font-bold mb-2" style={{ color: 'hsl(238 69% 36%)' }}>
+                    <div className="text-6xl font-bold mb-2 result-value" style={{ color: 'hsl(238 69% 36%)' }}>
                       {basicTier.cost === null ? 'Custom Quote' : basicTier.cost === 0 ? 'N/A' : formatCurrency(basicTier.cost)}
                     </div>
                     <div className="text-base" style={{ color: 'hsl(215 16% 47%)' }}>

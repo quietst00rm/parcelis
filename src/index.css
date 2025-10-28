@@ -1185,6 +1185,18 @@ All colors MUST be HSL.
     transform: translateY(0);
   }
 
+  /* Stagger delays for cards */
+  .value-prop-card:nth-child(1) { transition-delay: 0ms; }
+  .value-prop-card:nth-child(2) { transition-delay: 100ms; }
+  .value-prop-card:nth-child(3) { transition-delay: 200ms; }
+
+  .platform-card:nth-child(1) { transition-delay: 0ms; }
+  .platform-card:nth-child(2) { transition-delay: 50ms; }
+  .platform-card:nth-child(3) { transition-delay: 100ms; }
+  .platform-card:nth-child(4) { transition-delay: 150ms; }
+  .platform-card:nth-child(5) { transition-delay: 200ms; }
+  .platform-card:nth-child(6) { transition-delay: 250ms; }
+
   /* Navigation link animation */
   .nav-link-animated {
     position: relative;
@@ -1203,6 +1215,45 @@ All colors MUST be HSL.
 
   .nav-link-animated:hover::after {
     width: 100%;
+  }
+
+  /* Calculator slider styling */
+  .calc-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(238 69% 36%) 0%, hsl(238 63% 58%) 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(30, 32, 153, 0.3);
+    transition: transform 150ms ease;
+  }
+
+  .calc-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .calc-slider::-webkit-slider-thumb:active {
+    transform: scale(0.95);
+  }
+
+  .calc-slider::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(238 69% 36%) 0%, hsl(238 63% 58%) 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(30, 32, 153, 0.3);
+    border: none;
+    transition: transform 150ms ease;
+  }
+
+  .calc-slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .calc-slider::-moz-range-thumb:active {
+    transform: scale(0.95);
   }
 
   /* Input pulse animation */
@@ -1240,6 +1291,19 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
+  /* Card hover enhancements */
+  .value-prop-card,
+  .platform-card {
+    will-change: transform;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .value-prop-card:hover,
+  .platform-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
   /* Accessibility - Reduce motion */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -1249,6 +1313,11 @@ All colors MUST be HSL.
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+    
+    .fade-in-up {
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 }
