@@ -28,11 +28,11 @@ const Navigation = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border z-50" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08)', height: '80px' }}>
+    <nav className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border z-50" style={{ height: '80px' }}>
       <div className="container mx-auto px-4 h-[80px]">
         <div className="flex items-center justify-between h-full">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="PARCELIS" className="h-12 w-auto" />
+            <img src={logo} alt="PARCELIS" className="h-12 w-auto brightness-200" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,12 +41,12 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-text-secondary hover:text-primary transition-all duration-300 text-base font-semibold relative after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                className="text-text-secondary hover:text-primary transition-all duration-300 text-base font-bold relative after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[2px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-dark transition-colors px-4 py-2 rounded-lg">
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(0,229,212,0.4)] px-6 py-2 rounded-lg font-bold">
               <Link to="/apply">Get Started</Link>
             </Button>
           </div>
@@ -78,19 +78,19 @@ const Navigation = () => {
             <div className="h-[80px]" />
             
             {/* Menu items container */}
-            <div className="bg-gradient-to-b from-primary-dark to-primary h-[calc(100vh-80px)] pointer-events-auto animate-in slide-in-from-right duration-300">
+            <div className="bg-background h-[calc(100vh-80px)] pointer-events-auto animate-in slide-in-from-right duration-300">
               <div className="flex flex-col items-center justify-center h-full px-4 gap-10">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="text-white text-2xl font-medium hover:text-primary-light-tint transition-colors"
+                    className="text-white text-2xl font-bold hover:text-primary transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
                 ))}
-                <Button asChild className="w-full max-w-xs bg-white text-primary hover:bg-white/90 text-lg py-6">
+                <Button asChild className="w-full max-w-xs bg-primary text-primary-foreground hover:bg-primary-hover text-lg py-6 font-bold">
                   <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
                     Get Started
                   </Link>
