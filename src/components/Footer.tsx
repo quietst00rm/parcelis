@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <img src={logoWhite} alt="PARCELIS" className="h-8 mb-4" />
             <p className="text-sm text-primary-foreground/80">
-              Merchant-first shipping insurance backed by The Hartford.
+              Merchant-first shipping insurance with comprehensive coverage.
             </p>
           </div>
 

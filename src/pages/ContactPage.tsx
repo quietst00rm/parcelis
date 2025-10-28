@@ -4,10 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, Clock, ExternalLink } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import hartfordLogo from "@/assets/logos/hartford.png";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -59,34 +58,6 @@ const ContactPage = () => {
                     support@parcelis.com
                   </a>
                 </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Phone className="text-primary flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <a href="tel:+18005551234" className="text-primary hover:underline">
-                    (800) 555-1234
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Clock className="text-primary flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="font-semibold mb-1">Business Hours</h3>
-                  <p className="text-muted-foreground">Monday-Friday, 9am-6pm EST</p>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-border">
-                <h3 className="font-semibold mb-3">Merchant Dashboard Access</h3>
-                <Button asChild variant="outline" className="w-full">
-                  <Link to="/login">
-                    Login to Dashboard
-                    <ExternalLink size={16} className="ml-2" />
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>
@@ -166,17 +137,11 @@ const ContactPage = () => {
         {/* Support Resources */}
         <section className="max-w-4xl mx-auto mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">Other Ways to Get Help</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <Button asChild variant="outline" className="h-auto py-6 flex-col">
               <Link to="/apply">
                 <span className="font-semibold mb-1">Apply Now</span>
                 <span className="text-xs text-muted-foreground">Ready to get started?</span>
-              </Link>
-            </Button>
-            <Button asChild variant="outline" className="h-auto py-6 flex-col">
-              <Link to="/login">
-                <span className="font-semibold mb-1">Merchant Dashboard</span>
-                <span className="text-xs text-muted-foreground">Existing merchant?</span>
               </Link>
             </Button>
             <Button asChild variant="outline" className="h-auto py-6 flex-col">
@@ -196,21 +161,12 @@ const ContactPage = () => {
 
         {/* Partners Section */}
         <section className="max-w-4xl mx-auto bg-muted rounded-lg p-8 md:p-12">
-          <h2 className="text-2xl font-bold text-center mb-8">Our Partners</h2>
-          <div className="flex flex-col items-center gap-8">
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-4">Underwritten by</p>
-              <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-16 object-contain mx-auto" />
-            </div>
-            <div className="w-full max-w-md border-t border-border pt-8">
-              <p className="text-sm text-muted-foreground text-center mb-4">Supported Carriers</p>
-              <div className="flex items-center justify-center gap-8 flex-wrap">
-                <img src={uspsLogo} alt="USPS logo" className="h-10 object-contain" />
-                <img src={upsLogo} alt="UPS logo" className="h-10 object-contain" />
-                <img src={fedexLogo} alt="FedEx logo" className="h-10 object-contain" />
-                <img src={dhlLogo} alt="DHL logo" className="h-10 object-contain" />
-              </div>
-            </div>
+          <h2 className="text-2xl font-bold text-center mb-8">Supported Carriers</h2>
+          <div className="flex items-center justify-center gap-8 flex-wrap">
+            <img src={uspsLogo} alt="USPS logo" className="h-10 object-contain" />
+            <img src={upsLogo} alt="UPS logo" className="h-10 object-contain" />
+            <img src={fedexLogo} alt="FedEx logo" className="h-10 object-contain" />
+            <img src={dhlLogo} alt="DHL logo" className="h-10 object-contain" />
           </div>
         </section>
       </div>

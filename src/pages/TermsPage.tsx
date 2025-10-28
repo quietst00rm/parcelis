@@ -17,7 +17,7 @@ const TermsPage = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">2. Service Description</h2>
               <p className="text-muted-foreground mb-4">
-                PARCELIS provides shipping insurance reinsurance services to e-commerce merchants. We are a licensed reinsurance provider offering insurance products underwritten by The Hartford. Our services include:
+                PARCELIS provides shipping insurance reinsurance services to e-commerce merchants. We are a licensed reinsurance provider offering legitimate insurance products. Our services include:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>Package insurance coverage for lost, damaged, and stolen shipments</li>
@@ -128,8 +128,7 @@ const TermsPage = () => {
                 For questions about these Terms, contact us at:
               </p>
               <p className="text-muted-foreground">
-                Email: legal@parcelis.com<br />
-                Phone: (800) 555-1234
+                Email: legal@parcelis.com
               </p>
             </section>
           </div>

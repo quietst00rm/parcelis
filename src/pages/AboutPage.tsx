@@ -1,7 +1,6 @@
 import { Shield, TrendingUp, Users, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import hartfordLogo from "@/assets/logos/hartford.png";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -15,7 +14,7 @@ const AboutPage = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Merchant-First Shipping Insurance</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            PARCELIS is a global reinsurance provider offering legitimate, licensed package protection backed by The Hartford. We put merchant profitability and operational efficiency first.
+            PARCELIS is a global reinsurance provider offering legitimate, licensed package protection. We put merchant profitability and operational efficiency first.
           </p>
         </div>
 
@@ -35,27 +34,27 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Underwriter Section */}
+        {/* Insurance Legitimacy Section */}
         <section className="mb-16 bg-muted rounded-lg p-8 md:p-12">
           <div className="max-w-3xl mx-auto text-center">
-            <img src={hartfordLogo} alt="The Hartford insurance logo" className="h-16 md:h-20 object-contain mx-auto mb-6" />
+            <Shield className="w-16 h-16 text-primary mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-6">Real Insurance, Real Protection</h2>
             <div className="space-y-4 mb-8 text-left">
               <p className="text-lg">
-                <span className="font-semibold">PARCELIS is a licensed reinsurance provider</span> legally reselling insurance underwritten by The Hartford, a recognized industry leader with over 200 years of experience.
+                <span className="font-semibold">PARCELIS is a licensed reinsurance provider</span> offering legitimate insurance products that comply with state regulations.
               </p>
               <p className="text-muted-foreground">
                 This matters because many competitors offer "tech solutions" that aren't legitimate insurance products. These unlicensed alternatives leave merchants and customers exposed to potential non-payment of claims and regulatory issues.
               </p>
               <p className="text-muted-foreground">
-                We comply with state insurance regulations to ensure your protection is legitimate, enforceable, and backed by a trusted underwriter.
+                We comply with state insurance regulations to ensure your protection is legitimate, enforceable, and backed by trusted underwriters.
               </p>
             </div>
             <div className="inline-flex items-center gap-3 bg-card border-2 border-primary rounded-lg px-6 py-4">
               <Shield className="text-primary" size={32} />
               <div className="text-left">
-                <p className="font-semibold text-sm">Underwritten by</p>
-                <p className="text-xl font-bold text-primary">The Hartford</p>
+                <p className="font-semibold text-sm">Licensed Provider</p>
+                <p className="text-xl font-bold text-primary">Real Insurance Coverage</p>
               </div>
             </div>
           </div>

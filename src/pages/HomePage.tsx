@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Shield, DollarSign, Clock, Globe, ChevronRight } from "lucide-react";
-import hartfordLogo from "@/assets/logos/hartford.png";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -77,12 +76,7 @@ const HomePage = () => {
       {/* Trust Signals */}
       <section className="py-8 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center">
-            <div className="flex items-center gap-3">
-              <img src={hartfordLogo} alt="The Hartford logo" className="h-8 md:h-10 object-contain" />
-              <span className="font-semibold">Underwritten by The Hartford</span>
-            </div>
-            <div className="hidden md:block h-6 w-px bg-border"></div>
+          <div className="flex items-center justify-center gap-6 text-center">
             <div className="flex items-center gap-2">
               <Shield className="text-primary" size={24} />
               <span className="font-semibold">Licensed Reinsurance Provider</span>
@@ -163,7 +157,7 @@ const HomePage = () => {
                   <Shield className="text-primary flex-shrink-0" size={24} />
                   <div>
                     <h3 className="font-semibold mb-2">Real Insurance</h3>
-                    <p className="text-muted-foreground">Underwritten by The Hartford, not a tech workaround</p>
+                    <p className="text-muted-foreground">Legitimate licensed coverage, not a tech workaround</p>
                   </div>
                 </div>
               </div>

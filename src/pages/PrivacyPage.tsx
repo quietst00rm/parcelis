@@ -42,7 +42,7 @@ const PrivacyPage = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">4. Information Sharing</h2>
               <p className="text-muted-foreground mb-4">
-                We share information with The Hartford, our insurance underwriter, and other service providers necessary to deliver our services. We may also share information:
+                We share information with our insurance underwriters and service providers necessary to deliver our services. We may also share information:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>With your consent</li>
@@ -105,8 +105,7 @@ const PrivacyPage = () => {
                 If you have questions about this Privacy Policy, please contact us at:
               </p>
               <p className="text-muted-foreground">
-                Email: privacy@parcelis.com<br />
-                Phone: (800) 555-1234
+                Email: privacy@parcelis.com
               </p>
             </section>
           </div>
