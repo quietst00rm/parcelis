@@ -192,7 +192,7 @@ const HowItWorksPage = () => {
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
               <h3 className="text-xl font-semibold mb-6 text-center">Live Now</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="bg-card border-2 border-primary rounded-lg p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-2xl font-bold">Shopify</h4>
@@ -225,20 +225,48 @@ const HowItWorksPage = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-6 text-center">Coming Soon</h3>
-              <div className="grid md:grid-cols-3 gap-4">
-                {["WooCommerce", "BigCommerce", "Magento"].map((platform) => (
-                  <div key={platform} className="bg-card border border-border rounded-lg p-4 text-center opacity-60">
-                    <p className="font-bold mb-2">{platform}</p>
-                    <span className="text-xs bg-muted-foreground text-background px-2 py-1 rounded">
-                      Coming Soon
+                <div className="bg-card border-2 border-primary rounded-lg p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-2xl font-bold">WooCommerce</h4>
+                    <span className="text-xs bg-success text-success-foreground px-3 py-1 rounded-full font-semibold">
+                      Live
                     </span>
                   </div>
-                ))}
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Zap className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                      <span>Plugin available for WordPress</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-card border-2 border-primary rounded-lg p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-2xl font-bold">BigCommerce</h4>
+                    <span className="text-xs bg-success text-success-foreground px-3 py-1 rounded-full font-semibold">
+                      Live
+                    </span>
+                  </div>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Zap className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                      <span>Native integration available</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-card border-2 border-primary rounded-lg p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-2xl font-bold">Magento</h4>
+                    <span className="text-xs bg-success text-success-foreground px-3 py-1 rounded-full font-semibold">
+                      Live
+                    </span>
+                  </div>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Zap className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                      <span>Extension available for Adobe Commerce</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <p className="text-center text-muted-foreground mt-6">
                 Custom API integration available for other platforms

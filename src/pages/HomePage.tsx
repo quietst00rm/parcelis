@@ -690,9 +690,12 @@ const HomePage = () => {
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">WooCommerce</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-white/50" />
-                  <span className="text-sm font-semibold uppercase tracking-wider text-white/70 border border-dashed border-white/30 px-3 py-1 rounded-full">
-                    COMING SOON
+                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(163 100% 43%)" }} />
+                  <span
+                    className="text-sm font-semibold uppercase tracking-wider"
+                    style={{ color: "hsl(163 100% 43%)" }}
+                  >
+                    LIVE
                   </span>
                 </div>
                 <div className="text-sm text-white/70 text-center">Plugin available</div>
@@ -705,9 +708,12 @@ const HomePage = () => {
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">BigCommerce</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-white/50" />
-                  <span className="text-sm font-semibold uppercase tracking-wider text-white/70 border border-dashed border-white/30 px-3 py-1 rounded-full">
-                    COMING SOON
+                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(163 100% 43%)" }} />
+                  <span
+                    className="text-sm font-semibold uppercase tracking-wider"
+                    style={{ color: "hsl(163 100% 43%)" }}
+                  >
+                    LIVE
                   </span>
                 </div>
                 <div className="text-sm text-white/70 text-center">Native integration</div>
@@ -720,9 +726,12 @@ const HomePage = () => {
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">Magento</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-white/50" />
-                  <span className="text-sm font-semibold uppercase tracking-wider text-white/70 border border-dashed border-white/30 px-3 py-1 rounded-full">
-                    COMING SOON
+                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(163 100% 43%)" }} />
+                  <span
+                    className="text-sm font-semibold uppercase tracking-wider"
+                    style={{ color: "hsl(163 100% 43%)" }}
+                  >
+                    LIVE
                   </span>
                 </div>
                 <div className="text-sm text-white/70 text-center">Extension available</div>
