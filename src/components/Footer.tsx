@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { Shield, Mail, Linkedin, Twitter } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
-
 const Footer = () => {
-  return (
-    <footer className="bg-[hsl(237_67%_19%)] text-white">
+  return <footer className="bg-[hsl(237_67%_19%)] text-white">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-20 border-b border-white/10">
@@ -14,16 +12,7 @@ const Footer = () => {
             <p className="text-white/70 text-base leading-relaxed mb-6">
               Turn package protection into profit. Zero hassle. Real insurance.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
-                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Twitter size={20} />
-              </a>
-            </div>
+            
           </div>
           
           {/* Product Column */}
@@ -104,8 +93,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
