@@ -136,15 +136,15 @@ const HomePage = () => {
             {/* Hero Headline */}
             <h1 className="mb-6 hero-content-fade">
               <span className="block text-3xl md:text-5xl lg:text-6xl font-medium text-white/90 mb-3">
-                Turn Package Protection
+                Zero-Hassle Claims Management
               </span>
               <span className="block text-5xl md:text-7xl lg:text-[96px] text-white font-bold leading-none tracking-tight hero-headline-bottom">
-                INTO PROFIT
+                THAT PAYS YOU
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-14 max-w-2xl mx-auto leading-relaxed font-medium">
-              Zero hassle. Real insurance. Better margins.
+              Never touch a claim. Earn from every package. Real insurance protection.
             </p>
 
             {/* Hero CTAs */}
@@ -201,7 +201,34 @@ const HomePage = () => {
       <section className="py-24 bg-[#f8f9fe]">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Make Money */}
+            {/* Save Time - Zero Hassle (FIRST) */}
+            <div
+              className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card"
+              style={{ borderColor: "hsl(238 69% 36%)" }}
+            >
+              <div className="mb-6">
+                <Clock className="w-16 h-16 text-primary" />
+              </div>
+
+              <h3 className="text-3xl font-bold mb-4" style={{ color: "hsl(238 69% 36%)" }}>
+                Zero Hassle
+              </h3>
+
+              <div className="mb-4">
+                <div className="text-5xl font-bold" style={{ color: "hsl(163 100% 43%)" }}>
+                  0 minutes
+                </div>
+                <div className="text-base font-medium" style={{ color: "hsl(215 16% 47%)" }}>
+                  merchant involvement
+                </div>
+              </div>
+
+              <p className="text-lg leading-relaxed" style={{ color: "hsl(215 16% 47%)" }}>
+                Zero merchant involvement in claims. Direct customers to our portal and never think about it again.
+              </p>
+            </div>
+
+            {/* Make Money (SECOND) */}
             <div
               className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card"
               style={{ borderColor: "hsl(163 100% 43%)" }}
@@ -211,7 +238,7 @@ const HomePage = () => {
               </div>
 
               <h3 className="text-3xl font-bold mb-4" style={{ color: "hsl(238 69% 36%)" }}>
-                Make Money
+                Generate Revenue
               </h3>
 
               <div className="mb-4">
@@ -224,38 +251,11 @@ const HomePage = () => {
               </div>
 
               <p className="text-lg leading-relaxed" style={{ color: "hsl(215 16% 47%)" }}>
-                Mark up insurance costs and turn protection into a profit center. No overhead, pure margin.
+                Set your markup and turn package protection into a profit center. No overhead, pure margin.
               </p>
             </div>
 
-            {/* Save Time */}
-            <div
-              className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card"
-              style={{ borderColor: "hsl(238 69% 36%)" }}
-            >
-              <div className="mb-6">
-                <Clock className="w-16 h-16 text-primary" />
-              </div>
-
-              <h3 className="text-3xl font-bold mb-4" style={{ color: "hsl(238 69% 36%)" }}>
-                Save Time
-              </h3>
-
-              <div className="mb-4">
-                <div className="text-5xl font-bold" style={{ color: "hsl(163 100% 43%)" }}>
-                  0 minutes
-                </div>
-                <div className="text-base font-medium" style={{ color: "hsl(215 16% 47%)" }}>
-                  spent per claim
-                </div>
-              </div>
-
-              <p className="text-lg leading-relaxed" style={{ color: "hsl(215 16% 47%)" }}>
-                Merchants never touch claims. Direct customers to our portal and forget about it.
-              </p>
-            </div>
-
-            {/* Protect Customers */}
+            {/* Protect Customers (THIRD) */}
             <div
               className="fade-in-up relative bg-white rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 value-prop-card"
               style={{ borderColor: "hsl(238 63% 58%)" }}
@@ -278,7 +278,7 @@ const HomePage = () => {
               </div>
 
               <p className="text-lg leading-relaxed" style={{ color: "hsl(215 16% 47%)" }}>
-                Fast payouts with comprehensive coverage including porch piracy.
+                Comprehensive coverage including porch piracy with fast claim resolution.
               </p>
             </div>
           </div>

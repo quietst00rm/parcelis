@@ -96,28 +96,13 @@ const AboutPage = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Why PARCELIS?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-card border border-border rounded-lg p-6">
-              <TrendingUp className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-semibold mb-3">Better for Merchants</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>Control your markup and pricing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>Zero involvement in claims</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>Turn insurance into profit</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-6">
               <Shield className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-semibold mb-3">Better Coverage</h3>
+              <h3 className="text-xl font-semibold mb-3">Better Coverage (Hassle-Free)</h3>
               <ul className="space-y-2 text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>Zero merchant involvement in claims</span>
+                </li>
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
                   <span>Includes porch piracy protection</span>
@@ -129,6 +114,25 @@ const AboutPage = () => {
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
                   <span>Fast 5-7 day claim resolution</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-6">
+              <TrendingUp className="text-primary mb-4" size={40} />
+              <h3 className="text-xl font-semibold mb-3">Better for Merchants (Profitability)</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>Turn insurance into profit</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>Control your markup and pricing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>No overhead or hidden fees</span>
                 </li>
               </ul>
             </div>
@@ -159,17 +163,17 @@ const AboutPage = () => {
           <h2 className="text-3xl font-bold text-center mb-8">Built on Trust and Transparency</h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <div className="flex gap-3">
-              <TrendingUp className="flex-shrink-0" size={24} />
-              <div>
-                <h3 className="font-semibold mb-1">Merchant Profitability</h3>
-                <p className="text-sm opacity-90">We believe merchants should profit from the value they provide</p>
-              </div>
-            </div>
-            <div className="flex gap-3">
               <Shield className="flex-shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold mb-1">Operational Simplicity</h3>
                 <p className="text-sm opacity-90">Zero hassle, zero involvement in claims management</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <TrendingUp className="flex-shrink-0" size={24} />
+              <div>
+                <h3 className="font-semibold mb-1">Merchant Profitability</h3>
+                <p className="text-sm opacity-90">We believe merchants should profit from the value they provide</p>
               </div>
             </div>
             <div className="flex gap-3">

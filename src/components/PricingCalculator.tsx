@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 const PricingCalculator = () => {
   const [packageValue, setPackageValue] = useState("150");
   const [customerPrice, setCustomerPrice] = useState("4.99");
+  const [monthlyVolume, setMonthlyVolume] = useState("100");
 
   const calculateMerchantCost = (value: number): string => {
     if (value <= 200) return "2.50";
@@ -32,6 +33,19 @@ const PricingCalculator = () => {
     
     const cost = parseFloat(costStr);
     return (price - cost).toFixed(2);
+  };
+
+  const getMonthlyProfit = () => {
+    const profit = getProfit();
+    if (profit === null) return null;
+    const volume = parseFloat(monthlyVolume) || 0;
+    return (parseFloat(profit) * volume).toFixed(2);
+  };
+
+  const getAnnualProfit = () => {
+    const monthlyProfit = getMonthlyProfit();
+    if (monthlyProfit === null) return null;
+    return (parseFloat(monthlyProfit) * 12).toFixed(2);
   };
 
   return (
@@ -78,6 +92,71 @@ const PricingCalculator = () => {
         </TabsContent>
         
         <TabsContent value="profit" className="space-y-6">
+          {/* Monthly Volume Input - Prominent at Top */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-2 rounded-xl p-6" style={{ borderColor: "hsl(238 69% 36%)" }}>
+            <Label htmlFor="monthly-volume" className="text-lg font-bold mb-3 block uppercase tracking-wider" style={{ color: "hsl(238 69% 36%)" }}>
+              Monthly Package Volume
+            </Label>
+            <div className="relative">
+              <Input
+                id="monthly-volume"
+                type="number"
+                placeholder="100"
+                value={monthlyVolume}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || value === '0') {
+                    setMonthlyVolume(value);
+                  } else {
+                    setMonthlyVolume(value.replace(/^0+/, ''));
+                  }
+                }}
+                className="text-2xl h-16 font-bold text-center"
+                style={{ borderColor: "hsl(238 69% 36%)", borderWidth: "2px" }}
+              />
+            </div>
+            <p className="text-sm text-muted-foreground mt-2 text-center">
+              How many packages you ship per month
+            </p>
+          </div>
+
+          {/* Monthly & Annual Profit Display - Prominent Cards */}
+          {getProfit() !== null && getMonthlyProfit() !== null && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Monthly Profit Card */}
+              <div 
+                className="bg-gradient-to-br from-white to-blue-50 dark:from-gray-900 dark:to-blue-950/30 rounded-xl p-8 border-2 shadow-xl"
+                style={{ borderColor: "hsl(238 69% 36%)" }}
+              >
+                <p className="text-base font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(238 69% 36%)" }}>
+                  Your Monthly Profit
+                </p>
+                <p className="text-5xl font-bold mb-2" style={{ color: "hsl(163 100% 43%)" }}>
+                  ${getMonthlyProfit()}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  per month at {monthlyVolume || "0"} packages
+                </p>
+              </div>
+
+              {/* Annual Profit Card */}
+              <div 
+                className="bg-gradient-to-br from-white to-emerald-50 dark:from-gray-900 dark:to-emerald-950/30 rounded-xl p-8 border-2 shadow-xl"
+                style={{ borderColor: "hsl(238 69% 36%)" }}
+              >
+                <p className="text-base font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(238 69% 36%)" }}>
+                  Your Annual Profit
+                </p>
+                <p className="text-5xl font-bold mb-2" style={{ color: "hsl(163 100% 43%)" }}>
+                  ${getAnnualProfit()}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  per year at current volume
+                </p>
+              </div>
+            </div>
+          )}
+
           <div>
             <Label htmlFor="profit-package-value" className="text-base mb-2 block">Package Value</Label>
             <div className="relative">

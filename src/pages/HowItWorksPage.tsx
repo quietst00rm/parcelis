@@ -12,9 +12,9 @@ const HowItWorksPage = () => {
       <div className="container mx-auto px-4">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Simple Integration, Zero Hassle</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Hassle-Free Claims, Automatic Revenue</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From setup to claims resolution, PARCELIS handles everything so you can focus on growing your business.
+            Zero merchant involvement in claims management. From setup to payout, PARCELIS handles everything while you profit.
           </p>
         </div>
 
@@ -71,12 +71,12 @@ const HowItWorksPage = () => {
                   </div>
                   <h2 className="text-3xl font-bold mb-4">Seamless Integration</h2>
                   <p className="text-text-secondary mb-6 leading-relaxed">
-                    Once approved, we'll provide everything you need to add insurance to your checkout. Set your customer-facing price (markup your profit). Our system automatically collects customer data, order details, and tracking information through API integration.
+                    Once approved, we'll provide everything you need to add hassle-free insurance to your checkout. Zero claims involvement for you—customers handle everything directly. Set your customer-facing price to generate revenue on every protected package.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-text-primary">
                       <CheckCircle className="text-success flex-shrink-0" size={20} />
-                      <span>Easy checkout integration</span>
+                      <span>Zero merchant involvement in claims</span>
                     </li>
                     <li className="flex items-center gap-3 text-text-primary">
                       <CheckCircle className="text-success flex-shrink-0" size={20} />
@@ -103,16 +103,16 @@ const HowItWorksPage = () => {
                   </div>
                   <h2 className="text-3xl font-bold mb-4">Customer Purchase</h2>
                   <p className="text-text-secondary mb-6 leading-relaxed">
-                    At checkout, customers see the insurance option and can opt in with a single click. They receive comprehensive coverage including protection against lost, damaged, and stolen packages—even porch piracy.
+                    At checkout, customers see the insurance option and can opt in with a single click. If a claim arises, customers handle it directly—zero merchant involvement. You never touch claims while earning profit on every protected package.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-text-primary">
                       <CheckCircle className="text-success flex-shrink-0" size={20} />
-                      <span>One-click opt-in at checkout</span>
+                      <span>Zero merchant involvement in claims</span>
                     </li>
                     <li className="flex items-center gap-3 text-text-primary">
                       <CheckCircle className="text-success flex-shrink-0" size={20} />
-                      <span>You control the price markup</span>
+                      <span>Earn revenue through markup pricing</span>
                     </li>
                     <li className="flex items-center gap-3 text-text-primary">
                       <CheckCircle className="text-success flex-shrink-0" size={20} />

@@ -99,15 +99,7 @@ const PricingPage = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <span className="text-xl">✓</span>
-                  <span>Includes porch piracy coverage</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-xl">✓</span>
-                  <span>All carriers supported</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-xl">✓</span>
-                  <span>Faster claim resolution (5-7 days)</span>
+                  <span>Zero merchant involvement in claims</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-xl">✓</span>
@@ -115,7 +107,15 @@ const PricingPage = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-xl">✓</span>
-                  <span>Zero merchant involvement in claims</span>
+                  <span>Faster claim resolution (5-7 days)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-xl">✓</span>
+                  <span>Includes porch piracy coverage</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-xl">✓</span>
+                  <span>All carriers supported</span>
                 </li>
               </ul>
             </div>
