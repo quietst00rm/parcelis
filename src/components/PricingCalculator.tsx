@@ -52,7 +52,14 @@ const PricingCalculator = () => {
                 type="number"
                 placeholder="Enter package value"
                 value={packageValue}
-                onChange={(e) => setPackageValue(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || value === '0') {
+                    setPackageValue(value);
+                  } else {
+                    setPackageValue(value.replace(/^0+/, ''));
+                  }
+                }}
                 className="pl-7 text-lg h-12"
               />
             </div>
@@ -80,7 +87,14 @@ const PricingCalculator = () => {
                 type="number"
                 placeholder="Enter package value"
                 value={packageValue}
-                onChange={(e) => setPackageValue(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || value === '0') {
+                    setPackageValue(value);
+                  } else {
+                    setPackageValue(value.replace(/^0+/, ''));
+                  }
+                }}
                 className="pl-7 text-lg h-12"
               />
             </div>
@@ -95,7 +109,14 @@ const PricingCalculator = () => {
                 type="number"
                 placeholder="What you'll charge"
                 value={customerPrice}
-                onChange={(e) => setCustomerPrice(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || value === '0') {
+                    setCustomerPrice(value);
+                  } else {
+                    setCustomerPrice(value.replace(/^0+(?=\d)/, ''));
+                  }
+                }}
                 className="pl-7 text-lg h-12"
               />
             </div>
