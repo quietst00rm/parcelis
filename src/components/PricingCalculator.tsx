@@ -39,13 +39,16 @@ const PricingCalculator = () => {
     const profit = getProfit();
     if (profit === null) return null;
     const volume = parseFloat(monthlyVolume) || 0;
-    return (parseFloat(profit) * volume).toFixed(2);
+    const totalProfit = Math.round(parseFloat(profit) * volume);
+    return totalProfit.toLocaleString('en-US');
   };
 
   const getAnnualProfit = () => {
-    const monthlyProfit = getMonthlyProfit();
-    if (monthlyProfit === null) return null;
-    return (parseFloat(monthlyProfit) * 12).toFixed(2);
+    const profit = getProfit();
+    if (profit === null) return null;
+    const volume = parseFloat(monthlyVolume) || 0;
+    const annualProfit = Math.round(parseFloat(profit) * volume * 12);
+    return annualProfit.toLocaleString('en-US');
   };
 
   return (
