@@ -58,8 +58,8 @@ const ContactPage = () => {
                 <Mail className="text-primary flex-shrink-0" size={24} />
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
-                  <a href="mailto:support@parcelis.com" className="text-primary hover:underline">
-                    support@parcelis.com
+                  <a href="mailto:support@myparcelis.com" className="text-primary hover:underline">
+                    support@myparcelis.com
                   </a>
                 </div>
               </div>
