@@ -71,9 +71,9 @@ const Footer = () => {
             </ul>
             <div className="mt-8">
               <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Contact</h4>
-              <a href="mailto:hello@parcelis.com" className="text-base text-white/70 hover:text-white transition-colors inline-flex items-center gap-2">
+              <a href="mailto:hello@myparcelis.com" className="text-base text-white/70 hover:text-white transition-colors inline-flex items-center gap-2">
                 <Mail size={16} />
-                hello@parcelis.com
+                hello@myparcelis.com
               </a>
             </div>
           </div>
