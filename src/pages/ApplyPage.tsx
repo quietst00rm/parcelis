@@ -11,7 +11,6 @@ const ApplyPage = () => {
   const [formData, setFormData] = useState({
     businessName: "",
     legalEntityName: "",
-    taxId: "",
     businessType: "",
     contactName: "",
     email: "",
@@ -89,32 +88,19 @@ const ApplyPage = () => {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="taxId">Tax ID / EIN *</Label>
-                    <Input
-                      id="taxId"
-                      required
-                      value={formData.taxId}
-                      onChange={(e) => setFormData({ ...formData, taxId: e.target.value })}
-                      placeholder="XX-XXXXXXX"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="businessType">Business Type *</Label>
-                    <Select value={formData.businessType} onValueChange={(value) => setFormData({ ...formData, businessType: value })}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="sole">Sole Proprietor</SelectItem>
-                        <SelectItem value="llc">LLC</SelectItem>
-                        <SelectItem value="corp">Corporation</SelectItem>
-                        <SelectItem value="partnership">Partnership</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                <div>
+                  <Label htmlFor="businessType">Business Type *</Label>
+                  <Select value={formData.businessType} onValueChange={(value) => setFormData({ ...formData, businessType: value })}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sole">Sole Proprietor</SelectItem>
+                      <SelectItem value="llc">LLC</SelectItem>
+                      <SelectItem value="corp">Corporation</SelectItem>
+                      <SelectItem value="partnership">Partnership</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
             </section>
