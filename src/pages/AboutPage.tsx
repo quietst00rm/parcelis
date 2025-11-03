@@ -1,4 +1,4 @@
-import { Shield, TrendingUp, Users, Check } from "lucide-react";
+import { Shield, Users, Check, Award, Handshake, Plug, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import uspsLogo from "@/assets/carriers/usps.png";
@@ -8,54 +8,89 @@ import fedexLogo from "@/assets/carriers/fedex.png";
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
-        {/* Hero */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Merchant-First Shipping Insurance</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            PARCELIS is a global reinsurance provider offering legitimate, licensed package protection. We put merchant profitability and operational efficiency first.
-          </p>
+    <div className="min-h-screen">
+      {/* Hero Banner */}
+      <section className="bg-primary text-primary-foreground py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Built for E-Commerce. Backed by Insurance Expertise.
+            </h1>
+            <p className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
+              Parcelis is a technology-driven protection platform powered by InsureShip, the industry leader in e-commerce shipping insurance.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild variant="hero" size="lg" className="bg-white text-primary hover:bg-white/90">
+                <Link to="/apply">Partner with Parcelis</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                <Link to="/how-it-works">See How It Works</Link>
+              </Button>
+            </div>
+          </div>
         </div>
+      </section>
 
-        {/* Company Story */}
-        <section className="mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-          <div className="space-y-4 text-muted-foreground">
-            <p>
-              PARCELIS fills the gap between complex enterprise solutions and expensive consumer-focused apps. We built our service specifically for growing D2C e-commerce merchants who need real protection without the hassle.
+      <div className="container mx-auto px-4">
+        {/* Mission Statement */}
+        <section className="py-20 max-w-4xl mx-auto">
+          <div className="bg-muted rounded-lg p-8 md:p-12 border-l-4 border-primary">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Mission</h2>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              Our mission is to help e-commerce brands deliver peace of mind at every doorstep — transforming shipping anxiety into customer confidence through technology, expertise, and relentless service.
             </p>
-            <p>
-              Our platform gives merchants the ability to turn shipping insurance from a cost center into a profit generator, while providing customers with comprehensive coverage they can trust.
-            </p>
-            <p>
-              We're committed to transparency, fair pricing, and merchant success. No long-term contracts, no surprise offboarding, no hidden fees.
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              Powered by InsureShip's 20+ years of industry leadership and over 200 years of combined insurance expertise, Parcelis reduces claim disputes, eliminates refund losses, and creates exceptional post-purchase experiences that build lasting customer trust.
             </p>
           </div>
         </section>
 
-        {/* Insurance Legitimacy Section */}
-        <section className="mb-16 bg-muted rounded-lg p-8 md:p-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <Shield className="w-16 h-16 text-primary mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-6">Real Insurance, Real Protection</h2>
-            <div className="space-y-4 mb-8 text-left">
-              <p className="text-lg">
-                <span className="font-semibold">PARCELIS is a licensed reinsurance provider</span> offering legitimate insurance products that comply with state regulations.
-              </p>
+        {/* Key Highlights Grid */}
+        <section className="py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Leading Brands Choose Parcelis</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {/* Insurance Expertise */}
+            <div className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4">
+                <Award className="text-primary-foreground" size={32} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Insurance Expertise</h3>
               <p className="text-muted-foreground">
-                This matters because many competitors offer "tech solutions" that aren't legitimate insurance products. These unlicensed alternatives leave merchants and customers exposed to potential non-payment of claims and regulatory issues.
-              </p>
-              <p className="text-muted-foreground">
-                We comply with state insurance regulations to ensure your protection is legitimate, enforceable, and backed by trusted underwriters.
+                Backed by InsureShip with 20+ years of industry leadership and over 200 years of combined insurance expertise.
               </p>
             </div>
-            <div className="inline-flex items-center gap-3 bg-card border-2 border-primary rounded-lg px-6 py-4">
-              <Shield className="text-primary" size={32} />
-              <div className="text-left">
-                <p className="font-semibold text-sm">Licensed Provider</p>
-                <p className="text-xl font-bold text-primary">Real Insurance Coverage</p>
+
+            {/* Merchant Trust */}
+            <div className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4">
+                <Handshake className="text-primary-foreground" size={32} />
               </div>
+              <h3 className="text-xl font-semibold mb-3">Merchant Trust</h3>
+              <p className="text-muted-foreground">
+                Trusted by leading e-commerce brands to reduce claim disputes, eliminate refund losses, and protect their bottom line.
+              </p>
+            </div>
+
+            {/* Platform Integration */}
+            <div className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4">
+                <Plug className="text-primary-foreground" size={32} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Seamless Integration</h3>
+              <p className="text-muted-foreground">
+                Plug-and-play setup for Shopify, WooCommerce, BigCommerce, Magento, and custom platforms — launch in minutes.
+              </p>
+            </div>
+
+            {/* Global Coverage */}
+            <div className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4">
+                <Globe className="text-primary-foreground" size={32} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Global Coverage</h3>
+              <p className="text-muted-foreground">
+                Comprehensive protection across all major carriers worldwide — USPS, UPS, FedEx, DHL, and regional services.
+              </p>
             </div>
           </div>
         </section>
@@ -91,14 +126,14 @@ const AboutPage = () => {
           <p className="text-center text-muted-foreground mt-8">+ Regional carriers and international postal services worldwide</p>
         </section>
 
-        {/* Why Different */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Why PARCELIS?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card border border-border rounded-lg p-6">
+        {/* Value Propositions */}
+        <section className="py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">The Parcelis Advantage</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-shadow">
               <Shield className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-semibold mb-3">Better Coverage (Hassle-Free)</h3>
-              <ul className="space-y-2 text-muted-foreground">
+              <h3 className="text-xl font-semibold mb-4">Hassle-Free Protection</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
                   <span>Zero merchant involvement in claims</span>
@@ -118,87 +153,106 @@ const AboutPage = () => {
               </ul>
             </div>
 
-            <div className="bg-card border border-border rounded-lg p-6">
-              <TrendingUp className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-semibold mb-3">Better for Merchants (Profitability)</h3>
-              <ul className="space-y-2 text-muted-foreground">
+            <div className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <Users className="text-primary mb-4" size={40} />
+              <h3 className="text-xl font-semibold mb-4">Operational Efficiency</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>Turn insurance into profit</span>
+                  <span>Reduce support ticket volume</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>Control your markup and pricing</span>
+                  <span>Eliminate refund disputes</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>No overhead or hidden fees</span>
+                  <span>Streamlined claim process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>Focus on growth, not claims</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-card border border-border rounded-lg p-6">
-              <Users className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-semibold mb-3">Better Partnership</h3>
-              <ul className="space-y-2 text-muted-foreground">
+            <div className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <Shield className="text-primary mb-4" size={40} />
+              <h3 className="text-xl font-semibold mb-4">True Partnership</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
                   <span>No long-term contracts</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span>No sudden offboarding</span>
+                  <span>No surprise offboarding</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
                   <span>Transparent pricing always</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
+                  <span>Dedicated merchant support</span>
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Values */}
-        <section className="mb-16 bg-primary text-primary-foreground rounded-lg p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-center mb-8">Built on Trust and Transparency</h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <div className="flex gap-3">
-              <Shield className="flex-shrink-0" size={24} />
-              <div>
-                <h3 className="font-semibold mb-1">Operational Simplicity</h3>
-                <p className="text-sm opacity-90">Zero hassle, zero involvement in claims management</p>
+        {/* Trust Section */}
+        <section className="py-20 bg-muted rounded-xl">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Built on Trust and Transparency</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex gap-4 items-start text-left">
+                <Shield className="flex-shrink-0 text-primary" size={28} />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Regulatory Compliance</h3>
+                  <p className="text-muted-foreground">Licensed, legitimate insurance backed by trusted underwriters</p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-3">
-              <TrendingUp className="flex-shrink-0" size={24} />
-              <div>
-                <h3 className="font-semibold mb-1">Merchant Profitability</h3>
-                <p className="text-sm opacity-90">We believe merchants should profit from the value they provide</p>
+              <div className="flex gap-4 items-start text-left">
+                <Check className="flex-shrink-0 text-primary" size={28} />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Customer Confidence</h3>
+                  <p className="text-muted-foreground">Build lasting trust with comprehensive protection customers value</p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-3">
-              <Check className="flex-shrink-0" size={24} />
-              <div>
-                <h3 className="font-semibold mb-1">Regulatory Compliance</h3>
-                <p className="text-sm opacity-90">Licensed, legitimate insurance you can trust</p>
+              <div className="flex gap-4 items-start text-left">
+                <Users className="flex-shrink-0 text-primary" size={28} />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Operational Excellence</h3>
+                  <p className="text-muted-foreground">Streamlined claims management that keeps your team focused</p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-3">
-              <Users className="flex-shrink-0" size={24} />
-              <div>
-                <h3 className="font-semibold mb-1">Customer Satisfaction</h3>
-                <p className="text-sm opacity-90">Comprehensive coverage that customers actually want</p>
+              <div className="flex gap-4 items-start text-left">
+                <Award className="flex-shrink-0 text-primary" size={28} />
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Industry Leadership</h3>
+                  <p className="text-muted-foreground">20+ years of InsureShip expertise protecting e-commerce brands</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="text-center">
-          <Button asChild variant="hero" size="lg">
-            <Link to="/apply">Get Started with PARCELIS</Link>
-          </Button>
-        </div>
+        {/* Final CTA */}
+        <section className="py-20 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Protect Your Customers?</h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join merchants using Parcelis to eliminate shipping headaches and build customer trust.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild variant="hero" size="lg">
+              <Link to="/apply">Partner with Parcelis</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/how-it-works">See How It Works</Link>
+            </Button>
+          </div>
+        </section>
       </div>
     </div>
   );
