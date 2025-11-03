@@ -1,32 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Settings, Shield, FileCheck, TrendingUp, Zap } from "lucide-react";
+import { HeroBanner } from "@/components/HeroBanner";
 
 const HowItWorksPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner Section */}
-      <section className="relative overflow-hidden bg-primary py-20 md:py-24">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Protection That Works — So You Don't Have To.
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-8">
-              Seamlessly integrate Parcelis into your store, offer coverage at checkout, and let us handle every claim from start to finish.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-white text-primary hover:bg-gray-100 text-lg font-semibold px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Link to="/apply" aria-label="Get started with Parcelis">
-                Get Started
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroBanner
+        headline="Protection That Works — So You Don't Have To."
+        subheadline="Seamlessly integrate Parcelis into your store, offer coverage at checkout, and let us handle every claim from start to finish."
+        primaryCTA={{
+          text: "Get Started",
+          href: "/apply",
+        }}
+        secondaryCTA={{
+          text: "See Pricing",
+          href: "/pricing",
+        }}
+      />
 
       {/* 4-Step Process Section */}
       <section className="py-20 bg-background">

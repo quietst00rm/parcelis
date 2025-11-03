@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Shield, Clock, Users, Award, ChevronRight, Code, CheckCircle, Zap, TrendingUp, Smile } from "lucide-react";
 import { useCounter } from "@/hooks/use-counter";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { HeroBanner } from "@/components/HeroBanner";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -52,81 +52,18 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        id="main-content"
-        className="relative min-h-[85vh] bg-gradient-to-br from-[#1e2099] via-[#2533a8] to-[#2a2fb5] text-white overflow-hidden"
-      >
-        {/* Animated Background */}
-        <AnimatedBackground />
-
-        {/* Grid Pattern Overlay */}
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(var(--color-white) / 0.05) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--color-white) / 0.05) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Radial Gradient Overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(ellipse at 30% 50%, hsla(238 63% 58% / 0.3) 0%, transparent 50%)",
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-24 pb-16">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Trust Badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/15 backdrop-blur-md rounded-full border border-white/30 mb-8 shadow-lg">
-              <Shield className="text-green-400" size={24} />
-              <span className="text-white text-sm font-semibold">Powered by InsureShip</span>
-            </div>
-
-            {/* Hero Headline */}
-            <h1 className="mb-6 hero-content-fade">
-              <span className="block text-5xl md:text-7xl lg:text-[96px] text-white font-bold leading-none tracking-tight hero-headline-bottom mb-6">
-                Deliver Confidence with Every Shipment.
-              </span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              A tech-enabled package protection platform that keeps customers happy, support teams unburdened, and your brand reputation intact — powered by InsureShip.
-            </p>
-
-            <p className="text-lg md:text-xl text-white/80 mb-14 max-w-3xl mx-auto leading-relaxed">
-              Parcelis automatically adds protection against loss, damage, and theft at checkout. Customers feel secure knowing their order is covered, while you reduce post-purchase claims, minimize refunds, and eliminate manual handling. Fast resolutions. Fewer support tickets. Happier customers.
-            </p>
-
-            {/* Hero CTAs */}
-            <div className="flex flex-col sm:flex-row gap-5 items-center justify-center mb-12">
-              <Link
-                to="/apply"
-                className="btn btn-primary btn-large inline-flex items-center gap-2 shadow-2xl"
-              >
-                Protect Your Customers Today
-                <ChevronRight size={20} />
-              </Link>
-              <Link
-                to="/how-it-works"
-                className="btn btn-secondary btn-large text-white border-2 border-white hover:bg-white hover:text-primary transition-all"
-              >
-                See How It Works
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
-          <div className="w-0.5 h-10 bg-gradient-to-b from-transparent via-white/50 to-transparent animate-pulse" />
-          <span className="text-xs text-white/70 uppercase tracking-widest">Scroll to discover</span>
-        </div>
-      </section>
+      <HeroBanner
+        headline="Deliver Confidence with Every Shipment."
+        subheadline="A tech-enabled package protection platform that keeps customers happy, support teams unburdened, and your brand reputation intact — powered by InsureShip."
+        primaryCTA={{
+          text: "Protect Your Customers Today",
+          href: "/apply",
+        }}
+        secondaryCTA={{
+          text: "See How It Works",
+          href: "/how-it-works",
+        }}
+      />
 
       {/* Stats Bar */}
       <section className="stats-bar bg-primary-dark text-white py-16 border-t-4 border-cyan-400">

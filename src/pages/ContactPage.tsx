@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { HeroBanner } from "@/components/HeroBanner";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -35,15 +36,22 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
-        {/* Hero */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-          <p className="text-lg text-muted-foreground">
-            Questions about PARCELIS? We're here to help.
-          </p>
-        </div>
+    <div className="min-h-screen">
+      {/* Hero Banner */}
+      <HeroBanner
+        headline="Get in Touch"
+        subheadline="Questions about PARCELIS? We're here to help."
+        primaryCTA={{
+          text: "Apply Now",
+          href: "/apply",
+        }}
+        secondaryCTA={{
+          text: "View Pricing",
+          href: "/pricing",
+        }}
+      />
+
+      <div className="container mx-auto px-4 py-20">
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16">
           {/* Contact Information */}

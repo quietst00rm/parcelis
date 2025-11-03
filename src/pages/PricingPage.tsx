@@ -2,6 +2,7 @@ import PricingCalculator from "@/components/PricingCalculator";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Shield, Clock, Star, FileText, Search, CheckCircle, Banknote, Package } from "lucide-react";
+import { HeroBanner } from "@/components/HeroBanner";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -13,38 +14,18 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero/Banner Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-primary to-primary-medium py-20 md:py-24">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rotate-12"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 border-2 border-white -rotate-6"></div>
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-white rotate-45"></div>
-          <div className="absolute bottom-10 right-1/3 w-20 h-20 border-2 border-white -rotate-12"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Simple Pricing. Proven Value.
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Affordable protection that pays for itself in customer trust and operational efficiency.
-            </p>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto mb-10">
-              Coverage starts at $2.50 per shipment for packages valued up to $200. That small investment reduces refund losses, improves customer satisfaction scores, and cuts down costly support time. With Parcelis, every claim is handled quickly and fairly — keeping customers confident and your operations smooth.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-white text-primary hover:bg-gray-100 text-lg font-semibold px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Link to="/apply" aria-label="Get a custom quote for your business">
-                Get a Custom Quote
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroBanner
+        headline="Simple, Transparent Pricing"
+        subheadline="No hidden fees. No surprises. Just straightforward protection for your customers."
+        primaryCTA={{
+          text: "Get Started Today",
+          href: "/apply",
+        }}
+        secondaryCTA={{
+          text: "See How It Works",
+          href: "/how-it-works",
+        }}
+      />
 
       {/* Calculator Section */}
       <section className="py-16 md:py-20 bg-background">

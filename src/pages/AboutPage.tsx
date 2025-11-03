@@ -1,6 +1,7 @@
 import { Shield, Users, Check, Award, Handshake, Plug, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { HeroBanner } from "@/components/HeroBanner";
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
@@ -10,26 +11,18 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Built for E-Commerce. Backed by Insurance Expertise.
-            </h1>
-            <p className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
-              Parcelis is a technology-driven protection platform powered by InsureShip, the industry leader in e-commerce shipping insurance.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild variant="hero" size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Link to="/apply">Partner with Parcelis</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                <Link to="/how-it-works">See How It Works</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroBanner
+        headline="Built for E-Commerce. Backed by Insurance Expertise."
+        subheadline="Parcelis is a technology-driven protection platform powered by InsureShip, the industry leader in e-commerce shipping insurance."
+        primaryCTA={{
+          text: "Partner with Parcelis",
+          href: "/apply",
+        }}
+        secondaryCTA={{
+          text: "See How It Works",
+          href: "/how-it-works",
+        }}
+      />
 
       <div className="container mx-auto px-4">
         {/* Mission Statement */}
