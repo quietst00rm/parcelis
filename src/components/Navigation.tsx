@@ -59,6 +59,17 @@ const Navigation = () => {
             <img src={logo} alt="PARCELIS" className="h-10 w-auto" />
           </Link>
 
+          {/* Mobile File a Claim Button - Center */}
+          <a
+            href="https://claims.myparcelis.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-primary border-2 border-primary rounded-lg hover:bg-primary/5 transition-colors"
+          >
+            <FileText size={16} />
+            <span>File a Claim</span>
+          </a>
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
