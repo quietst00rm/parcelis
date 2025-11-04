@@ -228,7 +228,7 @@ const HomePage = () => {
               {/* WooCommerce */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300">
                 <div className="h-20 flex items-center justify-center mb-4">
-                  <div className="text-4xl">🛒</div>
+                  <img src="https://woocommerce.com/wp-content/themes/woo/images/logo-woocommerce-white.svg" alt="WooCommerce" className="max-h-16 object-contain" />
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">WooCommerce</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
@@ -247,7 +247,7 @@ const HomePage = () => {
               {/* BigCommerce */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300">
                 <div className="h-20 flex items-center justify-center mb-4">
-                  <div className="text-4xl">🏪</div>
+                  <img src="https://storage.googleapis.com/bigcommerce-production-dev-center/images/bigcommerce-white-logo.svg" alt="BigCommerce" className="max-h-16 object-contain" />
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">BigCommerce</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
@@ -266,7 +266,10 @@ const HomePage = () => {
               {/* Magento */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300">
                 <div className="h-20 flex items-center justify-center mb-4">
-                  <div className="text-4xl">🔧</div>
+                  <svg className="max-h-16 h-12" viewBox="0 0 240 60" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60 0L50 10V50L60 60L70 50V10L60 0ZM65 47.5L60 52.5L55 47.5V12.5L60 7.5L65 12.5V47.5Z"/>
+                    <path d="M90 15H95V45H90V15ZM100 15H115L125 35L135 15H150V45H145V25L135 42.5H125L115 25V45H110V15H100ZM160 15H180C187.5 15 192.5 20 192.5 27.5V32.5C192.5 40 187.5 45 180 45H160V15ZM165 20V40H180C185 40 187.5 37.5 187.5 32.5V27.5C187.5 22.5 185 20 180 20H165Z"/>
+                  </svg>
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">Magento</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
