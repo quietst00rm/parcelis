@@ -3,132 +3,128 @@ const TermsPage = () => {
     <div className="min-h-screen py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4">Terms of Use</h1>
-          <p className="text-muted-foreground mb-8">Last updated: January 2025</p>
+          <h1 className="text-4xl font-bold mb-4">Terms and Conditions</h1>
+          <p className="text-muted-foreground mb-8">Last updated: November 3, 2025</p>
 
           <div className="prose prose-slate max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-bold mb-4">1. Agreement to Terms</h2>
+              <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
               <p className="text-muted-foreground mb-4">
-                By accessing or using PARCELIS services, you agree to be bound by these Terms of Use. If you do not agree to these terms, you may not use our services.
+                Welcome to www.myparecelis.com (the "Website"). These Terms and Conditions ("Terms") govern your access to and use of the Website and the purchase of package‑insurance services (the "Services") offered by Ace Protect Services LLC ("we", "our", "us"). By accessing or using the Website, or by purchasing the Services, you agree to be bound by these Terms.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">2. Service Description</h2>
+              <h2 className="text-2xl font-bold mb-4">2. Use of the Website</h2>
               <p className="text-muted-foreground mb-4">
-                PARCELIS provides shipping insurance reinsurance services to e-commerce merchants. We are a licensed reinsurance provider offering legitimate insurance products. Our services include:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                <li>Package insurance coverage for lost, damaged, and stolen shipments</li>
-                <li>Claims processing and resolution</li>
-                <li>Merchant dashboard and reporting tools</li>
-                <li>Platform integrations</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold mb-4">3. Eligibility and Account Registration</h2>
-              <p className="text-muted-foreground mb-4">
-                To use PARCELIS services, you must be a business entity operating an e-commerce store. You must provide accurate and complete information during registration and keep your account information up to date.
+                You may use the Website for lawful purposes only, in compliance with all applicable laws and regulations. You agree not to use the Website in any way that infringes the rights of others, is fraudulent or misleading, or interferes with the Website's operation. You must not attempt to gain unauthorized access, scrape, reverse-engineer, or misuse the Website.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">4. Merchant Obligations</h2>
-              <p className="text-muted-foreground mb-3">As a PARCELIS merchant, you agree to:</p>
-              <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                <li>Accurately represent insurance coverage to your customers</li>
-                <li>Comply with pricing and coverage guidelines</li>
-                <li>Direct customers to PARCELIS for claims filing</li>
-                <li>Maintain accurate shipping and order records</li>
-                <li>Comply with all applicable laws and regulations</li>
-              </ul>
-            </section>
+              <h2 className="text-2xl font-bold mb-4">3. Package Insurance Services</h2>
+              <p className="text-muted-foreground mb-4">
+                We offer insurance coverage for parcels shipped by you or your merchant to recipients that are lost, stolen, or damaged in transit, subject to the terms, limits, and exclusions described below.
+              </p>
 
-            <section>
-              <h2 className="text-2xl font-bold mb-4">5. Coverage and Limitations</h2>
               <div className="space-y-4 text-muted-foreground">
-                <p><strong>Coverage includes:</strong></p>
-                <ul className="list-disc pl-6 space-y-1">
-                  <li>Lost packages</li>
-                  <li>Damaged packages</li>
-                  <li>Stolen packages (including porch piracy)</li>
-                </ul>
-                
-                <p><strong>Coverage limits:</strong></p>
-                <ul className="list-disc pl-6 space-y-1">
-                  <li>Maximum $2,500 per box</li>
-                  <li>Maximum $25,000 per shipment</li>
-                </ul>
-                
-                <p><strong>Exclusions apply for:</strong></p>
-                <ul className="list-disc pl-6 space-y-1">
-                  <li>Invalid or incomplete addresses</li>
-                  <li>Refused deliveries</li>
-                  <li>Packages abandoned by customer</li>
-                  <li>Intentional damage or fraud</li>
-                  <li>Prohibited items</li>
-                </ul>
+                <div>
+                  <p className="font-semibold mb-2">3.1 Service Description</p>
+                  <p>Coverage is available only for eligible shipments that meet packaging and carrier requirements.</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold mb-2">3.2 Coverage Eligibility</p>
+                  <p>Shipments must comply with our rules for packaging, labeling, and documentation.</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold mb-2">3.3 Exclusions</p>
+                  <p className="mb-2">The Coverage will not apply in respect of any parcel, shipment or contents that:</p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Is destined for or originates from a country excluded from coverage, including but not limited to Afghanistan, Angola, Bolivia, Burma (Myanmar), Iran, Iraq, Congo, Ivory Coast, Lebanon, Liberia, Libya, Nigeria, North Korea, Paraguay, Somalia, Syria, Zimbabwe, Russia, Ukraine, or any other country subject to U.S. or U.N. embargo or sanctions.</li>
+                    <li>Contains prohibited or excluded items such as:
+                      <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Live animals, plants, seeds, soil, or human remains.</li>
+                        <li>Hazardous materials, explosives, flammable gases or liquids, radioactive substances, or corrosives.</li>
+                        <li>Cash, currency, bearer bonds, negotiable instruments, money orders, or tickets.</li>
+                        <li>Precious metals, precious stones, bullion, or collectible-value items.</li>
+                        <li>Firearms, ammunition, or weapon parts.</li>
+                        <li>Illegal substances or controlled drugs.</li>
+                        <li>Items improperly labelled, packaged, or declared in violation of carrier or legal requirements.</li>
+                        <li>Items excluded by applicable carrier or insurer policies even if not listed above.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p className="mt-3">
+                    We reserve the right to refuse or deny coverage for shipments that do not comply with eligibility, packaging, documentation, or other policy requirements.
+                  </p>
+                  <p className="text-sm italic mt-2">
+                    Source references: insureship.com/terms, shipsaver.com, shiptection.com, shipwithjetpack.com.
+                  </p>
+                </div>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">6. Claims Process</h2>
+              <h2 className="text-2xl font-bold mb-4">4. Payment and Fees</h2>
               <p className="text-muted-foreground mb-4">
-                Claims must be filed by the end customer directly with PARCELIS within 30 days of the issue. Merchants are not responsible for claims processing. PARCELIS will review and resolve valid claims within 5-7 business days of receiving complete information.
+                You must pay the applicable insurance fee (premium) at the time of purchase. All payments are non‑refundable unless required by law. We accept payment methods listed on the Website and you represent that you are authorized to use the chosen payment method.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">7. Pricing and Payment</h2>
+              <h2 className="text-2xl font-bold mb-4">5. Claims Process</h2>
               <p className="text-muted-foreground mb-4">
-                Merchant pricing is determined by package value according to published tiers. Merchants may set their own customer-facing prices. Payment terms are net 30 days. PARCELIS reserves the right to modify pricing with 30 days' notice.
+                To file a claim, you must complete the claim form on our Website and provide required documentation such as proof of value, shipment tracking, and photos of damage. Claims must be submitted within the specified timeframe (typically 90 days from shipment). Fraudulent or late claims may be denied.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">8. Termination</h2>
+              <h2 className="text-2xl font-bold mb-4">6. Limitation of Liability</h2>
               <p className="text-muted-foreground mb-4">
-                Either party may terminate this agreement with 30 days' written notice. PARCELIS may terminate immediately for breach of terms, fraud, or illegal activity. Coverage for packages insured before termination remains in effect.
+                To the fullest extent permitted by law, we will not be liable for any indirect, incidental, special, or consequential damages arising out of or relating to the Services. Our total liability shall not exceed the amount of the insurance fee paid for the relevant shipment.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">9. Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold mb-4">7. Disclaimer of Warranties</h2>
               <p className="text-muted-foreground mb-4">
-                PARCELIS's liability is limited to the coverage amounts specified in the insurance policy. We are not liable for indirect, incidental, or consequential damages.
+                The Website and Services are provided on an "as‑is" and "as‑available" basis without any warranties of any kind, express or implied, including warranties of merchantability, fitness for a particular purpose, or non‑infringement.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">10. Dispute Resolution</h2>
+              <h2 className="text-2xl font-bold mb-4">8. Intellectual Property</h2>
               <p className="text-muted-foreground mb-4">
-                Disputes will be resolved through binding arbitration in accordance with the rules of the American Arbitration Association. Class action waivers apply.
+                All content, logos, trademarks, and materials on the Website are the property of Ace Protect Services LLC or its licensors. You may not reproduce, modify, or distribute any content without our prior written consent.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">11. Governing Law</h2>
+              <h2 className="text-2xl font-bold mb-4">9. Governing Law and Dispute Resolution</h2>
               <p className="text-muted-foreground mb-4">
-                These Terms are governed by the laws of the State of Delaware, without regard to conflict of law principles.
+                These Terms shall be governed by and construed under the laws of the State of New Jersey. Any disputes shall be resolved in the state or federal courts located in Hudson County, or by binding arbitration at our discretion.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">12. Changes to Terms</h2>
+              <h2 className="text-2xl font-bold mb-4">10. Modifications to Terms and Conditions</h2>
               <p className="text-muted-foreground mb-4">
-                We may modify these Terms at any time. Material changes will be communicated via email. Continued use of services after changes constitutes acceptance.
+                We reserve the right to modify or update these Terms at any time. Updates will be posted on this page with the revised date. Continued use of the Website after updates constitutes acceptance of the new Terms.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">13. Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-4">11. Contact Information</h2>
               <p className="text-muted-foreground mb-2">
-                For questions about these Terms, contact us at:
+                If you have any questions about these Terms, please contact us at:
+              </p>
+              <p className="text-muted-foreground mb-1">
+                Email: hello@myparecelis.com
               </p>
               <p className="text-muted-foreground">
-                Email: legal@parcelis.com
+                Address: 78 John Miller Way, Ste 415, Kearny NJ 07032
               </p>
             </section>
           </div>
