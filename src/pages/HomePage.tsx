@@ -209,7 +209,7 @@ const HomePage = () => {
               {/* 29next */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300">
                 <div className="h-20 flex items-center justify-center mb-4">
-                  <img src="https://cdn.prod.website-files.com/65c3b52a66ffacb0e2680070/65d8e42b4239fa0963dc2bd2_logo%20(19).svg" alt="29next" className="max-h-16 object-contain" />
+                  <img src={twentyNineNextLogo} alt="29next" className="max-h-16 object-contain" />
                 </div>
                 <div className="text-xl font-bold text-white text-center mb-2">29next</div>
                 <div className="flex items-center justify-center gap-2 mb-3">
