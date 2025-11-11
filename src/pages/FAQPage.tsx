@@ -163,7 +163,7 @@ const FAQPage = () => {
                 How much does PARCELIS cost?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                PARCELIS pricing is based on your order value and volume. Typical rates range from 0.5% to 2% of your order value. The exact rate depends on your industry, average order value, and shipping volume. Visit our pricing page or contact us for a custom quote based on your specific needs.
+                PARCELIS pricing is based on your order value and volume. The exact rate depends on your industry, average order value, and shipping volume. Visit our pricing page or contact us for a custom quote based on your specific needs.
               </AccordionContent>
             </AccordionItem>
 
