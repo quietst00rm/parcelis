@@ -68,6 +68,11 @@ const Footer = () => {
                   Terms of Use
                 </Link>
               </li>
+              <li>
+                <Link to="/affiliate-program" className="text-base text-white/70 hover:text-white transition-colors inline-block" onClick={() => window.scrollTo(0, 0)}>
+                  Affiliate Program
+                </Link>
+              </li>
             </ul>
             <div className="mt-8">
               <h4 className="text-sm font-bold uppercase tracking-wider mb-4">Contact</h4>
