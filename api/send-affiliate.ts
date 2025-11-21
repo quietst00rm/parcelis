@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const emailResponse = await resend.emails.send({
       from: "PARCELIS Affiliates <onboarding@resend.dev>",
-      to: ["isaac@legacyseller.com."], // Replace with your email for testing
+      to: ["WAAAAAWWWW"], // Replace with your email for testing
       replyTo: email,
       subject: `New Affiliate Application: ${company}`,
       html: `

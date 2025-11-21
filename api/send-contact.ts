@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const emailResponse = await resend.emails.send({
       from: "PARCELIS Contact <onboarding@resend.dev>",
-      to: ["cedricantiporta@gmail.com"], // Replace with your email for testing
+      to: ["WAAAAAWWWW_TEST"], // Replace with your email for testing
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
