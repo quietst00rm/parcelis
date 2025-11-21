@@ -25,17 +25,33 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success("Message sent! We'll respond within 24-48 hours.");
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      subject: "",
-      message: ""
-    });
-    setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      toast.success("Message sent! We'll respond within 24-48 hours.");
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error("Failed to send message. Please try again or email us directly at support@myparcelis.com");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return <div className="min-h-screen">
       {/* Hero Banner */}
