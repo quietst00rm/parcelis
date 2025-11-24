@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
-import shopifyLogo from '@/assets/platforms/shopify.png';
+import shopifyLogo from '@/assets/platforms/shopify.svg';
 import nextLogo from '@/assets/platforms/29next.png';
 
 const PricingIntegrations: React.FC = () => {

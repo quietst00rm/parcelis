@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { HeroBanner } from "@/components/HeroBanner";
+import AffiliateHero from "@/components/AffiliateHero";
 import { CheckCircle2 } from "lucide-react";
 
 const formSchema = z.object({
@@ -84,14 +84,7 @@ const AffiliatePage = () => {
 
   return (
     <>
-      <HeroBanner
-        headline="Become a Parcelis Affiliate"
-        subheadline="Fill out the form below to apply to become an affiliate. Once submitted, our team will review your details and contact you by email."
-        primaryCTA={{
-          text: "Get Started",
-          href: "/apply",
-        }}
-      />
+      <AffiliateHero />
 
       <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">

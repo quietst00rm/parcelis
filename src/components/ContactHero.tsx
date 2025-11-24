@@ -17,28 +17,28 @@ const ContactHero: React.FC = () => {
       {/* Parallax Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div 
-          className="absolute top-[20%] right-[10%] w-64 h-64 bg-white/5 rounded-[2rem] backdrop-blur-3xl"
+          className="absolute top-[20%] right-[10%] w-64 h-64 bg-white/5 rounded-lg backdrop-blur-3xl"
           style={{ 
             transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[10%] left-[10%] w-48 h-48 bg-blue-400/10 rounded-[1.5rem] backdrop-blur-3xl"
+          className="absolute bottom-[10%] left-[10%] w-48 h-48 bg-blue-400/10 rounded-lg backdrop-blur-3xl"
           style={{ 
             transform: `translateY(-${scrollY * 0.1}px) rotate(-${scrollY * 0.15}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute top-[10%] left-[15%] w-24 h-24 bg-indigo-400/10 rounded-xl backdrop-blur-md"
+          className="absolute top-[10%] left-[15%] w-24 h-24 bg-indigo-400/10 rounded-lg backdrop-blur-md"
           style={{ 
             transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.2}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[30%] right-[25%] w-32 h-32 bg-white/5 rounded-2xl backdrop-blur-xl"
+          className="absolute bottom-[30%] right-[25%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-xl"
           style={{ 
             transform: `translateY(${scrollY * 0.15}px) rotate(-${scrollY * 0.05}deg)`,
             transition: 'transform 0.1s linear'
@@ -59,7 +59,7 @@ const ContactHero: React.FC = () => {
           <Link to="/apply" className="bg-white hover:bg-gray-100 text-[#1e22aa] font-bold py-4 px-10 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-lg">
             Apply Now
           </Link>
-          <Link to="/pricing" className="bg-white/10 border-2 border-white text-white hover:bg-white/20 font-bold py-4 px-10 rounded-lg backdrop-blur-sm transition-all text-lg">
+          <Link to="/pricing" className="bg-white/10 text-white hover:bg-white/20 font-bold py-4 px-10 rounded-lg backdrop-blur-sm transition-all text-lg">
             View Pricing
           </Link>
         </div>

@@ -49,28 +49,28 @@ const Hero: React.FC = () => {
       {/* Animated Parallax Squares & Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
          <div 
-          className="absolute top-[15%] left-[5%] w-32 h-32 bg-white/5 rounded-xl backdrop-blur-3xl"
+          className="absolute top-[15%] left-[5%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-3xl"
           style={{ 
               transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.1}deg)`,
               transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[20%] right-[5%] w-48 h-48 bg-blue-400/10 rounded-[2rem] backdrop-blur-3xl"
+          className="absolute bottom-[20%] right-[5%] w-48 h-48 bg-blue-400/10 rounded-lg backdrop-blur-3xl"
           style={{ 
               transform: `translateY(${scrollY * 0.2}px) rotate(-${scrollY * 0.1}deg)`,
               transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute top-[60%] left-[15%] w-24 h-24 bg-blue-300/10 rounded-xl backdrop-blur-md"
+          className="absolute top-[60%] left-[15%] w-24 h-24 bg-blue-300/10 rounded-lg backdrop-blur-md"
           style={{ 
               transform: `translateY(${scrollY * 0.25}px) rotate(${scrollY * 0.15}deg)`,
               transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[10%] right-[35%] w-40 h-40 bg-white/5 rounded-xl backdrop-blur-xl"
+          className="absolute bottom-[10%] right-[35%] w-40 h-40 bg-white/5 rounded-lg backdrop-blur-xl"
           style={{ 
               transform: `translateY(-${scrollY * 0.1}px) rotate(${scrollY * 0.05}deg)`,
               transition: 'transform 0.1s linear'
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
           }}
         ></div>
         <div 
-          className="absolute bottom-[40%] left-[5%] w-28 h-28 bg-blue-500/10 rounded-2xl backdrop-blur-md"
+          className="absolute bottom-[40%] left-[5%] w-28 h-28 bg-blue-500/10 rounded-lg backdrop-blur-md"
           style={{ 
               transform: `translateY(${scrollY * 0.15}px) rotate(-${20 + scrollY * 0.1}deg)`,
               transition: 'transform 0.1s linear'

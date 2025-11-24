@@ -10,6 +10,9 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+  
+  // Check if we're on a white background page (Terms, Privacy)
+  const isWhiteBgPage = ['/terms', '/privacy'].includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,19 +33,19 @@ const Navbar: React.FC = () => {
   ];
 
   // Dynamic Styles
-  const navBackgroundClass = scrolled 
+  const navBackgroundClass = (scrolled || isWhiteBgPage)
     ? 'glass-nav' 
     : 'bg-transparent';
     
-  const textColorClass = scrolled ? 'text-gray-600' : 'text-white drop-shadow-md';
-  const hoverColorClass = scrolled ? 'hover:text-brand' : 'hover:text-blue-200';
-  const activeColorClass = scrolled ? 'text-brand font-bold' : 'text-white font-bold underline decoration-2 underline-offset-4';
+  const textColorClass = (scrolled || isWhiteBgPage) ? 'text-gray-600' : 'text-white drop-shadow-md';
+  const hoverColorClass = (scrolled || isWhiteBgPage) ? 'hover:text-brand' : 'hover:text-blue-200';
+  const activeColorClass = (scrolled || isWhiteBgPage) ? 'text-brand font-bold' : 'text-white font-bold underline decoration-2 underline-offset-4';
   
-  const applyButtonClass = scrolled
+  const applyButtonClass = (scrolled || isWhiteBgPage)
     ? 'bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20'
     : 'bg-white hover:bg-gray-100 text-brand shadow-lg';
 
-  const fileClaimButtonClass = scrolled
+  const fileClaimButtonClass = (scrolled || isWhiteBgPage)
     ? 'text-gray-700 hover:text-brand font-medium'
     : 'bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all';
 
@@ -56,7 +59,7 @@ const Navbar: React.FC = () => {
           <div className="flex-shrink-0 flex items-center cursor-pointer">
              <Link to="/" className="flex items-center gap-2">
                <img 
-                 src={scrolled ? logo : logoWhite} 
+                 src={(scrolled || isWhiteBgPage) ? logo : logoWhite} 
                  alt="PARCELIS Logo" 
                  className="h-10 w-auto transition-opacity duration-300"
                />
