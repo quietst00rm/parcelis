@@ -1,5 +1,7 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import shopifyLogo from '@/assets/platforms/shopify.png';
+import nextLogo from '@/assets/platforms/29next.png';
 
 const PricingIntegrations: React.FC = () => {
   return (
@@ -18,13 +20,14 @@ const PricingIntegrations: React.FC = () => {
                 <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
                      {/* Shopify */}
                     <div className="flex items-center gap-2">
-                         <div className="w-6 h-6 bg-[#95BF47] rounded-full flex items-center justify-center text-white text-[10px] font-bold">S</div>
+                         <img src={shopifyLogo} alt="Shopify" className="h-6 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">Shopify</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* NEXT */}
                     <div className="flex items-center gap-2">
-                         <span className="font-black text-blue-900 text-sm tracking-tighter">NEXT</span>
+                         <img src={nextLogo} alt="NEXT Commerce" className="h-6 object-contain" />
+                         <span className="font-bold text-slate-700 text-sm">NEXT Commerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* Woo */}
@@ -48,9 +51,9 @@ const PricingIntegrations: React.FC = () => {
         </div>
 
         <div className="mt-12">
-            <button className="bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded-lg shadow-lg transition-colors">
+            <a href="/apply" className="inline-block bg-brand hover:bg-brand-dark text-white font-bold py-3.5 px-8 rounded-lg shadow-lg transition-colors">
                 Start Your Application
-            </button>
+            </a>
         </div>
 
       </div>
