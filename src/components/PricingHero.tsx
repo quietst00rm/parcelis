@@ -18,21 +18,21 @@ const PricingHero: React.FC = () => {
       {/* Animated Parallax Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div 
-            className="absolute top-[20%] left-[5%] w-32 h-32 bg-white/5 rounded-2xl backdrop-blur-3xl"
+            className="absolute top-[20%] left-[5%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-3xl"
             style={{ 
                 transform: `translateY(${scrollY * 0.3}px) rotate(${12 + scrollY * 0.1}deg)`,
                 transition: 'transform 0.1s linear'
             }}
           ></div>
           <div 
-            className="absolute bottom-[20%] right-[10%] w-48 h-48 bg-white/5 rounded-3xl backdrop-blur-3xl"
+            className="absolute bottom-[20%] right-[10%] w-48 h-48 bg-white/5 rounded-lg backdrop-blur-3xl"
             style={{ 
                 transform: `translateY(${scrollY * 0.2}px) rotate(${-6 - scrollY * 0.1}deg)`,
                 transition: 'transform 0.1s linear'
             }}
           ></div>
           <div 
-            className="absolute top-[50%] left-[20%] w-20 h-20 bg-blue-400/10 rounded-xl backdrop-blur-xl"
+            className="absolute top-[50%] left-[20%] w-20 h-20 bg-blue-400/10 rounded-lg backdrop-blur-xl"
             style={{ 
                 transform: `translateY(${scrollY * 0.15}px) rotate(${scrollY * 0.2}deg)`,
                 transition: 'transform 0.1s linear'
@@ -53,7 +53,7 @@ const PricingHero: React.FC = () => {
             <button className="bg-white text-brand hover:bg-blue-50 font-bold py-3.5 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-1">
                 Get Started Today
             </button>
-            <Link to="/how-it-works" className="bg-[#2e32d4] text-white hover:bg-[#3e42e4] font-bold py-3.5 px-8 rounded-lg transition-all">
+            <Link to="/how-it-works" className="bg-white/10 text-white hover:bg-white/20 font-bold py-3.5 px-8 rounded-lg transition-all">
                 See How It Works
             </Link>
         </div>

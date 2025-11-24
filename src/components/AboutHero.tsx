@@ -16,28 +16,28 @@ const AboutHero: React.FC = () => {
       {/* Parallax Elements - Rolling Squares */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div 
-          className="absolute top-[20%] right-[10%] w-64 h-64 bg-white/5 rounded-[3rem] backdrop-blur-3xl"
+          className="absolute top-[20%] right-[10%] w-64 h-64 bg-white/5 rounded-lg backdrop-blur-3xl"
           style={{ 
             transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[10%] left-[10%] w-48 h-48 bg-blue-400/10 rounded-[2rem] backdrop-blur-3xl"
+          className="absolute bottom-[10%] left-[10%] w-48 h-48 bg-blue-400/10 rounded-lg backdrop-blur-3xl"
           style={{ 
             transform: `translateY(-${scrollY * 0.1}px) rotate(-${scrollY * 0.15}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute top-[10%] left-[15%] w-24 h-24 bg-indigo-400/10 rounded-2xl backdrop-blur-md"
+          className="absolute top-[10%] left-[15%] w-24 h-24 bg-indigo-400/10 rounded-lg backdrop-blur-md"
           style={{ 
             transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.2}deg)`,
             transition: 'transform 0.1s linear'
           }}
         ></div>
         <div 
-          className="absolute bottom-[30%] right-[25%] w-32 h-32 bg-white/5 rounded-xl backdrop-blur-xl"
+          className="absolute bottom-[30%] right-[25%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-xl"
           style={{ 
             transform: `translateY(${scrollY * 0.15}px) rotate(-${scrollY * 0.05}deg)`,
             transition: 'transform 0.1s linear'
