@@ -37,7 +37,7 @@ const HomeFeatures: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((f, i) => (
-                <div key={i} className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300">
+                <div key={i} className="bg-white p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300">
                     <div className="mb-6">{f.icon}</div>
                     <h3 className="text-xl font-bold text-brand-900 mb-4">{f.title}</h3>
                     <p className="text-gray-600 leading-relaxed">

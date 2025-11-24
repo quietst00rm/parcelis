@@ -34,8 +34,8 @@ const AboutWhyChoose: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white border border-gray-100 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 group">
-              <div className="w-16 h-16 bg-[#1e22aa] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <div key={index} className="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-2xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-[#1e22aa] rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">{feature.title}</h3>

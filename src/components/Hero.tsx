@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
       {/* Animated Parallax Squares & Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
          <div 
-          className="absolute top-[15%] left-[5%] w-32 h-32 bg-white/5 rounded-3xl backdrop-blur-3xl"
+          className="absolute top-[15%] left-[5%] w-32 h-32 bg-white/5 rounded-xl backdrop-blur-3xl"
           style={{ 
               transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.1}deg)`,
               transition: 'transform 0.1s linear'
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
           }}
         ></div>
         <div 
-          className="absolute bottom-[10%] right-[35%] w-40 h-40 bg-white/5 rounded-3xl backdrop-blur-xl"
+          className="absolute bottom-[10%] right-[35%] w-40 h-40 bg-white/5 rounded-xl backdrop-blur-xl"
           style={{ 
               transform: `translateY(-${scrollY * 0.1}px) rotate(${scrollY * 0.05}deg)`,
               transition: 'transform 0.1s linear'
@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
              <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-300 to-brand rounded-2xl transform rotate-12 opacity-40 blur-lg animate-pulse"></div>
 
             {/* Added 'group' class to enable hover effect for the button */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col w-full aspect-square group">
+            <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col w-full aspect-square group">
                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                  
                  {/* Navigation Button - Appears on hover */}

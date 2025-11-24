@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,12 +7,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { HeroBanner } from "@/components/HeroBanner";
+import ContactHero from '@/components/ContactHero';
 import uspsLogo from "@/assets/carriers/usps.png";
 import dhlLogo from "@/assets/carriers/dhl.png";
 import upsLogo from "@/assets/carriers/ups.png";
 import fedexLogo from "@/assets/carriers/fedex.png";
+
 const ContactPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,19 +59,7 @@ const ContactPage = () => {
   };
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
-      <HeroBanner
-        headline="Get in Touch"
-        subheadline="Questions about PARCELIS? We're here to help."
-        primaryCTA={{
-          text: "Apply Now",
-          href: "/apply",
-        }}
-        secondaryCTA={{
-          text: "View Pricing",
-          href: "/pricing",
-        }}
-      />
+      <ContactHero />
 
       <div className="container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16">

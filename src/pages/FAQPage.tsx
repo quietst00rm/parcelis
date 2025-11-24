@@ -1,4 +1,5 @@
-import { HeroBanner } from "@/components/HeroBanner";
+import React, { useEffect } from 'react';
+import FAQHero from '@/components/FAQHero';
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -11,20 +12,13 @@ import {
 import { HelpCircle, Shield, Clock, DollarSign, Zap, Users } from "lucide-react";
 
 const FAQPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
-      <HeroBanner
-        headline="Frequently Asked Questions"
-        subheadline="Everything you need to know about protecting your packages with PARCELIS"
-        primaryCTA={{
-          text: "Get Started",
-          href: "/apply",
-        }}
-        secondaryCTA={{
-          text: "Contact Us",
-          href: "/contact",
-        }}
-      />
+    <div className="min-h-screen bg-white">
+      <FAQHero />
 
       {/* Getting Started Section */}
       <Section>
@@ -35,7 +29,7 @@ const FAQPage = () => {
           </div>
           
           <Accordion type="single" collapsible className="w-full space-y-4">
-            <AccordionItem value="item-1" className="bg-card border border-border rounded-lg px-6">
+            <AccordionItem value="item-1" className="bg-white border border-gray-200 rounded-lg px-6">
               <AccordionTrigger className="text-lg font-semibold hover:no-underline">
                 What is PARCELIS?
               </AccordionTrigger>

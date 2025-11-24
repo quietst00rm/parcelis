@@ -48,7 +48,7 @@ const HomeHero: React.FC = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Square 1 */}
         <div 
-          className="absolute top-[10%] left-[5%] w-32 h-32 bg-white/5 rounded-3xl backdrop-blur-3xl"
+          className="absolute top-[10%] left-[5%] w-32 h-32 bg-white/5 rounded-xl backdrop-blur-3xl"
           style={{ 
               transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.2}deg)`,
               transition: 'transform 0.1s linear'

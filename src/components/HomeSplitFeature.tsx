@@ -12,7 +12,7 @@ const HomeSplitFeature: React.FC = () => {
                     <h2 className="text-4xl font-extrabold text-brand mb-10">Comprehensive Protection</h2>
                     <div className="space-y-6">
                         {['Lost Packages', 'Damaged Shipments', 'Porch Piracy', 'All Global Carriers'].map((item) => (
-                            <div key={item} className="flex items-center gap-4 group p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                            <div key={item} className="flex items-center gap-4 group p-4 rounded-lg hover:bg-gray-50 transition-colors">
                                 <div className="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-all flex-shrink-0">
                                     <CheckCircle2 className="w-6 h-6 text-brand group-hover:text-white" />
                                 </div>
@@ -24,7 +24,7 @@ const HomeSplitFeature: React.FC = () => {
 
                 {/* Right Side (5-7 Days Card) - 60%, styled as a Big Card */}
                 <div className="w-full lg:w-3/5">
-                    <div className="h-full bg-brand rounded-[2.5rem] p-12 lg:p-20 flex flex-col justify-center items-center text-center relative overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+                    <div className="h-full bg-brand rounded-2xl p-12 lg:p-20 flex flex-col justify-center items-center text-center relative overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
                         {/* Abstract Background pattern */}
                         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>

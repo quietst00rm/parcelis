@@ -36,7 +36,7 @@ const PricingCalculator: React.FC = () => {
             </p>
         </div>
 
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-gray-100 mb-10">
+        <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-10 border border-gray-100 mb-10">
             <div className="mb-4">
                 <label className="block text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide">Package Value</label>
                 <div className="relative">

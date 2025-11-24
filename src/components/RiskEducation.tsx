@@ -9,7 +9,7 @@ const RiskEducation: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             
             {/* What It Means */}
-            <div className="flex flex-col items-start p-8 rounded-3xl hover:bg-muted transition-colors duration-300 border border-transparent hover:border-border">
+            <div className="flex flex-col items-start p-8 rounded-xl hover:bg-muted transition-colors duration-300 border border-transparent hover:border-border">
                 <div className="mb-6 text-primary">
                     <AlertTriangle size={48} strokeWidth={1.5} />
                 </div>

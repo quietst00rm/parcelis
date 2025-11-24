@@ -10,7 +10,7 @@ const PricingCoverage: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-8">
             
             {/* Included */}
-            <div className="bg-white rounded-3xl p-10 flex-1 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-xl p-10 flex-1 shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold text-slate-900 mb-8 pb-4 border-b border-gray-100">Full Protection Across All Scenarios</h3>
                 <ul className="space-y-6">
                     {[
@@ -30,7 +30,7 @@ const PricingCoverage: React.FC = () => {
             </div>
 
              {/* Excluded */}
-             <div className="bg-gray-50 rounded-3xl p-10 flex-1 shadow-inner border border-gray-100">
+             <div className="bg-gray-50 rounded-xl p-10 flex-1 shadow-inner border border-gray-100">
                 <h3 className="text-xl font-bold text-slate-900 mb-8 pb-4 border-b border-gray-200">Standard Exclusions</h3>
                 <ul className="space-y-6">
                     {[

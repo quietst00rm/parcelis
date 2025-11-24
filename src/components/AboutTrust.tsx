@@ -5,7 +5,7 @@ const AboutTrust: React.FC = () => {
   return (
     <div className="py-24 bg-gray-100/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray-100/50 rounded-[3rem] p-12 md:p-16">
+        <div className="bg-gray-100/50 rounded-2xl p-12 md:p-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 text-center mb-16">
                 Built on Trust and Transparency
             </h2>
