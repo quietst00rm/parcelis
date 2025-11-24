@@ -55,9 +55,7 @@ const WhyParcelis: React.FC = () => {
             return (
               <div key={index} className="flex gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-brand" />
-                  </div>
+                  <Icon className="w-10 h-10 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">

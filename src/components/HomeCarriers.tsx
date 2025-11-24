@@ -13,7 +13,7 @@ const HomeCarriers: React.FC = () => {
             Comprehensive protection across USPS, UPS, FedEx, DHL, and all regional and international carriers.
         </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
              {/* USPS Logo */}
              <div className="flex items-center justify-center h-16 w-auto">
                 <img src={uspsLogo} alt="USPS" className="h-full w-auto object-contain" />
