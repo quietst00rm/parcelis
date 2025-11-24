@@ -13,6 +13,7 @@ const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "How It Works", path: "/how-it-works" },
     { name: "Pricing", path: "/pricing" },
+    { name: "Self-Insurance Risk Calculator", path: "/risk-calculator" },
     { name: "About", path: "/about" },
     { name: "FAQ", path: "/faq" },
     { name: "Contact", path: "/contact" },
