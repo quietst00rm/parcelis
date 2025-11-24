@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 
   const fileClaimButtonClass = scrolled
     ? 'text-gray-700 hover:text-brand font-medium'
-    : 'bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all'; 
+    : 'bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all';
 
   return (
     <nav 
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
             </a>
             <Link 
               to="/apply"
-              className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${applyButtonClass}`}
+              className={`text-sm font-bold px-6 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 ${applyButtonClass}`}
             >
               Apply Now
             </Link>

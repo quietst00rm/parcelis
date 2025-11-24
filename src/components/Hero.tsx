@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
 
             <button 
                 onClick={scrollToCalculator}
-                className="bg-white text-brand hover:bg-blue-50 hover:text-brand-dark font-bold py-4 px-10 rounded-xl shadow-xl transition-all transform hover:-translate-y-1"
+                className="bg-white text-brand hover:bg-blue-50 hover:text-brand-dark font-bold py-4 px-10 rounded-lg shadow-xl transition-all transform hover:-translate-y-1"
             >
                 Check Your Risk
             </button>

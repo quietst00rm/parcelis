@@ -100,7 +100,7 @@ const PenaltyCalculator: React.FC = () => {
                             <select 
                                 value={selectedStateCode}
                                 onChange={(e) => setSelectedStateCode(e.target.value)}
-                                className="block w-full pl-5 pr-12 py-4 text-base appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:bg-card sm:text-sm rounded-2xl bg-muted shadow-inner transition-all text-foreground cursor-pointer"
+                                className="block w-full pl-5 pr-12 py-4 text-base appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:bg-card sm:text-sm rounded-lg bg-muted shadow-inner transition-all text-foreground cursor-pointer"
                             >
                                 {states.map(state => (
                                     <option key={state.stateCode} value={state.stateCode}>
