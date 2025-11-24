@@ -50,13 +50,64 @@
     <!-- Theme color -->
     <meta name="theme-color" content="#1e2099" />
 
-    <!-- Fonts - Urbanpolis for tech-driven brand -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Skip Link for Accessibility -->
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                DEFAULT: '#1e22aa',
+                dark: '#151885',
+                light: '#e8e9ff',
+                50: '#f0f1ff',
+                100: '#e0e2ff',
+                900: '#101155',
+                footer: '#1c206e',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              blob: 'blob 7s infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>
+      body { font-family: 'Inter', sans-serif; }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #1e22aa; cursor: pointer; margin-top: -10px; box-shadow: 0 4px 6px -1px rgba(30, 34, 170, 0.3); transition: transform 0.1s;
+      }
+      input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+      input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cursor: pointer; background: #e0e2ff; border-radius: 3px; }
+      .glass-nav { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+      .animation-delay-2000 { animation-delay: 2s; }
+      .animation-delay-4000 { animation-delay: 4s; }
+      @keyframes pulse-ring {
+        0% { box-shadow: 0 0 0 0 rgba(30, 34, 170, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(30, 34, 170, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(30, 34, 170, 0); }
+      }
+      .pulsating-thumb::-webkit-slider-thumb { animation: pulse-ring 2s infinite; }
       .skip-link {
         position: absolute;
         top: -40px;

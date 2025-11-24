@@ -1,10 +1,19 @@
 import React from 'react';
-import { ShoppingBag, ShoppingCart, Code2, Wrench, ArrowRight } from 'lucide-react';
+import { ShoppingBag, ShoppingCart, Code2, Wrench } from 'lucide-react';
+import shopifyLogo from '@/assets/platforms/shopify.png';
+import nextLogo from '@/assets/platforms/29next.png';
+
+interface Integration {
+  name: string;
+  status: 'LIVE' | 'AVAILABLE';
+  logo?: string;
+  icon?: React.ReactElement;
+}
 
 const HomeIntegrations: React.FC = () => {
-  const integrations = [
-    { name: 'Shopify', status: 'LIVE', icon: <ShoppingBag /> },
-    { name: 'NEXT Commerce', status: 'LIVE', icon: <ArrowRight className="bg-brand text-white rounded-sm p-0.5" /> },
+  const integrations: Integration[] = [
+    { name: 'Shopify', status: 'LIVE', logo: shopifyLogo },
+    { name: 'NEXT Commerce', status: 'LIVE', logo: nextLogo },
     { name: 'WooCommerce', status: 'LIVE', icon: <ShoppingCart /> },
     { name: 'BigCommerce', status: 'LIVE', icon: <ShoppingBag /> }, 
     { name: 'Magento', status: 'LIVE', icon: <Wrench /> },
@@ -19,12 +28,15 @@ const HomeIntegrations: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {integrations.map((item, idx) => (
                 <div key={idx} className="bg-white rounded-2xl p-8 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group cursor-pointer border border-transparent hover:border-blue-100 transform hover:-translate-y-1">
-                    <div className="text-brand mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        {/* Placeholder for actual logos, using icons */}
-                        <div className="w-12 h-12 flex items-center justify-center">
-                           {item.name === 'Shopify' ? (
-                               <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10"><path d="M21.5 5.5l-2-2.5-4.5 1.5-3.5-3-3.5 3-4.5-1.5-2 2.5 3 14h14l3-14zm-10 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-                           ) : React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, { className: "w-10 h-10" })}
+                    <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-24 h-12 flex items-center justify-center">
+                           {item.logo ? (
+                               <img src={item.logo} alt={`${item.name} logo`} className="max-w-full max-h-full object-contain" />
+                           ) : (
+                               <div className="text-brand">
+                                   {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, { className: "w-10 h-10" })}
+                               </div>
+                           )}
                         </div>
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">{item.name}</h3>
