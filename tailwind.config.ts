@@ -18,7 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-urbanpolis)"],
+        sans: ["Inter", "var(--font-urbanpolis)"],
+        inter: ["Inter", "sans-serif"],
         urbanpolis: ["var(--font-urbanpolis)"],
       },
       fontSize: {
@@ -43,6 +44,15 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          DEFAULT: "#1e22aa",
+          dark: "#151885",
+          light: "#e8e9ff",
+          50: "#f0f1ff",
+          100: "#e0e2ff",
+          900: "#101155",
+          footer: "#1c206e",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           hover: "hsl(var(--primary-hover))",
@@ -100,6 +110,8 @@ export default {
         "float-slow": "float 12s ease-in-out infinite",
         "float-medium": "float 10s ease-in-out infinite",
         "float-fast": "float 8s ease-in-out infinite",
+        "fade-in": "fadeIn 0.5s ease-in-out",
+        "blob": "blob 7s infinite",
       },
       keyframes: {
         ...{
@@ -127,6 +139,16 @@ export default {
           "50%": {
             transform: "translateY(-15px) rotate(3deg)",
           },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
         },
       },
     },

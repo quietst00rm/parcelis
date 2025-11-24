@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight, FileText } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -19,10 +18,13 @@ const Navigation = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const isActive = (path: string) => location.pathname === path;
+  const isRiskCalculatorPage = location.pathname === "/risk-calculator";
+
   // Handle scroll detection
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 10);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -41,22 +43,32 @@ const Navigation = () => {
     };
   }, [mobileMenuOpen]);
 
-  const headerBg = scrolled || !isHomePage 
-    ? "bg-white/95 shadow-sm" 
-    : "bg-white/90 shadow-md";
+  // Dynamic Styles
+  // Static (on hero): White text on transparent background
+  // Scrolled: Dark text on glass/white background
+  const navBackgroundClass = scrolled 
+    ? 'glass-nav' 
+    : (isRiskCalculatorPage ? 'bg-transparent' : 'glass-nav');
+    
+  const textColorClass = scrolled || !isRiskCalculatorPage ? 'text-gray-600' : 'text-white drop-shadow-md';
+  const hoverColorClass = scrolled || !isRiskCalculatorPage ? 'hover:text-brand' : 'hover:text-blue-200';
+  const activeColorClass = scrolled || !isRiskCalculatorPage ? 'text-brand font-bold' : 'text-white font-bold underline decoration-2 underline-offset-4';
   
-  const textColor = scrolled || !isHomePage 
-    ? "text-foreground" 
-    : "text-foreground";
-  
-  const menuIconColor = scrolled || !isHomePage 
-    ? "text-foreground" 
-    : "text-foreground";
+  // Button logic:
+  // Static: White Background, Purple Text
+  // Scrolled: Purple Background, White Text
+  const applyButtonClass = scrolled || !isRiskCalculatorPage
+    ? 'bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20'
+    : 'bg-white hover:bg-gray-100 text-brand shadow-lg';
+
+  const fileClaimButtonClass = scrolled || !isRiskCalculatorPage
+    ? 'text-gray-700 hover:text-brand font-medium'
+    : 'bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`} style={{ backdropFilter: 'blur(12px)' }}>
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
             <img src={logo} alt="PARCELIS" className="h-10 lg:h-20 w-auto" />
           </Link>
@@ -66,19 +78,23 @@ const Navigation = () => {
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-primary border-2 border-primary rounded-lg hover:bg-primary/5 transition-colors"
+            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-brand border-2 border-brand rounded-lg hover:bg-brand/5 transition-colors"
           >
-            <FileText size={16} />
+            <FileText size={16} className="text-brand" />
             <span>File a Claim</span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-base lg:text-lg font-medium lg:font-semibold transition-colors duration-200 relative ${textColor} hover:text-primary nav-link-animated`}
+                className={`text-sm font-semibold transition-colors duration-200 ${
+                  isActive(link.path)
+                    ? activeColorClass
+                    : `${textColorClass} ${hoverColorClass}`
+                }`}
                 onClick={() => window.scrollTo(0, 0)}
               >
                 {link.name}
@@ -92,88 +108,74 @@ const Navigation = () => {
               href="https://claims.myparcelis.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-12 px-6 text-base inline-flex items-center gap-2 text-foreground border-2 border-input rounded-lg hover:bg-accent transition-colors"
+              className={`text-sm transition-colors ${fileClaimButtonClass}`}
             >
-              <FileText size={16} className="text-primary" />
               File a Claim
             </a>
             <Link
               to="/apply"
-              className="btn btn-primary h-12 px-6 text-base inline-flex items-center gap-2"
+              className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${applyButtonClass}`}
+              onClick={() => window.scrollTo(0, 0)}
             >
               Apply Now
-              <ChevronRight size={16} />
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`lg:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-none ${textColorClass} ${hoverColorClass}`}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? (
-              <X size={24} className={menuIconColor} />
-            ) : (
-              <Menu size={24} className={menuIconColor} />
-            )}
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Full-Screen Mobile Menu Overlay */}
-      <div className={`md:hidden fixed top-0 left-0 w-screen h-screen bg-primary z-50 flex flex-col items-center justify-center transition-all duration-300 ${
-        mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-      }`}>
-        {/* Close Button */}
-        <button
-          onClick={() => setMobileMenuOpen(false)}
-          className="absolute top-4 right-4 p-2 text-white z-51"
-          aria-label="Close menu"
-        >
-          <X size={32} />
-        </button>
-
-        {/* Navigation Links */}
-        <nav className="flex flex-col items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="text-white text-2xl font-medium hover:opacity-80 transition-opacity"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                window.scrollTo(0, 0);
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
-          
-          {/* Action Buttons */}
-          <a
-            href="https://claims.myparcelis.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 bg-white/10 text-white hover:bg-white/20 border-2 border-white px-10 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <FileText size={20} />
-            File a Claim
-          </a>
-          <Link
-            to="/apply"
-            className="bg-white text-primary hover:bg-white/95 px-10 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Apply Now
-            <ChevronRight size={20} />
-          </Link>
-        </nav>
-      </div>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl absolute w-full shadow-xl rounded-b-3xl border-t border-gray-100">
+          <div className="px-4 pt-2 pb-6 space-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.scrollTo(0, 0);
+                }}
+                className={`block px-4 py-3 rounded-xl text-base font-medium ${
+                  isActive(link.path)
+                    ? 'text-brand bg-brand-50'
+                    : 'text-gray-700 hover:text-brand hover:bg-gray-50'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <div className="pt-4 flex flex-col gap-3 px-2">
+              <a
+                href="https://claims.myparcelis.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center text-brand font-bold bg-white border border-gray-200 py-3 rounded-xl hover:bg-gray-50"
+              >
+                File a Claim
+              </a>
+              <Link
+                to="/apply"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.scrollTo(0, 0);
+                }}
+                className="w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl shadow-md"
+              >
+                Apply Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
