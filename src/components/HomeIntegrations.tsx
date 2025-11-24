@@ -1,7 +1,10 @@
 import React from 'react';
-import { ShoppingBag, ShoppingCart, Code2, Wrench } from 'lucide-react';
-import shopifyLogo from '@/assets/platforms/shopify.png';
+import { Code2 } from 'lucide-react';
+import shopifyLogo from '@/assets/platforms/shopify.svg';
 import nextLogo from '@/assets/platforms/29next.png';
+import woocommerceLogo from '@/assets/platforms/woocommerce.svg';
+import bigcommerceLogo from '@/assets/platforms/bigcommerce.svg';
+import magentoLogo from '@/assets/platforms/magento.svg';
 
 interface Integration {
   name: string;
@@ -14,9 +17,9 @@ const HomeIntegrations: React.FC = () => {
   const integrations: Integration[] = [
     { name: 'Shopify', status: 'LIVE', logo: shopifyLogo },
     { name: 'NEXT Commerce', status: 'LIVE', logo: nextLogo },
-    { name: 'WooCommerce', status: 'LIVE', icon: <ShoppingCart /> },
-    { name: 'BigCommerce', status: 'LIVE', icon: <ShoppingBag /> }, 
-    { name: 'Magento', status: 'LIVE', icon: <Wrench /> },
+    { name: 'WooCommerce', status: 'LIVE', logo: woocommerceLogo },
+    { name: 'BigCommerce', status: 'LIVE', logo: bigcommerceLogo }, 
+    { name: 'Magento', status: 'LIVE', logo: magentoLogo },
     { name: 'Custom API', status: 'AVAILABLE', icon: <Code2 /> },
   ];
 

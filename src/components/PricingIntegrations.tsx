@@ -2,6 +2,9 @@ import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import shopifyLogo from '@/assets/platforms/shopify.svg';
 import nextLogo from '@/assets/platforms/29next.png';
+import woocommerceLogo from '@/assets/platforms/woocommerce.svg';
+import bigcommerceLogo from '@/assets/platforms/bigcommerce.svg';
+import magentoLogo from '@/assets/platforms/magento.svg';
 
 const PricingIntegrations: React.FC = () => {
   return (
@@ -32,17 +35,20 @@ const PricingIntegrations: React.FC = () => {
                     </div>
                     {/* Woo */}
                     <div className="flex items-center gap-2">
-                         <span className="font-bold text-purple-900 text-sm">WooCommerce</span>
+                         <img src={woocommerceLogo} alt="WooCommerce" className="h-6 object-contain" />
+                         <span className="font-bold text-slate-700 text-sm">WooCommerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* BigCommerce */}
                     <div className="flex items-center gap-2">
+                         <img src={bigcommerceLogo} alt="BigCommerce" className="h-6 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">BigCommerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                      {/* Magento */}
                      <div className="flex items-center gap-2">
-                         <span className="font-bold text-orange-600 text-sm">Magento</span>
+                         <img src={magentoLogo} alt="Magento" className="h-6 object-contain" />
+                         <span className="font-bold text-slate-700 text-sm">Magento</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                 </div>

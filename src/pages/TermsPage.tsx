@@ -1,4 +1,10 @@
+import { useEffect } from 'react';
+
 const TermsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="min-h-screen py-20 pt-32">
       <div className="container mx-auto px-4">
