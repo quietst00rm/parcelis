@@ -102,10 +102,10 @@ const HomeHero: React.FC = () => {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
-          <button className="bg-white text-brand hover:bg-blue-50 font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-base md:text-lg">
+          <button className="bg-white text-brand hover:bg-blue-50 font-bold py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-base md:text-lg">
             Protect Your Customers Today
           </button>
-          <button className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold py-4 px-10 rounded-xl shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 text-base md:text-lg">
+          <button className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold py-4 px-10 rounded-lg shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 text-base md:text-lg">
             See How It Works
           </button>
         </div>

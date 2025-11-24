@@ -47,7 +47,7 @@ const PricingCalculator: React.FC = () => {
                         type="number" 
                         value={inputValue}
                         onChange={handleInputChange}
-                        className="block w-full pl-9 pr-12 py-3 text-lg border-2 border-brand/20 rounded-xl focus:ring-brand focus:border-brand transition-colors text-slate-900"
+                        className="block w-full pl-9 pr-12 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900"
                         placeholder="Enter package value"
                     />
                     <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
@@ -109,7 +109,7 @@ const PricingCalculator: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-             <button className="bg-brand text-white font-bold py-4 px-10 rounded-xl hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 text-lg">
+             <button className="bg-brand text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 text-lg">
                  See How It Works
              </button>
         </div>
