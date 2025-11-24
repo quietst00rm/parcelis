@@ -211,9 +211,17 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Urbanpolis', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', 'Urbanpolis', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     color: hsl(var(--color-dark-gray));
     line-height: 1.6;
+  }
+  
+  /* Glass Nav Effect */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 }
 
