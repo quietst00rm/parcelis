@@ -98,7 +98,7 @@ const WhyParcelis: React.FC = () => {
         </div>
 
         {/* Why Merchants Choose Parcelis */}
-        <div className="bg-card rounded-3xl shadow-lg p-8 md:p-12 mb-12">
+        <div className="bg-card rounded-xl shadow-lg p-8 md:p-12 mb-12">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
             Why Merchants Choose Parcelis
           </h3>
@@ -139,7 +139,7 @@ const WhyParcelis: React.FC = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-primary rounded-3xl shadow-2xl p-8 md:p-12 text-center">
+        <div className="bg-primary rounded-xl shadow-2xl p-8 md:p-12 text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
             Ready to secure your shipments?
           </h3>

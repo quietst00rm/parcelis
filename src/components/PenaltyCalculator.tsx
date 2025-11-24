@@ -87,7 +87,7 @@ const PenaltyCalculator: React.FC = () => {
            </p>
         </div>
 
-        <div className="bg-card rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col lg:flex-row">
+        <div className="bg-card rounded-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col lg:flex-row">
             
             {/* Left: Inputs */}
             <div className="p-8 lg:p-12 w-full lg:w-1/2 bg-card">

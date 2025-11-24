@@ -1,24 +1,17 @@
+import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Settings, Shield, FileCheck, TrendingUp, Zap } from "lucide-react";
-import { HeroBanner } from "@/components/HeroBanner";
+import HowItWorksHero from '@/components/HowItWorksHero';
 
 const HowItWorksPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen">
-      {/* Hero Banner Section */}
-      <HeroBanner
-        headline="Protection That Works — So You Don't Have To."
-        subheadline="Seamlessly integrate Parcelis into your store, offer coverage at checkout, and let us handle every claim from start to finish."
-        primaryCTA={{
-          text: "Get Started",
-          href: "/apply",
-        }}
-        secondaryCTA={{
-          text: "See Pricing",
-          href: "/pricing",
-        }}
-      />
+      <HowItWorksHero />
 
       {/* 4-Step Process Section */}
       <section className="py-20 bg-background">
@@ -29,45 +22,45 @@ const HowItWorksPage = () => {
           
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Step 1: Integrate */}
-            <div className="bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="w-16 h-16 bg-[#1e22aa] rounded-lg flex items-center justify-center mb-6">
                 <Settings className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-primary mb-4">Integrate</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[#1e22aa] mb-4">Integrate</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Connect Parcelis via our Shopify, WooCommerce, or API integration in minutes. No coding, no contracts — just instant coverage for your customers.
               </p>
             </div>
 
             {/* Step 2: Offer Protection */}
-            <div className="bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="w-16 h-16 bg-[#1e22aa] rounded-lg flex items-center justify-center mb-6">
                 <Shield className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-primary mb-4">Offer Protection</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[#1e22aa] mb-4">Offer Protection</h3>
+              <p className="text-gray-600 leading-relaxed">
                 At checkout, customers can opt-in to protect their order against loss, damage, or theft — giving them confidence to complete their purchase.
               </p>
             </div>
 
             {/* Step 3: We Handle Claims */}
-            <div className="bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="w-16 h-16 bg-[#1e22aa] rounded-lg flex items-center justify-center mb-6">
                 <FileCheck className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-primary mb-4">We Handle Claims</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[#1e22aa] mb-4">We Handle Claims</h3>
+              <p className="text-gray-600 leading-relaxed">
                 If a package goes missing or arrives damaged, customers submit claims directly through our self-service portal. Our team manages resolution and payout in 5–7 days, keeping your inbox clear and your customers satisfied.
               </p>
             </div>
 
             {/* Step 4: You Stay Focused on Growth */}
-            <div className="bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="w-16 h-16 bg-[#1e22aa] rounded-lg flex items-center justify-center mb-6">
                 <TrendingUp className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-primary mb-4">You Stay Focused on Growth</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[#1e22aa] mb-4">You Stay Focused on Growth</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Parcelis removes the burden of post-delivery issues — freeing your team to focus on sales, not support.
               </p>
             </div>
@@ -76,7 +69,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Live Integrations Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Live Integrations
@@ -84,7 +77,7 @@ const HowItWorksPage = () => {
           
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Shopify */}
-            <div className="bg-card rounded-xl p-8 border border-border shadow-sm relative">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm relative">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold">Shopify</h3>
                 <span className="px-3 py-1 bg-success text-success-foreground rounded-full text-xs font-semibold">

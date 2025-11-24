@@ -42,7 +42,7 @@ const AboutAdvantage: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {cards.map((card, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-3xl p-10 hover:shadow-xl transition-all duration-300">
+                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-10 hover:shadow-xl transition-all duration-300">
                     <div className="mb-6">
                         {card.icon}
                     </div>

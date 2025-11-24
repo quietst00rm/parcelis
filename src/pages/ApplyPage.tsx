@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,8 +6,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import ApplyHero from '@/components/ApplyHero';
 
 const ApplyPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     businessName: "",
     legalEntityName: "",
@@ -54,17 +58,11 @@ const ApplyPage = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen">
+      <ApplyHero />
+      <div className="container mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Apply for PARCELIS</h1>
-            <p className="text-lg text-muted-foreground">
-              Start protecting packages and generating profit. Complete the application below to get started.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-lg p-8 space-y-8">
+          <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-xl p-8 space-y-8 shadow-sm">
             {/* Business Information */}
             <section>
               <h2 className="text-2xl font-bold mb-4">Business Information</h2>

@@ -4,7 +4,7 @@ const AboutMission: React.FC = () => {
   return (
     <div className="bg-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-[#1e22aa] rounded-[3rem] p-12 md:p-24 text-center shadow-2xl relative overflow-hidden">
+        <div className="bg-[#1e22aa] rounded-2xl p-12 md:p-24 text-center shadow-2xl relative overflow-hidden">
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>

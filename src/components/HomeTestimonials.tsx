@@ -11,7 +11,7 @@ const HomeTestimonials: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 className="text-4xl font-extrabold text-white mb-16">Trusted by Growing Brands</h2>
 
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl p-10 md:p-16 text-left shadow-2xl relative">
+        <div className="max-w-3xl mx-auto bg-white rounded-xl p-10 md:p-16 text-left shadow-2xl relative">
             <div className="mb-8 opacity-20">
                 <Quote className="w-16 h-16 text-brand" fill="currentColor" />
             </div>
