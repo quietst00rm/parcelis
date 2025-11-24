@@ -18,7 +18,7 @@ const AboutCarriers: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           
           {/* USPS */}
-          <div className="bg-white rounded-xl p-8 border border-gray-100 text-center flex flex-col items-center hover:shadow-xl transition-shadow h-full">
+          <div className="bg-white rounded-lg p-8 border border-gray-100 text-center flex flex-col items-center transition-shadow h-full">
             <div className="h-20 flex items-center justify-center mb-6 w-full">
               <img src={uspsLogo} alt="USPS" className="h-12 object-contain" />
             </div>
@@ -27,7 +27,7 @@ const AboutCarriers: React.FC = () => {
           </div>
 
           {/* UPS */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-100 text-center flex flex-col items-center hover:shadow-xl transition-shadow h-full">
+          <div className="bg-white rounded-lg p-8 border border-gray-100 text-center flex flex-col items-center transition-shadow h-full">
             <div className="h-20 flex items-center justify-center mb-6 w-full">
               <img src={upsLogo} alt="UPS" className="h-14 object-contain" />
             </div>
@@ -36,7 +36,7 @@ const AboutCarriers: React.FC = () => {
           </div>
 
           {/* FedEx */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-100 text-center flex flex-col items-center hover:shadow-xl transition-shadow h-full">
+          <div className="bg-white rounded-lg p-8 border border-gray-100 text-center flex flex-col items-center transition-shadow h-full">
             <div className="h-20 flex items-center justify-center mb-6 w-full">
               <img src={fedexLogo} alt="FedEx" className="h-10 object-contain" />
             </div>
@@ -45,7 +45,7 @@ const AboutCarriers: React.FC = () => {
           </div>
 
           {/* DHL */}
-          <div className="bg-white rounded-2xl p-8 border border-gray-100 text-center flex flex-col items-center hover:shadow-xl transition-shadow h-full">
+          <div className="bg-white rounded-lg p-8 border border-gray-100 text-center flex flex-col items-center transition-shadow h-full">
             <div className="h-20 flex items-center justify-center mb-6 w-full">
               <img src={dhlLogo} alt="DHL" className="h-10 object-contain" />
             </div>
