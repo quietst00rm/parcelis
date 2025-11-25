@@ -89,7 +89,7 @@ const HomeHero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-48 pb-24">
+      <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 md:pt-48 pb-24">
         
         {/* Headlines */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight drop-shadow-lg">
