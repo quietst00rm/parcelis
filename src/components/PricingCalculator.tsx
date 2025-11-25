@@ -5,8 +5,15 @@ const PricingCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("150");
 
   const packageValue = parseFloat(inputValue) || 0;
-  // Logic: $150 -> $2.50. This implies Cost = Value / 60.
-  const cost = packageValue / 60;
+  // Logic: $2.50 for the first $200, then every $100 it jumps by $1.25
+  let cost = 0;
+  if (packageValue <= 200) {
+    cost = 2.50;
+  } else {
+    const additionalValue = packageValue - 200;
+    const additionalHundreds = Math.ceil(additionalValue / 100);
+    cost = 2.50 + (additionalHundreds * 1.25);
+  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allow empty string to clear the input
@@ -47,12 +54,9 @@ const PricingCalculator: React.FC = () => {
                         type="number" 
                         value={inputValue}
                         onChange={handleInputChange}
-                        className="block w-full pl-9 pr-12 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900"
+                        className="block w-full pl-9 pr-4 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         placeholder="Enter package value"
                     />
-                    <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                         <ChevronsUpDown className="text-gray-400" size={20} />
-                    </div>
                 </div>
             </div>
 

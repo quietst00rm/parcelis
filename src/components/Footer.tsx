@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Mail, Shield } from 'lucide-react';
 import logoWhite from '@/assets/logo-white.png';
 
 const Footer: React.FC = () => {
@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2 pr-8 flex flex-col items-start">
              <div className="flex flex-col items-start gap-4 mb-8">
-               <img src={logoWhite} alt="PARCELIS Logo" className="h-14 w-auto" />
+               <img src={logoWhite} alt="PARCELIS Logo" className="h-28 w-auto" />
             </div>
             <p className="text-lg text-gray-400 leading-relaxed mb-6 max-w-sm">
               Turn package protection into profit. Zero hassle. Real insurance.
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-3 mt-6 md:mt-0">
             <span>Powered by</span>
             <div className="bg-white/10 px-4 py-1.5 rounded-full flex items-center gap-2 text-gray-300 font-semibold">
-                <div className="w-3 h-3 border-2 border-gray-300 rounded-sm"></div>
+                <Shield size={14} className="text-gray-300" />
                 InsureShip
             </div>
           </div>
