@@ -143,7 +143,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-xl absolute w-full shadow-xl rounded-b-3xl border-t border-gray-100">
+        <div className="lg:hidden bg-white absolute w-full shadow-xl rounded-b-3xl border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <Link
