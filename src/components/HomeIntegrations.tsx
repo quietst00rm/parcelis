@@ -32,7 +32,7 @@ const HomeIntegrations: React.FC = () => {
             {integrations.map((item, idx) => (
                 <div key={idx} className="bg-white rounded-2xl p-8 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 group cursor-pointer border border-transparent hover:border-blue-100 transform hover:-translate-y-1">
                     <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <div className="w-32 h-20 flex items-center justify-center">
+                        <div className="w-24 h-12 flex items-center justify-center">
                            {item.logo ? (
                                <img src={item.logo} alt={`${item.name} logo`} className="max-w-full max-h-full object-contain" />
                            ) : (
