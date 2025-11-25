@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logoWhite from '@/assets/logo-white.png';
-import logo from '@/assets/logo.png';
+import logoWhite from '@/assets/logo-icon-white.svg';
+import logo from '@/assets/logo-icon.svg';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                <img 
                  src={(scrolled || isWhiteBgPage) ? logo : logoWhite} 
                  alt="PARCELIS Logo" 
-                 className="h-10 w-auto transition-opacity duration-300"
+                 className="h-12 w-auto transition-opacity duration-300"
                />
             </Link>
           </div>
