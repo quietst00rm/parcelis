@@ -23,31 +23,31 @@ const PricingIntegrations: React.FC = () => {
                 <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
                      {/* Shopify */}
                     <div className="flex items-center gap-2">
-                         <img src={shopifyLogo} alt="Shopify" className="h-6 object-contain" />
+                         <img src={shopifyLogo} alt="Shopify" className="h-10 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">Shopify</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* NEXT */}
                     <div className="flex items-center gap-2">
-                         <img src={nextLogo} alt="NEXT Commerce" className="h-6 object-contain" />
+                         <img src={nextLogo} alt="NEXT Commerce" className="h-10 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">NEXT Commerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* Woo */}
                     <div className="flex items-center gap-2">
-                         <img src={woocommerceLogo} alt="WooCommerce" className="h-6 object-contain" />
+                         <img src={woocommerceLogo} alt="WooCommerce" className="h-10 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">WooCommerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                     {/* BigCommerce */}
                     <div className="flex items-center gap-2">
-                         <img src={bigcommerceLogo} alt="BigCommerce" className="h-6 object-contain" />
+                         <img src={bigcommerceLogo} alt="BigCommerce" className="h-10 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">BigCommerce</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
                      {/* Magento */}
                      <div className="flex items-center gap-2">
-                         <img src={magentoLogo} alt="Magento" className="h-6 object-contain" />
+                         <img src={magentoLogo} alt="Magento" className="h-10 object-contain" />
                          <span className="font-bold text-slate-700 text-sm">Magento</span>
                          <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Live</span>
                     </div>
