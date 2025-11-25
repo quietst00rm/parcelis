@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, ShieldCheck, ChevronsUpDown, Calculator } from 'lucide-react';
+import { Package, ShieldCheck, Calculator } from 'lucide-react';
 
 const PricingCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("200");
@@ -49,12 +49,10 @@ const PricingCalculator: React.FC = () => {
                         type="number" 
                         value={inputValue}
                         onChange={handleInputChange}
-                        className="block w-full pl-9 pr-12 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900"
+                        step="100"
+                        className="block w-full pl-9 pr-4 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900 [&::-webkit-inner-spin-button]:opacity-100 [&::-webkit-inner-spin-button]:cursor-pointer [&::-webkit-outer-spin-button]:opacity-100 [&::-webkit-outer-spin-button]:cursor-pointer"
                         placeholder="Enter package value"
                     />
-                    <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                         <ChevronsUpDown className="text-gray-400" size={20} />
-                    </div>
                 </div>
             </div>
 
@@ -111,7 +109,7 @@ const PricingCalculator: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-             <button className="bg-brand text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 text-lg">
+             <button className="bg-brand text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg">
                  See How It Works
              </button>
         </div>
