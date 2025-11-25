@@ -141,50 +141,74 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white absolute w-full shadow-xl rounded-b-3xl border-t border-gray-100">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  window.scrollTo(0, 0);
-                }}
-                className={`block px-4 py-3 rounded-xl text-base font-medium ${
-                  isActive(link.path)
-                    ? 'text-brand bg-brand-50'
-                    : 'text-gray-700 hover:text-brand hover:bg-gray-50'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-4 flex flex-col gap-3 px-2">
-              <a
-                href="https://claims.myparcelis.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center text-brand font-bold bg-white border border-gray-200 py-3 rounded-xl hover:bg-gray-50"
-              >
-                File a Claim
-              </a>
-              <Link
-                to="/apply"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  window.scrollTo(0, 0);
-                }}
-                className="w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl shadow-md"
-              >
-                Apply Now
-              </Link>
-            </div>
+      {/* Mobile Menu - Full Slide In */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between h-20 px-4 border-b border-gray-100">
+            <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+              <img src={logo} alt="PARCELIS" className="h-10 w-auto" />
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-gray-100 text-gray-600"
+              aria-label="Close menu"
+            >
+              <X size={28} />
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <div className="flex-1 overflow-y-auto px-4 py-6">
+            <nav className="space-y-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`block px-4 py-4 rounded-xl text-lg font-semibold transition-colors ${
+                    isActive(link.path)
+                      ? 'text-brand bg-brand-50'
+                      : 'text-gray-700 hover:text-brand hover:bg-gray-50'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Mobile Menu Footer */}
+          <div className="p-4 border-t border-gray-100 space-y-3">
+            <a
+              href="https://claims.myparcelis.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 text-brand font-bold bg-white border-2 border-brand py-4 rounded-xl hover:bg-brand-50 transition-colors"
+            >
+              <FileText size={20} />
+              File a Claim
+            </a>
+            <Link
+              to="/apply"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.scrollTo(0, 0);
+              }}
+              className="w-full block text-center bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl shadow-lg transition-all hover:scale-105"
+            >
+              Apply Now
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
