@@ -1,99 +1,80 @@
 import React, { useEffect, useState } from 'react';
 import { Shield, Users, Award } from 'lucide-react';
-
 const HomeHero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [counts, setCounts] = useState({ packages: 0, merchants: 0, satisfaction: 0 });
-
+  const [counts, setCounts] = useState({
+    packages: 0,
+    merchants: 0,
+    satisfaction: 0
+  });
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
-    
+
     // Counter Animation
     const duration = 2000; // 2 seconds
     const steps = 60;
     const intervalTime = duration / steps;
-    
     let currentStep = 0;
-    
     const timer = setInterval(() => {
       currentStep++;
       const progress = currentStep / steps;
       const easeOut = (t: number) => 1 - Math.pow(1 - t, 3); // Cubic ease out
       const factor = easeOut(progress);
-
       setCounts({
         packages: Math.floor(50 * factor),
-        merchants: Math.floor(10 * factor), // Target 10 for 10K+
+        merchants: Math.floor(10 * factor),
+        // Target 10 for 10K+
         satisfaction: Math.floor(99 * factor)
       });
-
       if (currentStep >= steps) {
         clearInterval(timer);
       }
     }, intervalTime);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(timer);
     };
   }, []);
-
-  return (
-    <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col">
+  return <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col">
       {/* Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0"></div>
       
       {/* Background Squares (Parallax, Rolling Animation) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Square 1 */}
-        <div 
-          className="absolute top-[10%] left-[5%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-3xl"
-          style={{ 
-              transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.2}deg)`,
-              transition: 'transform 0.1s linear'
-          }}
-        ></div>
+        <div className="absolute top-[10%] left-[5%] w-32 h-32 bg-white/5 rounded-lg backdrop-blur-3xl" style={{
+        transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.2}deg)`,
+        transition: 'transform 0.1s linear'
+      }}></div>
         {/* Square 2 */}
-        <div 
-          className="absolute top-[20%] right-[10%] w-48 h-48 bg-blue-400/10 rounded-lg backdrop-blur-3xl"
-          style={{ 
-              transform: `translateY(${scrollY * 0.1}px) rotate(-${scrollY * 0.15}deg)`,
-              transition: 'transform 0.1s linear'
-          }}
-        ></div>
+        <div className="absolute top-[20%] right-[10%] w-48 h-48 bg-blue-400/10 rounded-lg backdrop-blur-3xl" style={{
+        transform: `translateY(${scrollY * 0.1}px) rotate(-${scrollY * 0.15}deg)`,
+        transition: 'transform 0.1s linear'
+      }}></div>
         {/* Square 3 */}
-        <div 
-          className="absolute bottom-[30%] left-[20%] w-24 h-24 bg-indigo-500/20 rounded-lg backdrop-blur-xl"
-          style={{ 
-              transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.3}deg)`,
-              transition: 'transform 0.1s linear'
-          }}
-        ></div>
+        <div className="absolute bottom-[30%] left-[20%] w-24 h-24 bg-indigo-500/20 rounded-lg backdrop-blur-xl" style={{
+        transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.3}deg)`,
+        transition: 'transform 0.1s linear'
+      }}></div>
         {/* Square 4 */}
-        <div 
-          className="absolute top-[50%] right-[25%] w-64 h-64 bg-white/5 rounded-lg backdrop-blur-3xl opacity-40"
-          style={{ 
-              transform: `translateY(${scrollY * 0.15}px) rotate(-${scrollY * 0.05}deg)`,
-              transition: 'transform 0.1s linear'
-          }}
-        ></div>
+        <div className="absolute top-[50%] right-[25%] w-64 h-64 bg-white/5 rounded-lg backdrop-blur-3xl opacity-40" style={{
+        transform: `translateY(${scrollY * 0.15}px) rotate(-${scrollY * 0.05}deg)`,
+        transition: 'transform 0.1s linear'
+      }}></div>
         {/* Square 5 */}
-        <div 
-          className="absolute -bottom-[10%] left-[10%] w-80 h-80 bg-blue-600/10 rounded-full blur-3xl opacity-50"
-          style={{ 
-              transform: `translateY(${scrollY * 0.1}px)`,
-              transition: 'transform 0.1s linear'
-          }}
-        ></div>
+        <div className="absolute -bottom-[10%] left-[10%] w-80 h-80 bg-blue-600/10 rounded-full blur-3xl opacity-50" style={{
+        transform: `translateY(${scrollY * 0.1}px)`,
+        transition: 'transform 0.1s linear'
+      }}></div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 md:pt-48 pb-24">
+      <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center pt-24 md:pt-48 pb-24 mt-0 sm:px-[24px] mb-px">
         
         {/* Headlines */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-tight drop-shadow-lg">
-          Deliver Confidence with <br/> Every Shipment.
+          Deliver Confidence with <br /> Every Shipment.
         </h1>
         
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-blue-100 leading-relaxed mb-12 font-light">
@@ -145,8 +126,6 @@ const HomeHero: React.FC = () => {
         </div>
       </div>
       
-    </div>
-  );
+    </div>;
 };
-
 export default HomeHero;
