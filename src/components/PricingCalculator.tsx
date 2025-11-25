@@ -5,8 +5,10 @@ const PricingCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("150");
 
   const packageValue = parseFloat(inputValue) || 0;
-  // Logic: $150 -> $2.50. This implies Cost = Value / 60.
-  const cost = packageValue / 60;
+  // Logic: $2.50 for first $200, then $1.25 per $100 increment
+  const cost = packageValue <= 200 
+    ? 2.50 
+    : 2.50 + ((packageValue - 200) / 100) * 1.25;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allow empty string to clear the input
