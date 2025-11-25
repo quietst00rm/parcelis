@@ -11,7 +11,7 @@ const AboutLogos: React.FC = () => {
         <div className="bg-gray-100/70 rounded-2xl p-16 flex flex-col items-center">
             <h3 className="text-2xl font-bold text-slate-800 mb-10">Supported Carriers</h3>
             
-            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 grayscale hover:grayscale-0 transition-all duration-300">
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
                 {/* USPS */}
                 <div className="flex flex-col items-center">
                     <img src={uspsLogo} alt="USPS" className="h-12 object-contain" />

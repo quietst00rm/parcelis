@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Mail, Shield } from 'lucide-react';
 import logoWhite from '@/assets/logo-white.png';
 
 const Footer: React.FC = () => {
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-3 mt-6 md:mt-0">
             <span>Powered by</span>
             <div className="bg-white/10 px-4 py-1.5 rounded-full flex items-center gap-2 text-gray-300 font-semibold">
-                <div className="w-3 h-3 border-2 border-gray-300 rounded-sm"></div>
+                <Shield size={14} className="text-gray-300" />
                 InsureShip
             </div>
           </div>
