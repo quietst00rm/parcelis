@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Package, ShieldCheck, ChevronsUpDown, Calculator } from 'lucide-react';
 
 const PricingCalculator: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>("150");
+  const [inputValue, setInputValue] = useState<string>("200");
 
   const packageValue = parseFloat(inputValue) || 0;
   // Logic: $2.50 for first $200, then $1.25 per $100 increment
