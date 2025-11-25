@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Shield } from 'lucide-react';
-import logoWhite from '@/assets/logo-white.png';
+import logoWhite from '@/assets/logo-new-white.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2 pr-8 flex flex-col items-start">
              <div className="flex flex-col items-start gap-4 mb-8">
-               <img src={logoWhite} alt="PARCELIS Logo" className="h-14 w-auto" />
+               <img src={logoWhite} alt="PARCELIS Logo" className="h-28 w-auto" />
             </div>
             <p className="text-lg text-gray-400 leading-relaxed mb-6 max-w-sm">
               Turn package protection into profit. Zero hassle. Real insurance.
