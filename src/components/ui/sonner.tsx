@@ -14,6 +14,6 @@ const Toaster = ({
       actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
       cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground"
     }
-  }} className="toaster group mt-0 mb-0 px-0 py-0" />;
+  }} className="toaster group mt-0 mb-0 px-0 py-px" />;
 };
 export { Toaster, toast };
