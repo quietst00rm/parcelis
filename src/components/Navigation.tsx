@@ -20,6 +20,10 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
   const isRiskCalculatorPage = location.pathname === "/risk-calculator";
+  
+  // Pages with purple hero backgrounds that need transparent nav when not scrolled
+  const purpleHeroPages = ['/', '/how-it-works', '/pricing', '/about', '/contact', '/apply', '/faq'];
+  const hasPurpleHero = purpleHeroPages.includes(location.pathname);
 
   // Handle scroll detection
   useEffect(() => {
@@ -44,24 +48,25 @@ const Navigation = () => {
   }, [mobileMenuOpen]);
 
   // Dynamic Styles
-  // Static (on hero): White text on transparent background
-  // Scrolled: Dark text on glass/white background
+  // Purple hero pages: Transparent when not scrolled, white text
+  // Risk calculator: Always transparent background
+  // Other pages or scrolled: Glass nav with dark text
   const navBackgroundClass = scrolled 
     ? 'glass-nav' 
-    : (isRiskCalculatorPage ? 'bg-transparent' : 'glass-nav');
+    : (hasPurpleHero || isRiskCalculatorPage ? 'bg-transparent' : 'glass-nav');
     
-  const textColorClass = scrolled || !isRiskCalculatorPage ? 'text-gray-600' : 'text-white drop-shadow-md';
-  const hoverColorClass = scrolled || !isRiskCalculatorPage ? 'hover:text-brand' : 'hover:text-blue-200';
-  const activeColorClass = scrolled || !isRiskCalculatorPage ? 'text-brand font-bold' : 'text-white font-bold underline decoration-2 underline-offset-4';
+  const textColorClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'text-gray-600' : 'text-white drop-shadow-md';
+  const hoverColorClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'hover:text-brand' : 'hover:text-blue-200';
+  const activeColorClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'text-brand font-bold' : 'text-white font-bold underline decoration-2 underline-offset-4';
   
   // Button logic:
-  // Static: White Background, Purple Text
-  // Scrolled: Purple Background, White Text
-  const applyButtonClass = scrolled || !isRiskCalculatorPage
+  // Static on purple hero: White Background, Purple Text
+  // Scrolled or non-purple pages: Purple Background, White Text
+  const applyButtonClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage))
     ? 'bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20'
     : 'bg-white hover:bg-gray-100 text-brand shadow-lg';
 
-  const fileClaimButtonClass = scrolled || !isRiskCalculatorPage
+  const fileClaimButtonClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage))
     ? 'text-gray-700 hover:text-brand font-medium'
     : 'bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all';
 
@@ -78,9 +83,13 @@ const Navigation = () => {
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-brand border-2 border-brand rounded-lg hover:bg-brand/5 transition-colors"
+            className={`lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
+              (scrolled || (!hasPurpleHero && !isRiskCalculatorPage))
+                ? 'text-brand border-brand hover:bg-brand/5'
+                : 'text-white border-white hover:bg-white/10'
+            }`}
           >
-            <FileText size={16} className="text-brand" />
+            <FileText size={16} className={(scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'text-brand' : 'text-white'} />
             <span>File a Claim</span>
           </a>
 
