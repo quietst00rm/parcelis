@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, FileText } from "lucide-react";
-import logo from "@/assets/logo-new.svg";
-import logoWhite from "@/assets/logo-new-white.svg";
+import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -76,11 +75,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
-            <img 
-              src={(scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? logo : logoWhite} 
-              alt="PARCELIS" 
-              className="h-10 lg:h-20 w-auto" 
-            />
+            <img src={logo} alt="PARCELIS" className="h-10 lg:h-20 w-auto" />
           </Link>
 
           {/* Mobile File a Claim Button - Center */}
