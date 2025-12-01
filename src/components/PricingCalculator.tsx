@@ -49,7 +49,7 @@ const PricingCalculator: React.FC = () => {
                         type="number" 
                         value={inputValue}
                         onChange={handleInputChange}
-                        step="100"
+                        step="1"
                         className="block w-full pl-9 pr-4 py-3 text-lg border-2 border-brand/20 rounded-lg focus:ring-brand focus:border-brand transition-colors text-slate-900 [&::-webkit-inner-spin-button]:opacity-100 [&::-webkit-inner-spin-button]:cursor-pointer [&::-webkit-outer-spin-button]:opacity-100 [&::-webkit-outer-spin-button]:cursor-pointer"
                         placeholder="Enter package value"
                     />
