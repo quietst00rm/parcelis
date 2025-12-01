@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Package, ShieldCheck, Calculator } from 'lucide-react';
 
 const PricingCalculator: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>("200");
+  const [inputValue, setInputValue] = useState<string>("100");
 
   const packageValue = parseFloat(inputValue) || 0;
-  // Logic: $2.50 for $0-$200, then $1.25 per $100 tier (201-300=$3.75, 301-400=$5.00, etc)
-  const cost = packageValue <= 200 
+  // Logic: $2.50 for $0-$200, then $1.25 per $100 tier (201-300=$3.75, 301-400=$5.00, etc), max $200
+  const calculatedCost = packageValue <= 200 
     ? 2.50 
     : 2.50 + (Math.ceil((packageValue - 200) / 100) * 1.25);
+  const cost = Math.min(calculatedCost, 200);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allow empty string to clear the input
