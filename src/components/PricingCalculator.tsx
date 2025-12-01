@@ -5,10 +5,10 @@ const PricingCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("200");
 
   const packageValue = parseFloat(inputValue) || 0;
-  // Logic: $2.50 for first $200, then $1.25 per $100 increment
+  // Logic: $2.50 for $0-$200, then $1.25 per $100 tier (201-300=$3.75, 301-400=$5.00, etc)
   const cost = packageValue <= 200 
     ? 2.50 
-    : 2.50 + ((packageValue - 200) / 100) * 1.25;
+    : 2.50 + (Math.ceil((packageValue - 200) / 100) * 1.25);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allow empty string to clear the input
