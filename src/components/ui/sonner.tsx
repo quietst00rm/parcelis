@@ -9,18 +9,26 @@ const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
+      // 👇 We add a direct style prop here to force it out of the layout
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        margin: 0,
+        padding: 0,
+        zIndex: 9999,
+        pointerEvents: "none", // Lets clicks pass through to the nav
+      }}
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg pointer-events-auto", // Re-enable clicks on the actual toast
           description: "group-[.toast]:text-muted-foreground",
           actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
         },
       }}
-      // 👇 THIS IS THE FIX.
-      // We added 'fixed top-0 w-full pointer-events-none' so it floats invisibly.
-      className="toaster group fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] mt-0 mb-0 px-0 py-0"
+      className="toaster group"
       {...props}
     />
   );
