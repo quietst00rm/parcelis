@@ -42,45 +42,44 @@ const Navigation = () => {
     };
   }, [mobileMenuOpen]);
 
-  // ==========================================
-  // 1. FORCE THE STATE LOGIC
-  // ==========================================
+  // =========================================================
+  // LOGIC: DETERMINE COLORS
+  // =========================================================
 
-  // The navbar background should be white if:
-  // - We scrolled down
-  // - The Mobile Menu is OPEN (This is the critical one)
-  // - We are on a white page
+  // 1. Is the background white?
+  // YES if: Scrolled OR Menu Open OR Not on Purple Hero
   const isBackgroundWhite = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
 
-  // If the background is white, everything on top MUST be black
-  const shouldUseBlackElements = isBackgroundWhite;
+  // 2. FORCE COLORS based on background
+  // If background is white, text MUST be black.
+  const isDarkText = isBackgroundWhite;
 
-  // Define the colors explicitly using Hex codes so CSS can't mess it up
-  const blackColor = "#000000";
-  const whiteColor = "#ffffff";
-  const brandColor = "#4f46e5"; // Adjust this to match your exact brand blue/purple if needed
+  // 3. CSS Classes
+  const navClasses = isBackgroundWhite ? "bg-white shadow-md" : "bg-transparent glass-nav";
 
-  const iconColor = shouldUseBlackElements ? blackColor : whiteColor;
+  // 4. Logo Filter
+  // If the background is white, we invert the White Logo to make it Black.
+  const logoStyle = isDarkText ? { filter: "invert(1) brightness(0)" } : {};
+
+  // 5. Icon Color (Hex Code)
+  // We use this to force the icon color via inline styles
+  const iconColor = isDarkText ? "#000000" : "#ffffff";
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isBackgroundWhite ? "bg-white shadow-md" : "bg-transparent glass-nav"}`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navClasses}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
             {/* 
-                👇 FIX FOR LOGO: 
-                We use inline styles to FORCE the image to invert colors.
-                If 'invert(1)' makes it look weird, change it to 'brightness(0)' to make it pure black.
+                👇 FORCE LOGO COLOR 
+                We use the style prop to physically invert the colors of the image.
+                This overrides any CSS class issues.
             */}
             <img
               src={logo}
               alt="PARCELIS"
               className="h-10 lg:h-20 w-auto transition-all duration-300"
-              style={{
-                filter: shouldUseBlackElements ? "invert(1) brightness(0)" : "none",
-              }}
+              style={logoStyle}
             />
           </Link>
 
@@ -89,17 +88,15 @@ const Navigation = () => {
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={`lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
-              shouldUseBlackElements
-                ? "text-brand border-brand hover:bg-brand/5"
-                : "text-white border-white hover:bg-white/10"
-            }`}
+            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors"
+            // 👇 FORCE BUTTON COLORS VIA INLINE STYLE
             style={{
-              borderColor: shouldUseBlackElements ? brandColor : whiteColor,
-              color: shouldUseBlackElements ? brandColor : whiteColor,
+              borderColor: isDarkText ? "#4f46e5" : "#ffffff",
+              color: isDarkText ? "#4f46e5" : "#ffffff",
+              backgroundColor: isDarkText ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
             }}
           >
-            <FileText size={16} color={shouldUseBlackElements ? brandColor : whiteColor} />
+            <FileText size={16} color={isDarkText ? "#4f46e5" : "#ffffff"} />
             <span>File a Claim</span>
           </a>
 
@@ -111,10 +108,10 @@ const Navigation = () => {
                 to={link.path}
                 className={`text-sm font-semibold transition-colors duration-200 ${
                   isActive(link.path)
-                    ? shouldUseBlackElements
+                    ? isDarkText
                       ? "text-brand font-bold"
                       : "text-white font-bold underline decoration-2 underline-offset-4"
-                    : shouldUseBlackElements
+                    : isDarkText
                       ? "text-slate-900 hover:text-brand"
                       : "text-white hover:text-blue-200 drop-shadow-md"
                 }`}
@@ -132,7 +129,7 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`text-sm transition-colors ${
-                shouldUseBlackElements
+                isDarkText
                   ? "text-gray-700 hover:text-brand font-medium"
                   : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all"
               }`}
@@ -142,7 +139,7 @@ const Navigation = () => {
             <Link
               to="/apply"
               className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${
-                shouldUseBlackElements
+                isDarkText
                   ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
                   : "bg-white hover:bg-gray-100 text-brand shadow-lg"
               }`}
@@ -153,22 +150,23 @@ const Navigation = () => {
           </div>
 
           {/* 
-              👇 FIX FOR HAMBURGER/CLOSE ICON:
-              We are passing the specific color directly to the icon.
+              👇 FORCE HAMBURGER/CLOSE ICON COLOR
+              We use `style={{ color: ... }}` directly on the button and the icon.
+              This makes it impossible for Tailwind to keep it white.
           */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${
-              shouldUseBlackElements ? "hover:bg-gray-100" : "hover:bg-white/10"
-            }`}
+            className="lg:hidden p-2 rounded-lg focus:outline-none transition-colors"
+            style={{
+              color: iconColor,
+              backgroundColor: isDarkText ? "rgba(0,0,0,0.05)" : "rgba(255,255,255,0.1)",
+            }}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              // When menu is OPEN, background is WHITE, so Icon must be BLACK (#000000)
-              <X size={28} color={blackColor} />
+              <X size={28} style={{ color: "#000000", stroke: "#000000" }} />
             ) : (
-              // When menu is CLOSED, color depends on scroll state
-              <Menu size={28} color={iconColor} />
+              <Menu size={28} style={{ color: iconColor, stroke: iconColor }} />
             )}
           </button>
         </div>
