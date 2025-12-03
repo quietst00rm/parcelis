@@ -35,21 +35,19 @@ const HomeHero: React.FC = () => {
   }, []);
 
   return (
-    // Layout: -mt-24 pulls it up behind navbar, pt-24 restores spacing
+    // ✅ 1. CONTAINER: Keeps -mt-24 to pull up behind navbar
     <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col -mt-24 pt-24">
       {/* 
-          ✅ BACKGROUND GRADIENT
-          This is now EXACTLY matching your 'HowItWorksHero' code.
-          - Colors: #101155 -> #1e22aa -> #2e32d4
-          - Position: 'fixed inset-0' ensures the dark #101155 starts at the very top pixel of the screen.
-          - We REMOVED the extra black shadow div, so it relies purely on this dark navy to provide contrast.
+         ✅ 2. BACKGROUND: Changed from 'fixed' to 'absolute inset-0'.
+         This places the gradient INSIDE this div (layer z-0), exactly like your 
+         'HowItWorks' page. This ensures it sits ON TOP of the app's white background.
       */}
-      <div className="fixed inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0"></div>
 
       {/* 3D Parcel Background */}
       <ParallaxParcels />
 
-      {/* Main Content */}
+      {/* Main Content (z-10 ensures it sits on top of the gradient) */}
       <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center pt-24 md:pt-48 pb-24 mt-0 sm:px-[24px] mb-px">
         {/* Headlines */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white mb-8 leading-tight drop-shadow-lg">
