@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, FileText } from "lucide-react";
+import logoWhite from "@/assets/logo-white.png";
+import logoColor from "@/assets/color1_logo_transparent_background.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,6 +20,11 @@ const Navigation = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+
+  // Pages with purple hero backgrounds
+  const purpleHeroPages = ["/", "/how-it-works", "/pricing", "/about", "/contact", "/faq", "/apply"];
+  const hasPurpleHero = purpleHeroPages.includes(location.pathname);
+  const isRiskCalculatorPage = location.pathname === "/risk-calculator";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,61 +45,26 @@ const Navigation = () => {
     };
   }, [mobileMenuOpen]);
 
-  // =======================================================
-  //  THE FIX: Navbar turns white when SCROLLED *OR* when mobile menu is OPEN
-  // =======================================================
- // Change line 44 to make header MORE transparent when menu is open:
-const isNavbarWhite = scrolled; // Remove || mobileMenuOpen
-
-// Add a NEW variable for when menu is open:
-const menuIsOpen = mobileMenuOpen;
-
-// Update the header className:
-<header
-  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    isNavbarWhite 
-      ? "bg-white shadow-md" 
-      : menuIsOpen
-        ? "bg-white/80 backdrop-blur-md"  // Semi-transparent when menu open
-        : "bg-transparent"
-  }`}
->
-
-// For logo and icons, use menuIsOpen OR scrolled:
-const activeIconColor = (scrolled || menuIsOpen) ? COLOR_BRAND : COLOR_WHITE;
-const logoFilter = (scrolled || menuIsOpen)
-  ? "invert(1) brightness(0)"
-  : "none";
-
-// Update the mobile menu panel to be MORE opaque:
-{mobileMenuOpen && (
-  <div className="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 pb-6 rounded-b-2xl">
-    {/* Remove /95 and backdrop-blur-xl to make it solid white */}
-
-  // 2. Define Colors based on Scroll State
-  const COLOR_WHITE = "#ffffff";
-  const COLOR_BRAND = "#4f46e5";
-  const COLOR_BLACK = "#0f172a";
-
-  const activeTextColor = isNavbarWhite ? COLOR_BLACK : COLOR_WHITE;
-  const activeIconColor = isNavbarWhite ? COLOR_BRAND : COLOR_WHITE;
-
-  const logoFilter = isNavbarWhite
-    ? "brightness(0) saturate(100%) invert(27%) sepia(11%) saturate(1447%) hue-rotate(174deg) brightness(95%) contrast(92%)"
-    : "none";
+  // Navbar is white (solid) when scrolled OR mobile menu is open
+  const isNavbarWhite = scrolled || mobileMenuOpen;
+  
+  // Use dark text when navbar is white OR on non-purple pages
+  const useDarkText = isNavbarWhite || (!hasPurpleHero && !isRiskCalculatorPage);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isNavbarWhite ? "bg-white shadow-md" : "bg-transparent"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isNavbarWhite ? "bg-white shadow-md" : "bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
+          {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="https://via.placeholder.com/150x40/4f46e5/ffffff?text=PARCELIS"
+              src={useDarkText ? logoColor : logoWhite}
               alt="PARCELIS"
               className="h-10 lg:h-20 w-auto transition-all duration-300"
-              style={{ filter: logoFilter }}
             />
           </Link>
 
@@ -101,14 +73,13 @@ const logoFilter = (scrolled || menuIsOpen)
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors"
-            style={{
-              borderColor: activeIconColor,
-              color: activeIconColor,
-              backgroundColor: isNavbarWhite ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
-            }}
+            className={`lg:hidden flex items-center gap-1.5 px-3 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
+              useDarkText
+                ? "border-brand text-brand hover:bg-brand/5"
+                : "border-white text-white hover:bg-white/10"
+            }`}
           >
-            <FileText size={16} color={activeIconColor} />
+            <FileText size={16} />
             <span>File a Claim</span>
           </a>
 
@@ -120,10 +91,10 @@ const logoFilter = (scrolled || menuIsOpen)
                 to={link.path}
                 className={`text-sm font-semibold transition-colors duration-200 ${
                   isActive(link.path)
-                    ? isNavbarWhite
+                    ? useDarkText
                       ? "text-brand font-bold"
                       : "text-white font-bold underline decoration-2 underline-offset-4"
-                    : isNavbarWhite
+                    : useDarkText
                       ? "text-slate-900 hover:text-brand"
                       : "text-white hover:text-blue-200 drop-shadow-md"
                 }`}
@@ -140,10 +111,10 @@ const logoFilter = (scrolled || menuIsOpen)
               href="https://claims.myparcelis.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-sm transition-colors ${
-                isNavbarWhite
-                  ? "text-gray-700 hover:text-brand font-medium"
-                  : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all"
+              className={`text-sm transition-colors font-medium ${
+                useDarkText
+                  ? "text-gray-700 hover:text-brand"
+                  : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm"
               }`}
             >
               File a Claim
@@ -151,7 +122,7 @@ const logoFilter = (scrolled || menuIsOpen)
             <Link
               to="/apply"
               className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${
-                isNavbarWhite
+                useDarkText
                   ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
                   : "bg-white hover:bg-gray-100 text-brand shadow-lg"
               }`}
@@ -164,13 +135,15 @@ const logoFilter = (scrolled || menuIsOpen)
           {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg focus:outline-none transition-colors hover:bg-white/10"
+            className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${
+              useDarkText ? "hover:bg-gray-100" : "hover:bg-white/10"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X size={28} style={{ color: activeIconColor, stroke: activeIconColor }} />
+              <X size={28} className={useDarkText ? "text-gray-800" : "text-white"} />
             ) : (
-              <Menu size={28} style={{ color: activeIconColor, stroke: activeIconColor }} />
+              <Menu size={28} className={useDarkText ? "text-gray-800" : "text-white"} />
             )}
           </button>
         </div>
@@ -178,7 +151,7 @@ const logoFilter = (scrolled || menuIsOpen)
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-gray-100 pb-6 rounded-b-2xl">
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 pb-6 rounded-b-2xl">
           <div className="px-4 pt-2 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -189,7 +162,7 @@ const logoFilter = (scrolled || menuIsOpen)
                   window.scrollTo(0, 0);
                 }}
                 className={`block px-4 py-3 rounded-lg text-base font-medium ${
-                  isActive(link.path) ? "text-brand bg-brand-50" : "text-gray-700 hover:text-brand hover:bg-gray-50"
+                  isActive(link.path) ? "text-brand bg-brand/5" : "text-gray-700 hover:text-brand hover:bg-gray-50"
                 }`}
               >
                 {link.name}
