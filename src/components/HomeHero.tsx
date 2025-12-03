@@ -35,9 +35,9 @@ const HomeHero: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col -mt-20 pt-20">
+    <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col -mt-24 pt-24">
       {/* Background Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0"></div>
+      <div className="absolute inset-0 -top-24 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0"></div>
       
       {/* 3D Parcel Background */}
       <ParallaxParcels />
