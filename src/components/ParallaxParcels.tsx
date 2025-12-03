@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface ParallaxParcelsProps {
   opacity?: number;
@@ -9,177 +9,174 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Solid 3D Cubes
-  const Parcel = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
-    <svg 
-      viewBox="0 0 24 24" 
-      fill="currentColor" 
-      className={className}
-      style={style}
-    >
-       {/* Top Face - Lightest */}
-       <path d="M12 2L2 7L12 12L22 7L12 2Z" fillOpacity="0.9"/>
-       {/* Left Face - Darkest (Shadow) */}
-       <path d="M2 7V17L12 22V12L2 7Z" fillOpacity="0.4"/>
-       {/* Right Face - Mid Tone */}
-       <path d="M22 7V17L12 22V12L22 7Z" fillOpacity="0.6"/>
+  const Parcel = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
+      {/* Top Face - Lightest */}
+      <path d="M12 2L2 7L12 12L22 7L12 2Z" fillOpacity="0.9" />
+      {/* Left Face - Darkest (Shadow) */}
+      <path d="M2 7V17L12 22V12L2 7Z" fillOpacity="0.4" />
+      {/* Right Face - Mid Tone */}
+      <path d="M22 7V17L12 22V12L22 7Z" fillOpacity="0.6" />
     </svg>
   );
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" style={{ opacity }}>
-      
       {/* === MASSIVE FOREGROUND (Hero Parcels) - Hidden on mobile === */}
-      
+
       {/* Top Left - Huge (Desktop only) */}
-      <div 
+      <div
         className="absolute top-[5%] left-[-5%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.5}px) rotate(${10 + scrollY * 0.15}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.5}px) rotate(${10 + scrollY * 0.15}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
         <Parcel className="w-80 h-80 text-white/10" />
       </div>
 
       {/* Middle Right - Massive (Desktop only) */}
-      <div 
+      <div
         className="absolute top-[40%] right-[-10%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.6}px) rotate(${-20 - scrollY * 0.2}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.6}px) rotate(${-20 - scrollY * 0.2}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-96 h-96 text-blue-400/10" />
+        <Parcel className="w-96 h-96 text-white/5" />
+        {/* Changed from blue-400/10 to white/5 for consistency */}
       </div>
-
 
       {/* === MIDGROUND (Medium-Large) - Hidden on mobile === */}
 
-      <div 
+      <div
         className="absolute top-[20%] right-[15%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.25}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.25}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
         <Parcel className="w-48 h-48 text-white/5" />
       </div>
 
-      <div 
+      {/* This is likely the Desktop Bottom-Left one you saw */}
+      <div
         className="absolute top-[55%] left-[15%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.35}px) rotate(${-scrollY * 0.15}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.35}px) rotate(${-scrollY * 0.15}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-56 h-56 text-blue-200/10" />
+        <Parcel className="w-56 h-56 text-white/10" />
+        {/* Changed from blue-200/10 to white/10 to avoid dark look */}
       </div>
 
-      <div 
+      <div
         className="absolute bottom-[20%] right-[30%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.45}px) rotate(${90 + scrollY * 0.15}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.45}px) rotate(${90 + scrollY * 0.15}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-40 h-40 text-indigo-400/5" />
+        <Parcel className="w-40 h-40 text-white/5" />
+        {/* Changed from indigo-400/5 to white/5 */}
       </div>
-
 
       {/* === BACKGROUND (Supporting Elements - Desktop only) === */}
 
-      <div 
+      <div
         className="absolute top-[10%] left-[40%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
         <Parcel className="w-32 h-32 text-white/5" />
       </div>
 
-      <div 
+      <div
         className="absolute top-[30%] left-[60%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.25}px) rotate(${-scrollY * 0.12}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.25}px) rotate(${-scrollY * 0.12}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-24 h-24 text-blue-300/5" />
+        <Parcel className="w-24 h-24 text-white/5" />
       </div>
 
-      <div 
+      {/* Another Desktop Bottom-Left Candidate */}
+      <div
         className="absolute top-[75%] left-[35%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.3}px) rotate(${45 + scrollY * 0.18}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.3}px) rotate(${45 + scrollY * 0.18}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-28 h-28 text-indigo-200/5" />
+        <Parcel className="w-28 h-28 text-white/5" />
+        {/* Changed from indigo-200/5 to white/5 */}
       </div>
 
-      <div 
+      <div
         className="absolute bottom-[10%] right-[10%] hidden md:block"
-        style={{ 
-            transform: `translateY(${scrollY * 0.35}px) rotate(${scrollY * 0.2}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.35}px) rotate(${scrollY * 0.2}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
         <Parcel className="w-32 h-32 text-white/5" />
       </div>
-
 
       {/* === MOBILE-ONLY PARCELS (Small, positioned at edges) === */}
 
       {/* Top left corner - Mobile */}
-      <div 
+      <div
         className="absolute top-[5%] left-[-8%] md:hidden"
-        style={{ 
-            transform: `translateY(${scrollY * 0.3}px) rotate(${15 + scrollY * 0.1}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.3}px) rotate(${15 + scrollY * 0.1}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
         <Parcel className="w-20 h-20 text-white/10" />
       </div>
 
       {/* Top right corner - Mobile */}
-      <div 
+      <div
         className="absolute top-[10%] right-[-5%] md:hidden"
-        style={{ 
-            transform: `translateY(${scrollY * 0.25}px) rotate(${-20 - scrollY * 0.08}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.25}px) rotate(${-20 - scrollY * 0.08}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-16 h-16 text-blue-300/10" />
+        <Parcel className="w-16 h-16 text-white/10" />
       </div>
 
-      {/* Bottom left - Mobile */}
-      <div 
+      {/* Bottom left - Mobile (FIXED) */}
+      <div
         className="absolute bottom-[15%] left-[-5%] md:hidden"
-        style={{ 
-            transform: `translateY(${scrollY * 0.2}px) rotate(${45 + scrollY * 0.12}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.2}px) rotate(${45 + scrollY * 0.12}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-24 h-24 text-white/8" />
+        {/* Changed 'white/8' (invalid) to 'white/10' (valid) to fix black box */}
+        <Parcel className="w-24 h-24 text-white/10" />
       </div>
 
       {/* Bottom right - Mobile */}
-      <div 
+      <div
         className="absolute bottom-[20%] right-[-8%] md:hidden"
-        style={{ 
-            transform: `translateY(${scrollY * 0.35}px) rotate(${-30 + scrollY * 0.1}deg)`,
-            transition: 'transform 0.05s linear'
+        style={{
+          transform: `translateY(${scrollY * 0.35}px) rotate(${-30 + scrollY * 0.1}deg)`,
+          transition: "transform 0.05s linear",
         }}
       >
-        <Parcel className="w-20 h-20 text-blue-200/10" />
+        <Parcel className="w-20 h-20 text-white/10" />
       </div>
-
     </div>
   );
 };
