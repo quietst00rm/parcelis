@@ -1,6 +1,6 @@
 import React from "react";
 import "sonner/dist/styles.css";
-import { Toaster } from "@/components/ui/toaster";
+// Removed the old Toaster import to prevent layout conflicts
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -26,7 +26,7 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
+        {/* We only use Sonner now. The other Toaster was causing the white block. */}
         <Sonner />
         <HashRouter>
           <div className="flex flex-col min-h-screen bg-white text-slate-900">
