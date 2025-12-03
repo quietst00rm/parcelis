@@ -18,10 +18,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
           cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
         },
       }}
-      // 👇 I CHANGED THIS LINE BELOW.
-      // Added: "fixed top-0 left-0 z-[50]"
-      // This forces the white block to float on top instead of pushing content down.
-      className="toaster group fixed top-0 left-0 z-[50] mt-0 mb-0 px-0 py-0"
+      // 👇 THIS IS THE FIX.
+      // We added 'fixed top-0 w-full pointer-events-none' so it floats invisibly.
+      className="toaster group fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] mt-0 mb-0 px-0 py-0"
       {...props}
     />
   );
