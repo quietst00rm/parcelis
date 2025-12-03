@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, FileText } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,9 +18,6 @@ const Navigation = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-  const isRiskCalculatorPage = location.pathname === "/risk-calculator";
-  const purpleHeroPages = ["/", "/how-it-works", "/pricing", "/about", "/contact", "/apply", "/faq"];
-  const hasPurpleHero = purpleHeroPages.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,32 +39,18 @@ const Navigation = () => {
   }, [mobileMenuOpen]);
 
   // =======================================================
-  //  THE FIX:
-  //  The Navbar ONLY turns white if we SCROLL.
-  //  Opening the menu (mobileMenuOpen) does NOT force it to white anymore.
+  //  THE FIX: Navbar turns white when SCROLLED *OR* when mobile menu is OPEN
   // =======================================================
+  const isNavbarWhite = scrolled || mobileMenuOpen;
 
-  // 1. Determine if we are in "White Background Mode"
-  // We only want the white background if the user has scrolled down.
-  // If they are at the top, it stays transparent (showing the hero).
-  const isNavbarWhite = scrolled;
-
-  // 2. Define Colors based on Scroll State
   const COLOR_WHITE = "#ffffff";
   const COLOR_BRAND = "#4f46e5";
   const COLOR_BLACK = "#0f172a";
 
-  // If scrolled (White BG), use Brand/Black color.
-  // If at top (Transparent BG), use White color.
   const activeTextColor = isNavbarWhite ? COLOR_BLACK : COLOR_WHITE;
   const activeIconColor = isNavbarWhite ? COLOR_BRAND : COLOR_WHITE;
 
-  // 3. Logo Filter
-  // If background is white (scrolled), invert the logo to make it dark.
-  // If transparent (top), keep it natural (white).
-  const logoFilter = isNavbarWhite
-    ? "invert(1) brightness(0)" // Turns white logo black/dark
-    : "none"; // Keeps white logo white
+  const logoFilter = isNavbarWhite ? "invert(1) brightness(0)" : "none";
 
   return (
     <header
@@ -78,7 +60,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
             <img
-              src={logo}
+              src="https://via.placeholder.com/150x40/4f46e5/ffffff?text=PARCELIS"
               alt="PARCELIS"
               className="h-10 lg:h-20 w-auto transition-all duration-300"
               style={{ filter: logoFilter }}
@@ -150,12 +132,7 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* 
-              HAMBURGER MENU BUTTON
-              Since the header is transparent (when at top), 
-              the 'activeIconColor' will be WHITE.
-              This means the Close (X) button will be visible against the purple Hero.
-          */}
+          {/* Hamburger Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg focus:outline-none transition-colors hover:bg-white/10"
@@ -166,10 +143,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* 
-          MOBILE MENU PANEL
-          We add 'top-20' so it starts below the header, leaving the header transparent.
-      */}
+      {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-gray-100 pb-6 rounded-b-2xl">
           <div className="px-4 pt-2 space-y-1">
