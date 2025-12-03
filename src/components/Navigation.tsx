@@ -41,7 +41,7 @@ const Navigation = () => {
   // =======================================================
   //  THE FIX: Navbar turns white when SCROLLED *OR* when mobile menu is OPEN
   // =======================================================
-  const isNavbarWhite = scrolled || mobileMenuOpen || !hasPurpleHero;
+  const isNavbarWhite = scrolled || mobileMenuOpen;
 
   // 2. Define Colors based on Scroll State
   const COLOR_WHITE = "#ffffff";
@@ -141,7 +141,11 @@ const Navigation = () => {
             className="lg:hidden p-2 rounded-lg focus:outline-none transition-colors hover:bg-white/10"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={28} color={activeIconColor} /> : <Menu size={28} color={activeIconColor} />}
+            {mobileMenuOpen ? (
+              <X size={28} style={{ color: activeIconColor, stroke: activeIconColor }} />
+            ) : (
+              <Menu size={28} style={{ color: activeIconColor, stroke: activeIconColor }} />
+            )}
           </button>
         </div>
       </div>
