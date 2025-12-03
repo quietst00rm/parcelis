@@ -43,30 +43,25 @@ const Navigation = () => {
   }, [mobileMenuOpen]);
 
   // ==========================================
-  // COLOR LOGIC
+  // 1. DETERMINE STATE
   // ==========================================
-
-  // 1. Trigger "Light Mode" (White Background)
+  // If Scrolled OR Menu Open OR on White Page -> We are in "Light Mode" (White BG)
   const isLightMode = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
 
-  // 2. DEFINE COLORS
+  // ==========================================
+  // 2. DEFINE EXACT COLORS
+  // ==========================================
   const COLOR_WHITE = "#ffffff";
+  const COLOR_BRAND = "#4f46e5"; // Your Indigo/Purple Brand Color
 
-  // This is the "Purple/Blue" brand color commonly used (Indigo-600).
-  // If your specific purple is different, change this Hex code!
-  const COLOR_BRAND = "#4f46e5";
-
-  // 3. LOGO FILTER
-  // If we are in Light Mode, we try to turn the White logo into Dark Blue/Purple.
-  // 'brightness(0)' makes it Black.
-  // The complex filter below attempts to tint it Blue/Purple.
-  // If this looks wrong, change it to just: { filter: 'brightness(0)' } for pure Black.
-  const logoStyle = isLightMode
-    ? {
-        filter:
-          "brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7460%) hue-rotate(261deg) brightness(93%) contrast(101%)",
-      }
-    : {};
+  // ==========================================
+  // 3. DEFINE LOGO FILTERS
+  // ==========================================
+  // If your logo is White, this math forces it to become Brand Purple.
+  // We use 'brightness(0)' to make it black first, then sepia/hue-rotate to colorize it.
+  const logoFilter = isLightMode
+    ? "brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(3016%) hue-rotate(233deg) brightness(98%) contrast(92%)"
+    : "none";
 
   return (
     <header
@@ -74,24 +69,23 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
+          {/* LOGO SECTION */}
           <Link to="/" className="flex items-center">
-            {/* LOGO: Uses the Purple/Blue filter defined above */}
             <img
               src={logo}
               alt="PARCELIS"
               className="h-10 lg:h-20 w-auto transition-all duration-300"
-              style={logoStyle}
+              style={{ filter: logoFilter }}
             />
           </Link>
 
-          {/* Mobile File a Claim Button */}
+          {/* MOBILE "File a Claim" BUTTON */}
           <a
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
             className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors"
             style={{
-              // Force Purple/Blue border and text
               borderColor: isLightMode ? COLOR_BRAND : COLOR_WHITE,
               color: isLightMode ? COLOR_BRAND : COLOR_WHITE,
               backgroundColor: isLightMode ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
@@ -101,7 +95,7 @@ const Navigation = () => {
             <span>File a Claim</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* DESKTOP LINKS */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
@@ -123,7 +117,7 @@ const Navigation = () => {
             ))}
           </nav>
 
-          {/* Desktop Actions */}
+          {/* DESKTOP BUTTONS */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="https://claims.myparcelis.com"
@@ -151,8 +145,9 @@ const Navigation = () => {
           </div>
 
           {/* 
-              HAMBURGER / CLOSE BUTTON
-              Forces the icon color to be Purple/Blue (COLOR_BRAND) when menu is open
+              HAMBURGER MENU BUTTON
+              We removed all Tailwind color classes here. 
+              We rely strictly on the 'color' prop of the Icon.
           */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -163,17 +158,17 @@ const Navigation = () => {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              // OPEN STATE (X Icon): Force Purple/Blue
+              // Open (X Icon): Force Brand Purple
               <X size={28} color={COLOR_BRAND} />
             ) : (
-              // CLOSED STATE (Menu Icon): Purple/Blue if Scrolled, otherwise White
+              // Closed (Menu Icon): Brand Purple if white BG, White if purple BG
               <Menu size={28} color={isLightMode ? COLOR_BRAND : COLOR_WHITE} />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu - Dropdown Panel */}
+      {/* MOBILE DROPDOWN PANEL */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-xl absolute w-full shadow-xl rounded-b-2xl border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-1">
