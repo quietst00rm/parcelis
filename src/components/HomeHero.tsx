@@ -35,19 +35,22 @@ const HomeHero: React.FC = () => {
   }, []);
 
   return (
-    // Keep -mt-24 and pt-24 to handle the layout gap (pulling container up)
+    // Container: Keeps the negative margin to prevent the white gap
     <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col -mt-24 pt-24">
-      {/* 
-         ✅ FIX: Reverted to 'fixed inset-0' (or top-0). 
-         The previous agent changed this to '-top-24' which pushed the dark 
-         part of the gradient off-screen. We put it back so the top is dark again.
-      */}
+      {/* 1. Main Background Gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] -z-10"></div>
 
-      {/* 3D Parcel Background */}
+      {/* 
+          ✅ 2. NEW: Explicit Top Shadow Overlay 
+          This forces a dark shadow at the top to ensure the navbar area has contrast.
+          h-64 ensures it fades out smoothly.
+      */}
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black/60 via-black/20 to-transparent z-0 pointer-events-none"></div>
+
+      {/* 3. 3D Parcel Background */}
       <ParallaxParcels />
 
-      {/* Main Content */}
+      {/* 4. Main Content */}
       <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center pt-24 md:pt-48 pb-24 mt-0 sm:px-[24px] mb-px">
         {/* Headlines */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white mb-8 leading-tight drop-shadow-lg">
