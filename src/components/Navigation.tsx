@@ -51,7 +51,9 @@ const Navigation = () => {
   const activeTextColor = isNavbarWhite ? COLOR_BLACK : COLOR_WHITE;
   const activeIconColor = isNavbarWhite ? COLOR_BRAND : COLOR_WHITE;
 
-  const logoFilter = isNavbarWhite ? "invert(1) brightness(0)" : "none";
+  const logoFilter = isNavbarWhite
+    ? "brightness(0) saturate(100%) invert(27%) sepia(11%) saturate(1447%) hue-rotate(174deg) brightness(95%) contrast(92%)"
+    : "none";
 
   return (
     <header
