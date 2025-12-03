@@ -33,11 +33,11 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" style={{ opacity }}>
       
-      {/* --- MASSIVE FOREGROUND (Hero Parcels) --- */}
+      {/* === MASSIVE FOREGROUND (Hero Parcels) - Hidden on mobile === */}
       
-      {/* Top Left - Huge */}
+      {/* Top Left - Huge (Desktop only) */}
       <div 
-        className="absolute top-[5%] left-[-5%]"
+        className="absolute top-[5%] left-[-5%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.5}px) rotate(${10 + scrollY * 0.15}deg)`,
             transition: 'transform 0.05s linear'
@@ -46,9 +46,9 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
         <Parcel className="w-80 h-80 text-white/10" />
       </div>
 
-      {/* Middle Right - Massive */}
+      {/* Middle Right - Massive (Desktop only) */}
       <div 
-        className="absolute top-[40%] right-[-10%]"
+        className="absolute top-[40%] right-[-10%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.6}px) rotate(${-20 - scrollY * 0.2}deg)`,
             transition: 'transform 0.05s linear'
@@ -57,13 +57,11 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
         <Parcel className="w-96 h-96 text-blue-400/10" />
       </div>
 
-      {/* REMOVED BOTTOM LEFT LARGE PARCEL HERE */}
 
-
-      {/* --- MIDGROUND (Medium-Large) --- */}
+      {/* === MIDGROUND (Medium-Large) - Hidden on mobile === */}
 
       <div 
-        className="absolute top-[20%] right-[15%]"
+        className="absolute top-[20%] right-[15%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.25}deg)`,
             transition: 'transform 0.05s linear'
@@ -73,7 +71,7 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
       <div 
-        className="absolute top-[55%] left-[15%]"
+        className="absolute top-[55%] left-[15%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.35}px) rotate(${-scrollY * 0.15}deg)`,
             transition: 'transform 0.05s linear'
@@ -83,7 +81,7 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
       <div 
-        className="absolute bottom-[20%] right-[30%]"
+        className="absolute bottom-[20%] right-[30%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.45}px) rotate(${90 + scrollY * 0.15}deg)`,
             transition: 'transform 0.05s linear'
@@ -93,10 +91,10 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
 
-      {/* --- BACKGROUND (Supporting Elements - Reduced Count) --- */}
+      {/* === BACKGROUND (Supporting Elements - Desktop only) === */}
 
       <div 
-        className="absolute top-[10%] left-[40%]"
+        className="absolute top-[10%] left-[40%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`,
             transition: 'transform 0.05s linear'
@@ -106,7 +104,7 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
       <div 
-        className="absolute top-[30%] left-[60%]"
+        className="absolute top-[30%] left-[60%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.25}px) rotate(${-scrollY * 0.12}deg)`,
             transition: 'transform 0.05s linear'
@@ -116,7 +114,7 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
       <div 
-        className="absolute top-[75%] left-[35%]"
+        className="absolute top-[75%] left-[35%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.3}px) rotate(${45 + scrollY * 0.18}deg)`,
             transition: 'transform 0.05s linear'
@@ -126,13 +124,60 @@ const ParallaxParcels: React.FC<ParallaxParcelsProps> = ({ opacity = 1 }) => {
       </div>
 
       <div 
-        className="absolute bottom-[10%] right-[10%]"
+        className="absolute bottom-[10%] right-[10%] hidden md:block"
         style={{ 
             transform: `translateY(${scrollY * 0.35}px) rotate(${scrollY * 0.2}deg)`,
             transition: 'transform 0.05s linear'
         }}
       >
         <Parcel className="w-32 h-32 text-white/5" />
+      </div>
+
+
+      {/* === MOBILE-ONLY PARCELS (Small, positioned at edges) === */}
+
+      {/* Top left corner - Mobile */}
+      <div 
+        className="absolute top-[5%] left-[-8%] md:hidden"
+        style={{ 
+            transform: `translateY(${scrollY * 0.3}px) rotate(${15 + scrollY * 0.1}deg)`,
+            transition: 'transform 0.05s linear'
+        }}
+      >
+        <Parcel className="w-20 h-20 text-white/10" />
+      </div>
+
+      {/* Top right corner - Mobile */}
+      <div 
+        className="absolute top-[10%] right-[-5%] md:hidden"
+        style={{ 
+            transform: `translateY(${scrollY * 0.25}px) rotate(${-20 - scrollY * 0.08}deg)`,
+            transition: 'transform 0.05s linear'
+        }}
+      >
+        <Parcel className="w-16 h-16 text-blue-300/10" />
+      </div>
+
+      {/* Bottom left - Mobile */}
+      <div 
+        className="absolute bottom-[15%] left-[-5%] md:hidden"
+        style={{ 
+            transform: `translateY(${scrollY * 0.2}px) rotate(${45 + scrollY * 0.12}deg)`,
+            transition: 'transform 0.05s linear'
+        }}
+      >
+        <Parcel className="w-24 h-24 text-white/8" />
+      </div>
+
+      {/* Bottom right - Mobile */}
+      <div 
+        className="absolute bottom-[20%] right-[-8%] md:hidden"
+        style={{ 
+            transform: `translateY(${scrollY * 0.35}px) rotate(${-30 + scrollY * 0.1}deg)`,
+            transition: 'transform 0.05s linear'
+        }}
+      >
+        <Parcel className="w-20 h-20 text-blue-200/10" />
       </div>
 
     </div>
