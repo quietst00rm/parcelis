@@ -41,8 +41,9 @@ const Navigation = () => {
   // =======================================================
   //  THE FIX: Navbar turns white when SCROLLED *OR* when mobile menu is OPEN
   // =======================================================
-  const isNavbarWhite = scrolled || mobileMenuOpen;
+  const isNavbarWhite = scrolled || mobileMenuOpen || !hasPurpleHero;
 
+  // 2. Define Colors based on Scroll State
   const COLOR_WHITE = "#ffffff";
   const COLOR_BRAND = "#4f46e5";
   const COLOR_BLACK = "#0f172a";
