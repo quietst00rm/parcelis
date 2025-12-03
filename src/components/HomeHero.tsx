@@ -42,9 +42,6 @@ const HomeHero: React.FC = () => {
       {/* 3D Parcel Background */}
       <ParallaxParcels />
 
-      {/* Bottom shadow gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/20 to-transparent z-[1] pointer-events-none"></div>
-
       {/* Main Content */}
       <div className="flex-grow flex flex-col justify-center items-center relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center pt-24 md:pt-48 pb-24 mt-0 sm:px-[24px] mb-px">
         
