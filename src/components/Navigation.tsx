@@ -46,19 +46,27 @@ const Navigation = () => {
   // COLOR LOGIC
   // ==========================================
 
-  // The Navbar is "Light Mode" (White background) if:
-  // 1. Scrolled down
-  // 2. Menu is Open (This is key!)
-  // 3. Not on a purple hero page
+  // 1. Trigger "Light Mode" (White Background)
   const isLightMode = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
 
-  // Define exact hex colors to force the browser to obey
-  const COLOR_BLACK = "#000000";
+  // 2. DEFINE COLORS
   const COLOR_WHITE = "#ffffff";
+
+  // This is the "Purple/Blue" brand color commonly used (Indigo-600).
+  // If your specific purple is different, change this Hex code!
   const COLOR_BRAND = "#4f46e5";
 
-  // If LightMode is active, we need BLACK text/icons.
-  const activeColor = isLightMode ? COLOR_BLACK : COLOR_WHITE;
+  // 3. LOGO FILTER
+  // If we are in Light Mode, we try to turn the White logo into Dark Blue/Purple.
+  // 'brightness(0)' makes it Black.
+  // The complex filter below attempts to tint it Blue/Purple.
+  // If this looks wrong, change it to just: { filter: 'brightness(0)' } for pure Black.
+  const logoStyle = isLightMode
+    ? {
+        filter:
+          "brightness(0) saturate(100%) invert(24%) sepia(96%) saturate(7460%) hue-rotate(261deg) brightness(93%) contrast(101%)",
+      }
+    : {};
 
   return (
     <header
@@ -67,15 +75,12 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
-            {/* 
-                LOGO FIX:
-                If 'isLightMode' is true (White background), we add the 'invert' class.
-                This turns a White Logo -> Black.
-            */}
+            {/* LOGO: Uses the Purple/Blue filter defined above */}
             <img
               src={logo}
               alt="PARCELIS"
-              className={`h-10 lg:h-20 w-auto transition-all duration-300 ${isLightMode ? "invert" : ""}`}
+              className="h-10 lg:h-20 w-auto transition-all duration-300"
+              style={logoStyle}
             />
           </Link>
 
@@ -86,6 +91,7 @@ const Navigation = () => {
             rel="noopener noreferrer"
             className="lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors"
             style={{
+              // Force Purple/Blue border and text
               borderColor: isLightMode ? COLOR_BRAND : COLOR_WHITE,
               color: isLightMode ? COLOR_BRAND : COLOR_WHITE,
               backgroundColor: isLightMode ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
@@ -145,9 +151,8 @@ const Navigation = () => {
           </div>
 
           {/* 
-              HAMBURGER / CLOSE BUTTON FIX:
-              We use the 'color' prop directly on the icon component.
-              This bypasses Tailwind classes completely.
+              HAMBURGER / CLOSE BUTTON
+              Forces the icon color to be Purple/Blue (COLOR_BRAND) when menu is open
           */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -158,11 +163,11 @@ const Navigation = () => {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              // FORCE BLACK COLOR
-              <X size={28} color="#000000" />
+              // OPEN STATE (X Icon): Force Purple/Blue
+              <X size={28} color={COLOR_BRAND} />
             ) : (
-              // Use dynamic color (White usually, Black if scrolled)
-              <Menu size={28} color={activeColor} />
+              // CLOSED STATE (Menu Icon): Purple/Blue if Scrolled, otherwise White
+              <Menu size={28} color={isLightMode ? COLOR_BRAND : COLOR_WHITE} />
             )}
           </button>
         </div>
