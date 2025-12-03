@@ -53,7 +53,7 @@ const Navigation = () => {
   // Other pages or scrolled: Glass nav with dark text
   const navBackgroundClass = scrolled 
     ? 'glass-nav' 
-    : (hasPurpleHero || isRiskCalculatorPage ? 'bg-transparent' : 'glass-nav');
+    : (hasPurpleHero || isRiskCalculatorPage ? '' : 'glass-nav');
     
   const textColorClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'text-gray-600' : 'text-white drop-shadow-md';
   const hoverColorClass = (scrolled || (!hasPurpleHero && !isRiskCalculatorPage)) ? 'hover:text-brand' : 'hover:text-blue-200';
