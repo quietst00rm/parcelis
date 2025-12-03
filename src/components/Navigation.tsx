@@ -41,7 +41,33 @@ const Navigation = () => {
   // =======================================================
   //  THE FIX: Navbar turns white when SCROLLED *OR* when mobile menu is OPEN
   // =======================================================
-  const isNavbarWhite = scrolled || mobileMenuOpen;
+ // Change line 44 to make header MORE transparent when menu is open:
+const isNavbarWhite = scrolled; // Remove || mobileMenuOpen
+
+// Add a NEW variable for when menu is open:
+const menuIsOpen = mobileMenuOpen;
+
+// Update the header className:
+<header
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    isNavbarWhite 
+      ? "bg-white shadow-md" 
+      : menuIsOpen
+        ? "bg-white/80 backdrop-blur-md"  // Semi-transparent when menu open
+        : "bg-transparent"
+  }`}
+>
+
+// For logo and icons, use menuIsOpen OR scrolled:
+const activeIconColor = (scrolled || menuIsOpen) ? COLOR_BRAND : COLOR_WHITE;
+const logoFilter = (scrolled || menuIsOpen)
+  ? "invert(1) brightness(0)"
+  : "none";
+
+// Update the mobile menu panel to be MORE opaque:
+{mobileMenuOpen && (
+  <div className="lg:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 pb-6 rounded-b-2xl">
+    {/* Remove /95 and backdrop-blur-xl to make it solid white */}
 
   // 2. Define Colors based on Scroll State
   const COLOR_WHITE = "#ffffff";
