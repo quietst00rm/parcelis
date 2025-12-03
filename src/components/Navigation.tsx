@@ -20,7 +20,6 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
   const isRiskCalculatorPage = location.pathname === "/risk-calculator";
-
   const purpleHeroPages = ["/", "/how-it-works", "/pricing", "/about", "/contact", "/apply", "/faq"];
   const hasPurpleHero = purpleHeroPages.includes(location.pathname);
 
@@ -43,36 +42,34 @@ const Navigation = () => {
     };
   }, [mobileMenuOpen]);
 
-  // SIMPLIFIED LOGIC:
-  // We need Dark Text/Logo if:
-  // 1. Scrolled down
-  // 2. Mobile menu is OPEN (This is the important one for you)
-  // 3. We are on a white page (not a purple hero page)
-  const isDarkState = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
+  // 1. DETERMINE IF NAVBAR SHOULD BE WHITE
+  // It is white if: Scrolled OR Mobile Menu Open OR Not on a Purple Page
+  const isNavbarWhite = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
 
-  const navBackgroundClass =
-    scrolled || mobileMenuOpen
-      ? "bg-white shadow-md"
-      : hasPurpleHero || isRiskCalculatorPage
-        ? "bg-transparent"
-        : "glass-nav";
+  // 2. DEFINE COLORS
+  // If navbar is white, we need Black text (#0f172a). Otherwise White.
+  const iconColor = isNavbarWhite ? "#0f172a" : "white";
+  const textColorClass = isNavbarWhite ? "text-slate-900" : "text-white drop-shadow-md";
 
-  // Explicitly force Black text vs White text
-  const textColorClass = isDarkState ? "text-slate-900" : "text-white drop-shadow-md";
+  // 3. LOGO STYLE (Force Black)
+  // If navbar is white, we force the logo to be black using CSS filters.
+  // brightness(0) turns a white logo into a black square (silhouette).
+  // If that looks like a block, use 'invert(1)' instead.
+  const logoStyle = isNavbarWhite ? { filter: "brightness(0)" } : {};
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isNavbarWhite ? "bg-white shadow-md" : "bg-transparent glass-nav"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
-            {/* 
-               👇 FIXED: "invert" works best for White logos.
-               If isDarkState is true (menu open), we flip the white logo colors to black.
-            */}
+            {/* 👇 APPLIED DIRECT STYLE TO FORCE BLACK LOGO */}
             <img
               src={logo}
               alt="PARCELIS"
-              className={`h-10 lg:h-20 w-auto transition-all duration-300 ${isDarkState ? "invert brightness-0" : ""}`}
+              className="h-10 lg:h-20 w-auto transition-all duration-300"
+              style={logoStyle}
             />
           </Link>
 
@@ -82,10 +79,11 @@ const Navigation = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
-              isDarkState ? "text-brand border-brand hover:bg-brand/5" : "text-white border-white hover:bg-white/10"
+              isNavbarWhite ? "text-brand border-brand hover:bg-brand/5" : "text-white border-white hover:bg-white/10"
             }`}
           >
-            <FileText size={16} className={isDarkState ? "text-brand" : "text-white"} />
+            {/* 👇 FORCE ICON COLOR */}
+            <FileText size={16} color={isNavbarWhite ? "#6366f1" : "white"} />
             <span>File a Claim</span>
           </a>
 
@@ -97,10 +95,10 @@ const Navigation = () => {
                 to={link.path}
                 className={`text-sm font-semibold transition-colors duration-200 ${
                   isActive(link.path)
-                    ? isDarkState
+                    ? isNavbarWhite
                       ? "text-brand font-bold"
                       : "text-white font-bold underline decoration-2 underline-offset-4"
-                    : `${textColorClass} ${isDarkState ? "hover:text-brand" : "hover:text-blue-200"}`
+                    : `${textColorClass} ${isNavbarWhite ? "hover:text-brand" : "hover:text-blue-200"}`
                 }`}
                 onClick={() => window.scrollTo(0, 0)}
               >
@@ -116,7 +114,7 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`text-sm transition-colors ${
-                isDarkState
+                isNavbarWhite
                   ? "text-gray-700 hover:text-brand font-medium"
                   : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all"
               }`}
@@ -126,7 +124,7 @@ const Navigation = () => {
             <Link
               to="/apply"
               className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${
-                isDarkState
+                isNavbarWhite
                   ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
                   : "bg-white hover:bg-gray-100 text-brand shadow-lg"
               }`}
@@ -136,18 +134,16 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* 
-             👇 FIXED: Hamburger Menu Button.
-             We explicitly use 'text-slate-900' (Black) when isDarkState is true.
-          */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${
-              isDarkState ? "text-slate-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+              isNavbarWhite ? "hover:bg-gray-100" : "hover:bg-white/10"
             }`}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {/* 👇 FORCE ICON COLOR USING PROP DIRECTLY */}
+            {mobileMenuOpen ? <X size={28} color={iconColor} /> : <Menu size={28} color={iconColor} />}
           </button>
         </div>
       </div>
