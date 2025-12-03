@@ -15,7 +15,7 @@ const RiskCalculatorCTA: React.FC = () => {
           </div>
           <div className="flex-shrink-0">
             <a 
-              href="/pricing"
+              href="/how-it-works"
               className="inline-block bg-white text-brand hover:bg-blue-50 font-bold py-4 px-12 rounded-lg shadow-xl transition-all transform hover:-translate-y-1 whitespace-nowrap"
             >
               Learn More About Parcelis Protection

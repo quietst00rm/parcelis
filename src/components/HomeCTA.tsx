@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 
 const HomeCTA: React.FC = () => {
@@ -13,12 +14,12 @@ const HomeCTA: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button className="bg-brand hover:bg-brand-dark text-white font-bold py-4 px-10 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 w-full sm:w-auto">
+            <Link to="/apply" className="bg-brand hover:bg-brand-dark text-white font-bold py-4 px-10 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 w-full sm:w-auto text-center">
                 Sign Up Today
-            </button>
-            <button className="text-brand font-bold py-4 px-8 hover:bg-brand-50 rounded-xl transition-colors w-full sm:w-auto">
+            </Link>
+            <Link to="/how-it-works" className="text-brand font-bold py-4 px-8 hover:bg-brand-50 rounded-xl transition-colors w-full sm:w-auto text-center">
                 See How It Works
-            </button>
+            </Link>
         </div>
 
         <div className="border-t border-gray-200 pt-10 flex flex-col md:flex-row justify-center gap-8 md:gap-20 text-xs font-bold text-gray-400 uppercase tracking-widest">

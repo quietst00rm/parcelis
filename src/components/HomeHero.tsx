@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Shield, Users, Award } from "lucide-react";
 import ParallaxParcels from "./ParallaxParcels";
 
@@ -61,12 +62,12 @@ const HomeHero: React.FC = () => {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-5 justify-center w-full">
-          <button className="bg-white text-brand hover:bg-blue-50 font-bold py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-base md:text-lg">
+          <Link to="/apply" className="bg-white text-brand hover:bg-blue-50 font-bold py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-base md:text-lg">
             Protect Your Customers Today
-          </button>
-          <button className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold py-4 px-10 rounded-lg shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 text-base md:text-lg">
+          </Link>
+          <Link to="/how-it-works" className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold py-4 px-10 rounded-lg shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 text-base md:text-lg">
             See How It Works
-          </button>
+          </Link>
         </div>
       </div>
 
