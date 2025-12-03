@@ -35,17 +35,17 @@ const HomeHero: React.FC = () => {
   }, []);
 
   return (
-    // Container: Keeps the negative margin to prevent the white gap
+    // Layout: -mt-24 pulls it up, pt-24 pushes content down
     <div className="relative bg-brand overflow-hidden min-h-screen flex flex-col -mt-24 pt-24">
       {/* 1. Main Background Gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] -z-10"></div>
 
       {/* 
-          ✅ 2. NEW: Explicit Top Shadow Overlay 
-          This forces a dark shadow at the top to ensure the navbar area has contrast.
-          h-64 ensures it fades out smoothly.
+          ✅ 2. THE FIX: Whole Hero Shadow (Overlay)
+          This 'bg-black/40' adds a dark tint over the entire background 
+          to match your other pages and make the white text pop.
       */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-black/60 via-black/20 to-transparent z-0 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
 
       {/* 3. 3D Parcel Background */}
       <ParallaxParcels />
