@@ -43,8 +43,12 @@ const Navigation = () => {
     };
   }, [mobileMenuOpen]);
 
-  // Logic: Use dark text/icons if scrolled, menu is open, or on a white page
-  const shouldUseDarkText = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
+  // SIMPLIFIED LOGIC:
+  // We need Dark Text/Logo if:
+  // 1. Scrolled down
+  // 2. Mobile menu is OPEN (This is the important one for you)
+  // 3. We are on a white page (not a purple hero page)
+  const isDarkState = scrolled || mobileMenuOpen || (!hasPurpleHero && !isRiskCalculatorPage);
 
   const navBackgroundClass =
     scrolled || mobileMenuOpen
@@ -53,24 +57,8 @@ const Navigation = () => {
         ? "bg-transparent"
         : "glass-nav";
 
-  // CHANGED: Made the dark color 'text-slate-900' (Black) instead of Gray for better visibility
-  const textColorClass = shouldUseDarkText ? "text-slate-900" : "text-white drop-shadow-md";
-  const hoverColorClass = shouldUseDarkText ? "hover:text-brand" : "hover:text-blue-200";
-  const activeColorClass = shouldUseDarkText
-    ? "text-brand font-bold"
-    : "text-white font-bold underline decoration-2 underline-offset-4";
-
-  // CHANGED: Logic for the Logo Image to make it black when background is white
-  // If your logo is White, 'invert' or 'brightness-0' will make it black.
-  const logoClass = shouldUseDarkText ? "brightness-0" : "";
-
-  const applyButtonClass = shouldUseDarkText
-    ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
-    : "bg-white hover:bg-gray-100 text-brand shadow-lg";
-
-  const fileClaimButtonClass = shouldUseDarkText
-    ? "text-gray-700 hover:text-brand font-medium"
-    : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all";
+  // Explicitly force Black text vs White text
+  const textColorClass = isDarkState ? "text-slate-900" : "text-white drop-shadow-md";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackgroundClass}`}>
@@ -78,10 +66,14 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
             {/* 
-               👇 FIXED: Added logic to turn the logo black when the menu is open. 
-               If 'brightness-0' makes it a black box, try 'invert' instead.
+               👇 FIXED: "invert" works best for White logos.
+               If isDarkState is true (menu open), we flip the white logo colors to black.
             */}
-            <img src={logo} alt="PARCELIS" className={`h-10 lg:h-20 w-auto transition-all duration-300 ${logoClass}`} />
+            <img
+              src={logo}
+              alt="PARCELIS"
+              className={`h-10 lg:h-20 w-auto transition-all duration-300 ${isDarkState ? "invert brightness-0" : ""}`}
+            />
           </Link>
 
           {/* Mobile File a Claim Button */}
@@ -90,12 +82,10 @@ const Navigation = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`lg:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
-              shouldUseDarkText
-                ? "text-brand border-brand hover:bg-brand/5"
-                : "text-white border-white hover:bg-white/10"
+              isDarkState ? "text-brand border-brand hover:bg-brand/5" : "text-white border-white hover:bg-white/10"
             }`}
           >
-            <FileText size={16} className={shouldUseDarkText ? "text-brand" : "text-white"} />
+            <FileText size={16} className={isDarkState ? "text-brand" : "text-white"} />
             <span>File a Claim</span>
           </a>
 
@@ -106,7 +96,11 @@ const Navigation = () => {
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-semibold transition-colors duration-200 ${
-                  isActive(link.path) ? activeColorClass : `${textColorClass} ${hoverColorClass}`
+                  isActive(link.path)
+                    ? isDarkState
+                      ? "text-brand font-bold"
+                      : "text-white font-bold underline decoration-2 underline-offset-4"
+                    : `${textColorClass} ${isDarkState ? "hover:text-brand" : "hover:text-blue-200"}`
                 }`}
                 onClick={() => window.scrollTo(0, 0)}
               >
@@ -121,13 +115,21 @@ const Navigation = () => {
               href="https://claims.myparcelis.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-sm transition-colors ${fileClaimButtonClass}`}
+              className={`text-sm transition-colors ${
+                isDarkState
+                  ? "text-gray-700 hover:text-brand font-medium"
+                  : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl backdrop-blur-sm font-medium transition-all"
+              }`}
             >
               File a Claim
             </a>
             <Link
               to="/apply"
-              className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${applyButtonClass}`}
+              className={`text-sm font-bold px-6 py-2.5 rounded-xl transition-all hover:-translate-y-0.5 ${
+                isDarkState
+                  ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
+                  : "bg-white hover:bg-gray-100 text-brand shadow-lg"
+              }`}
               onClick={() => window.scrollTo(0, 0)}
             >
               Apply Now
@@ -135,13 +137,13 @@ const Navigation = () => {
           </div>
 
           {/* 
-             👇 FIXED: Mobile Menu Button 
-             The 'textColorClass' will now force this to be Black (slate-900) when menu is open
+             👇 FIXED: Hamburger Menu Button.
+             We explicitly use 'text-slate-900' (Black) when isDarkState is true.
           */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${textColorClass} ${
-              shouldUseDarkText ? "hover:bg-gray-100" : "hover:bg-white/10"
+            className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${
+              isDarkState ? "text-slate-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
             }`}
             aria-label="Toggle menu"
           >
