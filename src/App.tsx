@@ -26,7 +26,6 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Sonner />
         <HashRouter>
           <div className="flex flex-col min-h-screen bg-white text-slate-900">
             <Navbar />
