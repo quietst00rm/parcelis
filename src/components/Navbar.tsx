@@ -11,8 +11,13 @@ const Navbar: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Check if we're on a white background page (Terms, Privacy)
-  const isWhiteBgPage = ["/terms", "/privacy"].includes(location.pathname);
+  // ==========================================
+  // LOGIC UPDATE: Prevent "White Text on White Background"
+  // ==========================================
+  // Instead of listing white pages, we list the pages that have the Purple Hero.
+  // If a page is NOT on this list, we force the navbar to be white/dark-text immediately.
+  const purpleHeroPages = ["/", "/how-it-works", "/pricing", "/about", "/contact", "/apply", "/faq"];
+  const hasPurpleHero = purpleHeroPages.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,17 +48,20 @@ const Navbar: React.FC = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  // ========== FIX: Determine if navbar should have white background ==========
-  const hasWhiteBackground = scrolled || isWhiteBgPage || isOpen;
+  // ========== LOGIC: Navbar is White if Scrolled OR Menu Open OR No Purple Hero ==========
+  const hasWhiteBackground = scrolled || isOpen || !hasPurpleHero;
 
   // Dynamic Styles
   const navBackgroundClass = hasWhiteBackground ? "bg-white shadow-md" : "bg-transparent";
 
-  const textColorClass = hasWhiteBackground ? "text-gray-600" : "text-white drop-shadow-md";
+  const textColorClass = hasWhiteBackground ? "text-gray-600" : "text-white drop-shadow-md"; // Inactive links have shadow
+
   const hoverColorClass = hasWhiteBackground ? "hover:text-brand" : "hover:text-blue-200";
+
   const activeColorClass = hasWhiteBackground
     ? "text-brand font-bold"
-    : "text-white font-bold underline decoration-2 underline-offset-4";
+    : "text-white font-bold underline decoration-2 underline-offset-4 drop-shadow-md";
+  // ✅ FIX: Added 'drop-shadow-md' here so the Active link also has a shadow
 
   const applyButtonClass = hasWhiteBackground
     ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
@@ -61,10 +69,10 @@ const Navbar: React.FC = () => {
 
   const fileClaimButtonClass = hasWhiteBackground
     ? "text-gray-700 hover:text-brand font-medium"
-    : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all";
+    : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all shadow-sm";
 
-  // ========== FIX: Hamburger icon should always be visible ==========
-  const mobileIconColor = hasWhiteBackground ? "#4f46e5" : "#ffffff"; // brand or white
+  // Hamburger icon color
+  const mobileIconColor = hasWhiteBackground ? "#4f46e5" : "#ffffff";
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${navBackgroundClass}`}>
@@ -76,7 +84,8 @@ const Navbar: React.FC = () => {
               <img
                 src={hasWhiteBackground ? logo : logoWhite}
                 alt="PARCELIS Logo"
-                className="h-10 w-auto transition-opacity duration-300"
+                // ✅ Added shadow to logo image too so it pops against the purple
+                className={`h-10 w-auto transition-opacity duration-300 ${!hasWhiteBackground && "drop-shadow-md"}`}
               />
             </Link>
           </div>
@@ -114,11 +123,11 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile menu button - FIX APPLIED HERE */}
+          {/* Mobile menu button */}
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none p-2 rounded-lg transition-colors"
+              className={`focus:outline-none p-2 rounded-lg transition-colors ${!hasWhiteBackground && "drop-shadow-md"}`}
               style={{
                 color: mobileIconColor,
                 backgroundColor: hasWhiteBackground ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
@@ -132,7 +141,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white shadow-xl absolute w-full rounded-b-3xl border-t border-gray-100">
+        <div className="lg:hidden bg-white shadow-xl absolute w-full rounded-b-3xl border-t border-gray-100 max-h-screen overflow-y-auto">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <Link
