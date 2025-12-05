@@ -68,16 +68,12 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Mobile File a Claim Button */}
+          {/* Mobile File a Claim Button - Always visible in topbar */}
           <a
             href="https://claims.myparcelis.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={`lg:hidden flex items-center gap-1.5 px-3 py-2 text-sm font-semibold border-2 rounded-lg transition-colors ${
-              useDarkText
-                ? "border-brand text-brand hover:bg-brand/5"
-                : "border-white text-white hover:bg-white/10"
-            }`}
+            className="lg:hidden flex items-center gap-1.5 px-3 py-2 text-sm font-semibold bg-white text-brand rounded-lg transition-colors hover:bg-gray-50 shadow-sm"
           >
             <FileText size={16} />
             <span>File a Claim</span>
@@ -132,12 +128,10 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Hamburger Menu Button */}
+          {/* Hamburger Menu Button - Seamless without container */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg focus:outline-none transition-colors ${
-              useDarkText ? "hover:bg-gray-100" : "hover:bg-white/10"
-            }`}
+            className="lg:hidden focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -169,14 +163,6 @@ const Navigation = () => {
               </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3 px-2">
-              <a
-                href="https://claims.myparcelis.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center text-brand font-bold bg-white border border-gray-200 py-3 rounded-lg hover:bg-gray-50"
-              >
-                File a Claim
-              </a>
               <Link
                 to="/apply"
                 onClick={() => {
