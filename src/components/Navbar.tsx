@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  // ========== FIX: Determine if navbar should have white background ==========
+  // Determine if navbar should have white background
   const hasWhiteBackground = scrolled || isWhiteBgPage || isOpen;
 
   // Dynamic Styles
@@ -63,13 +63,13 @@ const Navbar: React.FC = () => {
     ? "text-gray-700 hover:text-brand font-medium"
     : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all";
 
-  // ========== FIX: Hamburger icon should always be visible ==========
-  const mobileIconColor = hasWhiteBackground ? "#4f46e5" : "#ffffff"; // brand or white
+  // Hamburger icon color
+  const mobileIconColor = hasWhiteBackground ? "#4f46e5" : "#ffffff";
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${navBackgroundClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+        <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center cursor-pointer">
             <Link to="/" className="flex items-center gap-2">
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* CTAs */}
+          {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="https://claims.myparcelis.com"
@@ -114,14 +114,27 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile menu button - FIX APPLIED HERE */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile Actions (Claim Button + Menu) */}
+          <div className="lg:hidden flex items-center gap-3">
+            {/* Mobile File a Claim Button (Moved here) */}
+            {!isOpen && (
+              <a
+                href="https://claims.myparcelis.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-brand text-xs font-bold px-3 py-2 rounded-lg shadow-md border border-gray-100 hover:bg-gray-50 transition-colors"
+              >
+                File a Claim
+              </a>
+            )}
+
+            {/* Mobile Menu Button - Seamless style */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none p-2 rounded-lg transition-colors"
+              className="focus:outline-none transition-colors"
               style={{
                 color: mobileIconColor,
-                backgroundColor: hasWhiteBackground ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.1)",
+                // Background color removed for seamless look
               }}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -130,7 +143,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="lg:hidden bg-white shadow-xl absolute w-full rounded-b-3xl border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-1">
@@ -147,14 +160,7 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3 px-2">
-              <a
-                href="https://claims.myparcelis.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center text-brand font-bold bg-white border border-gray-200 py-3 rounded-xl hover:bg-gray-50"
-              >
-                File a Claim
-              </a>
+              {/* File a claim removed from here as it is now in the top bar */}
               <Link
                 to="/apply"
                 onClick={() => setIsOpen(false)}
