@@ -29,13 +29,8 @@ const ApplyHero: React.FC = () => {
               href="https://apps.shopify.com/parcelis"
               target="_blank"
               rel="noopener noreferrer"
-              // HUGE BUTTON STYLES:
-              // py-5 px-12 (Large padding)
-              // text-2xl (Large text)
-              // font-extrabold (Thick text)
-              // shadow-2xl (Deep shadow)
-              // hover:-translate-y-2 (Big lift effect on hover)
-              className="bg-white text-brand hover:bg-gray-50 font-extrabold py-5 px-12 rounded-md shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all transform hover:-translate-y-2 text-2xl flex items-center justify-center gap-4 w-auto inline-flex"
+              // UPDATED: rounded-full (Maximum roundness)
+              className="bg-white text-brand hover:bg-gray-50 font-extrabold py-5 px-12 rounded-full shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all transform hover:-translate-y-2 text-2xl flex items-center justify-center gap-4 w-auto inline-flex"
             >
               <svg viewBox="0 0 109.5 124.5" className="w-10 h-10">
                 <path
