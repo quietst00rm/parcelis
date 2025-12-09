@@ -30,7 +30,7 @@ const ApplyHero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               // UPDATED: rounded-2xl (Very rounded, but not a full circle)
-              className="bg-white text-brand hover:bg-gray-50 font-extrabold py-5 px-12 rounded-2xl shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all transform hover:-translate-y-2 text-2xl flex items-center justify-center gap-4 w-auto inline-flex"
+              className="bg-white text-brand hover:bg-gray-50 font-extrabold py-5 px-12 rounded-xl shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all transform hover:-translate-y-2 text-2xl flex items-center justify-center gap-4 w-auto inline-flex"
             >
               <svg viewBox="0 0 109.5 124.5" className="w-10 h-10">
                 <path
