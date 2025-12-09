@@ -239,7 +239,8 @@
           </label>
         </div>
 
-        <div className="mt-8">
+        {/* Submit Button */}
+        <div className="mt-8 flex justify-center">
             <button 
                 type="submit" 
                 disabled={isSubmitting}
