@@ -77,7 +77,12 @@ const HowItWorksPage = () => {
           
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Shopify */}
-            <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm relative">
+            <a 
+              href="https://apps.shopify.com/parcelis" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm relative hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold">Shopify</h3>
                 <span className="px-3 py-1 bg-success text-success-foreground rounded-full text-xs font-semibold">
@@ -94,7 +99,7 @@ const HowItWorksPage = () => {
                   <span>Connect your store in minutes</span>
                 </li>
               </ul>
-            </div>
+            </a>
 
             {/* NEXT Commerce */}
             <div className="bg-card rounded-xl p-8 border border-border shadow-sm relative">
