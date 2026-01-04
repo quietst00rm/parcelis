@@ -4,7 +4,7 @@ import "sonner/dist/styles.css";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -26,7 +26,7 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <HashRouter>
+        <BrowserRouter>
           <div className="flex flex-col min-h-screen bg-white text-slate-900">
             <Navbar />
             <main className="flex-grow">
@@ -47,7 +47,7 @@ const App: React.FC = () => {
             </main>
             <Footer />
           </div>
-        </HashRouter>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
