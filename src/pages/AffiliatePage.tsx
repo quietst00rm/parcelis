@@ -220,6 +220,7 @@ const AffiliatePage = () => {
                               <SelectItem value="au">Australia</SelectItem>
                               <SelectItem value="de">Germany</SelectItem>
                               <SelectItem value="fr">France</SelectItem>
+                              <SelectItem value="in">India</SelectItem>
                               <SelectItem value="other">Other</SelectItem>
                             </SelectContent>
                           </Select>
