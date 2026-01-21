@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ApplyHero from '../components/ApplyHero';
 import { Check, ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 
 const ApplyPage: React.FC = () => {
   useEffect(() => {
@@ -30,18 +31,33 @@ const ApplyPage: React.FC = () => {
     e.preventDefault();
     
     if (!formData.agreedToTerms) {
-      alert("Please agree to the Terms of Use and Privacy Policy");
+      toast.error("Please agree to the Terms of Use and Privacy Policy");
       return;
     }
 
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSuccess(true);
-    setIsSubmitting(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      const response = await fetch("https://formspree.io/f/xbddzeyg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit application");
+      }
+
+      setIsSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast.error("Failed to submit application. Please try again or email us directly at support@myparcelis.com");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const carrierOptions = ["USPS", "UPS", "FedEx", "DHL", "Regional", "International"];
