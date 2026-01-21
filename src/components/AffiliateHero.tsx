@@ -70,16 +70,9 @@ const AffiliateHero: React.FC = () => {
             Become a Parcelis Affiliate
           </h1>
           
-          <p className="mt-4 text-lg text-blue-50 font-light leading-relaxed mb-8">
+          <p className="mt-4 text-lg text-blue-50 font-light leading-relaxed">
             Fill out the form below to apply to become an affiliate. Once submitted, our team will review your details and contact you by email.
           </p>
-
-          <a 
-            href="/apply"
-            className="inline-block bg-white text-brand hover:bg-blue-50 hover:text-brand-dark font-bold py-4 px-10 rounded-lg shadow-xl transition-all transform hover:-translate-y-1"
-          >
-            Get Started
-          </a>
         </div>
       </div>
     </div>
