@@ -30,7 +30,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/xkgegeav]", {
+      const response = await fetch("https://formspree.io/f/xkgegeav", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
