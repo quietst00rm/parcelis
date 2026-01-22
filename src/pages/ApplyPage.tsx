@@ -247,12 +247,12 @@ const ApplyPage: React.FC = () => {
                     <label htmlFor="storeUrl" className={labelClass}>Store URL *</label>
                     <input
                         id="storeUrl"
-                        type="url"
+                        type="text"
                         required
                         value={formData.storeUrl}
                         onChange={(e) => setFormData({ ...formData, storeUrl: e.target.value })}
                         className={inputClass}
-                        placeholder="https://yourstore.com"
+                        placeholder="yourstore.com"
                     />
                     </div>
                 </div>
