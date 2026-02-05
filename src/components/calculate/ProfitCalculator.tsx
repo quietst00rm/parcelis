@@ -40,9 +40,11 @@ const AnimatedNumber = ({ value, className = "" }: { value: number; className?: 
 // --- Main Component ---
 const ProfitCalculator = () => {
   const [aov, setAov] = useState(100);
+  const [aovDisplay, setAovDisplay] = useState("100");
   const [monthlyOrders, setMonthlyOrders] = useState(5000);
   const [optInRate, setOptInRate] = useState(43);
   const [sellingPrice, setSellingPrice] = useState(4.96);
+  const [spDisplay, setSpDisplay] = useState("4.96");
   const [hasOverride, setHasOverride] = useState(false);
 
   const baseCost = useMemo(() => getBaseCost(aov), [aov]);
@@ -50,20 +52,29 @@ const ProfitCalculator = () => {
 
   const handleAovChange = useCallback((val: number) => {
     setAov(val);
+    setAovDisplay(String(val));
     if (!hasOverride) {
-      setSellingPrice(getDefaultSellingPrice(val));
+      const newSP = getDefaultSellingPrice(val);
+      setSellingPrice(newSP);
+      setSpDisplay(String(newSP));
     }
   }, [hasOverride]);
 
   const handleSellingPriceChange = useCallback((val: number) => {
     setSellingPrice(val);
+    setSpDisplay(String(val));
     setHasOverride(true);
   }, []);
 
   const resetSellingPrice = useCallback(() => {
     setSellingPrice(defaultSP);
+    setSpDisplay(String(defaultSP));
     setHasOverride(false);
   }, [defaultSP]);
+
+  const handleSelectAll = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    e.target.select();
+  }, []);
 
   // Calculations
   const insuredPackages = Math.round(monthlyOrders * (optInRate / 100));
@@ -91,8 +102,13 @@ const ProfitCalculator = () => {
                 type="number"
                 min={0}
                 step={1}
-                value={aov}
-                onChange={e => handleAovChange(Math.max(0, Number(e.target.value) || 0))}
+                value={aovDisplay}
+                onChange={e => setAovDisplay(e.target.value)}
+                onFocus={handleSelectAll}
+                onBlur={() => {
+                  const val = Math.max(0, Number(aovDisplay) || 0);
+                  handleAovChange(val);
+                }}
                 className="w-full pl-7 pr-3 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e2099]/40 text-sm"
                 aria-label="Average Order Value in dollars"
               />
@@ -163,8 +179,13 @@ const ProfitCalculator = () => {
                 type="number"
                 min={0}
                 step={0.01}
-                value={sellingPrice}
-                onChange={e => handleSellingPriceChange(Math.max(0, Number(e.target.value) || 0))}
+                value={spDisplay}
+                onChange={e => setSpDisplay(e.target.value)}
+                onFocus={handleSelectAll}
+                onBlur={() => {
+                  const val = Math.max(0, Number(spDisplay) || 0);
+                  handleSellingPriceChange(val);
+                }}
                 className="w-full pl-7 pr-3 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e2099]/40 text-sm"
                 aria-label="Your Selling Price in dollars"
               />
