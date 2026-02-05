@@ -19,6 +19,7 @@ import RiskCalculatorPage from "./pages/RiskCalculatorPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import NotFound from "./pages/NotFound";
+import CalculatePage from "./pages/CalculatePage";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App: React.FC = () => {
                 <Route path="/risk-calculator" element={<RiskCalculatorPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
+                <Route path="/calculate" element={<CalculatePage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
