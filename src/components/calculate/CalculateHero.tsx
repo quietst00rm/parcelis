@@ -5,14 +5,11 @@ const stats = [
 ];
 
 const CalculateHero = () => (
-  <section className="bg-[#1e2099] py-16 md:py-24">
+  <section className="bg-[#1e2099] pt-16 md:pt-24 pb-12">
     <div className="container mx-auto px-4 text-center">
       <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 mt-8">
         Your Shipping Protection Is Leaving Money on the Table
       </h1>
-      <p className="text-lg text-white/80 max-w-[640px] mx-auto mb-12">
-        Most Shopify merchants lose thousands every month to package theft, damage claims, and customer refunds. Parcelis turns that cost center into a profit line.
-      </p>
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 mt-8">
         {stats.map((s, i) => (
           <div key={s.number} className="flex items-center gap-6 md:gap-16">
@@ -24,7 +21,6 @@ const CalculateHero = () => (
           </div>
         ))}
       </div>
-      <div className="w-[120px] h-px bg-white/20 mx-auto mt-10" />
     </div>
   </section>
 );
