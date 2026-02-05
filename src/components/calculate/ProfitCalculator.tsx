@@ -74,7 +74,7 @@ const ProfitCalculator = () => {
   const isNegative = monthlyProfit < 0;
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8">
           {/* LEFT: Inputs */}
