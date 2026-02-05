@@ -5,7 +5,7 @@ import ProfitCalculator from "@/components/calculate/ProfitCalculator";
 import VolumeScenarios from "@/components/calculate/VolumeScenarios";
 import CalculateTrust from "@/components/calculate/CalculateTrust";
 import CalculateHowItWorks from "@/components/calculate/CalculateHowItWorks";
-import CalculateFAQ from "@/components/calculate/CalculateFAQ";
+
 import CalculateCTA from "@/components/calculate/CalculateCTA";
 
 const CalculatePage = () => (
@@ -17,7 +17,7 @@ const CalculatePage = () => (
     <VolumeScenarios />
     <CalculateTrust />
     <CalculateHowItWorks />
-    <CalculateFAQ />
+    
     <CalculateCTA />
   </>
 );
