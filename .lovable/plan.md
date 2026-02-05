@@ -1,41 +1,37 @@
 
 
-# Fix Issues on /calculate Page
+# Streamline /calculate Page Above the Calculator
 
-## Four targeted fixes with no changes to the calculator, results, sliders, or logic.
+## Overview
+Three targeted changes to tighten the top of the page and get users to the calculator faster. No changes to the calculator, results, or any sections below it.
 
 ---
 
-## FIX 1: Hero Section Spacing (`CalculateHero.tsx`)
+## CHANGE 1: Remove Problem Context Strip
 
-Rewrite the hero section styling for spacious, confident layout:
+**File:** `src/pages/CalculatePage.tsx`
 
-- Outer padding: `py-16 md:py-24` (currently `py-14 md:py-20`)
-- Headline: add `mt-8` for navbar clearance
-- Subheadline: change `max-w-2xl` to `max-w-[640px]`, change `mb-8` to `mb-12`
-- Stats row: add `mt-8`, change gap from `gap-6 md:gap-12` to `gap-6 md:gap-16`
-- Each stat label: add `max-w-[160px] mx-auto`
-- Divider line at bottom: add `mt-10` (currently has no top margin, relies on parent `mb-8`)
-- Remove `mb-8` from the stats row wrapper since the divider line handles spacing via `mt-10`
+- Remove the `ProblemContextStrip` import
+- Remove `<ProblemContextStrip />` from the JSX
+- Page flow becomes: `CalculateHero` directly followed by `CalculateSectionHeader` + `ProfitCalculator`
 
-## FIX 2: Problem Context Strip (`ProblemContextStrip.tsx`)
+## CHANGE 2: Tighten the Hero
 
-- Replace text with: "Every lost or stolen package costs you the product, the reshipping, the support ticket ($25-70 each), and often the customer. Parcelis turns that liability into a new revenue line."
-- This removes the rhetorical question and the em-dash (`$25–70` becomes `$25-70`)
-- Change padding from `py-10` to `py-12`
+**File:** `src/components/calculate/CalculateHero.tsx`
 
-## FIX 3: Remove FAQ Section (`CalculatePage.tsx`)
+- Delete the subheadline paragraph entirely (the `<p>` with "Most Shopify merchants lose thousands...")
+- Change section padding from `py-16 md:py-24` to `pt-16 md:pt-24 pb-12` so the bottom is tighter
+- Remove the horizontal divider line (`<div className="w-[120px] h-px bg-white/20 mx-auto mt-10" />`)
+- Adjust stats row margin: keep `mt-8` but since there's no subheadline above, the stats will sit closer to the headline naturally
 
-- Remove the `CalculateFAQ` import and its usage from `CalculatePage.tsx`
-- The `CalculateFAQ.tsx` file can remain (unused) or be deleted -- either way it will not render
-- Page flow becomes: CalculateHowItWorks directly followed by CalculateCTA
+Final hero structure: Headline -> Stats row -> end.
 
-## FIX 4: CTA Footer Copy (`CalculateCTA.tsx`)
+## CHANGE 3: Reduce Calculator Section Header Spacing
 
-- Headline: "The Math Speaks for Itself"
-- Subtext: "Install Parcelis today. No contracts. No setup fees. Start earning on your next order."
-- Primary button text: "Install on Shopify"
-- Add a line below both buttons: "Free to install. No monthly fees. No credit card required." in `text-white/60 text-sm text-center mt-4`
+**File:** `src/components/calculate/CalculateSectionHeader.tsx`
+
+- Change the outer div padding from `pt-16 pb-0` to `pt-12 pb-4`
+- This tightens the gap between the hero and the "Calculate Your Profit" header
 
 ---
 
@@ -43,13 +39,12 @@ Rewrite the hero section styling for spacious, confident layout:
 
 | File | Change |
 |------|--------|
-| `src/components/calculate/CalculateHero.tsx` | Spacing, padding, max-widths |
-| `src/components/calculate/ProblemContextStrip.tsx` | New copy, padding increase |
-| `src/pages/CalculatePage.tsx` | Remove CalculateFAQ import and usage |
-| `src/components/calculate/CalculateCTA.tsx` | New copy, button text, disclaimer line |
+| `src/pages/CalculatePage.tsx` | Remove ProblemContextStrip import and usage |
+| `src/components/calculate/CalculateHero.tsx` | Remove subheadline, remove divider, adjust bottom padding |
+| `src/components/calculate/CalculateSectionHeader.tsx` | Change padding to `pt-12 pb-4` |
 
 ## Files NOT Modified
 - Calculator logic, sliders, results cards
-- Trust bar, How It Works section
+- Volume scenarios, Trust bar, How It Works, CTA footer
 - Navbar, Footer, or any other pages
 
