@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FileText, Share2, BarChart3, DollarSign } from "lucide-react";
 import PartnerCalculator from "@/components/partner/PartnerCalculator";
+import { WhatClientsGet, WhyAgenciesSwitch, IdealPartnerProfile, TrustSignals } from "@/components/partner/PartnerContentSections";
 
 /* ─── HERO ─── */
 const PartnerHero: React.FC = () => (
@@ -151,6 +152,10 @@ const PartnerPage: React.FC = () => {
       <PartnerStatsBar />
       <PartnerHowItWorks />
       <PartnerCalculator />
+      <WhatClientsGet />
+      <WhyAgenciesSwitch />
+      <IdealPartnerProfile />
+      <TrustSignals />
     </>
   );
 };
