@@ -47,39 +47,39 @@ const PartnerSlider: React.FC<SliderProps> = ({ label, min, max, step, value, on
 };
 
 /* ─── Reference Table ─── */
-const refRows = [
-  { merchants: 5, label: "5 merchants" },
-  { merchants: 10, label: "10 merchants" },
-  { merchants: 25, label: "25 merchants" },
-  { merchants: 50, label: "50 merchants" },
+const refCards = [
+  { tier: "Starter", merchants: 5, label: "5 merchants" },
+  { tier: "Growing", merchants: 10, label: "10 merchants" },
+  { tier: "Scaling", merchants: 25, label: "25 merchants" },
+  { tier: "Enterprise", merchants: 50, label: "50 merchants" },
 ];
 
-const ReferenceTable: React.FC = () => (
-  <div className="overflow-x-auto -mx-2">
-    <table className="w-full text-sm min-w-[360px]">
-      <thead>
-        <tr className="border-b border-border-gray">
-          <th className="text-left py-3 px-2 font-semibold text-muted-foreground">Portfolio Size</th>
-          <th className="text-right py-3 px-2 font-semibold text-muted-foreground">Monthly Earnings</th>
-          <th className="text-right py-3 px-2 font-semibold text-muted-foreground">Annual Earnings</th>
-        </tr>
-      </thead>
-      <tbody>
-        {refRows.map((r) => {
-          const insured = r.merchants * 5000 * 0.43;
-          const monthly = insured * 0.1;
-          const annual = monthly * 12;
-          return (
-            <tr key={r.merchants} className="border-b border-border-gray/50">
-              <td className="py-3 px-2 text-text-primary font-medium">{r.label}</td>
-              <td className="py-3 px-2 text-right text-text-primary">{fmtDollar(monthly)}</td>
-              <td className="py-3 px-2 text-right text-text-primary">{fmtDollar(annual)}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-    <p className="text-xs text-muted-foreground italic mt-4 text-center">
+const ReferenceCards: React.FC = () => (
+  <div>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {refCards.map((r) => {
+        const insured = r.merchants * 5000 * 0.43;
+        const monthly = insured * 0.1;
+        const annual = monthly * 12;
+        return (
+          <div
+            key={r.merchants}
+            className="bg-background-gray rounded-2xl border border-border-gray p-5 flex flex-col items-center text-center"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground mb-2">
+              {r.tier}
+            </span>
+            <span className="text-2xl md:text-3xl font-extrabold text-text-primary">{r.label}</span>
+            <div className="w-10 h-0.5 bg-border-gray my-3" />
+            <span className="text-xl md:text-2xl font-extrabold text-[#2db87a]">{fmtDollar(monthly)}</span>
+            <span className="text-xs text-muted-foreground mt-0.5">monthly earnings</span>
+            <span className="text-base font-bold text-[#2db87a]/80 mt-2">{fmtDollar(annual)}</span>
+            <span className="text-xs text-muted-foreground mt-0.5">annual earnings</span>
+          </div>
+        );
+      })}
+    </div>
+    <p className="text-xs text-muted-foreground italic mt-5 text-center">
       Based on 5,000 packages/merchant at 43% opt-in rate.
     </p>
   </div>
@@ -191,8 +191,8 @@ const PartnerCalculator: React.FC = () => {
           {/* Divider */}
           <div className="border-t border-border-gray my-8" />
 
-          {/* Reference Table */}
-          <ReferenceTable />
+          {/* Reference Cards */}
+          <ReferenceCards />
         </div>
       </div>
     </section>

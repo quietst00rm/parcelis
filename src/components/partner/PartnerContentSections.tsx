@@ -77,7 +77,7 @@ export const WhatClientsGet: React.FC = () => (
 const switchCols = [
   {
     icon: Users,
-    title: "We Won't Embarrass You",
+    title: "Support You Can Stand Behind",
     desc: "100% human support with response times under 1 hour. No AI chatbot loops. No offshore phone trees. When your client has a problem, a real person answers.",
   },
   {
@@ -123,7 +123,6 @@ const checklistItems = [
   "Manages 10+ active merchant clients",
   "Provides development, strategy, or operations services",
   "Values support quality and app reliability",
-  "US, Canada, UK, or Australia based (English-speaking markets)",
 ];
 
 export const IdealPartnerProfile: React.FC = () => (
