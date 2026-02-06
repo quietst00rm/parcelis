@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FileText, Share2, BarChart3, DollarSign } from "lucide-react";
+import { FileText, Share2, BarChart3, DollarSign, ArrowRight } from "lucide-react";
 import PartnerCalculator from "@/components/partner/PartnerCalculator";
 import { WhatClientsGet, WhyAgenciesSwitch, IdealPartnerProfile, TrustSignals } from "@/components/partner/PartnerContentSections";
 import PartnerFAQ from "@/components/partner/PartnerFAQ";
@@ -70,15 +70,23 @@ const PartnerHero: React.FC = () => {
         </HeroReveal>
 
         <HeroReveal delay={0.3} show={show}>
-          <button
-            onClick={() => {
-              const el = document.getElementById("partner-calculator");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px]"
-          >
-            Calculate Your Revenue
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <button
+              onClick={() => {
+                const el = document.getElementById("partner-calculator");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="w-full sm:w-auto border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px]"
+            >
+              See the Numbers
+            </button>
+            <a
+              href="https://www.myparcelis.com/apply"
+              className="w-full sm:w-auto text-center bg-white text-brand rounded-full px-8 py-3.5 font-bold text-base hover:bg-white/90 transition-all min-h-[44px] min-w-[44px]"
+            >
+              Apply Now
+            </a>
+          </div>
         </HeroReveal>
       </div>
 
@@ -207,6 +215,29 @@ const PartnerPage: React.FC = () => {
       <RevealSection><IdealPartnerProfile /></RevealSection>
       <RevealSection><TrustSignals /></RevealSection>
       <RevealSection><PartnerFAQ /></RevealSection>
+
+      {/* Final CTA */}
+      <RevealSection>
+        <section
+          className="py-20 md:py-28 text-center"
+          style={{ background: "linear-gradient(135deg, #101155 0%, #1e22aa 50%, #2e32d4 100%)", border: "none" }}
+        >
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading font-extrabold text-white text-3xl md:text-4xl mb-4">
+              Ready to Learn More?
+            </h2>
+            <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+              See how Parcelis can add a new recurring revenue line to your agency — with zero setup and zero risk.
+            </p>
+            <a
+              href="https://www.myparcelis.com/apply"
+              className="inline-flex items-center gap-2 w-full sm:w-auto justify-center bg-white text-brand rounded-full px-10 py-4 font-bold text-base hover:bg-white/90 transition-all min-h-[44px]"
+            >
+              Apply Now <ArrowRight size={18} strokeWidth={2.5} />
+            </a>
+          </div>
+        </section>
+      </RevealSection>
     </>
   );
 };
