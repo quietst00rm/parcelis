@@ -1,50 +1,25 @@
 
 
-# Streamline /calculate Page Above the Calculator
+# Fix Floating Point Precision in Selling Price Display
 
-## Overview
-Three targeted changes to tighten the top of the page and get users to the calculator faster. No changes to the calculator, results, or any sections below it.
+## Problem
+The default selling price formula (`4.96 + Math.ceil((aov - 200) / 100) * 2.48`) produces floating point artifacts like `7.4399999999999995` instead of `7.44`. This long decimal string is shown in the input field because `String(newSP)` converts the raw float directly.
 
----
+## Solution
+Round values to 2 decimal places wherever selling price and base cost values are set as display strings.
 
-## CHANGE 1: Remove Problem Context Strip
+## File: `src/components/calculate/ProfitCalculator.tsx`
 
-**File:** `src/pages/CalculatePage.tsx`
+Three changes:
 
-- Remove the `ProblemContextStrip` import
-- Remove `<ProblemContextStrip />` from the JSX
-- Page flow becomes: `CalculateHero` directly followed by `CalculateSectionHeader` + `ProfitCalculator`
+1. **`handleAovChange`** - When auto-setting selling price from the default formula, round to 2 decimals:
+   - Change `setSpDisplay(String(newSP))` to `setSpDisplay(newSP.toFixed(2))`
 
-## CHANGE 2: Tighten the Hero
+2. **`resetSellingPrice`** - Same fix when resetting to suggested:
+   - Change `setSpDisplay(String(defaultSP))` to `setSpDisplay(defaultSP.toFixed(2))`
 
-**File:** `src/components/calculate/CalculateHero.tsx`
+3. **`handleSellingPriceChange` (onBlur)** - When committing a user-typed value, round to 2 decimals:
+   - Change `setSpDisplay(String(val))` (inside the callback) to store the rounded value: `setSpDisplay(val.toFixed(2))`
 
-- Delete the subheadline paragraph entirely (the `<p>` with "Most Shopify merchants lose thousands...")
-- Change section padding from `py-16 md:py-24` to `pt-16 md:pt-24 pb-12` so the bottom is tighter
-- Remove the horizontal divider line (`<div className="w-[120px] h-px bg-white/20 mx-auto mt-10" />`)
-- Adjust stats row margin: keep `mt-8` but since there's no subheadline above, the stats will sit closer to the headline naturally
-
-Final hero structure: Headline -> Stats row -> end.
-
-## CHANGE 3: Reduce Calculator Section Header Spacing
-
-**File:** `src/components/calculate/CalculateSectionHeader.tsx`
-
-- Change the outer div padding from `pt-16 pb-0` to `pt-12 pb-4`
-- This tightens the gap between the hero and the "Calculate Your Profit" header
-
----
-
-## Files Modified
-
-| File | Change |
-|------|--------|
-| `src/pages/CalculatePage.tsx` | Remove ProblemContextStrip import and usage |
-| `src/components/calculate/CalculateHero.tsx` | Remove subheadline, remove divider, adjust bottom padding |
-| `src/components/calculate/CalculateSectionHeader.tsx` | Change padding to `pt-12 pb-4` |
-
-## Files NOT Modified
-- Calculator logic, sliders, results cards
-- Volume scenarios, Trust bar, How It Works, CTA footer
-- Navbar, Footer, or any other pages
+No other files or logic modified. Calculator math, results cards, sliders, and all other inputs remain unchanged.
 
