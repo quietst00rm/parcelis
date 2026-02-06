@@ -45,7 +45,7 @@ const PartnerHero: React.FC = () => {
 
   return (
     <section className="relative overflow-hidden -mt-24 pt-24" style={{ border: 'none' }}>
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1e2acd] to-[#0d1247] z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0" />
       <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 py-28 sm:py-32 md:py-40">
         <HeroReveal delay={0} show={show}>
           <span className="inline-block mb-6 px-5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white border border-white/40 bg-white/10 rounded-full">

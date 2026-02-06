@@ -46,17 +46,25 @@ const PartnerSlider: React.FC<SliderProps> = ({ label, min, max, step, value, on
   );
 };
 
-/* ─── Reference Table ─── */
+/* ─── Reference Cards ─── */
 const refCards = [
-  { tier: "Starter", merchants: 5, label: "5 merchants" },
-  { tier: "Growing", merchants: 10, label: "10 merchants" },
-  { tier: "Scaling", merchants: 25, label: "25 merchants" },
-  { tier: "Enterprise", merchants: 50, label: "50 merchants" },
+  { merchants: 5, label: "5 merchants" },
+  { merchants: 10, label: "10 merchants" },
+  { merchants: 25, label: "25 merchants" },
+  { merchants: 50, label: "50 merchants" },
 ];
 
 const ReferenceCards: React.FC = () => (
   <div>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="text-center mb-6">
+      <h3 className="font-heading font-bold text-text-primary text-xl md:text-[22px] mb-1.5">
+        Portfolio Earnings Breakdown
+      </h3>
+      <p className="text-sm text-muted-foreground">
+        Projected monthly and annual earnings at standard assumptions.
+      </p>
+    </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
       {refCards.map((r) => {
         const insured = r.merchants * 5000 * 0.43;
         const monthly = insured * 0.1;
@@ -64,17 +72,11 @@ const ReferenceCards: React.FC = () => (
         return (
           <div
             key={r.merchants}
-            className="bg-background-gray rounded-2xl border border-border-gray p-5 flex flex-col items-center text-center"
+            className="bg-white rounded-xl border border-border-gray shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 p-6 flex flex-col items-center text-center"
           >
-            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground mb-2">
-              {r.tier}
-            </span>
-            <span className="text-2xl md:text-3xl font-extrabold text-text-primary">{r.label}</span>
-            <div className="w-10 h-0.5 bg-border-gray my-3" />
-            <span className="text-xl md:text-2xl font-extrabold text-[#2db87a]">{fmtDollar(monthly)}</span>
-            <span className="text-xs text-muted-foreground mt-0.5">monthly earnings</span>
-            <span className="text-base font-bold text-[#2db87a]/80 mt-2">{fmtDollar(annual)}</span>
-            <span className="text-xs text-muted-foreground mt-0.5">annual earnings</span>
+            <span className="text-lg font-bold text-text-primary mb-2">{r.label}</span>
+            <span className="text-xl md:text-[22px] font-bold text-brand">{fmtDollar(monthly)}/mo</span>
+            <span className="text-sm text-muted-foreground mt-1">{fmtDollar(annual)}/yr</span>
           </div>
         );
       })}
@@ -121,7 +123,7 @@ const PartnerCalculator: React.FC = () => {
     <section
       id="partner-calculator"
       className="relative py-20 md:py-28"
-      style={{ background: "linear-gradient(135deg, #1e2acd 0%, #0d1247 100%)", border: "none" }}
+      style={{ background: "linear-gradient(135deg, #101155 0%, #1e22aa 50%, #2e32d4 100%)", border: "none" }}
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
