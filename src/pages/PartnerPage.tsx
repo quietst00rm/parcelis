@@ -1,49 +1,91 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FileText, Share2, BarChart3, DollarSign } from "lucide-react";
 import PartnerCalculator from "@/components/partner/PartnerCalculator";
 import { WhatClientsGet, WhyAgenciesSwitch, IdealPartnerProfile, TrustSignals } from "@/components/partner/PartnerContentSections";
+import PartnerFAQ from "@/components/partner/PartnerFAQ";
+import PartnerApplicationForm from "@/components/partner/PartnerApplicationForm";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+
+/* ─── Fade-up wrapper (scroll-triggered) ─── */
+const RevealSection: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
+  const { ref, visible } = useScrollReveal(0.1);
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+/* ─── Staggered hero element ─── */
+const HeroReveal: React.FC<{ children: React.ReactNode; delay: number; show: boolean }> = ({ children, delay, show }) => (
+  <div
+    style={{
+      opacity: show ? 1 : 0,
+      transform: show ? "translateY(0)" : "translateY(20px)",
+      transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`,
+    }}
+  >
+    {children}
+  </div>
+);
 
 /* ─── HERO ─── */
-const PartnerHero: React.FC = () => (
-  <section className="relative overflow-hidden -mt-24 pt-24" style={{ border: 'none' }}>
-    <div className="absolute inset-0 bg-gradient-to-br from-[#1e2acd] to-[#0d1247] z-0" />
-    <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 py-28 sm:py-32 md:py-40">
-      {/* Badge */}
-      <span className="inline-block mb-6 px-5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white border border-white/40 bg-white/10 rounded-full">
-        Partner Program
-      </span>
+const PartnerHero: React.FC = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => { setShow(true); }, []);
 
-      {/* Headline */}
-      <h1
-        className="font-heading font-extrabold text-white leading-tight mb-6 max-w-4xl"
-        style={{ fontSize: "clamp(1.875rem, 5vw, 3.5rem)" }}
-      >
-        Grow Your Agency Revenue.
-        <br className="hidden sm:block" /> Protect Your Clients' Shipments.
-      </h1>
+  return (
+    <section className="relative overflow-hidden -mt-24 pt-24" style={{ border: 'none' }}>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1e2acd] to-[#0d1247] z-0" />
+      <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 py-28 sm:py-32 md:py-40">
+        <HeroReveal delay={0} show={show}>
+          <span className="inline-block mb-6 px-5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white border border-white/40 bg-white/10 rounded-full">
+            Partner Program
+          </span>
+        </HeroReveal>
 
-      {/* Subheadline */}
-      <p className="text-white/80 text-lg sm:text-xl max-w-[700px] mb-10 leading-relaxed">
-        Refer merchants to Parcelis and earn $0.10 per insured package across your entire portfolio. Recurring. No cap.
-      </p>
+        <HeroReveal delay={0.1} show={show}>
+          <h1
+            className="font-heading font-extrabold text-white leading-tight mb-6 max-w-4xl"
+            style={{ fontSize: "clamp(1.875rem, 5vw, 3.5rem)" }}
+          >
+            Grow Your Agency Revenue.
+            <br className="hidden sm:block" /> Protect Your Clients' Shipments.
+          </h1>
+        </HeroReveal>
 
-      {/* CTA */}
-      <button
-        onClick={() => {
-          const el = document.getElementById("partner-calculator");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }}
-        className="border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px]"
-      >
-        Calculate Your Revenue
-      </button>
-    </div>
+        <HeroReveal delay={0.2} show={show}>
+          <p className="text-white/80 text-lg sm:text-xl max-w-[700px] mb-10 leading-relaxed">
+            Refer merchants to Parcelis and earn $0.10 per insured package across your entire portfolio. Recurring. No cap.
+          </p>
+        </HeroReveal>
 
-    {/* Spacer so stats bar overlaps */}
-    <div className="h-20 md:h-24 relative z-0" />
-  </section>
-);
+        <HeroReveal delay={0.3} show={show}>
+          <button
+            onClick={() => {
+              const el = document.getElementById("partner-calculator");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px]"
+          >
+            Calculate Your Revenue
+          </button>
+        </HeroReveal>
+      </div>
+
+      <div className="h-20 md:h-24 relative z-0" />
+    </section>
+  );
+};
 
 /* ─── STATS BAR ─── */
 const stats = [
@@ -53,25 +95,40 @@ const stats = [
   { value: "$0", label: "Agency Fees or Setup Costs" },
 ];
 
-const PartnerStatsBar: React.FC = () => (
-  <div className="relative z-20 -mt-20 md:-mt-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-    <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] p-8 md:p-10">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
-        {stats.map((s, i) => (
-          <div
-            key={s.label}
-            className={`flex flex-col items-center text-center ${
-              i < stats.length - 1 ? "md:border-r md:border-border-gray" : ""
-            }`}
-          >
-            <span className="text-brand font-extrabold text-2xl sm:text-3xl mb-1">{s.value}</span>
-            <span className="text-muted-foreground text-sm">{s.label}</span>
-          </div>
-        ))}
+const PartnerStatsBar: React.FC = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 400);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <div
+      className="relative z-20 -mt-20 md:-mt-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+      style={{
+        opacity: show ? 1 : 0,
+        transform: show ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+      }}
+    >
+      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] p-8 md:p-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`flex flex-col items-center text-center ${
+                i < stats.length - 1 ? "md:border-r md:border-border-gray" : ""
+              }`}
+            >
+              <span className="text-brand font-extrabold text-2xl sm:text-3xl mb-1">{s.value}</span>
+              <span className="text-muted-foreground text-sm">{s.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* ─── HOW IT WORKS ─── */
 const steps = [
@@ -89,11 +146,8 @@ const PartnerHowItWorks: React.FC = () => (
         Our simple onboarding process gets you earning in minutes.
       </p>
 
-      {/* Desktop: horizontal with connecting line */}
       <div className="hidden md:block relative">
-        {/* Line behind icons */}
         <div className="absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-border-gray z-0" />
-
         <div className="grid grid-cols-4 gap-8 relative z-10">
           {steps.map((s) => (
             <div key={s.title} className="flex flex-col items-center">
@@ -107,11 +161,8 @@ const PartnerHowItWorks: React.FC = () => (
         </div>
       </div>
 
-      {/* Mobile: vertical with connecting line */}
       <div className="md:hidden relative flex flex-col items-center gap-10">
-        {/* Vertical line */}
         <div className="absolute top-7 bottom-7 left-1/2 -translate-x-1/2 w-0.5 bg-border-gray z-0" />
-
         {steps.map((s) => (
           <div key={s.title} className="flex flex-col items-center relative z-10">
             <div className="w-14 h-14 rounded-full bg-brand text-white flex items-center justify-center mb-4 shadow-md">
@@ -139,8 +190,6 @@ const PartnerPage: React.FC = () => {
         <meta name="description" content="Join the Parcelis Partner Program. Earn $0.10 per insured package across your entire referred merchant portfolio. Recurring revenue. No cap. No fees." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://www.myparcelis.com/partner-with-us" />
-
-        {/* Open Graph */}
         <meta property="og:title" content="Parcelis Partner Program — Recurring Revenue for Agencies" />
         <meta property="og:description" content="Refer merchants to Parcelis and earn $0.10 per insured package. No cap. No fees. Monthly payouts." />
         <meta property="og:type" content="website" />
@@ -150,12 +199,15 @@ const PartnerPage: React.FC = () => {
 
       <PartnerHero />
       <PartnerStatsBar />
-      <PartnerHowItWorks />
-      <PartnerCalculator />
-      <WhatClientsGet />
-      <WhyAgenciesSwitch />
-      <IdealPartnerProfile />
-      <TrustSignals />
+
+      <RevealSection><PartnerHowItWorks /></RevealSection>
+      <RevealSection><PartnerCalculator /></RevealSection>
+      <RevealSection><WhatClientsGet /></RevealSection>
+      <RevealSection><WhyAgenciesSwitch /></RevealSection>
+      <RevealSection><IdealPartnerProfile /></RevealSection>
+      <RevealSection><TrustSignals /></RevealSection>
+      <RevealSection><PartnerFAQ /></RevealSection>
+      <RevealSection><PartnerApplicationForm /></RevealSection>
     </>
   );
 };
