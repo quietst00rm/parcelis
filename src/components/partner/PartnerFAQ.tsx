@@ -8,7 +8,7 @@ const faqItems = [
   },
   {
     q: "Is there a cost to join the partner program?",
-    a: "No. There are zero fees, zero setup costs, and zero minimums. You apply, get approved, and start earning from day one.",
+    a: "No. There are zero fees, zero setup costs, and zero minimums. Once you're connected with our team, you can start earning right away.",
   },
   {
     q: "How does my client benefit?",

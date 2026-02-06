@@ -31,7 +31,7 @@ const clientCards = [
   {
     icon: Lock,
     title: "Real Insurance Backing",
-    desc: "Policies underwritten by The Hartford, a Fortune 500 insurer. Fully licensed. Not a self-insurance workaround. Not a tech hack.",
+    desc: "Policies backed by licensed, regulated underwriters. Fully compliant. Not a self-insurance workaround. Not a tech hack.",
   },
   {
     icon: Gauge,
@@ -168,8 +168,8 @@ const trustCols = [
   },
   {
     icon: Award,
-    title: "Backed by The Hartford",
-    desc: "Fortune 500 insurer. A-rated financial strength. Real underwriting, real coverage, real payouts.",
+    title: "Institutional Insurance Backing",
+    desc: "Policies underwritten by established, A-rated carriers. Real underwriting, real coverage, real payouts.",
   },
   {
     icon: ShoppingBag,
