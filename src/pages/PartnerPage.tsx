@@ -4,7 +4,7 @@ import { FileText, Share2, BarChart3, DollarSign } from "lucide-react";
 import PartnerCalculator from "@/components/partner/PartnerCalculator";
 import { WhatClientsGet, WhyAgenciesSwitch, IdealPartnerProfile, TrustSignals } from "@/components/partner/PartnerContentSections";
 import PartnerFAQ from "@/components/partner/PartnerFAQ";
-import PartnerApplicationForm from "@/components/partner/PartnerApplicationForm";
+
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 /* ─── Fade-up wrapper (scroll-triggered) ─── */
@@ -132,7 +132,7 @@ const PartnerStatsBar: React.FC = () => {
 
 /* ─── HOW IT WORKS ─── */
 const steps = [
-  { icon: FileText, title: "Apply", desc: "Complete our quick partner application. Approval typically within 24 hours." },
+  { icon: FileText, title: "Connect", desc: "Reach out to our team to discuss the partner program. We typically respond within 24 hours." },
   { icon: Share2, title: "Refer", desc: "Share your unique partner link or introduce merchants directly. We handle all onboarding." },
   { icon: BarChart3, title: "Track", desc: "Monitor referral activity, insured package volume, and earnings in your partner dashboard." },
   { icon: DollarSign, title: "Earn", desc: "Receive monthly payouts based on insured package volume across your entire referred portfolio." },
@@ -187,7 +187,7 @@ const PartnerPage: React.FC = () => {
     <>
       <Helmet>
         <title>Partner Program | Parcelis — Earn Recurring Revenue Referring Merchants</title>
-        <meta name="description" content="Join the Parcelis Partner Program. Earn $0.10 per insured package across your entire referred merchant portfolio. Recurring revenue. No cap. No fees." />
+        <meta name="description" content="Parcelis Partner Program. Earn $0.10 per insured package across your entire referred merchant portfolio. Recurring revenue. No cap. No fees." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://www.myparcelis.com/partner-with-us" />
         <meta property="og:title" content="Parcelis Partner Program — Recurring Revenue for Agencies" />
@@ -207,7 +207,6 @@ const PartnerPage: React.FC = () => {
       <RevealSection><IdealPartnerProfile /></RevealSection>
       <RevealSection><TrustSignals /></RevealSection>
       <RevealSection><PartnerFAQ /></RevealSection>
-      <RevealSection><PartnerApplicationForm /></RevealSection>
     </>
   );
 };
