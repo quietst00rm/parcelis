@@ -16,6 +16,12 @@ const getDefaultSellingPrice = (aov: number) => {
   return 4.96 + Math.ceil((aov - 200) / 100) * 2.48;
 };
 
+const sanitizeCurrencyInput = (value: string, allowDecimals: boolean): string | null => {
+  if (value === "" || value === ".") return value;
+  const pattern = allowDecimals ? /^\d*\.?\d{0,2}$/ : /^\d*$/;
+  return pattern.test(value) ? value : null;
+};
+
 const fmt = (n: number, decimals = 0) =>
   n.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 
@@ -99,11 +105,13 @@ const ProfitCalculator = () => {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
               <input
                 id="aov"
-                type="number"
-                min={0}
-                step={1}
+                type="text"
+                inputMode="numeric"
                 value={aovDisplay}
-                onChange={e => setAovDisplay(e.target.value)}
+                onChange={e => {
+                  const sanitized = sanitizeCurrencyInput(e.target.value, false);
+                  if (sanitized !== null) setAovDisplay(sanitized);
+                }}
                 onFocus={handleSelectAll}
                 onBlur={() => {
                   const val = Math.max(0, Number(aovDisplay) || 0);
@@ -176,11 +184,13 @@ const ProfitCalculator = () => {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
               <input
                 id="sp"
-                type="number"
-                min={0}
-                step={0.01}
+                type="text"
+                inputMode="decimal"
                 value={spDisplay}
-                onChange={e => setSpDisplay(e.target.value)}
+                onChange={e => {
+                  const sanitized = sanitizeCurrencyInput(e.target.value, true);
+                  if (sanitized !== null) setSpDisplay(sanitized);
+                }}
                 onFocus={handleSelectAll}
                 onBlur={() => {
                   const val = Math.max(0, Number(spDisplay) || 0);
