@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FileText, Share2, BarChart3, DollarSign } from "lucide-react";
+import PartnerCalculator from "@/components/partner/PartnerCalculator";
 
 /* ─── HERO ─── */
 const PartnerHero: React.FC = () => (
@@ -149,9 +150,7 @@ const PartnerPage: React.FC = () => {
       <PartnerHero />
       <PartnerStatsBar />
       <PartnerHowItWorks />
-
-      {/* Placeholder anchor for future calculator section */}
-      <div id="partner-calculator" />
+      <PartnerCalculator />
     </>
   );
 };
