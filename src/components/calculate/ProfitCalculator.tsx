@@ -56,19 +56,19 @@ const ProfitCalculator = () => {
     if (!hasOverride) {
       const newSP = getDefaultSellingPrice(val);
       setSellingPrice(newSP);
-      setSpDisplay(String(newSP));
+      setSpDisplay(newSP.toFixed(2));
     }
   }, [hasOverride]);
 
   const handleSellingPriceChange = useCallback((val: number) => {
     setSellingPrice(val);
-    setSpDisplay(String(val));
+    setSpDisplay(val.toFixed(2));
     setHasOverride(true);
   }, []);
 
   const resetSellingPrice = useCallback(() => {
     setSellingPrice(defaultSP);
-    setSpDisplay(String(defaultSP));
+    setSpDisplay(defaultSP.toFixed(2));
     setHasOverride(false);
   }, [defaultSP]);
 
