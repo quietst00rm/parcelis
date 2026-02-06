@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FileText, Share2, BarChart3, DollarSign, ArrowRight } from "lucide-react";
+import { FileText, Share2, BarChart3, DollarSign, ArrowRight, ArrowDown } from "lucide-react";
 import PartnerCalculator from "@/components/partner/PartnerCalculator";
 import { WhatClientsGet, WhyAgenciesSwitch, IdealPartnerProfile, TrustSignals } from "@/components/partner/PartnerContentSections";
 import PartnerFAQ from "@/components/partner/PartnerFAQ";
@@ -75,9 +75,10 @@ const PartnerHero: React.FC = () => {
               const el = document.getElementById("partner-calculator");
               if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-full sm:w-auto border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px]"
+            className="group w-full sm:w-auto border-2 border-white text-white rounded-full px-8 py-3.5 font-bold text-base hover:bg-white hover:text-brand transition-all min-h-[44px] min-w-[44px] inline-flex items-center justify-center gap-2"
           >
-            See the Numbers
+            Revenue Calculator
+            <ArrowDown size={18} strokeWidth={2.5} className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
           </button>
         </HeroReveal>
       </div>
