@@ -1,68 +1,42 @@
 
 
-# Fix: Restrict Dollar Inputs to 2 Decimal Places at Input Time
+# Add Editable Number Inputs to Partner Calculator Sliders
 
-## Root Cause
+## What Changes
 
-The inputs use `type="number"`, which has **no built-in way to restrict decimal places while typing**. The `step={0.01}` attribute only affects the spinner arrows -- it does NOT prevent a user from typing `4.555555`. The `onChange` handler blindly passes `e.target.value` to state with zero validation. Formatting on blur is too late -- the user already sees the garbage value.
+Each of the three calculator sliders (Merchants, Packages, Opt-In Rate) will get an editable text input alongside the slider, so users can either drag the slider or type a value directly.
 
-## The Real Fix
+## How It Will Work
 
-Switch both dollar inputs (Selling Price and AOV) from `type="number"` to `type="text"` with `inputMode="decimal"` (which still shows the numeric keyboard on mobile). Then validate every keystroke with a regex that **rejects input that doesn't match a valid currency pattern** before it ever reaches state.
+The current value badge on the right side of each slider label (e.g., the blue pill showing "10" or "5,000" or "43%") will become a clickable/editable inline text input. Users can:
+- **Drag the slider** as before -- the input updates in real time
+- **Click the value and type** a number directly -- the slider moves to match
 
-## File: `src/components/calculate/ProfitCalculator.tsx`
+The input will clamp values to the slider's min/max range on blur, and snap to the nearest valid step. Invalid/empty input reverts to the previous value.
 
-### 1. Add a currency input sanitizer function (top of file, near helpers)
+## Technical Details
 
-```typescript
-const sanitizeCurrencyInput = (value: string, allowDecimals: boolean): string => {
-  if (value === "" || value === ".") return value;
-  const pattern = allowDecimals ? /^\d*\.?\d{0,2}$/ : /^\d*$/;
-  return pattern.test(value) ? value : null; // null = reject keystroke
-};
-```
+**File: `src/components/partner/PartnerCalculator.tsx`**
 
-### 2. Selling Price input changes
+### PartnerSlider component changes
 
-- Change `type="number"` to `type="text"` and add `inputMode="decimal"`
-- Remove `min`, `step` attributes (not valid for text inputs)
-- Replace `onChange={e => setSpDisplay(e.target.value)}` with:
-  ```typescript
-  onChange={e => {
-    const sanitized = sanitizeCurrencyInput(e.target.value, true);
-    if (sanitized !== null) setSpDisplay(sanitized);
-  }}
-  ```
+1. Add local state for the text display value (`displayValue` string) that syncs with the numeric `value` prop.
 
-This means if a user types "4.55" and then presses "5", the regex `/^\d*\.?\d{0,2}$/` fails on "4.555" and the keystroke is silently ignored. The input stays at "4.55".
+2. Replace the static `<span>` badge with a `<input type="text">` styled to look like the current badge (blue text, blue/10 background, rounded-full, same font size/weight).
 
-### 3. AOV input changes
+3. Input behavior:
+   - `inputMode="numeric"` for mobile number pad
+   - On focus: select all text (`e.target.select()`)
+   - On change: update local display string, filtering to digits only (plus `%` suffix display for opt-in)
+   - On blur: parse the number, clamp to `[min, max]`, snap to nearest `step`, call `onChange`, and reformat the display
+   - On Enter key: blur the input (same as above)
 
-- Change `type="number"` to `type="text"` and add `inputMode="numeric"`
-- Remove `min`, `step` attributes
-- Replace `onChange={e => setAovDisplay(e.target.value)}` with:
-  ```typescript
-  onChange={e => {
-    const sanitized = sanitizeCurrencyInput(e.target.value, false);
-    if (sanitized !== null) setAovDisplay(sanitized);
-  }}
-  ```
+4. Add a `suffix` prop (optional) to handle the "%" display for the opt-in rate slider. The packages slider will show comma-formatted numbers.
 
-AOV is whole dollars only, so `allowDecimals=false` restricts to digits only.
+5. Input width: use a compact fixed width (~70-80px) so it fits neatly in the label row without layout shift. The input text is right-aligned to match current badge appearance.
 
-### 4. No other changes
+### No other changes
 
-- Blur handlers, select-all on focus, reset logic, calculation logic, results cards, sliders, and all other sections remain exactly as they are.
-- The blur handler already rounds to `.toFixed(2)` which handles edge cases like the user typing "5." and blurring (becomes "5.00").
-
-## Why This Is the Correct Solution
-
-| Approach | Problem |
-|----------|---------|
-| Format on blur only | User sees ugly values while typing |
-| `type="number"` + `step` | Browsers ignore `step` for typed input |
-| `maxLength` on number input | Browsers ignore `maxLength` on number inputs |
-| **`type="text"` + regex gate** | **Prevents invalid input at the source** |
-
-Using `inputMode="decimal"` / `inputMode="numeric"` ensures mobile keyboards still show the numeric pad.
+- Calculator results, animated counters, reference cards, and all other sections remain untouched.
+- No changes to any other pages.
 
