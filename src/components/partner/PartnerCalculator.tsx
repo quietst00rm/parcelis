@@ -17,18 +17,58 @@ interface SliderProps {
   value: number;
   onChange: (v: number) => void;
   format: (v: number) => string;
+  suffix?: string;
 }
 
-const PartnerSlider: React.FC<SliderProps> = ({ label, min, max, step, value, onChange, format }) => {
+const PartnerSlider: React.FC<SliderProps> = ({ label, min, max, step, value, onChange, format, suffix = "" }) => {
   const pct = ((value - min) / (max - min)) * 100;
+  const [displayValue, setDisplayValue] = useState(format(value));
+  const [isFocused, setIsFocused] = useState(false);
+
+  // Sync display when value changes externally (slider drag)
+  React.useEffect(() => {
+    if (!isFocused) {
+      setDisplayValue(format(value));
+    }
+  }, [value, format, isFocused]);
+
+  const commitValue = useCallback((raw: string) => {
+    const digits = raw.replace(/[^0-9]/g, "");
+    if (!digits) {
+      setDisplayValue(format(value));
+      return;
+    }
+    let num = parseInt(digits, 10);
+    num = Math.max(min, Math.min(max, num));
+    num = Math.round(num / step) * step;
+    onChange(num);
+    setDisplayValue(format(num));
+  }, [min, max, step, value, onChange, format]);
 
   return (
     <div className="mb-6 last:mb-0">
       <div className="flex items-center justify-between mb-3">
         <label className="text-sm font-semibold text-text-primary">{label}</label>
-        <span className="text-sm font-bold text-brand bg-brand/10 px-3 py-1 rounded-full">
-          {format(value)}
-        </span>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={isFocused ? displayValue : format(value)}
+          onFocus={(e) => {
+            setIsFocused(true);
+            // Show raw number for easier editing
+            setDisplayValue(String(value));
+            requestAnimationFrame(() => e.target.select());
+          }}
+          onChange={(e) => setDisplayValue(e.target.value.replace(/[^0-9]/g, ""))}
+          onBlur={() => {
+            setIsFocused(false);
+            commitValue(displayValue);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") (e.target as HTMLInputElement).blur();
+          }}
+          className="text-sm font-bold text-brand bg-brand/10 px-3 py-1 rounded-full w-[80px] text-right outline-none focus:ring-2 focus:ring-brand/30 transition-shadow"
+        />
       </div>
       <input
         type="range"
