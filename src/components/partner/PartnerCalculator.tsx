@@ -106,7 +106,7 @@ const ReferenceCards: React.FC = () => (
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
       {refCards.map((r) => {
-        const insured = r.merchants * 5000 * 0.43;
+        const insured = r.merchants * 10000 * 0.43;
         const monthly = insured * 0.1;
         const annual = monthly * 12;
         return (
@@ -122,7 +122,7 @@ const ReferenceCards: React.FC = () => (
       })}
     </div>
     <p className="text-xs text-muted-foreground italic mt-5 text-center">
-      Based on 5,000 packages/merchant at 43% opt-in rate.
+      Based on 10,000 packages/merchant at 43% opt-in rate.
     </p>
   </div>
 );
