@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Package, ShieldCheck, Calculator } from 'lucide-react';
 
 const PricingCalculator: React.FC = () => {
@@ -110,9 +111,9 @@ const PricingCalculator: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-             <button className="bg-brand text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg">
-                 See How It Works
-             </button>
+         <Link to="/how-it-works" className="inline-block bg-brand text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg">
+             See How It Works
+         </Link>
         </div>
 
       </div>
