@@ -3,31 +3,31 @@ import { FileText, Search, CheckCircle, Banknote } from 'lucide-react';
 
 const PricingProcess: React.FC = () => {
   const steps = [
-    {
-        num: 1,
-        icon: <FileText className="w-14 h-14 text-brand" strokeWidth={1.5} />,
-        title: "Customer Files Claim",
-        text: "Customer submits claim through dedicated portal with tracking number and required documentation."
-    },
-    {
-        num: 2,
-        icon: <Search className="w-14 h-14 text-brand" strokeWidth={1.5} />,
-        title: "Professional Review",
-        text: "Licensed claims team verifies coverage and reviews documentation for fast processing."
-    },
-    {
-        num: 3,
-        icon: <CheckCircle className="w-14 h-14 text-brand" strokeWidth={1.5} />,
-        title: "Resolution Confirmed",
-        text: "Claim approved and customer notified with resolution details and payout timeline."
-    },
-    {
-        num: 4,
-        icon: <Banknote className="w-14 h-14 text-brand" strokeWidth={1.5} />,
-        title: "Customer Satisfied",
-        text: "Fast resolution builds trust, reduces negative reviews, and keeps customers coming back."
-    }
-  ];
+  {
+    num: 1,
+    icon: <FileText className="w-14 h-14 text-brand" strokeWidth={1.5} />,
+    title: "Customer Files Claim",
+    text: "Customer submits claim through dedicated portal with tracking number and required documentation."
+  },
+  {
+    num: 2,
+    icon: <Search className="w-14 h-14 text-brand" strokeWidth={1.5} />,
+    title: "Professional Review",
+    text: "Licensed claims team verifies coverage and reviews documentation for fast processing."
+  },
+  {
+    num: 3,
+    icon: <CheckCircle className="w-14 h-14 text-brand" strokeWidth={1.5} />,
+    title: "Resolution Confirmed",
+    text: "Claim approved and customer notified with resolution details and payout timeline."
+  },
+  {
+    num: 4,
+    icon: <Banknote className="w-14 h-14 text-brand" strokeWidth={1.5} />,
+    title: "Customer Satisfied",
+    text: "Fast resolution builds trust, reduces negative reviews, and keeps customers coming back."
+  }];
+
 
   return (
     <div className="py-24 bg-gray-50">
@@ -41,8 +41,8 @@ const PricingProcess: React.FC = () => {
             {/* Connecting Line (Desktop) - Adjusted top to match center of bigger circles */}
             <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-[1px] bg-gray-200 z-0"></div>
 
-            {steps.map((step, i) => (
-                <div key={i} className="flex flex-col items-start relative z-10 bg-gray-50 md:bg-transparent">
+            {steps.map((step, i) =>
+          <div key={i} className="flex flex-col items-start relative z-10 bg-gray-50 md:bg-transparent">
                     <div className="w-20 h-20 rounded-full bg-brand text-white flex items-center justify-center font-bold text-3xl mb-6 shadow-md border-4 border-white">
                         {step.num}
                     </div>
@@ -54,17 +54,17 @@ const PricingProcess: React.FC = () => {
                         {step.text}
                     </p>
                 </div>
-            ))}
+          )}
         </div>
 
-        <div className="text-center mt-16">
-            <button className="border border-gray-300 text-slate-700 font-medium py-3 px-8 rounded-lg hover:bg-white transition-colors">
-                Learn More About Our Process
-            </button>
-        </div>
+        
+
+
+
+
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default PricingProcess;
