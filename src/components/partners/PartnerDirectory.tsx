@@ -448,39 +448,6 @@ const PartnerDirectory = () => {
         </div>
       </section>
 
-      {/* ── Become a Partner CTA ── */}
-      <section className="relative bg-primary-light-tint overflow-hidden">
-        {/* Decorative dot grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
-        <div className="relative container mx-auto px-4 py-20 md:py-28 text-center">
-          <ScrollReveal>
-            <div className="max-w-2xl mx-auto">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-success/10 text-success mx-auto mb-8">
-                <Handshake className="h-8 w-8" />
-              </div>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Become a Partner
-              </h2>
-              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-                Join our trusted partner ecosystem and offer added value to
-                merchants using Parcelis shipping protection.
-              </p>
-              <a href="/partner-with-us" className="btn btn-primary btn-large">
-                Apply to Partner
-                <ArrowRight className="h-4 w-4 ml-1" />
-              </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ── Detail Modal ── */}
       {selectedPartner && (
         <div
