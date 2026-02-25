@@ -1,99 +1,74 @@
 
 
-# Build "Our Partners" Directory Page
+# Redesign: Our Partners Page — World-Class Upgrade
 
-## Overview
+## Current Problems
 
-Create a new hidden page at `/our-partners` that showcases Parcelis's featured partners. The page follows the structure from the reference screenshots: a hero section, category filter tabs, search bar, a 3-column partner card grid, and a detail modal that opens when clicking a partner card. All styling uses Parcelis brand colors and typography -- not the dark theme from the reference.
+The page is functional but visually flat and generic:
+- **Hero** is a plain gradient with small text and no visual depth — no parallax parcels, no layered elements, no energy
+- **Cards** are basic white boxes with tiny icons, no visual hierarchy, no personality — they all look the same regardless of category or featured status
+- **Category tabs and search** feel disconnected and utilitarian — two separate sticky bars stacked awkwardly
+- **Modal** is cramped, lacks visual breathing room, and the two-column layout feels like a rushed form rather than a showcase
+- **No Navbar/Footer integration** — the page renders Navbar via layout but the hero doesn't pull up behind it like other pages do (missing `-mt-24 pt-24` pattern)
+- **No ParallaxParcels** in the hero — every other hero on the site has the animated parcel background
 
-## Page Structure
+## Design Enhancements
 
-```text
-┌─────────────────────────────────────────────┐
-│  HERO                                       │
-│  Blue gradient bg (brand style)             │
-│  "Directory" pill label                     │
-│  "OUR PARTNER ECOSYSTEM." heading           │
-│  Subtitle paragraph                         │
-├─────────────────────────────────────────────┤
-│  CATEGORY TABS                              │
-│  All | Logistics | Finance | Legal | ...    │
-│  Underline style, horizontal scroll mobile  │
-├─────────────────────────────────────────────┤
-│  SEARCH BAR (sticky)                        │
-│  "Find a partner..."                        │
-├─────────────────────────────────────────────┤
-│  PARTNER GRID (3 cols desktop, 1 mobile)    │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐       │
-│  │ Card    │ │ Card    │ │ Card    │       │
-│  │ Name    │ │ Name    │ │ Name    │       │
-│  │ Cat tag │ │ Cat tag │ │ Cat tag │       │
-│  │ Desc    │ │ Desc    │ │ Desc    │       │
-│  │ View -> │ │ View -> │ │ View -> │       │
-│  └─────────┘ └─────────┘ └─────────┘       │
-├─────────────────────────────────────────────┤
-│  FOOTER (existing site footer)              │
-└─────────────────────────────────────────────┘
-```
+### 1. Hero — Match Site Standard
+- Add `-mt-24 pt-24` to pull hero behind the transparent navbar (consistent with HomeHero, HowItWorksHero)
+- Add `ParallaxParcels` animated background
+- Use the same gradient structure: `absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4]`
+- Increase heading size to `text-5xl md:text-7xl` with `font-extrabold` to match other heroes
+- Increase subtitle to `text-xl md:text-2xl text-blue-100 font-light` for consistency
+- Add a subtle aggregate stat strip at the bottom of the hero (e.g., "8 Verified Partners | 6 Categories | Exclusive Offers") to add substance
 
-**Partner Detail Modal** (opens on card click):
-```text
-┌─────────────────────────────────────────────┐
-│  Header: Icon + Name + Category + "Verified"│
-│  ┌──────────────┐ ┌──────────────────┐      │
-│  │ WHO THEY ARE │ │ WHY WE TRUST THEM│      │
-│  │ Description  │ │ Trust text       │      │
-│  │ Stats cards  │ │                  │      │
-│  │ Tags         │ │ Exclusive Offer  │      │
-│  └──────────────┘ └──────────────────┘      │
-│  [ Visit Partner Website ] button           │
-└─────────────────────────────────────────────┘
-```
+### 2. Filters — Unified Toolbar
+- Merge category tabs and search into a single sticky bar instead of two stacked rows
+- Category pills on the left, search input on the right, all in one row
+- Use pill-style buttons for categories (rounded-full, filled when active) rather than underline tabs — more modern and tactile
+- Single `sticky top-0 z-30` bar with subtle backdrop blur and border-bottom
 
-## Visual Adaptation (Reference to Parcelis)
+### 3. Partner Cards — Premium Treatment
+- **Featured cards** get a gradient border glow (primary blue shimmer) and a "Featured" ribbon badge, making them immediately distinct
+- **All cards**: Increase padding, add a top-aligned partner logo area (larger icon in a 56px circle), name and category on separate lines with more spacing
+- Add a subtle stat preview on the card itself (the two key stats shown as small inline badges, e.g., "99.4% On-Time | 20+ Countries") so users get value before clicking
+- Hover effect: subtle border-primary transition + shadow-xl + slight scale(1.02), not just translate
+- "View Partner →" becomes a proper button-style link at the card bottom with more visual weight
+- Card minimum height consistency so grid rows align
 
-- **Hero background**: Brand blue gradient (`#101155` to `#1e22aa` to `#2e32d4`) instead of dark/orange
-- **Cards**: White background with subtle border and shadow on white/light gray page background, hover lift effect
-- **Category tabs**: Brand blue underline for active tab (not orange)
-- **"View Partner" links**: Brand blue text with arrow
-- **"Verified Partner" badge**: Brand blue or green accent
-- **Modal**: White background, brand blue accents, clean light theme
-- **"Exclusive Offer" box**: Brand light blue background (`#e8e9ff`) with brand blue accent
-- **CTA button**: Brand blue solid button (not orange)
-- **Typography**: Plus Jakarta Sans for headings, Inter for body (matching site)
+### 4. Modal — Full Redesign
+- **Increase max-width to `max-w-4xl`** for breathing room
+- **Add a colored header band**: a small gradient strip at the top of the modal matching the brand blue, with the partner icon and name overlaid — gives the modal a polished "page" feel
+- **"Verified Partner" badge**: always visible (remove `hidden sm:`)
+- **Stats**: style as proper metric cards with borders and slightly larger typography
+- **Exclusive Offer box**: add a subtle animated border or star icon to draw attention, use a warmer accent background
+- **"Visit Partner Website" button**: full-width with icon, but add a secondary "Back to Directory" text link below it
+- **Close button**: larger hit target, semi-transparent circle background always visible
+- **Body scroll**: add a subtle scroll indicator if content overflows
 
-## Files to Create/Modify
+### 5. Page Structure & Polish
+- Wrap the whole page in the standard layout pattern so Navbar and Footer render properly
+- Add `aria-label` on the modal overlay for accessibility
+- Lock body scroll when modal is open (`overflow-hidden` on body)
+- Add a brief "Become a Partner" CTA section before the footer — a simple centered block with a heading and a link to `/partner-with-us`
 
-### 1. `src/pages/OurPartnersPage.tsx` (NEW)
-- Main page component with Helmet meta tags (noindex, nofollow)
-- Hero section with brand gradient
-- Imports and renders the partner directory component
-- Scrolls to top on mount
+## Technical Changes
 
-### 2. `src/components/partners/PartnerDirectory.tsx` (NEW)
-- Contains the full directory logic: state for category filter, search query, selected partner
-- Category tabs with filtering
-- Search input
-- 3-column responsive grid of partner cards
-- Partner detail modal (overlay)
-- Placeholder partner data (can be swapped later with real partners)
-- Uses lucide-react icons for partner icons and UI elements
+### File: `src/components/partners/PartnerDirectory.tsx` (REWRITE)
+- Import `ParallaxParcels` for the hero background
+- Restructure hero section with `-mt-24 pt-24`, absolute gradient, ParallaxParcels, larger typography
+- Add hero stat strip
+- Merge filter tabs + search into a single sticky toolbar row with pill-style category buttons
+- Restyle partner cards: larger icons, stat previews, enhanced hover, featured glow
+- Redesign modal: gradient header band, larger width, always-visible verified badge, body scroll lock
+- Add "Become a Partner" CTA section at the bottom
+- Add `useEffect` to toggle `document.body.style.overflow` when modal opens/closes
 
-### 3. `src/App.tsx` (MODIFY)
-- Import `OurPartnersPage`
-- Add route: `<Route path="/our-partners" element={<OurPartnersPage />} />`
-- No navbar or footer changes
+### File: `src/pages/OurPartnersPage.tsx` (MINOR)
+- Already has `noindex, nofollow` — confirmed, no changes needed
 
-## Partner Data Structure
+### File: `src/App.tsx`
+- No changes needed — route already exists
 
-Each partner will have: `id`, `name`, `category`, `description`, `icon`, `featured` flag, `fullDescription`, `whyWeTrust`, `stats` array, `tags` array, optional `offer`, and `website` URL. Initially populated with placeholder partners relevant to the e-commerce/shipping space (not the Amazon-specific ones from the reference).
-
-## Technical Details
-
-- Categories adapted for Parcelis context: All, Logistics, Finance, Legal, Software, Creative
-- Search filters by name and description
-- Modal uses a fixed overlay with backdrop blur
-- Scroll-triggered fade-in animations using the existing `useScrollReveal` hook
-- Fully responsive: single column on mobile, 2 on tablet, 3 on desktop
-- Page is hidden: no links added to Navbar or Footer
+No new dependencies. No navigation changes. Page remains hidden.
 
