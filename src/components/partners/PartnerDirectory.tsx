@@ -248,90 +248,6 @@ const PartnerDirectory = () => {
   const featuredCount = partners.filter((p) => p.featured).length;
   const offerCount = partners.filter((p) => p.offer).length;
 
-  /* ── Featured Card (horizontal, spans 2 cols) ── */
-  const FeaturedCard = ({ partner, index }: { partner: Partner; index: number }) => (
-    <ScrollReveal delay={index * 60}>
-      <div
-        onClick={() => setSelectedPartner(partner)}
-        className="group relative md:col-span-2 flex flex-col md:flex-row rounded-2xl border border-border/60 bg-card cursor-pointer transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:scale-[1.01] overflow-hidden"
-      >
-        {/* Gradient left accent */}
-        <div
-          className="hidden md:block w-1 shrink-0 rounded-l-2xl"
-          style={{
-            background:
-              "linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--success)) 100%)",
-          }}
-        />
-
-        {/* Icon area */}
-        <div className="flex items-center justify-center md:w-48 shrink-0 p-8 md:p-10">
-          <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-success/10">
-            <partner.icon className="h-9 w-9 text-success" />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 p-8 md:py-10 md:pr-10 md:pl-0">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <h3 className="font-heading text-xl font-bold text-foreground">
-                  {partner.name}
-                </h3>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-0.5 text-[11px] font-bold uppercase tracking-widest text-success-foreground">
-                  <Star className="h-3 w-3 fill-current" />
-                  Featured
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span
-                  className={`inline-block h-2 w-2 rounded-full ${
-                    categoryDotColor[partner.category] || "bg-muted-foreground"
-                  }`}
-                />
-                {partner.category}
-              </div>
-            </div>
-            {partner.offer && (
-              <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-warning/15 px-3 py-1 text-[11px] font-semibold text-warning border border-warning/20">
-                <Gift className="h-3 w-3" />
-                Exclusive Offer
-              </span>
-            )}
-          </div>
-
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
-            {partner.description}
-          </p>
-
-          {/* Stats + CTA row */}
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex gap-3">
-              {partner.stats.map((s, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5"
-                >
-                  <span className="text-xs font-bold text-success">
-                    {s.value}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground">
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <span className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
-              View Partner
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </span>
-          </div>
-        </div>
-      </div>
-    </ScrollReveal>
-  );
-
   /* ── Standard Card ── */
   const StandardCard = ({ partner, index }: { partner: Partner; index: number }) => (
     <ScrollReveal delay={index * 60}>
@@ -351,14 +267,22 @@ const PartnerDirectory = () => {
         )}
 
         {/* Icon */}
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary-light-tint mb-6">
-          <partner.icon className="h-6 w-6 text-primary" />
+        <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl mb-6 ${partner.featured ? 'bg-success/10' : 'bg-primary-light-tint'}`}>
+          <partner.icon className={`h-6 w-6 ${partner.featured ? 'text-success' : 'text-primary'}`} />
         </div>
 
         {/* Name & category */}
-        <h3 className="font-heading text-lg font-bold text-foreground mb-1.5">
-          {partner.name}
-        </h3>
+        <div className="flex items-center gap-2 mb-1.5">
+          <h3 className="font-heading text-lg font-bold text-foreground">
+            {partner.name}
+          </h3>
+          {partner.featured && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-success px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-success-foreground">
+              <Star className="h-2.5 w-2.5 fill-current" />
+              Featured
+            </span>
+          )}
+        </div>
         <div className="flex items-center gap-2 text-xs text-muted-foreground mb-5">
           <span
             className={`inline-block h-2 w-2 rounded-full ${
@@ -514,17 +438,11 @@ const PartnerDirectory = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPartners.map((partner, i) =>
-                partner.featured ? (
-                  <div key={partner.id} className="md:col-span-2 lg:col-span-2">
-                    <FeaturedCard partner={partner} index={i} />
-                  </div>
-                ) : (
-                  <div key={partner.id}>
-                    <StandardCard partner={partner} index={i} />
-                  </div>
-                )
-              )}
+              {filteredPartners.map((partner, i) => (
+                <div key={partner.id}>
+                  <StandardCard partner={partner} index={i} />
+                </div>
+              ))}
             </div>
           )}
         </div>
