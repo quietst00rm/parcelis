@@ -13,6 +13,7 @@ import {
   Palette,
   Zap,
   Handshake,
+  Gift,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -211,13 +212,20 @@ const categories = [
   "Creative",
 ];
 
+const categoryDotColor: Record<string, string> = {
+  Logistics: "bg-primary",
+  Finance: "bg-success",
+  Legal: "bg-warning",
+  Software: "bg-primary-medium",
+  Creative: "bg-destructive",
+};
+
 /* ── component ── */
 const PartnerDirectory = () => {
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedPartner) {
       document.body.style.overflow = "hidden";
@@ -240,11 +248,159 @@ const PartnerDirectory = () => {
   const featuredCount = partners.filter((p) => p.featured).length;
   const offerCount = partners.filter((p) => p.offer).length;
 
+  /* ── Featured Card (horizontal, spans 2 cols) ── */
+  const FeaturedCard = ({ partner, index }: { partner: Partner; index: number }) => (
+    <ScrollReveal delay={index * 60}>
+      <div
+        onClick={() => setSelectedPartner(partner)}
+        className="group relative md:col-span-2 flex flex-col md:flex-row rounded-2xl border border-border/60 bg-card cursor-pointer transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:scale-[1.01] overflow-hidden"
+      >
+        {/* Gradient left accent */}
+        <div
+          className="hidden md:block w-1 shrink-0 rounded-l-2xl"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--success)) 100%)",
+          }}
+        />
+
+        {/* Icon area */}
+        <div className="flex items-center justify-center md:w-48 shrink-0 p-8 md:p-10">
+          <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-success/10">
+            <partner.icon className="h-9 w-9 text-success" />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 p-8 md:py-10 md:pr-10 md:pl-0">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <h3 className="font-heading text-xl font-bold text-foreground">
+                  {partner.name}
+                </h3>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-0.5 text-[11px] font-bold uppercase tracking-widest text-success-foreground">
+                  <Star className="h-3 w-3 fill-current" />
+                  Featured
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span
+                  className={`inline-block h-2 w-2 rounded-full ${
+                    categoryDotColor[partner.category] || "bg-muted-foreground"
+                  }`}
+                />
+                {partner.category}
+              </div>
+            </div>
+            {partner.offer && (
+              <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-warning/15 px-3 py-1 text-[11px] font-semibold text-warning border border-warning/20">
+                <Gift className="h-3 w-3" />
+                Exclusive Offer
+              </span>
+            )}
+          </div>
+
+          <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
+            {partner.description}
+          </p>
+
+          {/* Stats + CTA row */}
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex gap-3">
+              {partner.stats.map((s, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5"
+                >
+                  <span className="text-xs font-bold text-success">
+                    {s.value}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+              View Partner
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+
+  /* ── Standard Card ── */
+  const StandardCard = ({ partner, index }: { partner: Partner; index: number }) => (
+    <ScrollReveal delay={index * 60}>
+      <div
+        onClick={() => setSelectedPartner(partner)}
+        className="group relative flex flex-col rounded-2xl border border-border/60 bg-card p-10 cursor-pointer transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/30 hover:scale-[1.015] min-h-[360px]"
+      >
+        {/* Offer dot */}
+        {partner.offer && (
+          <div className="absolute top-5 right-5 flex items-center gap-1.5">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-warning opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-warning" />
+            </span>
+            <span className="text-[10px] font-medium text-warning">Offer</span>
+          </div>
+        )}
+
+        {/* Icon */}
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary-light-tint mb-6">
+          <partner.icon className="h-6 w-6 text-primary" />
+        </div>
+
+        {/* Name & category */}
+        <h3 className="font-heading text-lg font-bold text-foreground mb-1.5">
+          {partner.name}
+        </h3>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-5">
+          <span
+            className={`inline-block h-2 w-2 rounded-full ${
+              categoryDotColor[partner.category] || "bg-muted-foreground"
+            }`}
+          />
+          {partner.category}
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+          {partner.description}
+        </p>
+
+        {/* Stat previews */}
+        <div className="flex gap-3 mb-6">
+          {partner.stats.map((s, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5"
+            >
+              <span className="text-xs font-bold text-success">{s.value}</span>
+              <span className="text-[10px] text-muted-foreground">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+          View Partner
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+
   return (
     <div className="bg-background min-h-screen">
       {/* ── Hero ── */}
       <section className="relative overflow-hidden -mt-24 pt-24">
-        {/* Gradient background */}
         <div
           className="absolute inset-0"
           style={{
@@ -254,7 +410,7 @@ const PartnerDirectory = () => {
         />
         <ParallaxParcels opacity={0.6} />
 
-        <div className="relative z-10 container mx-auto px-4 pt-20 pb-16 md:pt-28 md:pb-24 text-center">
+        <div className="relative z-10 container mx-auto px-4 pt-24 pb-20 md:pt-32 md:pb-28 text-center">
           <span className="inline-block mb-6 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold tracking-widest uppercase text-white/90 backdrop-blur-sm">
             Partner Directory
           </span>
@@ -263,27 +419,36 @@ const PartnerDirectory = () => {
             <br />
             ECOSYSTEM.
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-blue-100 font-light leading-relaxed mb-12">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-blue-100 font-light leading-relaxed mb-16">
             We partner with a network of trusted agencies and solution providers
             to bring added value and expertise. Explore our certified partners
             and enhance your business.
           </p>
 
-          {/* Stat strip */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-white/70 text-sm font-medium">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-white/50" />
-              <span>{partners.length} Verified Partners</span>
+          {/* Glassmorphic stat bar */}
+          <div className="inline-flex items-center gap-0 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl overflow-hidden">
+            <div className="flex items-center gap-3 px-8 py-5">
+              <CheckCircle className="h-5 w-5 text-success shrink-0" />
+              <div className="text-left">
+                <p className="text-2xl font-bold text-success">{partners.length}</p>
+                <p className="text-xs text-white/70">Verified Partners</p>
+              </div>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <Star className="h-4 w-4 text-white/50" />
-              <span>{featuredCount} Featured</span>
+            <div className="w-px h-10 bg-white/20" />
+            <div className="flex items-center gap-3 px-8 py-5">
+              <Star className="h-5 w-5 text-success shrink-0" />
+              <div className="text-left">
+                <p className="text-2xl font-bold text-success">{featuredCount}</p>
+                <p className="text-xs text-white/70">Featured</p>
+              </div>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <Zap className="h-4 w-4 text-white/50" />
-              <span>{offerCount} Exclusive Offers</span>
+            <div className="w-px h-10 bg-white/20" />
+            <div className="flex items-center gap-3 px-8 py-5">
+              <Zap className="h-5 w-5 text-warning shrink-0" />
+              <div className="text-left">
+                <p className="text-2xl font-bold text-warning">{offerCount}</p>
+                <p className="text-xs text-white/70">Exclusive Offers</p>
+              </div>
             </div>
           </div>
         </div>
@@ -299,12 +464,15 @@ const PartnerDirectory = () => {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
+                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                     activeCategory === cat
                       ? "bg-primary text-primary-foreground shadow-md"
                       : "bg-secondary text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
+                  {activeCategory === cat && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                  )}
                   {cat}
                 </button>
               ))}
@@ -318,115 +486,78 @@ const PartnerDirectory = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Find a partner..."
-                className="w-full rounded-full border border-input bg-background py-2 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+                className="w-full rounded-full border border-input bg-background py-2 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring shadow-inner transition-shadow"
               />
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Partner Grid ── */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
-        {filteredPartners.length === 0 ? (
-          <p className="text-center text-muted-foreground py-20 text-lg">
-            No partners found matching your criteria.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPartners.map((partner, i) => (
-              <ScrollReveal key={partner.id} delay={i * 60}>
-                <div
-                  onClick={() => setSelectedPartner(partner)}
-                  className={`group relative flex flex-col rounded-2xl border bg-card p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02] min-h-[320px] ${
-                    partner.featured
-                      ? "border-primary/40 shadow-lg shadow-primary/5 ring-1 ring-primary/10"
-                      : "border-border hover:border-primary/20"
-                  }`}
-                >
-                  {/* Featured ribbon */}
-                  {partner.featured && (
-                    <div className="absolute top-0 right-6 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-b-lg shadow-md">
-                      Featured
-                    </div>
-                  )}
-
-                  {/* Icon */}
-                  <div
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl mb-5 ${
-                      partner.featured
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-primary/10 text-primary"
-                    }`}
-                  >
-                    <partner.icon className="h-6 w-6" />
+      {/* ── Partner Grid (bento) ── */}
+      <section className="bg-background-gray">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          {filteredPartners.length === 0 ? (
+            <div className="text-center py-24">
+              <Package className="h-12 w-12 text-muted-foreground/40 mx-auto mb-4" />
+              <p className="text-muted-foreground text-lg">
+                No partners found matching your criteria.
+              </p>
+              <button
+                onClick={() => {
+                  setActiveCategory("All");
+                  setSearchQuery("");
+                }}
+                className="mt-4 text-sm font-medium text-primary hover:underline"
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPartners.map((partner, i) =>
+                partner.featured ? (
+                  <div key={partner.id} className="md:col-span-2 lg:col-span-2">
+                    <FeaturedCard partner={partner} index={i} />
                   </div>
-
-                  {/* Name & category */}
-                  <h3 className="font-heading text-xl font-bold text-foreground mb-1">
-                    {partner.name}
-                  </h3>
-                  <Badge
-                    variant="secondary"
-                    className="w-fit mb-4 text-[11px] font-medium"
-                  >
-                    {partner.category}
-                  </Badge>
-
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-                    {partner.description}
-                  </p>
-
-                  {/* Stat previews */}
-                  <div className="flex gap-3 mb-5">
-                    {partner.stats.map((s, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1"
-                      >
-                        <span className="text-xs font-bold text-primary">
-                          {s.value}
-                        </span>
-                        <span className="text-[10px] text-muted-foreground">
-                          {s.label}
-                        </span>
-                      </div>
-                    ))}
+                ) : (
+                  <div key={partner.id}>
+                    <StandardCard partner={partner} index={i} />
                   </div>
-
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
-                    View Partner
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        )}
+                )
+              )}
+            </div>
+          )}
+        </div>
       </section>
 
       {/* ── Become a Partner CTA ── */}
-      <section className="border-t border-border">
-        <div className="container mx-auto px-4 py-16 md:py-20 text-center">
+      <section className="relative bg-primary-light-tint overflow-hidden">
+        {/* Decorative dot grid */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="relative container mx-auto px-4 py-20 md:py-28 text-center">
           <ScrollReveal>
             <div className="max-w-2xl mx-auto">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mx-auto mb-6">
-                <Handshake className="h-7 w-7" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-success/10 text-success mx-auto mb-8">
+                <Handshake className="h-8 w-8" />
               </div>
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Become a Partner
               </h2>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
                 Join our trusted partner ecosystem and offer added value to
                 merchants using Parcelis shipping protection.
               </p>
-              <Button size="lg" asChild>
-                <a href="/partner-with-us">
-                  Apply to Partner
-                  <ArrowRight className="h-4 w-4 ml-1" />
-                </a>
-              </Button>
+              <a href="/partner-with-us" className="btn btn-primary btn-large">
+                Apply to Partner
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </a>
             </div>
           </ScrollReveal>
         </div>
@@ -439,10 +570,8 @@ const PartnerDirectory = () => {
           onClick={() => setSelectedPartner(null)}
           aria-label="Partner detail overlay"
         >
-          {/* backdrop */}
           <div className="absolute inset-0 bg-foreground/60 backdrop-blur-sm" />
 
-          {/* modal */}
           <div
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-card border border-border shadow-2xl animate-in fade-in zoom-in-95 duration-200"
@@ -469,16 +598,15 @@ const PartnerDirectory = () => {
                     </p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1.5 text-xs font-semibold text-white border border-white/20">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1.5 text-xs font-semibold text-success-foreground">
                   <CheckCircle className="h-3.5 w-3.5" />
                   Verified Partner
                 </span>
               </div>
 
-              {/* Close button */}
               <button
                 onClick={() => setSelectedPartner(null)}
-                className="absolute top-4 right-4 rounded-full p-2 bg-white/10 text-white hover:bg-white/20 transition-colors"
+                className="absolute top-4 right-4 rounded-full p-2.5 bg-white/10 text-white hover:bg-white/20 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -502,9 +630,9 @@ const PartnerDirectory = () => {
                   {selectedPartner.stats.map((s, i) => (
                     <div
                       key={i}
-                      className="rounded-xl border border-border bg-secondary/50 p-4 text-center"
+                      className="rounded-xl border border-border bg-secondary/50 p-4 text-center border-l-2 border-l-success"
                     >
-                      <p className="text-2xl font-bold text-primary">
+                      <p className="text-2xl font-bold text-success">
                         {s.value}
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">
@@ -517,6 +645,12 @@ const PartnerDirectory = () => {
                 <div className="flex flex-wrap gap-2">
                   {selectedPartner.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">
+                      <span
+                        className={`inline-block h-1.5 w-1.5 rounded-full mr-1.5 ${
+                          categoryDotColor[selectedPartner.category] ||
+                          "bg-muted-foreground"
+                        }`}
+                      />
                       {tag}
                     </Badge>
                   ))}
@@ -527,7 +661,7 @@ const PartnerDirectory = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
-                    <CheckCircle className="h-4 w-4 text-primary" />
+                    <CheckCircle className="h-4 w-4 text-success" />
                     Why We Trust Them
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -536,9 +670,9 @@ const PartnerDirectory = () => {
                 </div>
 
                 {selectedPartner.offer && (
-                  <div className="rounded-xl border border-primary/20 bg-primary-light-tint p-6">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary mb-2 uppercase tracking-wide">
-                      <Star className="h-3.5 w-3.5 fill-primary" />
+                  <div className="rounded-xl border border-warning/25 bg-gradient-to-br from-warning/5 to-warning/10 p-6">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-warning mb-2 uppercase tracking-wide">
+                      <Star className="h-3.5 w-3.5 fill-current" />
                       Exclusive Offer
                     </span>
                     <p className="font-heading text-base font-bold text-foreground">
