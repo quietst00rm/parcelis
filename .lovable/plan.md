@@ -1,74 +1,109 @@
 
 
-# Redesign: Our Partners Page — World-Class Upgrade
+# Premium Redesign: Our Partners Directory — Awwwards-Level Overhaul
 
-## Current Problems
+## Core Problems
 
-The page is functional but visually flat and generic:
-- **Hero** is a plain gradient with small text and no visual depth — no parallax parcels, no layered elements, no energy
-- **Cards** are basic white boxes with tiny icons, no visual hierarchy, no personality — they all look the same regardless of category or featured status
-- **Category tabs and search** feel disconnected and utilitarian — two separate sticky bars stacked awkwardly
-- **Modal** is cramped, lacks visual breathing room, and the two-column layout feels like a rushed form rather than a showcase
-- **No Navbar/Footer integration** — the page renders Navbar via layout but the hero doesn't pull up behind it like other pages do (missing `-mt-24 pt-24` pattern)
-- **No ParallaxParcels** in the hero — every other hero on the site has the animated parcel background
+The current page is a monotone blue-and-white layout with uniform, flat cards that lack visual hierarchy, texture, or any secondary color language. It reads as generic and amateurish — no depth, no warmth, no craft. Specifically:
 
-## Design Enhancements
+1. **No color variety** — everything is blue or white, creating a cold, sterile feel with zero visual energy
+2. **Cards are identical boxes** — no visual differentiation, no texture, no layering, no depth — they look like a CSS tutorial exercise
+3. **No macro negative space** — content is crammed into a standard grid with no breathing room or compositional rhythm
+4. **No surface variety** — no subtle backgrounds, gradients, or tinted sections to break up the page
+5. **No accent color** — the design system has `success green` (#00DE8A) and `warning amber` (#F5A623) available but unused
+6. **Stat strip in hero is tiny and forgettable**
+7. **"Become a Partner" CTA is bland**
 
-### 1. Hero — Match Site Standard
-- Add `-mt-24 pt-24` to pull hero behind the transparent navbar (consistent with HomeHero, HowItWorksHero)
-- Add `ParallaxParcels` animated background
-- Use the same gradient structure: `absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4]`
-- Increase heading size to `text-5xl md:text-7xl` with `font-extrabold` to match other heroes
-- Increase subtitle to `text-xl md:text-2xl text-blue-100 font-light` for consistency
-- Add a subtle aggregate stat strip at the bottom of the hero (e.g., "8 Verified Partners | 6 Categories | Exclusive Offers") to add substance
+## Design Direction
 
-### 2. Filters — Unified Toolbar
-- Merge category tabs and search into a single sticky bar instead of two stacked rows
-- Category pills on the left, search input on the right, all in one row
-- Use pill-style buttons for categories (rounded-full, filled when active) rather than underline tabs — more modern and tactile
-- Single `sticky top-0 z-30` bar with subtle backdrop blur and border-bottom
+Think: **Stripe Partners meets Linear.app** — clean, spacious, multi-surface, with intentional use of color to create hierarchy.
 
-### 3. Partner Cards — Premium Treatment
-- **Featured cards** get a gradient border glow (primary blue shimmer) and a "Featured" ribbon badge, making them immediately distinct
-- **All cards**: Increase padding, add a top-aligned partner logo area (larger icon in a 56px circle), name and category on separate lines with more spacing
-- Add a subtle stat preview on the card itself (the two key stats shown as small inline badges, e.g., "99.4% On-Time | 20+ Countries") so users get value before clicking
-- Hover effect: subtle border-primary transition + shadow-xl + slight scale(1.02), not just translate
-- "View Partner →" becomes a proper button-style link at the card bottom with more visual weight
-- Card minimum height consistency so grid rows align
+### Color Strategy
+- **Primary**: Brand royal blue (#1e22aa) — hero, CTAs, primary accents
+- **Accent warm**: Emerald green from the design system (`--success: 163 100% 43%` / #00DE8A) — used for "Featured" badges, stat highlights, offer boxes, and verified indicators. This adds warmth and contrast against the blue
+- **Surface layers**: Use 3-4 distinct background tones:
+  - Pure white for cards
+  - `hsl(230 75% 98%)` (existing `--background-gray`) for the grid section background
+  - `hsl(235 56% 94%)` (existing `--primary-light-tint`) for alternating sections
+  - Deep blue gradient for hero and CTA
 
-### 4. Modal — Full Redesign
-- **Increase max-width to `max-w-4xl`** for breathing room
-- **Add a colored header band**: a small gradient strip at the top of the modal matching the brand blue, with the partner icon and name overlaid — gives the modal a polished "page" feel
-- **"Verified Partner" badge**: always visible (remove `hidden sm:`)
-- **Stats**: style as proper metric cards with borders and slightly larger typography
-- **Exclusive Offer box**: add a subtle animated border or star icon to draw attention, use a warmer accent background
-- **"Visit Partner Website" button**: full-width with icon, but add a secondary "Back to Directory" text link below it
-- **Close button**: larger hit target, semi-transparent circle background always visible
-- **Body scroll**: add a subtle scroll indicator if content overflows
+### Layout Strategy — Bento-Inspired
+- **Featured partners** get a double-width card (spans 2 columns on desktop) with a horizontal layout — icon left, content right, stat badges inline. This immediately creates visual hierarchy
+- **Standard partners** remain single-column cards but with more generous padding (p-10), larger icons, and more vertical spacing
+- **Grid gaps** increased to `gap-8` with section padding at `py-24`
+- **Alternating section backgrounds** to create visual rhythm
 
-### 5. Page Structure & Polish
-- Wrap the whole page in the standard layout pattern so Navbar and Footer render properly
-- Add `aria-label` on the modal overlay for accessibility
-- Lock body scroll when modal is open (`overflow-hidden` on body)
-- Add a brief "Become a Partner" CTA section before the footer — a simple centered block with a heading and a link to `/partner-with-us`
+## Detailed Changes
 
-## Technical Changes
+### 1. Hero — Add Depth
+- Keep ParallaxParcels and gradient
+- Add a frosted glass stat bar at the bottom of the hero — a horizontal card with 3 stats separated by dividers, using `backdrop-blur-xl bg-white/10 border border-white/20` (glassmorphic)
+- Stats use the green accent for values (e.g., green `8` + white `Verified Partners`)
 
-### File: `src/components/partners/PartnerDirectory.tsx` (REWRITE)
-- Import `ParallaxParcels` for the hero background
-- Restructure hero section with `-mt-24 pt-24`, absolute gradient, ParallaxParcels, larger typography
-- Add hero stat strip
-- Merge filter tabs + search into a single sticky toolbar row with pill-style category buttons
-- Restyle partner cards: larger icons, stat previews, enhanced hover, featured glow
-- Redesign modal: gradient header band, larger width, always-visible verified badge, body scroll lock
-- Add "Become a Partner" CTA section at the bottom
-- Add `useEffect` to toggle `document.body.style.overflow` when modal opens/closes
+### 2. Filter Toolbar — Refine
+- Keep unified sticky bar
+- Active pill gets a subtle green dot indicator before the text (not just fill color change) — adds a tactile "active" feel
+- Search input gets a subtle inset shadow for depth
 
-### File: `src/pages/OurPartnersPage.tsx` (MINOR)
-- Already has `noindex, nofollow` — confirmed, no changes needed
+### 3. Cards — Complete Overhaul
 
-### File: `src/App.tsx`
-- No changes needed — route already exists
+**Featured Cards (span 2 cols):**
+- Horizontal layout: large icon area on the left (80px circle with green-tinted bg), content on the right
+- Subtle gradient left border (3px, blue-to-green gradient)
+- "Featured" badge uses green bg with white text
+- Stat badges use green text for values
+- Card bg: white with a very subtle radial gradient glow from the top-left corner
 
-No new dependencies. No navigation changes. Page remains hidden.
+**Standard Cards:**
+- Vertical layout with generous spacing
+- Icon gets a soft rounded square with `bg-primary-light-tint` background
+- Category badge uses a colored dot + text (not a filled badge) — more editorial
+- Stats shown as small key-value pairs with green-accented values
+- Bottom "View Partner →" text uses primary blue, with the arrow translating on hover
+- Hover: `shadow-[0_8px_30px_rgba(0,0,0,0.08)]` + `border-primary/30` + `scale-[1.015]` — subtle and premium
+- Card has `rounded-2xl` with `border border-border/60`
+
+**Offer indicator**: Cards with exclusive offers get a small amber/gold dot in the top-right corner with a tooltip-style label
+
+### 4. Grid Section Background
+- Wrap the grid in `bg-background-gray` (the light blue-gray) to differentiate from the white modal and CTA sections
+- Add a subtle top border or shadow from the toolbar
+
+### 5. Modal — Premium Polish
+- Keep the gradient header band
+- "Verified Partner" badge changes to green bg (#00DE8A) with white text and checkmark
+- Stat cards get a left green accent border (2px)
+- "Exclusive Offer" box gets a warm gradient: `bg-gradient-to-br from-amber-50 to-orange-50` with `border-amber-200` — the amber/gold from the design system adds a third color dimension
+- Tags get colored dots matching their category
+
+### 6. "Become a Partner" CTA — Elevated
+- Section background: `bg-primary-light-tint` (soft blue)
+- Add a decorative grid pattern or dot pattern overlay at 3% opacity for texture
+- Icon gets the green accent background
+- CTA button uses the gradient primary style (`btn-primary` class)
+
+### 7. No Results State
+- Add an illustration-like empty state with a muted icon and softer copy
+
+## Technical Implementation
+
+### File: `src/components/partners/PartnerDirectory.tsx` (FULL REWRITE)
+
+All changes are within this single file:
+
+- **Hero**: Add glassmorphic stat bar with green-accented values
+- **Filter bar**: Green dot on active pill, inset shadow on search
+- **Card grid**: 
+  - Section wrapped in `bg-background-gray` 
+  - Featured cards use `md:col-span-2` with horizontal flex layout, green-bordered left accent, green Featured badge
+  - Standard cards: increased padding, colored category dots, green stat values, premium hover shadow
+  - Offer dot indicator on cards with exclusive offers
+- **Modal**: Green verified badge, green-bordered stat cards, amber offer box gradient
+- **CTA section**: `bg-primary-light-tint` background, green icon accent, gradient button
+- Import no new dependencies — all colors exist in the design system
+
+### Files NOT changed:
+- `src/pages/OurPartnersPage.tsx` — no changes
+- `src/App.tsx` — no changes
+- No new files, no new dependencies
 
