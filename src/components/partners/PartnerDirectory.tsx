@@ -253,7 +253,7 @@ const PartnerDirectory = () => {
     <ScrollReveal delay={index * 60}>
       <div
         onClick={() => setSelectedPartner(partner)}
-        className="group relative flex flex-col rounded-2xl border border-border/60 bg-card p-10 cursor-pointer transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/30 hover:scale-[1.015] min-h-[360px]"
+        className="group relative flex flex-col rounded-2xl border border-border/60 bg-card p-6 md:p-10 cursor-pointer transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-primary/30 hover:scale-[1.015] min-h-0 md:min-h-[360px]"
       >
         {/* Offer dot */}
         {partner.offer && (
@@ -338,40 +338,40 @@ const PartnerDirectory = () => {
           <span className="inline-block mb-6 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold tracking-widest uppercase text-white/90 backdrop-blur-sm">
             Partner Directory
           </span>
-          <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.05]">
+          <h1 className="font-heading text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.05]">
             OUR PARTNER
-            <br />
-            ECOSYSTEM.
+            <br className="hidden md:inline" />
+            {" "}ECOSYSTEM.
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-blue-100 font-light leading-relaxed mb-16">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-blue-100 font-light leading-relaxed mb-10 md:mb-16">
             We partner with a network of trusted agencies and solution providers
             to bring added value and expertise. Explore our certified partners
             and enhance your business.
           </p>
 
           {/* Glassmorphic stat bar */}
-          <div className="inline-flex items-center gap-0 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl overflow-hidden">
-            <div className="flex items-center gap-3 px-8 py-5">
-              <CheckCircle className="h-5 w-5 text-success shrink-0" />
+          <div className="grid grid-cols-3 sm:inline-flex sm:items-center sm:gap-0 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl overflow-hidden">
+            <div className="flex items-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-5 justify-center sm:justify-start">
+              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-success shrink-0" />
               <div className="text-left">
-                <p className="text-2xl font-bold text-success">{partners.length}</p>
-                <p className="text-xs text-white/70">Verified Partners</p>
+                <p className="text-lg sm:text-2xl font-bold text-success">{partners.length}</p>
+                <p className="text-[10px] sm:text-xs text-white/70">Verified</p>
               </div>
             </div>
-            <div className="w-px h-10 bg-white/20" />
-            <div className="flex items-center gap-3 px-8 py-5">
-              <Star className="h-5 w-5 text-success shrink-0" />
+            <div className="hidden sm:block w-px h-10 bg-white/20" />
+            <div className="flex items-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-5 justify-center sm:justify-start border-x border-white/20 sm:border-x-0">
+              <Star className="h-4 w-4 sm:h-5 sm:w-5 text-success shrink-0" />
               <div className="text-left">
-                <p className="text-2xl font-bold text-success">{featuredCount}</p>
-                <p className="text-xs text-white/70">Featured</p>
+                <p className="text-lg sm:text-2xl font-bold text-success">{featuredCount}</p>
+                <p className="text-[10px] sm:text-xs text-white/70">Featured</p>
               </div>
             </div>
-            <div className="w-px h-10 bg-white/20" />
-            <div className="flex items-center gap-3 px-8 py-5">
-              <Zap className="h-5 w-5 text-warning shrink-0" />
+            <div className="hidden sm:block w-px h-10 bg-white/20" />
+            <div className="flex items-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-5 justify-center sm:justify-start">
+              <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-warning shrink-0" />
               <div className="text-left">
-                <p className="text-2xl font-bold text-warning">{offerCount}</p>
-                <p className="text-xs text-white/70">Exclusive Offers</p>
+                <p className="text-lg sm:text-2xl font-bold text-warning">{offerCount}</p>
+                <p className="text-[10px] sm:text-xs text-white/70">Offers</p>
               </div>
             </div>
           </div>
@@ -380,10 +380,11 @@ const PartnerDirectory = () => {
 
       {/* ── Unified Filter Toolbar ── */}
       <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
             {/* Category pills */}
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide flex-shrink-0">
+            <div className="relative flex-shrink-0 w-full sm:w-auto">
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide pr-8 sm:pr-0">
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -400,6 +401,9 @@ const PartnerDirectory = () => {
                   {cat}
                 </button>
               ))}
+              </div>
+              {/* Fade indicator for horizontal scroll on mobile */}
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background/95 to-transparent pointer-events-none sm:hidden" />
             </div>
 
             {/* Search */}
@@ -419,7 +423,7 @@ const PartnerDirectory = () => {
 
       {/* ── Partner Grid (bento) ── */}
       <section className="bg-background-gray">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container mx-auto px-4 py-10 md:py-16 lg:py-24">
           {filteredPartners.length === 0 ? (
             <div className="text-center py-24">
               <Package className="h-12 w-12 text-muted-foreground/40 mx-auto mb-4" />
@@ -463,19 +467,19 @@ const PartnerDirectory = () => {
           >
             {/* Gradient header band */}
             <div
-              className="relative rounded-t-2xl px-8 py-8"
+              className="relative rounded-t-2xl px-5 py-6 sm:px-8 sm:py-8"
               style={{
                 background:
                   "linear-gradient(135deg, hsl(237 67% 19%) 0%, hsl(238 69% 36%) 50%, hsl(238 63% 58%) 100%)",
               }}
             >
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-5">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
-                    <selectedPartner.icon className="h-7 w-7 text-white" />
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 pr-10 sm:pr-0">
+                <div className="flex items-center gap-4 sm:gap-5">
+                  <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm shrink-0">
+                    <selectedPartner.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-heading text-2xl font-bold text-white">
+                    <h2 className="font-heading text-xl sm:text-2xl font-bold text-white">
                       {selectedPartner.name}
                     </h2>
                     <p className="text-sm text-blue-200">
@@ -483,7 +487,7 @@ const PartnerDirectory = () => {
                     </p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1.5 text-xs font-semibold text-success-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1.5 text-xs font-semibold text-success-foreground self-start sm:self-auto">
                   <CheckCircle className="h-3.5 w-3.5" />
                   Verified Partner
                 </span>
@@ -498,7 +502,7 @@ const PartnerDirectory = () => {
             </div>
 
             {/* body */}
-            <div className="grid md:grid-cols-2 gap-8 p-8">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 p-5 md:p-8">
               {/* left */}
               <div className="space-y-6">
                 <div>
@@ -543,7 +547,7 @@ const PartnerDirectory = () => {
               </div>
 
               {/* right */}
-              <div className="space-y-6">
+              <div className="space-y-6 border-t border-border/40 pt-6 md:border-t-0 md:pt-0">
                 <div>
                   <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
                     <CheckCircle className="h-4 w-4 text-success" />
@@ -572,7 +576,7 @@ const PartnerDirectory = () => {
             </div>
 
             {/* footer */}
-            <div className="px-8 pb-8 space-y-3">
+            <div className="px-5 pb-5 md:px-8 md:pb-8 space-y-3">
               <a
                 href={selectedPartner.website}
                 target="_blank"
