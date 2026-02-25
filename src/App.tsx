@@ -21,6 +21,7 @@ import TermsPage from "./pages/TermsPage";
 import NotFound from "./pages/NotFound";
 import CalculatePage from "./pages/CalculatePage";
 import PartnerPage from "./pages/PartnerPage";
+import OurPartnersPage from "./pages/OurPartnersPage";
 import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App: React.FC = () => {
                   <Route path="/terms" element={<TermsPage />} />
                   <Route path="/calculate" element={<CalculatePage />} />
                   <Route path="/partner-with-us" element={<PartnerPage />} />
+                  <Route path="/our-partners" element={<OurPartnersPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
