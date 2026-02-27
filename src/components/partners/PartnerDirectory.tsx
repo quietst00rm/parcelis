@@ -2,18 +2,10 @@ import { useState, useEffect } from "react";
 import {
   Search,
   X,
-  Truck,
-  DollarSign,
-  Scale,
-  Globe,
   Package,
   CheckCircle,
   Star,
   ArrowRight,
-  Palette,
-  Zap,
-  Handshake,
-  Gift,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -27,9 +19,8 @@ interface PartnerStat {
 interface Partner {
   id: string;
   name: string;
-  category: string;
+  categories: string[];
   description: string;
-  icon: React.ElementType;
   featured?: boolean;
   fullDescription: string;
   whyWeTrust: string;
@@ -37,6 +28,7 @@ interface Partner {
   tags: string[];
   offer?: { title: string; description: string };
   website: string;
+  logoUrl?: string;
 }
 
 /* ── partner data ── */
@@ -44,10 +36,9 @@ const partners: Partner[] = [
   {
     id: "swiftship",
     name: "SwiftShip",
-    category: "Fulfillment & Logistics",
+    categories: ["Fulfillment & Logistics"],
     description:
-      "Global freight forwarding and last-mile delivery solutions for e-commerce brands.",
-    icon: Truck,
+      "End-to-end logistics for e-commerce brands, from manufacturer to customer doorstep across 20+ countries.",
     featured: true,
     fullDescription:
       "SwiftShip provides end-to-end logistics solutions for e-commerce brands, from manufacturer to customer doorstep. Their network spans 20+ countries with specialized handling for fragile and high-value goods.",
@@ -67,10 +58,9 @@ const partners: Partner[] = [
   {
     id: "claimguard",
     name: "ClaimGuard",
-    category: "Chargeback Protection",
+    categories: ["Chargeback Protection"],
     description:
-      "Automated chargeback prevention and recovery for online sellers.",
-    icon: DollarSign,
+      "Automated chargeback prevention and recovery that monitors every transaction in real time.",
     fullDescription:
       "ClaimGuard uses AI-driven dispute management to prevent chargebacks before they happen and recover revenue from illegitimate disputes. They process over $300M in protected transactions annually.",
     whyWeTrust:
@@ -85,10 +75,9 @@ const partners: Partner[] = [
   {
     id: "tradelaw",
     name: "TradeLaw Pro",
-    category: "Compliance & Customs",
+    categories: ["Compliance & Customs"],
     description:
-      "Cross-border compliance and trade regulation advisory for e-commerce.",
-    icon: Scale,
+      "Cross-border compliance and trade regulation advisory built for e-commerce sellers.",
     fullDescription:
       "TradeLaw Pro specializes in international trade compliance, customs regulations, and consumer protection law for e-commerce businesses shipping across borders.",
     whyWeTrust:
@@ -101,102 +90,59 @@ const partners: Partner[] = [
     website: "https://example.com",
   },
   {
-    id: "packsmart",
-    name: "PackSmart",
-    category: "Fulfillment & Logistics",
+    id: "returnflow",
+    name: "ReturnFlow",
+    categories: ["Returns Management"],
     description:
-      "Eco-friendly packaging solutions engineered to reduce damage in transit.",
-    icon: Package,
-    fullDescription:
-      "PackSmart designs sustainable, protective packaging that reduces product damage by up to 60%. Their custom solutions are tailored for fragile, heavy, and irregularly shaped items.",
-    whyWeTrust:
-      "PackSmart-packaged shipments see significantly fewer damage claims through Parcelis. Better packaging means fewer losses for everyone in the chain.",
-    stats: [
-      { value: "60%", label: "Less Damage" },
-      { value: "100%", label: "Recyclable" },
-    ],
-    tags: ["Sustainable", "Custom Packaging", "Damage Prevention"],
-    offer: {
-      title: "Free Packaging Audit",
-      description: "Complimentary audit for Parcelis merchants.",
-    },
-    website: "https://example.com",
-  },
-  {
-    id: "routeoptix",
-    name: "RouteOptix",
-    category: "Analytics & Reporting",
-    description:
-      "AI-powered shipping route optimization and carrier selection platform.",
-    icon: Globe,
-    fullDescription:
-      "RouteOptix uses machine learning to analyze carrier performance, transit times, and cost to recommend the optimal shipping route for every order. Integrates with all major e-commerce platforms.",
-    whyWeTrust:
-      "RouteOptix data feeds directly into our risk models, helping us price protection more accurately and identify high-risk shipping lanes before problems occur.",
-    stats: [
-      { value: "18%", label: "Cost Savings" },
-      { value: "10K+", label: "Active Merchants" },
-    ],
-    tags: ["AI", "Route Planning", "Carrier Selection"],
-    website: "https://example.com",
-  },
-  {
-    id: "brandforge",
-    name: "BrandForge",
-    category: "Marketing & Retention",
-    description:
-      "Conversion-focused product photography and listing optimization.",
-    icon: Palette,
-    fullDescription:
-      "BrandForge creates high-converting product imagery and listing content for e-commerce brands. Their data-driven approach to creative has helped brands increase conversion rates by an average of 28%.",
-    whyWeTrust:
-      "BrandForge ensures product listings accurately represent items, which reduces 'not as described' claims and improves the overall customer experience.",
-    stats: [
-      { value: "28%", label: "CVR Increase" },
-      { value: "4 Day", label: "Turnaround" },
-    ],
-    tags: ["Photography", "Listings", "Conversion"],
-    website: "https://example.com",
-  },
-  {
-    id: "flowpay",
-    name: "FlowPay",
-    category: "Chargeback Protection",
-    description:
-      "Revenue-based financing and working capital for growing brands.",
-    icon: DollarSign,
+      "Branded returns portal that turns refund requests into exchanges and store credit.",
     featured: true,
     fullDescription:
-      "FlowPay offers non-dilutive funding based on your sales velocity. Get approved in 24 hours with funding up to $2M — no equity, no personal guarantees.",
+      "ReturnFlow provides a branded returns experience that converts refund requests into exchanges and store credit, recovering revenue that would otherwise be lost.",
     whyWeTrust:
-      "FlowPay-funded merchants can invest in better shipping and packaging, which directly reduces claim rates. Their transparent pricing aligns with our values.",
+      "ReturnFlow's approach reduces net refund rates, which complements Parcelis shipping protection by minimizing post-delivery revenue loss for merchants.",
     stats: [
-      { value: "$150M+", label: "Total Funded" },
-      { value: "24hrs", label: "Approval" },
+      { value: "34%", label: "Exchange Rate" },
+      { value: "2.1x", label: "Repeat Purchase" },
     ],
-    tags: ["Funding", "Working Capital", "Growth"],
+    tags: ["Returns", "Exchanges", "Retention"],
     offer: {
-      title: "0.5% Rate Discount",
-      description: "Exclusive rate for Parcelis merchants.",
+      title: "Free 30-Day Trial",
+      description: "Exclusive trial for Parcelis-protected merchants.",
     },
     website: "https://example.com",
   },
   {
-    id: "shiplytics",
-    name: "Shiplytics",
-    category: "Analytics & Reporting",
+    id: "pixelpush",
+    name: "PixelPush",
+    categories: ["Marketing & Retention", "Customer Experience"],
     description:
-      "Real-time shipping analytics and delivery performance dashboards.",
-    icon: Zap,
+      "Post-purchase email and SMS flows that drive repeat revenue from existing customers.",
     fullDescription:
-      "Shiplytics aggregates shipping data across all your carriers into a single dashboard. Track delivery performance, identify problem carriers, and benchmark against industry standards.",
+      "PixelPush creates high-converting post-purchase communication flows that drive repeat revenue. Their data-driven approach has helped merchants achieve an average 4.2x ROI.",
     whyWeTrust:
-      "Shiplytics visibility helps merchants make data-driven carrier decisions, which reduces shipping failures and claim frequency across our portfolio.",
+      "PixelPush ensures customers stay engaged after purchase, which reduces disputes and increases lifetime value across our merchant network.",
     stats: [
-      { value: "50+", label: "Carrier Integrations" },
-      { value: "Real-Time", label: "Tracking" },
+      { value: "4.2x", label: "Average ROI" },
+      { value: "850+", label: "Merchants" },
     ],
-    tags: ["Analytics", "Dashboards", "Performance"],
+    tags: ["Email", "SMS", "Post-Purchase"],
+    website: "https://example.com",
+  },
+  {
+    id: "shipmetrics",
+    name: "ShipMetrics",
+    categories: ["Analytics & Reporting"],
+    description:
+      "Shipping cost intelligence platform that identifies carrier savings across your entire operation.",
+    fullDescription:
+      "ShipMetrics analyzes shipping spend across all carriers to identify cost savings opportunities. Their platform has analyzed over 12M shipments, finding an average 18% savings for merchants.",
+    whyWeTrust:
+      "ShipMetrics data feeds directly into our risk models, helping us price protection more accurately and identify cost optimization opportunities.",
+    stats: [
+      { value: "18%", label: "Avg Savings" },
+      { value: "12M+", label: "Shipments Analyzed" },
+    ],
+    tags: ["Analytics", "Cost Optimization", "Carriers"],
     website: "https://example.com",
   },
 ];
@@ -211,16 +157,6 @@ const categories = [
   "Analytics & Reporting",
   "Customer Experience",
 ];
-
-const categoryDotColor: Record<string, string> = {
-  "Fulfillment & Logistics": "bg-primary",
-  "Returns Management": "bg-[hsl(280,60%,50%)]",
-  "Chargeback Protection": "bg-success",
-  "Compliance & Customs": "bg-warning",
-  "Marketing & Retention": "bg-destructive",
-  "Analytics & Reporting": "bg-primary-medium",
-  "Customer Experience": "bg-[hsl(190,70%,45%)]",
-};
 
 /* ── component ── */
 const PartnerDirectory = () => {
@@ -240,91 +176,222 @@ const PartnerDirectory = () => {
   }, [selectedPartner]);
 
   const filteredPartners = partners.filter((p) => {
-    const matchCat = activeCategory === "All" || p.category === activeCategory;
+    const matchCat =
+      activeCategory === "All" || p.categories.includes(activeCategory);
     const matchSearch =
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCat && matchSearch;
   });
 
-  /* ── Partner Card ── */
-  const PartnerCard = ({ partner, index }: { partner: Partner; index: number }) => (
-    <ScrollReveal delay={index * 60}>
-      <button
-        type="button"
-        onClick={() => setSelectedPartner(partner)}
-        aria-label={`View details for ${partner.name}`}
-        className="group relative flex flex-col text-left w-full rounded-2xl border border-[hsl(220,13%,91%)] bg-card p-5 sm:p-6 lg:p-8 cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+  /* ── Logo Placeholder ── */
+  const LogoPlaceholder = ({ name }: { name: string }) => (
+    <div
+      className="flex items-center justify-center rounded-lg"
+      style={{
+        width: 140,
+        height: 40,
+        backgroundColor: "#F3F4F6",
+        border: "1px dashed #D1D5DB",
+      }}
+    >
+      <span
+        className="font-medium truncate px-2"
+        style={{ fontSize: 11, color: "#9CA3AF" }}
       >
-        {/* Offer indicator */}
+        {name}
+      </span>
+    </div>
+  );
+
+  /* ── Partner Card ── */
+  const PartnerCard = ({
+    partner,
+    index,
+  }: {
+    partner: Partner;
+    index: number;
+  }) => (
+    <ScrollReveal delay={index * 60}>
+      <div
+        className="group relative flex flex-col h-full bg-white rounded-xl cursor-pointer transition-all duration-200 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+        style={{
+          border: "1px solid #E0E0E0",
+          borderTop: partner.featured
+            ? "3px solid #1E22AA"
+            : "3px solid transparent",
+          borderRadius: 12,
+          boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+          padding: 24,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "#1E22AA";
+          e.currentTarget.style.boxShadow =
+            "0 4px 12px rgba(30,34,170,0.10)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "#E0E0E0";
+          e.currentTarget.style.borderTop = partner.featured
+            ? "3px solid #1E22AA"
+            : "3px solid transparent";
+          e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+        }}
+      >
+        {/* Featured badge */}
         {partner.offer && (
-          <div className="absolute top-4 right-4 flex items-center gap-1.5">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-warning opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-warning" />
-            </span>
-            <span className="text-[10px] font-medium text-warning">Offer</span>
-          </div>
+          <span
+            className="absolute uppercase font-bold text-white"
+            style={{
+              top: -8,
+              right: -8,
+              backgroundColor: "#F59E0B",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.5px",
+              padding: "4px 10px",
+              borderRadius: 20,
+            }}
+          >
+            Featured
+          </span>
         )}
 
-        {/* Icon */}
-        <div
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl mb-4 ${
-            partner.featured ? "bg-success/10" : "bg-[hsl(228,89%,96%)]"
-          }`}
-        >
-          <partner.icon
-            className={`h-5 w-5 ${partner.featured ? "text-success" : "text-primary"}`}
-          />
-        </div>
-
-        {/* Name & badges */}
-        <div className="flex items-center gap-2 mb-1">
-          <h3 className="font-heading text-base font-bold text-foreground">
-            {partner.name}
-          </h3>
-          {partner.featured && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-success px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-success-foreground">
-              <Star className="h-2.5 w-2.5 fill-current" />
-              Featured
-            </span>
+        {/* ROW 1 — Logo */}
+        <div className="flex items-center h-12 mb-4">
+          {partner.logoUrl ? (
+            <img
+              src={partner.logoUrl}
+              alt={`${partner.name} logo`}
+              className="object-contain"
+              style={{ maxHeight: 40, maxWidth: 140 }}
+            />
+          ) : (
+            <LogoPlaceholder name={partner.name} />
           )}
         </div>
 
-        {/* Category */}
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-3">
-          <span
-            className={`inline-block h-1.5 w-1.5 rounded-full ${
-              categoryDotColor[partner.category] || "bg-muted-foreground"
-            }`}
-          />
-          {partner.category}
+        {/* ROW 2 — Category Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {partner.categories.map((cat) => (
+            <span
+              key={cat}
+              className="inline-flex items-center font-semibold"
+              style={{
+                backgroundColor: "#F0F0FF",
+                color: "#1E22AA",
+                fontSize: 11,
+                fontWeight: 600,
+                padding: "3px 10px",
+                borderRadius: 20,
+                border: "1px solid #E0E0FF",
+              }}
+            >
+              {cat}
+            </span>
+          ))}
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+        {/* ROW 3 — Company Name */}
+        <h3
+          className="truncate mb-1.5"
+          style={{
+            fontSize: 18,
+            fontWeight: 700,
+            color: "#101155",
+            lineHeight: 1.3,
+          }}
+        >
+          {partner.name}
+        </h3>
+
+        {/* ROW 4 — Description */}
+        <p
+          className="mb-4"
+          style={{
+            fontSize: 14,
+            fontWeight: 400,
+            color: "#6B7280",
+            lineHeight: 1.5,
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
           {partner.description}
         </p>
 
-        {/* Stats */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        {/* ROW 5 — Stat Badges */}
+        <div
+          className="grid mb-4"
+          style={{
+            gridTemplateColumns:
+              partner.stats.length === 3
+                ? "1fr 1fr 1fr"
+                : partner.stats.length === 2
+                ? "1fr 1fr"
+                : "1fr",
+            gap: 8,
+          }}
+        >
           {partner.stats.map((s, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-1.5 rounded-lg bg-secondary px-2.5 py-1"
+              className="text-center"
+              style={{
+                backgroundColor: "#FAFAFA",
+                border: "1px solid #EBEBEB",
+                borderRadius: 8,
+                padding: "8px 12px",
+              }}
             >
-              <span className="text-xs font-bold text-success">{s.value}</span>
-              <span className="text-[10px] text-muted-foreground">{s.label}</span>
+              <div
+                style={{ fontSize: 14, fontWeight: 700, color: "#101155" }}
+              >
+                {s.value}
+              </div>
+              <div
+                style={{ fontSize: 11, fontWeight: 400, color: "#9CA3AF" }}
+              >
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
-          View Partner
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-        </div>
-      </button>
+        {/* ROW 6 — Divider */}
+        <div
+          className="w-full mb-4"
+          style={{ height: 1, backgroundColor: "#F0F0F0" }}
+        />
+
+        {/* ROW 7 — CTA */}
+        <button
+          type="button"
+          onClick={() => setSelectedPartner(partner)}
+          aria-label={`View details for ${partner.name}`}
+          className="w-full text-center font-semibold cursor-pointer transition-all duration-150 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          style={{
+            fontSize: 14,
+            fontWeight: 600,
+            color: "#1E22AA",
+            backgroundColor: "transparent",
+            border: "1px solid #E0E0E0",
+            borderRadius: 8,
+            padding: "10px 0",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#F5F5FF";
+            e.currentTarget.style.borderColor = "#1E22AA";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "transparent";
+            e.currentTarget.style.borderColor = "#E0E0E0";
+          }}
+        >
+          View Partner →
+        </button>
+      </div>
     </ScrollReveal>
   );
 
@@ -335,20 +402,20 @@ const PartnerDirectory = () => {
         <div className="container mx-auto px-4 text-center">
           <h1
             className="text-3xl font-bold mb-3"
-            style={{ color: "hsl(237, 67%, 19%)" }}
+            style={{ color: "#101155" }}
           >
             The Parcelis Partner Ecosystem
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-5">
+          <p
+            className="text-lg max-w-2xl mx-auto mb-5"
+            style={{ color: "#4B5563" }}
+          >
             Vetted service providers offering exclusive benefits to
             Parcelis-protected merchants.
           </p>
           <span
             className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium"
-            style={{
-              backgroundColor: "hsl(214, 100%, 97%)",
-              color: "hsl(238, 69%, 39%)",
-            }}
+            style={{ backgroundColor: "#EFF6FF", color: "#1E22AA" }}
           >
             <CheckCircle className="h-3.5 w-3.5" />
             {partners.length} Verified Partners
@@ -359,9 +426,7 @@ const PartnerDirectory = () => {
       {/* ── Filter / Search Bar ── */}
       <section className="sticky top-0 z-30 bg-white border-b border-[hsl(220,13%,91%)]">
         <div className="container mx-auto px-4 py-3 md:py-4">
-          {/* Mobile: search above filters */}
           <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-3 sm:gap-4">
-            {/* Category pills */}
             <nav
               aria-label="Filter partners by category"
               className="relative flex-shrink-0 w-full sm:w-auto"
@@ -378,26 +443,36 @@ const PartnerDirectory = () => {
                     aria-selected={activeCategory === cat}
                     aria-controls="partner-grid"
                     onClick={() => setActiveCategory(cat)}
-                    className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 min-h-[44px] min-w-[44px] ${
-                      activeCategory === cat
-                        ? "text-white shadow-sm"
-                        : "text-muted-foreground hover:bg-[hsl(220,14%,90%)]"
-                    }`}
+                    className="whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 min-h-[44px] min-w-[44px]"
                     style={
                       activeCategory === cat
-                        ? { backgroundColor: "hsl(238, 69%, 39%)" }
-                        : { backgroundColor: "hsl(220, 14%, 96%)" }
+                        ? {
+                            backgroundColor: "#1E22AA",
+                            color: "#FFFFFF",
+                          }
+                        : {
+                            backgroundColor: "#F3F4F6",
+                            color: "#4B5563",
+                          }
                     }
+                    onMouseEnter={(e) => {
+                      if (activeCategory !== cat) {
+                        e.currentTarget.style.backgroundColor = "#E5E7EB";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeCategory !== cat) {
+                        e.currentTarget.style.backgroundColor = "#F3F4F6";
+                      }
+                    }}
                   >
                     {cat}
                   </button>
                 ))}
               </div>
-              {/* Scroll fade indicator */}
               <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden" />
             </nav>
 
-            {/* Search */}
             <div className="relative w-full sm:w-auto sm:ml-auto sm:min-w-[260px]">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
@@ -406,7 +481,20 @@ const PartnerDirectory = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search partners..."
                 aria-label="Search partners"
-                className="w-full rounded-lg border border-[hsl(220,13%,91%)] bg-background py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all min-h-[44px]"
+                className="w-full rounded-lg py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground transition-all min-h-[44px]"
+                style={{
+                  border: "1px solid #E5E7EB",
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#1E22AA";
+                  e.currentTarget.style.outline = "none";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 0 3px rgba(30,34,170,0.1)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#E5E7EB";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               />
             </div>
           </div>
@@ -414,7 +502,11 @@ const PartnerDirectory = () => {
       </section>
 
       {/* ── Partner Grid ── */}
-      <section className="bg-[hsl(220,14%,96%)]" id="partner-grid" role="tabpanel">
+      <section
+        className="bg-[hsl(220,14%,96%)]"
+        id="partner-grid"
+        role="tabpanel"
+      >
         <div className="container mx-auto px-4 py-8 md:py-12">
           {filteredPartners.length === 0 ? (
             <div className="text-center py-20">
@@ -433,9 +525,13 @@ const PartnerDirectory = () => {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
               {filteredPartners.map((partner, i) => (
-                <PartnerCard key={partner.id} partner={partner} index={i} />
+                <PartnerCard
+                  key={partner.id}
+                  partner={partner}
+                  index={i}
+                />
               ))}
             </div>
           )}
@@ -462,22 +558,17 @@ const PartnerDirectory = () => {
               className="relative rounded-t-2xl px-5 py-6 sm:px-8 sm:py-8"
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(237 67% 19%) 0%, hsl(238 69% 36%) 50%, hsl(238 63% 58%) 100%)",
+                  "linear-gradient(135deg, #101155 0%, #1E22AA 50%, #2e32d4 100%)",
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 pr-10 sm:pr-0">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm shrink-0">
-                    <selectedPartner.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="font-heading text-xl sm:text-2xl font-bold text-white">
-                      {selectedPartner.name}
-                    </h2>
-                    <p className="text-sm text-blue-200">
-                      {selectedPartner.category}
-                    </p>
-                  </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">
+                    {selectedPartner.name}
+                  </h2>
+                  <p className="text-sm text-blue-200">
+                    {selectedPartner.categories.join(" · ")}
+                  </p>
                 </div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1.5 text-xs font-semibold text-success-foreground self-start sm:self-auto">
                   <CheckCircle className="h-3.5 w-3.5" />
@@ -498,7 +589,7 @@ const PartnerDirectory = () => {
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 p-5 md:p-8">
               <div className="space-y-6">
                 <div>
-                  <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
+                  <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
                     <Star className="h-4 w-4 text-primary" />
                     Who They Are
                   </h3>
@@ -513,8 +604,12 @@ const PartnerDirectory = () => {
                       key={i}
                       className="rounded-xl border border-border bg-secondary/50 p-4 text-center border-l-2 border-l-success"
                     >
-                      <p className="text-2xl font-bold text-success">{s.value}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+                      <p className="text-2xl font-bold text-success">
+                        {s.value}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {s.label}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -522,12 +617,6 @@ const PartnerDirectory = () => {
                 <div className="flex flex-wrap gap-2">
                   {selectedPartner.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-xs">
-                      <span
-                        className={`inline-block h-1.5 w-1.5 rounded-full mr-1.5 ${
-                          categoryDotColor[selectedPartner.category] ||
-                          "bg-muted-foreground"
-                        }`}
-                      />
                       {tag}
                     </Badge>
                   ))}
@@ -536,7 +625,7 @@ const PartnerDirectory = () => {
 
               <div className="space-y-6 border-t border-border/40 pt-6 md:border-t-0 md:pt-0">
                 <div>
-                  <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
+                  <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
                     <CheckCircle className="h-4 w-4 text-success" />
                     Why We Trust Them
                   </h3>
@@ -551,7 +640,7 @@ const PartnerDirectory = () => {
                       <Star className="h-3.5 w-3.5 fill-current" />
                       Exclusive Offer
                     </span>
-                    <p className="font-heading text-base font-bold text-foreground">
+                    <p className="text-base font-bold text-foreground">
                       {selectedPartner.offer.title}
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
