@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   // Check if we're on a white background page (Terms, Privacy)
-  const isWhiteBgPage = ["/terms", "/privacy"].includes(location.pathname);
+  const isWhiteBgPage = ["/terms", "/privacy", "/our-partners"].includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
