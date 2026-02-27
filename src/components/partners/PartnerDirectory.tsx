@@ -396,7 +396,7 @@ const PartnerDirectory = () => {
   );
 
   return (
-    <div className="bg-background min-h-screen -mt-24 pt-24">
+    <div className="bg-background min-h-screen pt-24">
       {/* ── Hero ── */}
       <section className="bg-white py-8 md:py-12">
         <div className="container mx-auto px-4 text-center">
