@@ -1,24 +1,37 @@
 
 
-## Simplify Partner Listings: Remove Tags, Internalize Categories
+# Replace Our Partners Hero with Standard Site Banner
 
-Based on your feedback, two changes:
+## What changes
 
-### 1. Remove tags entirely
-Tags are displayed in two places: as badges in the modal detail view (~line 598-603) and stored in each partner's data. Remove the `tags` property from the `Partner` interface and all partner data entries, and remove the tag badges from the modal.
+Replace the current white hero section (lines 365-390) in `PartnerDirectory.tsx` with the same gradient + ParallaxParcels hero pattern used on About, How It Works, Pricing, and other pages. No CTA buttons.
 
-### 2. Remove categories from partner requirements
-Categories stay in the code (we use them for filtering), but they become something **we** assign internally rather than something partners provide. No code change needed for this — it's just a documentation/process note.
+## Implementation
 
-### What partners actually need to provide
-After these changes, the streamlined ask becomes:
-- **Logo** (square, 200-512px, PNG/SVG, transparent background)
-- **Company name**
-- **Short description** (~120 characters)
-- **Full description** (2-3 sentences)
-- **Why we trust them** (2-3 sentences, or we write it)
-- **2-3 key stats** (value + label)
-- **Website URL**
+### 1. Add ParallaxParcels import
+Add `import ParallaxParcels from "@/components/ParallaxParcels";` at the top of `PartnerDirectory.tsx`.
 
-That's it — much lighter.
+### 2. Replace the hero section (lines 365-390)
+Remove the current white `<section>` hero and replace with:
+
+```tsx
+<div className="relative bg-brand overflow-hidden pt-24 md:pt-40 pb-32 flex flex-col items-center justify-center text-center">
+  <div className="absolute inset-0 bg-gradient-to-br from-[#101155] via-[#1e22aa] to-[#2e32d4] z-0"></div>
+  <ParallaxParcels />
+  <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white leading-tight mb-6">
+      The Parcelis Partner Ecosystem
+    </h1>
+    <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light">
+      Vetted service providers offering exclusive benefits to Parcelis-protected merchants.
+    </p>
+  </div>
+</div>
+```
+
+### 3. Remove `pt-24` from outer wrapper
+The current outer div has `pt-24` (line 365) which was needed for the white hero. The new banner handles its own top padding, so remove it — change to just `min-h-screen` (matching how other pages work where the hero pulls up behind the navbar).
+
+### 4. Remove unused CheckCircle import
+The "Verified Partners" pill badge is removed with the old hero, so `CheckCircle` can be removed from the lucide imports if not used elsewhere in the file.
 
