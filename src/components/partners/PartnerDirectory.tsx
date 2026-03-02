@@ -4,7 +4,6 @@ import {
   X,
   Package,
   CheckCircle,
-  Star,
   ArrowRight,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -21,12 +20,12 @@ interface Partner {
   name: string;
   categories: string[];
   description: string;
-  featured?: boolean;
+  
   fullDescription: string;
   whyWeTrust: string;
   stats: PartnerStat[];
   tags: string[];
-  offer?: { title: string; description: string };
+  
   website: string;
   logoUrl?: string;
 }
@@ -39,7 +38,6 @@ const partners: Partner[] = [
     categories: ["Fulfillment & Logistics"],
     description:
       "End-to-end logistics for e-commerce brands, from manufacturer to customer doorstep across 20+ countries.",
-    featured: true,
     fullDescription:
       "SwiftShip provides end-to-end logistics solutions for e-commerce brands, from manufacturer to customer doorstep. Their network spans 20+ countries with specialized handling for fragile and high-value goods.",
     whyWeTrust:
@@ -49,10 +47,6 @@ const partners: Partner[] = [
       { value: "20+", label: "Countries" },
     ],
     tags: ["Last-Mile", "Freight", "Warehousing"],
-    offer: {
-      title: "15% Off First Shipment",
-      description: "Exclusive discount for Parcelis-protected merchants.",
-    },
     website: "https://example.com",
   },
   {
@@ -95,7 +89,7 @@ const partners: Partner[] = [
     categories: ["Returns Management"],
     description:
       "Branded returns portal that turns refund requests into exchanges and store credit.",
-    featured: true,
+    
     fullDescription:
       "ReturnFlow provides a branded returns experience that converts refund requests into exchanges and store credit, recovering revenue that would otherwise be lost.",
     whyWeTrust:
@@ -105,10 +99,6 @@ const partners: Partner[] = [
       { value: "2.1x", label: "Repeat Purchase" },
     ],
     tags: ["Returns", "Exchanges", "Retention"],
-    offer: {
-      title: "Free 30-Day Trial",
-      description: "Exclusive trial for Parcelis-protected merchants.",
-    },
     website: "https://example.com",
   },
   {
@@ -220,9 +210,6 @@ const PartnerDirectory = () => {
         className="group relative flex flex-col h-full bg-white rounded-xl cursor-pointer transition-all duration-200 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
         style={{
           border: "1px solid #E0E0E0",
-          borderTop: partner.featured
-            ? "3px solid #1E22AA"
-            : "3px solid transparent",
           borderRadius: 12,
           boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
           padding: 24,
@@ -234,30 +221,9 @@ const PartnerDirectory = () => {
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = "#E0E0E0";
-          e.currentTarget.style.borderTop = partner.featured
-            ? "3px solid #1E22AA"
-            : "3px solid transparent";
           e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
         }}
       >
-        {/* Featured badge */}
-        {partner.offer && (
-          <span
-            className="absolute uppercase font-bold text-white"
-            style={{
-              top: -8,
-              right: -8,
-              backgroundColor: "#F59E0B",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.5px",
-              padding: "4px 10px",
-              borderRadius: 20,
-            }}
-          >
-            Featured
-          </span>
-        )}
 
         {/* ROW 1 — Logo */}
         <div className="flex items-center mb-4">
@@ -605,7 +571,7 @@ const PartnerDirectory = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
-                    <Star className="h-4 w-4 text-primary" />
+                    <CheckCircle className="h-4 w-4 text-primary" />
                     Who They Are
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -649,20 +615,6 @@ const PartnerDirectory = () => {
                   </p>
                 </div>
 
-                {selectedPartner.offer && (
-                  <div className="rounded-xl border border-warning/25 bg-gradient-to-br from-warning/5 to-warning/10 p-5">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-warning mb-2 uppercase tracking-wide">
-                      <Star className="h-3.5 w-3.5 fill-current" />
-                      Exclusive Offer
-                    </span>
-                    <p className="text-base font-bold text-foreground">
-                      {selectedPartner.offer.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {selectedPartner.offer.description}
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
 
