@@ -185,24 +185,27 @@ const PartnerDirectory = () => {
   });
 
   /* ── Logo Placeholder ── */
-  const LogoPlaceholder = ({ name }: { name: string }) => (
-    <div
-      className="flex items-center justify-center rounded-lg"
-      style={{
-        width: 140,
-        height: 40,
-        backgroundColor: "#F3F4F6",
-        border: "1px dashed #D1D5DB",
-      }}
-    >
-      <span
-        className="font-medium truncate px-2"
-        style={{ fontSize: 11, color: "#9CA3AF" }}
+  const LogoPlaceholder = ({ name, size = 48, variant = "default" }: { name: string; size?: number; variant?: "default" | "modal" }) => {
+    const initials = name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+    return (
+      <div
+        className="flex items-center justify-center rounded-lg flex-shrink-0"
+        style={{
+          width: size,
+          height: size,
+          backgroundColor: variant === "modal" ? "#FFFFFF" : "#F3F4F6",
+          border: variant === "modal" ? "none" : "1px dashed #D1D5DB",
+        }}
       >
-        {name}
-      </span>
-    </div>
-  );
+        <span
+          className="font-semibold"
+          style={{ fontSize: size * 0.35, color: variant === "modal" ? "#101155" : "#9CA3AF" }}
+        >
+          {initials}
+        </span>
+      </div>
+    );
+  };
 
   /* ── Partner Card ── */
   const PartnerCard = ({
@@ -257,16 +260,15 @@ const PartnerDirectory = () => {
         )}
 
         {/* ROW 1 — Logo */}
-        <div className="flex items-center h-12 mb-4">
+        <div className="flex items-center mb-4">
           {partner.logoUrl ? (
             <img
               src={partner.logoUrl}
               alt={`${partner.name} logo`}
-              className="object-contain"
-              style={{ maxHeight: 40, maxWidth: 140 }}
+              className="w-12 h-12 object-contain rounded-lg flex-shrink-0"
             />
           ) : (
-            <LogoPlaceholder name={partner.name} />
+            <LogoPlaceholder name={partner.name} size={48} />
           )}
         </div>
 
@@ -562,13 +564,26 @@ const PartnerDirectory = () => {
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 pr-10 sm:pr-0">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white">
-                    {selectedPartner.name}
-                  </h2>
-                  <p className="text-sm text-blue-200">
-                    {selectedPartner.categories.join(" · ")}
-                  </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    {selectedPartner.logoUrl ? (
+                      <img
+                        src={selectedPartner.logoUrl}
+                        alt={`${selectedPartner.name} logo`}
+                        className="w-14 h-14 object-contain rounded-lg"
+                      />
+                    ) : (
+                      <LogoPlaceholder name={selectedPartner.name} size={56} variant="modal" />
+                    )}
+                  </div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white">
+                      {selectedPartner.name}
+                    </h2>
+                    <p className="text-sm text-blue-200">
+                      {selectedPartner.categories.join(" · ")}
+                    </p>
+                  </div>
                 </div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1.5 text-xs font-semibold text-success-foreground self-start sm:self-auto">
                   <CheckCircle className="h-3.5 w-3.5" />
