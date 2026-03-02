@@ -1,15 +1,23 @@
 
 
-## Fix: Hero overlapping the navbar
+# Square Logo Update for Partner Cards & Modal
 
-The page container has `-mt-24 pt-24` to pull up behind the fixed navbar, but since this page has a **white background hero** (not a full-bleed dark hero like the homepage), the content visually collides with the transparent navbar.
+## Changes in `src/components/partners/PartnerDirectory.tsx`
 
-### Root cause
-The navbar is `fixed top-0 h-20` (80px). The page uses `-mt-24 pt-24` (96px) which is meant for dark-hero pages where content intentionally extends behind the navbar. On this white-background page, the hero text starts too close to the top.
+### 1. LogoPlaceholder — make square
+Change from 140×40 rectangle to 48×48 square with rounded-lg corners. Keep the dashed border and gray background. Replace company name text with the first letter/initials of the company (since full names won't fit in a square).
 
-### Fix in `src/components/partners/PartnerDirectory.tsx`
+### 2. Card Logo Row (ROW 1, ~line 260)
+Update the logo container from `h-12` with `maxHeight: 40, maxWidth: 140` to a 48×48 square container. The logo image gets `w-12 h-12 object-contain rounded-lg`. Margin bottom stays 16px.
 
-**Line 399**: Change the container from `-mt-24 pt-24` to just `pt-24` (no negative margin). This keeps the content below the fixed navbar without pulling the section up behind it.
+### 3. Modal Header (~line 556-586)
+Add the partner's logo to the modal header, positioned to the left of the name/category text. Show a 56×56 square logo (or square placeholder with white background and initials) inside the gradient header. The layout becomes: `[logo] [name + category] ... [verified badge]`.
 
-The `/terms` and `/privacy` pages (also white-background) likely use a similar pattern worth referencing, but the fix here is isolated to this one line.
+### Technical details
+
+**LogoPlaceholder** — accepts a `size` prop (default 48) for reuse in card vs modal (48 in card, 56 in modal). Square dimensions, `rounded-lg`, `bg-[#F3F4F6]`, dashed `#D1D5DB` border. Shows 1-2 letter initials in `#9CA3AF`.
+
+**Card**: Logo image uses `w-12 h-12 rounded-lg object-contain`.
+
+**Modal**: Logo sits in a `w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center` container inside the existing flex row, before the name div. Placeholder in modal uses white bg with `#101155` initials for contrast against the gradient.
 
