@@ -24,8 +24,6 @@ interface Partner {
   fullDescription: string;
   whyWeTrust: string;
   stats: PartnerStat[];
-  tags: string[];
-  
   website: string;
   logoUrl?: string;
 }
@@ -46,7 +44,7 @@ const partners: Partner[] = [
       { value: "99.4%", label: "On-Time Rate" },
       { value: "20+", label: "Countries" },
     ],
-    tags: ["Last-Mile", "Freight", "Warehousing"],
+    
     website: "https://example.com",
   },
   {
@@ -63,7 +61,7 @@ const partners: Partner[] = [
       { value: "$300M+", label: "Protected Volume" },
       { value: "72%", label: "Win Rate" },
     ],
-    tags: ["Chargebacks", "Fraud", "Revenue Recovery"],
+    
     website: "https://example.com",
   },
   {
@@ -80,7 +78,7 @@ const partners: Partner[] = [
       { value: "40+", label: "Jurisdictions" },
       { value: "98%", label: "Compliance Rate" },
     ],
-    tags: ["Customs", "Compliance", "IP Protection"],
+    
     website: "https://example.com",
   },
   {
@@ -98,7 +96,7 @@ const partners: Partner[] = [
       { value: "34%", label: "Exchange Rate" },
       { value: "2.1x", label: "Repeat Purchase" },
     ],
-    tags: ["Returns", "Exchanges", "Retention"],
+    
     website: "https://example.com",
   },
   {
@@ -115,7 +113,7 @@ const partners: Partner[] = [
       { value: "4.2x", label: "Average ROI" },
       { value: "850+", label: "Merchants" },
     ],
-    tags: ["Email", "SMS", "Post-Purchase"],
+    
     website: "https://example.com",
   },
   {
@@ -132,7 +130,7 @@ const partners: Partner[] = [
       { value: "18%", label: "Avg Savings" },
       { value: "12M+", label: "Shipments Analyzed" },
     ],
-    tags: ["Analytics", "Cost Optimization", "Carriers"],
+    
     website: "https://example.com",
   },
 ];
@@ -595,13 +593,6 @@ const PartnerDirectory = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {selectedPartner.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
               </div>
 
               <div className="space-y-6 border-t border-border/40 pt-6 md:border-t-0 md:pt-0">
