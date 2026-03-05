@@ -13,6 +13,8 @@ const Navbar: React.FC = () => {
 
   // Check if we're on a white background page (Terms, Privacy)
   const isWhiteBgPage = ["/terms", "/privacy", "/our-partners"].includes(location.pathname);
+  // Blog pages always get solid dark header
+  const isBlogPage = location.pathname.startsWith("/blog");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,28 +45,34 @@ const Navbar: React.FC = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  // Determine if navbar should have white background
-  const hasWhiteBackground = scrolled || isWhiteBgPage || isOpen;
+  // Determine navbar appearance
+  const hasDarkBackground = isBlogPage;
+  const hasWhiteBackground = !hasDarkBackground && (scrolled || isWhiteBgPage || isOpen);
+  const isTransparent = !hasDarkBackground && !hasWhiteBackground;
 
   // Dynamic Styles
-  const navBackgroundClass = hasWhiteBackground ? "bg-white shadow-md" : "bg-transparent";
+  const navBackgroundClass = hasDarkBackground
+    ? "bg-[#1a1a6e] shadow-md"
+    : hasWhiteBackground
+      ? "bg-white shadow-md"
+      : "bg-transparent";
 
-  const textColorClass = hasWhiteBackground ? "text-gray-600" : "text-white drop-shadow-md";
-  const hoverColorClass = hasWhiteBackground ? "hover:text-brand" : "hover:text-blue-200";
-  const activeColorClass = hasWhiteBackground
-    ? "text-brand font-bold"
-    : "text-white font-bold underline decoration-2 underline-offset-4";
+  const textColorClass = (hasDarkBackground || isTransparent) ? "text-white drop-shadow-md" : "text-gray-600";
+  const hoverColorClass = (hasDarkBackground || isTransparent) ? "hover:text-blue-200" : "hover:text-brand";
+  const activeColorClass = (hasDarkBackground || isTransparent)
+    ? "text-white font-bold underline decoration-2 underline-offset-4"
+    : "text-brand font-bold";
 
-  const applyButtonClass = hasWhiteBackground
-    ? "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20"
-    : "bg-white hover:bg-gray-100 text-brand shadow-lg";
+  const applyButtonClass = (hasDarkBackground || isTransparent)
+    ? "bg-white hover:bg-gray-100 text-brand shadow-lg"
+    : "bg-brand hover:bg-brand-dark text-white shadow-lg shadow-brand/20";
 
-  const fileClaimButtonClass = hasWhiteBackground
-    ? "text-gray-700 hover:text-brand font-medium"
-    : "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all";
+  const fileClaimButtonClass = (hasDarkBackground || isTransparent)
+    ? "bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-lg backdrop-blur-sm font-medium transition-all"
+    : "text-gray-700 hover:text-brand font-medium";
 
   // Hamburger icon color
-  const mobileIconColor = hasWhiteBackground ? "#4f46e5" : "#ffffff";
+  const mobileIconColor = (hasDarkBackground || isTransparent) ? "#ffffff" : "#4f46e5";
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${navBackgroundClass}`}>
@@ -74,7 +82,7 @@ const Navbar: React.FC = () => {
           <div className="flex-shrink-0 flex items-center cursor-pointer">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src={hasWhiteBackground ? logo : logoWhite}
+                src={(hasDarkBackground || isTransparent) ? logoWhite : logo}
                 alt="PARCELIS Logo"
                 className="h-10 w-auto transition-opacity duration-300"
               />

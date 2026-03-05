@@ -116,29 +116,30 @@ const ComparisonPostContent = ({
       {/* Section 2: At a Glance Table */}
       <section>
         <h2 id="at-a-glance">{appA.name} vs {appB.name} at a Glance</h2>
-        <div className="relative overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
-          <div className="min-w-[540px]">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr>
-                  <th className="text-left p-3 w-[200px] bg-[#f9fafb] font-medium text-[#374151]">&nbsp;</th>
-                  <th className="text-center p-3 bg-[#1e22aa] text-white font-semibold">{appA.name}</th>
-                  <th className="text-center p-3 bg-[#1a1a6e] text-white font-semibold">{appB.name}</th>
+        <div className="overflow-x-auto rounded-lg border border-[#e5e7eb] not-prose">
+          <table className="w-full text-sm border-collapse table-fixed">
+            <colgroup>
+              <col className="w-[30%]" />
+              <col className="w-[35%]" />
+              <col className="w-[35%]" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th className="text-left p-3 bg-[#f9fafb] font-medium text-[#374151]">&nbsp;</th>
+                <th className="text-center p-3 bg-[#1e22aa] text-white font-semibold">{appA.name}</th>
+                <th className="text-center p-3 bg-[#1a1a6e] text-white font-semibold">{appB.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableRows.map((row, i) => (
+                <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-[#f9fafb]"}>
+                  <td className="p-3 font-medium text-[#374151]">{row.label}</td>
+                  <td className="p-3 text-center text-[#374151] break-words">{row.a}</td>
+                  <td className="p-3 text-center text-[#374151] break-words">{row.b}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {tableRows.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-[#f9fafb]"}>
-                    <td className="p-3 font-medium text-[#374151]">{row.label}</td>
-                    <td className="p-3 text-center text-[#374151]">{row.a}</td>
-                    <td className="p-3 text-center text-[#374151]">{row.b}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {/* Mobile scroll indicator */}
-          <div className="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden" />
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -245,9 +246,9 @@ const ComparisonPostContent = ({
           </h3>
           <ul className="space-y-3 mb-6">
             {parcelisBullets.map((bullet, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed">
+              <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-white">
                 <Check className="w-4 h-4 text-[#4FC3F7] shrink-0 mt-0.5" />
-                <span>{bullet}</span>
+                <span className="text-white">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -270,6 +271,14 @@ const ComparisonPostContent = ({
               Calculate Your Revenue
             </a>
           </div>
+          <a
+            href="https://apps.shopify.com/parcelis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-sm text-[#4FC3F7] hover:underline mt-3"
+          >
+            View on Shopify App Store
+          </a>
         </div>
       </section>
 

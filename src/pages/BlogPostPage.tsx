@@ -100,7 +100,6 @@ const BlogPostPage = () => {
   return (
     <>
       <ReadingProgressBar />
-      <SocialShareBar title={post.title} url={canonicalUrl} />
       <BackToTopButton />
 
       <Helmet>
@@ -174,15 +173,15 @@ const BlogPostPage = () => {
                 <BlogPostContent content={post.content} />
               )}
 
-              {/* Related comparisons for comparison posts */}
-              {post.isComparison && (
-                <RelatedComparisons currentSlug={post.slug} currentTags={post.tags} />
-              )}
-
-              {/* Mobile share bar */}
-              <div className="lg:hidden">
+              {/* Share bar - static horizontal row between content and related */}
+              <div className="mt-10 pt-8 border-t border-[#e5e7eb]">
                 <SocialShareBar title={post.title} url={canonicalUrl} />
               </div>
+
+              {/* Related comparisons for comparison posts */}
+              {hasComparisonData && (
+                <RelatedComparisons currentSlug={post.slug} currentTags={post.tags} />
+              )}
             </div>
             <BlogSidebar toc={toc} articleUrl={canonicalUrl} />
           </div>
