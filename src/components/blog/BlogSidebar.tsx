@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-
+import AiSummarizeWidget from "./AiSummarizeWidget";
 interface TocItem {
   id: string;
   text: string;
@@ -8,9 +8,10 @@ interface TocItem {
 
 interface BlogSidebarProps {
   toc: TocItem[];
+  articleUrl: string;
 }
 
-const BlogSidebar = ({ toc }: BlogSidebarProps) => {
+const BlogSidebar = ({ toc, articleUrl }: BlogSidebarProps) => {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
@@ -88,21 +89,7 @@ const BlogSidebar = ({ toc }: BlogSidebarProps) => {
           </nav>
         </div>
 
-        {/* AI Summary placeholder */}
-        <div className="bg-[#f8f9fc] rounded-lg p-5 border border-[#e5e7eb]">
-          <h3 className="font-heading text-sm font-bold text-[#1a1a2e] uppercase tracking-wider mb-3">
-            Summarize with AI
-          </h3>
-          <p className="text-sm text-[#6b7280] mb-3">
-            Get an AI-generated summary of this article.
-          </p>
-          <button
-            className="w-full bg-[#1e22aa] text-white text-sm font-semibold rounded-lg py-2.5 hover:bg-[#151885] transition-colors min-h-[44px]"
-            disabled
-          >
-            Coming Soon
-          </button>
-        </div>
+        <AiSummarizeWidget articleUrl={articleUrl} />
       </div>
     </aside>
   );

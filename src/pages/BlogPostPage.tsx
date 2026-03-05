@@ -6,6 +6,7 @@ import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
 import BlogPostContent from "@/components/blog/BlogPostContent";
 import BlogSidebar from "@/components/blog/BlogSidebar";
 import BlogMobileToc from "@/components/blog/BlogMobileToc";
+import AiSummarizeWidget from "@/components/blog/AiSummarizeWidget";
 
 interface TocItem {
   id: string;
@@ -116,23 +117,12 @@ const BlogPostPage = ({ isComparison = false }: { isComparison?: boolean }) => {
             <div className="flex-1 min-w-0">
               <BlogPostContent content={post.content} />
             </div>
-            <BlogSidebar toc={toc} />
+            <BlogSidebar toc={toc} articleUrl={`https://myparcelis.com${postUrl}`} />
           </div>
 
           {/* Mobile AI Summary */}
-          <div className="lg:hidden mt-10 bg-[#f8f9fc] rounded-lg p-5 border border-[#e5e7eb]">
-            <h3 className="font-heading text-sm font-bold text-[#1a1a2e] uppercase tracking-wider mb-3">
-              Summarize with AI
-            </h3>
-            <p className="text-sm text-[#6b7280] mb-3">
-              Get an AI-generated summary of this article.
-            </p>
-            <button
-              className="w-full bg-[#1e22aa] text-white text-sm font-semibold rounded-lg py-2.5 hover:bg-[#151885] transition-colors min-h-[44px]"
-              disabled
-            >
-              Coming Soon
-            </button>
+          <div className="lg:hidden">
+            <AiSummarizeWidget articleUrl={`https://myparcelis.com${postUrl}`} layout="mobile" />
           </div>
         </div>
       </section>
