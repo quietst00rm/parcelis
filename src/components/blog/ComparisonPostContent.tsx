@@ -251,7 +251,7 @@ const ComparisonPostContent = ({
         <h2 id="what-comparison-pages-wont-tell-you">What Most Comparison Pages Won't Tell You</h2>
         <p>{data.categoryFraming}</p>
 
-        <div className="not-prose bg-gradient-to-br from-[#1e22aa] to-[#1a1a6e] rounded-xl p-6 md:p-8 text-white mt-6 mb-6">
+        <div data-theme="dark" className="not-prose bg-gradient-to-br from-[#1e22aa] to-[#1a1a6e] rounded-xl p-6 md:p-8 text-white mt-6 mb-6">
           <p className="text-xs uppercase tracking-widest text-[#4FC3F7] mb-2 font-semibold">
             THE FOURTH OPTION
           </p>
