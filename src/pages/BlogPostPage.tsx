@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getPostBySlug } from "@/data/blogPosts";
@@ -63,6 +63,11 @@ function buildComparisonToc(data: ComparisonData): TocItem[] {
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   const post = slug ? getPostBySlug(slug) : undefined;
 
   const hasComparisonData = !!(post?.comparisonData);
