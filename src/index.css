@@ -1482,6 +1482,21 @@ All colors MUST be HSL.
   background-color: #ffffff;
 }
 
+/* Exclude dark-themed containers from blog prose color overrides */
+.blog-prose [data-theme="dark"] h2,
+.blog-prose [data-theme="dark"] h3,
+.blog-prose [data-theme="dark"] p,
+.blog-prose [data-theme="dark"] a,
+.blog-prose [data-theme="dark"] strong,
+.blog-prose [data-theme="dark"] li,
+.blog-prose [data-theme="dark"] span {
+  color: inherit !important;
+}
+
+.blog-prose [data-theme="dark"] a:hover {
+  color: inherit !important;
+}
+
 /* Blog TOC scrollbar */
 .blog-toc-scroll::-webkit-scrollbar {
   width: 4px;
